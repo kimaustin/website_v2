@@ -1,0 +1,20 @@
+server {
+    listen 80;
+    listen [::]:80;
+
+    # TODO: DONE(?) ->This should be your server name.
+    server_name test.austinkim.works;
+
+    location / {
+        proxy_pass http://localhost:7111;
+    }
+
+    location /api {
+        proxy_pass http://localhost:6111;
+    }
+
+   location /works {
+        proxy_pass http://localhost:7111;
+    }
+
+}

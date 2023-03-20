@@ -1,0 +1,10 @@
+server/_build
+server/cover
+server/deps
+server/doc
+server/.fetch
+server/erl_crash.dump
+server/*.ez
+server/*.beam
+server/config/*.secret.exs
+server/.elixir_ls/
