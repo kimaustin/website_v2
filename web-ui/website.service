@@ -1,0 +1,9 @@
+[Unit]
+Description=Website Service
+
+[Service]
+WorkingDirectory=/home/portfolio/v2/web-ui
+ExecStart=/usr/local/bin/serve -s build -l 7111
+
+[Install]
+WantedBy=multi-user.target
