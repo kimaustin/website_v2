@@ -8,3 +8,5 @@ server/*.ez
 server/*.beam
 server/config/*.secret.exs
 server/.elixir_ls/
+web-ui/build/
+web-ui/public/imgs/
