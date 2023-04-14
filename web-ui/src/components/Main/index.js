@@ -60,7 +60,7 @@ const Main = ({projects}) => {
             duration: 1,
             delay: .5,
           }
-        }
+        } 
     }
 
     const btnVariants = {
@@ -155,7 +155,7 @@ const Main = ({projects}) => {
                 transition={pageTransition}
                 >
                     {/* Austin Kim <span style={{fontFamily: "JejuMyeongjo", letterSpacing: "-1.1rem"}}>(호연)</span> */}
-                    Welcome
+                    Hello,
             </Header>
             {/* <MainImg> */}
                 {/* <ProgressiveImages

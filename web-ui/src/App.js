@@ -15,6 +15,8 @@ import Works from "./components/Works";
 import WorkExpanded from "./components/Works/WorkExpanded";
 import Images from "./components/ImageZoom";
 import About from "./components/About";
+import AboutPanel from "./components/AboutPanel";
+// import NavBar from "./components/Navbar";
 import Topbar from "./components/Topbar";
 import Lab from "./components/Lab";
 import Close from "./components/About";
@@ -56,23 +58,26 @@ function App() {
   return (
     <Router>
       <GlobalFonts />
-      {/* <Navigation toggle={toggleAbout} aboutToggle={aboutToggle}/> */}
-      <Navigation />
+      {/* <NavBar /> */}
+      <Navigation toggle={toggleAbout} aboutToggle={aboutToggle}/>
+      {/* <Navigation /> */}
+      <AboutPanel aboutToggle={aboutToggle} toggle={toggleAbout}><Close onClick={toggleAbout}>close</Close></AboutPanel>
       <Route
         render={({ location }) => (
           <AnimatePresence exitBeforeEnter>
             <Switch location={location} key={location.pathname}>
               <Route exact path="/" component={Main} />
               <Route exact path="/works" component={Works} />
-              <Route exact path="/info" component={About} />
+              <Route exact path="/test" component={Home} />
+              {/* <Route exact path="/info" component={About} /> */}
               <Route path="/:workId?/works" component={WorkExpanded} exact />
               <Route path="/:workId?/images" component={Images} />
             </Switch>
           </AnimatePresence>
         )}
       />
-      <Status />
-      <WIP />
+      {/* <Status /> */}
+      {/* <WIP /> */}
     </Router>
   );
 }

@@ -1,29 +1,34 @@
-import React, { useState } from 'react';
-import About from '../About';
-import { homeObj1, homeObj2 } from '../About/Data';
-import Footer from '../Footer';
-import HeroSection from '../HeroSection';
-import Navbar from '../Navbar';
-import Topbar from '../Topbar';
+import React, { useState, useRef, useEffect, useCallBack} from 'react';
+import { Container, Project } from './HomeElements.js';
 
 const Home = () => {
-  const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => {
-    setIsOpen(!isOpen);
+  const ref = useRef(null);
+  const [projectValue, setProjectValue] = useState(1);
+
+  const handleClick = () => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  const updateProjectValue = () => {
+    console.log("got to on-scroll");
+    setProjectValue(projectValue + 1);
   };
 
+  console.log("test console");
+
   return (
-    <>
-      {/* <Topbar isOpen={isOpen} toggle={toggle} /> */}
-      <Navbar toggle={toggle} />
-      <HeroSection />
-      <About {...homeObj1}/>
-      <About {...homeObj2}/>
-      Austin Kim (home body)
-      <Footer/>
-    </>
-  );
+    <Container onScroll={updateProjectValue}>
+      <button onClick={handleClick} style={{ position: 'fixed', left: '50vw' }}>Click to scroll</button>
+      <div style={{ height: '500px', backgroundColor: 'blue', }}></div>
+      <Project ref={ref}>
+        <p>scroll to me</p>
+        <br />
+        {projectValue}
+      </Project>
+      <div style={{ height: '1000px', backgroundColor: 'blue' }}></div>
+    </Container>
+  )
 }
 
 export default Home;

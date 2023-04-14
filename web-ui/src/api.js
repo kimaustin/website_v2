@@ -30,5 +30,5 @@ export function get_project(id) {
 
 export function load_defaults() {
     console.log("loading defaults...");
-    fetch_projects();
+    // fetch_projects();
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Content, Name, ProfileContainer, Resume, ImageSide, ResumeDownload, Links, Social, Side, Loader, Desc, Styled1, Styled2, Close } from './AboutElements';
+import { Container, Content, Name, ProfileContainer, Resume, ImageSide, ResumeDownload, Links, Social, Side, Loader, Desc, Styled1, Styled2, Close, InlineLink } from './AboutElements';
 import { motion } from "framer-motion";
 
 const About = ({ toggle, aboutToggle }) => {
@@ -149,8 +149,8 @@ const About = ({ toggle, aboutToggle }) => {
             delay: 1.1
           }}
         >
-          Built with React + Elixir. <br />
-          Last Updated 12/20/21.
+          Built by me in <InlineLink href="https://react.dev" target="_blank">React</InlineLink> + <InlineLink href="https://elixir-lang.org" target="_blank">Elixir</InlineLink>. <br />
+          Last Updated 03/22/23.
         </Styled2>
 
         <Content>

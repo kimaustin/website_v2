@@ -5,7 +5,7 @@ const Status = () => {
     return (
         <Container>
             <TopSection>
-                Currently based in Atlanta, GA
+                Currently based in Brooklyn, NY
             </TopSection>
             {/* <BotSection>
                 Last Updated: 12/20/21

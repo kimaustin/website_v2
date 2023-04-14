@@ -127,7 +127,7 @@ export const Content = styled.div`
     position: fixed;
     left: calc(25.15vw + 6.35rem);
     top: 3vh;
-    width: 28vw;
+    width: 27vw;
 
     z-index: 999;
     text-align: left;
@@ -288,7 +288,7 @@ export const Links = styled.div`
     position: fixed;
     /* padding-left: 2rem; */
     bottom: 2.5rem;
-    width: 39%;
+    /* width: 15%; */
     /* right: 1.8rem; */
     /* margin-right: 1.8rem; */
     margin-top: 2rem;
@@ -341,5 +341,15 @@ export const Social = styled.p`
         /* transform: skew(12deg); */
         opacity: 0.5;  
     }
+`
 
+export const InlineLink = styled.a`
+    font-family: 'CG Italic';
+    font-family: 'SpaceMono';
+    font-family: 'JejuMyeongjo';
+    font-size: 1rem;
+    letter-spacing: -.03rem;
+
+    color: #201D17;
+    text-decoration: underline;
 `

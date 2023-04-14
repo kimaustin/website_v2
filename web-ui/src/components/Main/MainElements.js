@@ -11,7 +11,7 @@ export const Container = styled.div`
     top: 0;
     overflow: hidden;
 
-    background: #FFFDFA;
+    /* background: #FFFDFA; */
 
     text-align: center;
     justify-content: center;
@@ -41,12 +41,12 @@ export const Header = styled.p`
     z-index: 999;
     display: block;
     position: relative;
-    color: #201D17;
+    color: #FFFFFF;
 
-    font-size: 14vw;
-    font-family: "CG LI";
+    font-size: 13px;
+    font-family: "OpenSans";
     font-kerning: auto;
-    letter-spacing: -.4vw;
+    /* letter-spacing: -.4vw; */
 
     text-align: center;
     justify-content: center;
@@ -59,7 +59,6 @@ export const Header = styled.p`
     width: 100vw;
 
     /* padding-bottom: 12vw; */
-
 `
 
 export const MainImg = styled.div`
@@ -94,13 +93,13 @@ export const MainImg = styled.div`
 
 export const MainDesc = styled.div`
     /* width: 23%; */
-    color: #201D17;
+    color: #FFFFFF;
 
     font-size: 3vh;
     /* font-size: 2vw; */
-    font-family: "JejuMyeongjo";
-    letter-spacing: -.03rem;
-    line-height: 108%;
+    font-family: "OpenSans";
+    /* letter-spacing: -.03rem; */
+    /* line-height: 108%; */
 
     padding-bottom: 2rem;
     /* position: absolute;
@@ -134,7 +133,7 @@ export const MainBio = styled.div`
     text-align: left;
     justify-content: center;
     align-items: center;
-    color: #201D17;
+    /* color: #201D17; */
     /* border-bottom: 1px solid #201D17 50%; */
     /* border-left: 1px solid #201D17; */
     /* border-top: 1px solid #201D17 50%; */
@@ -205,7 +204,7 @@ export const DownButton = styled(LinkRouter)`
     padding-bottom: .5rem;
 
     font-size: 1.7vh;
-    font-family: 'JejuMyeongjo';
+    font-family: 'OpenSans';
     /* letter-spacing: -.01rem; */
     /* border-bottom: 1px solid #201D17; */
     text-transform: uppercase;
@@ -220,7 +219,7 @@ export const DownButton = styled(LinkRouter)`
     opacity: 1;
     transition: .15s all ease-in-out;
     /* background: #FFFDFA; */
-    color: #201D17;
+    color: #FFFFFF;
 
     position: absolute;
     /* left: 0; */

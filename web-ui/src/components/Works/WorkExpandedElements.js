@@ -27,8 +27,8 @@ export const Container = styled.div`
 `;
 
 export const LeftSection = styled.div`
-    position: absolute;
-    z-index: -1;
+    /* position: absolute; */
+    z-index: 999;
     /* width: calc(83.4vw - 6rem); */
     width: calc(16.5vw);
     left: calc(3.5vw + 3rem + 3.35vw);
@@ -47,64 +47,97 @@ export const LeftSection = styled.div`
 
 export const RightSection = styled.div`
     position: fixed;
-    left: 0;
+    left: 31.5vw;
     top: 0;
-    justify-content: center;
-    padding-bottom: .1rem;
-    padding-top: 3vh;
+    /* justify-content: center; */
+    align-items: left;
+    /* text-align: right; */
+    padding-bottom: 19px;
+    padding-top: 19px;
+    padding-left: 30px;
+    padding-right: 70px;
 
     z-index: 990;
 
     height: 100vh;
-    width: calc(100vw + 1.5rem);
+    width: calc(68.5vw + 18px);
     /* width: calc(63.4vw - 10.5rem);
     left: calc(27.15vw + 6rem); */
 
-    /* border: 1px solid #201D17; */
+    /* border-left: .5px solid #403F3F; */
+    /* border-right: 5px solid red; */
+    background: rgba(61, 60, 60, 0.2);
+    /* background: orange; */
 
     overflow-y: scroll;
     overflow-x: hidden;
 `
 
-export const Images = styled.div`
-    position: fixed;
-    display: grid;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    padding-bottom: calc(50vh);
-    padding-left: calc(27.15vw + 6rem);
+export const Header = styled.div`
+    align-items: start;
+    padding-bottom: 24px;
 
-    border: 10px solid blue;
+    /* border: 2px solid blue; */
+`
 
-    overflow-y: scroll;
-    overflow-x: hidden;
+export const HeaderDecorated = styled.div`
+    text-align: left;
+    display: flex;
+    align-items: start;
+    margin-left: calc(12% - 4px);
+    padding-bottom: 22px;
 
-    /* @media screen and (max-width: 768px) {
-        position: relative;
-        left: 9.5px;
-        top: 10vh;
-        display: grid;
-        width: 89.5vw;
-        padding-bottom: 3rem;
-    } */
+    /* border: 2px solid blue; */
+`
+
+export const Fancy = styled.div`
+    color: #4A4A4A;
+    font-size: 50px;
+    font-family: 'Iskoola';
+    /* border: 2px solid blue; */
+` 
+
+export const InsideHeaderContainer = styled.div`
+    padding-left: 8px;
+    padding-right: 10px;
+    padding-top: 17px;
+`
+
+export const InsideHeaderLine = styled.p`
+    padding-bottom: 2px;
+    font-family: "SS3";
+    font-size: 13px;
+    color: #9E9E9E;
+`
+
+export const Overview = styled.div`
+    text-align: left;
+    /* padding-left: 12%; */
+
+    /* border: 2px solid blue; */
+
+    color: #B5B5B5;
+    font-family: "SS3";
+    font-size: 34px;
+    line-height: 122%;
+    font-weight: 500;
 `
 
 export const PicContainer = styled.div`
     top: 0;
-    margin-bottom: ${({ isLast }) => isLast ? '3.6vh' : '2.5vh'};
+    padding-left: 12%;
+    margin-bottom: ${({ isLast }) => isLast ? '3.6vh' : '18px'};
     /* margin-bottom: 2.45rem; */
     /* margin-left: calc(25.15vw + 6.5rem); */
-    margin-left: calc(27vw + 3rem);
+    /* margin-left: calc(27vw + 3rem); */
 
     /* border: 2px solid blue; */
-    align-items: center;
-    text-align: center;
+    align-items: left;
+    /* text-align: left; */
     position: ${({isLast}) => isLast ? 'sticky' : 'relative'};
     /* width: calc(62.1% - 4rem); */
     /* 100 - (7.1 + 3rem + 27 + 3rem) */
-    width: calc(66vw - 6rem);
+    /* width: calc(100% - 50px); */
 
     
     img {
@@ -115,74 +148,67 @@ export const PicContainer = styled.div`
     }
 `
 
-export const PicDesc = styled.p`
+export const Subsection = styled.div`
     position: relative;
-    width: calc(62.1% - 4rem);
+    margin-left: 12%;
+    /* width: calc(62.1% - 4rem); */
+    width: 80%;
     top: 0;
+    padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '16px'};
+    scroll-margin-top: 18px;
 
     /* border: 2px solid blue; */
 
-    margin-left: calc(25.15vw + 6.5rem);
-    padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '2.5vh'};
-    /* padding-top: 2rem; */
-    padding-left: 10%;
-    padding-right: 10%;
+    color: #A3A3A3;
+    font-family: "OpenSans";
+    font-size: 24px;
+    text-align: left;
+    /* align-items: right; */
+`
 
-    font-family: "JejuMyeongjo";
-    font-size: 1rem;
-    text-align: center;
-    align-items: center;
+export const PicDesc = styled.p`
+    position: relative;
+    margin-left: 12%;
+    /* width: calc(62.1% - 4rem); */
+    width: 80%;
+    top: 0;
+    padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '20px'};
+
+    /* border: 2px solid blue; */
+
+    color: #A3A3A3;
+    font-family: "OpenSans";
+    font-size: 13px;
+    text-align: left;
+    /* align-items: right; */
 `
 
 export const Controls = styled.div`
     z-index: 999;
-    
+    display: inline-grid;
     position: fixed;
-    top: 3.1vh;
-    /* width: calc(20vw - 1rem); */
-    height: 96.9vh;
-    left: calc(7.15vw + 3rem);
+    top: 103px;
+    left: 0;
+    height: calc(100vh - 103px);
+    width: 31.5vw;
 
-    /* border: 1px solid blue; */
-`
+    padding-right: 22px;
+    padding-top: 30px;
+    /* align-items: right; */
+    text-align: right;
 
-export const Header = styled.div`
-    position: absolute;
-    top: 0;
-    /* left: calc(7.15vw + 3rem); */
-    z-index: 999;
-    text-decoration: none;
-
-    @media screen and (max-width: 768px) {
-        /* top: -.6rem;
-        z-index: 9;
-        padding-top: 5rem;
-        padding-bottom: 1.25rem;
-        width: 100%;
-        overflow-x: hidden; */
-    }
+    /* background: green; */
+    /* border-top: 10px solid blue;
+    border-bottom: 10px solid blue;
+    border-right: 10px solid blue; */
 `
 
 export const Back = styled(LinkRouter)`
-    /* position: fixed; */
-    /* width: 6.5rem; */
-    height: 2.8vw;
-    /* margin-left: 50.8vw; */
-    /* margin-left: 1.6vw; */
-    /* margin-top: .35vh; */
-    /* padding-left: .5rem; */
-    /* padding-right: .5rem; */
-    /* padding: .4vw; */
-    /* padding-right: 1.1vw; */
-    /* padding-left: 1.1vw; */
+    /* height: 2.8vw; */
+    color: #FFFFFF;
+    font-family: "OpenSans";
+    font-size: 13px;
 
-    /* border: 1px solid #201D17; */
-    /* border-radius: 70px; */
-    font-size: 1rem;
-    font-family: "JejuMyeongjo";
-
-    color: #201D17;;
-    /* background: white; */
     text-decoration: none;
     transition: all 0.1s ease-in-out;
 
@@ -201,6 +227,29 @@ export const Back = styled(LinkRouter)`
         padding-right: 2vw;
         padding-left: 2vw;
         font-size: 3vh; */
+    }
+`
+
+export const TableOfContents = styled.div`
+    color: #FFFFFF;
+    font-family: "OpenSans";
+    font-size: 20px;
+
+    /* background: blue; */
+    text-align: right;
+`
+
+export const TOCItem = styled.div`
+    padding-top: 8px;
+    color: #A3A3A3;
+    font-family: "OpenSans";
+    font-size: 13px;
+
+    &:hover {
+        /* background: black; */
+        /* color: white; */
+        opacity: 0.6;
+        text-decoratin: underline;
     }
 `
 
@@ -463,4 +512,61 @@ export const NextWork = styled(LinkRouter)`
         /* color: white; */
         opacity: 0.6;
     }
+`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const Images = styled.div`
+    position: fixed;
+    display: grid;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding-bottom: calc(50vh);
+    padding-left: calc(27.15vw + 6rem);
+
+    border: 10px solid blue;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    /* @media screen and (max-width: 768px) {
+        position: relative;
+        left: 9.5px;
+        top: 10vh;
+        display: grid;
+        width: 89.5vw;
+        padding-bottom: 3rem;
+    } */
 `

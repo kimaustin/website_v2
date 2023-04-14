@@ -40,8 +40,54 @@ import CGLight from './CormorantGaramondLight.woff';
 import CGLight2 from './CormorantGaramondLight.woff2';
 import AGHelvetica from './AG_Helvetica.woff';
 import AGHelvetica2 from './AG_Helvetica.woff2';
+import OpenSans from './OpenSans.woff';
+import OpenSans2 from './OpenSans.woff2';
+import SS3Regular from './SS3Regular.otf.woff';
+import SS3Regular2 from './SS3Regular.otf.woff2';
+import SS3Semibold from './SS3Semibold.otf.woff';
+import SS3Semibold2 from './SS3Semibold.otf.woff2';
+import SS3Medium from './SS3Medium.otf.woff';
+import SS3Medium2 from './SS3Medium.otf.woff2';
+
 
 export default createGlobalStyle`
+
+    @font-face {
+        font-family: 'OpenSans';
+        src: local('Open Sans'), local('OpenSans'),
+        url(${OpenSans}) format('woff'),
+        url(${OpenSans2}) format('woff2');
+        font-weight: 200;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'SS3';
+        src: local('Source Sans 3 Regular'), local('SS3Regular'),
+        url(${SS3Regular}) format('woff'),
+        url(${SS3Regular2}) format('woff2');
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'SS3';
+        src: local('Source Sans 3 Semibold'), local('SS3Semibold'),
+        url(${SS3Semibold}) format('woff'),
+        url(${SS3Semibold2}) format('woff2');
+        font-weight: 600;
+        /* font-style: normal; */
+    }
+
+    @font-face {
+        font-family: 'SS3';
+        src: local('Source Sans 3 Medium'), local('SS3Medium'),
+        url(${SS3Medium}) format('woff'),
+        url(${SS3Medium2}) format('woff2');
+        font-weight: 500;
+        /* font-style: normal; */
+    }
+
     @font-face {
         font-family: 'AG';
         src: local('Akzidenz Grotesk'), local('AkzidenzGrotesk'),

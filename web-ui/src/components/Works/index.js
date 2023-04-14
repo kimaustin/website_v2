@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useInView, inView, InView } from 'react-intersection-observer';
 import { connect } from "react-redux";
 import { motion } from "framer-motion";
 import { Link as LinkRouter } from 'react-router-dom';
@@ -6,49 +7,29 @@ import SingleWork from "./SingleWork";
 import MobileTopButton from "../MobileTopButton";
 import {
   Container,
-  Background,
-  Header,
-  Loader,
-  NameSort,
-  Divider,
+  Marker,
+  HitMarker,
   ProjectTag,
-  NextProjLabel,
-  PrevProjLabel,
-  Side,
-  Label,
-  StartBg,
-  FiltersContainer,
-  Filter,
-  FilterSmall,
-  ContentContainer,
-  WorkList,
-  ProjectItem,
-  WorksContainer,
-  WorkName,
-  WorkName2,
-  Image,
-  Indicator,
-  WorkItem,
   ContentBg,
-  TypeSort,
-  DateSort,
-  WorkDate,
+  WorkListContainer,
+  WorkName,
+  WorkDesc,
+  VisitLink,
+  Fake,
+  ImageHover,
+  WorkItem,
   WorkIndex,
-  WorkType,
-  Close,
   TagsContainer,
-  TestButton,
-  NextProj,
-  PrevProj,
-  AllProjs,
-  WorksContainerMove,
-  DetailsContainer,
-  TagsContainer2,
-  Top,
-  TopOfWorks,
   WorkContents,
   TagsDivider,
-  WorkImageItem,
+  WorkActions,
+  Details,
+  WorkImageContainer,
+  WorkImage,
+  BgBlur,
+  WorkList,
+  CaseStudy,
+  Divider
 } from "./WorkElements";
 import Scrollbar from "smooth-scrollbar";
 import { FixedContent } from "./WorkExpandedElements";
@@ -63,17 +44,41 @@ import { FixedContent } from "./WorkExpandedElements";
 // Scrollbar.init(document.querySelector('#my-scrollbar'), options);
 
 const Works = ({ projects, aboutToggle }) => {
-  
-  const [filterType, setFilterType] = useState(0);
+
   const [projectDisplayed, setProjectDisplayed] = useState(0);
   const [hoverAllowed, setHoverAllowed] = useState(true);
   const [imageZoomed, setImageZoomed] = useState(false);
 
+  const { ref: myRef1, inView, entry } = useInView({
+    rootMargin: '-210px'
+  });
+
+  // const myRef1 = useRef();
+  // const [selectedProjVisible, setSelectedProjVisible] = useState();
+
+  // console.log('selectedProjVisible: ' + selectedProjVisible);
+  
+  // if(inView) {
+  //   // console.log('ref: ',  myRef1.current);
+  //   // console.log('entry', entry);
+  //   // console.log('about to update proj desc');
+  // }
+
+  const [projectValue, setProjectValue] = useState(0);
+
+  // useEffect(() =>  {
+  //   console.log('ref: ' + myRef1.current);
+  //   const observer = new IntersectionObserver((entries) => {
+  //     const entry = entries[0];
+  //     setSelectedProjVisible(entry.isIntersecting);
+  //     // console.log('entry: ' + entry); 
+  //   })
+  //   observer.observe(myRef1.current);
+  // }, []) 
+
   // const [topVal, setTopVal] = useState("-1px");
   // const [leftVal, setLeftVal] = useState("-1px");
 
-  // 100 - 4.8 = 93.2
-  // 93.2 / length = * .7
   // console.log(projects.length);
   //TODO: pass in Projects Length as variable instaed of Connecting to Store to retrieve
   // let margin = (64 / projects.length) * .8;
@@ -119,10 +124,43 @@ const Works = ({ projects, aboutToggle }) => {
     }
   };
 
+  // const [header, setHeader] = useState("header");
+
+  // const listenScrollEvent = (event) => {
+  //   if (WorkListContainer.scrollY < 250) {
+  //     // console.log("got to scroll listener event");
+  //   } else if (WorkListContainer.scrollY > 250) {
+  //     // console.log("got to scroll listener event");
+  //   }
+  // // };
+
+  // useEffect(() => {
+  //   window.addEventListener("scroll", listenScrollEvent);
+
+  //   return () => window.removeEventListener("scroll", listenScrollEvent);
+  // }, []);
+
+  // ----------------------------------------------------------------------------------------
+  // ON SCROLL, UPDATE THE IMAGE AND DESCRIPTION DETAILS
+  // const changeSelector = () => {
+  //   // if scroll = project number * divided value
+  //   if(window.scrollY >= 80 && window.scrollY < 250) {
+  //       // setCurrImage(true);
+  //     console.log("got to scroll listener event");
+  //     setProjectDisplayed(2);
+  //   } else {
+  //       // setCurrImage(false);
+  //     }
+  // };
+
+  // useEffect(() => {
+  //   window.addEventListener('scroll', changeSelector)
+  // }, []);
+
   const handleDisplayProject = (index) => {
     var currHoverAllowed = hoverAllowed;
     // console.log("proj: " + projectDisplayed);
-    console.log("hover: " + hoverAllowed);
+    // console.log("hover: " + hoverAllowed);
 
     if (index > 16) {
       setProjectDisplayed(1);
@@ -131,16 +169,16 @@ const Works = ({ projects, aboutToggle }) => {
     } else if (index != -1) {
       setProjectDisplayed(index);
       setHoverAllowed(false);
-      console.log("index: " + index);
+      // console.log("index: " + index);
     } else if (projectDisplayed == index) {
       setProjectDisplayed(-1);
       setHoverAllowed(true);
-      console.log("deselecting");
+      // console.log("deselecting");
     } else {
       setHoverAllowed(true);
       // setProjectDisplayed(0);
       // console.log("hover: " + hoverAllowed);
-      console.log("deselecting");
+      // console.log("deselecting");
     }
   };
 
@@ -193,83 +231,218 @@ const Works = ({ projects, aboutToggle }) => {
   };
 
 
-  let project_previews = projects.map((project) => {
-    if (project.id < 16) {
+  // let project_previews = projects.map((project) => {
+  //   if (project.id < 16) {
+  //     return (
+  //       <WorkImageItem>
+  //         <Image>
+  //           <img src={"imgs/" + project.imgs[0]} />
+  //         </Image>
+  //       </WorkImageItem>
+  //     )
+  //   }
+  // });
+
+  // OLD LIST OF PROJECTS
+  // let project_names = projects.map((project) => {
+  //   // means no content displayed
+  //   var zerofilled = ("0" + project.id).slice(-2);
+
+  //   const tagsDisplayed = project.tags.map((tag, index) => (
+  //     <ProjTags
+  //       tag={tag}
+  //       key={tag.id}
+  //       index={index}
+  //       tagsLength={project.tags.length}
+  //     />
+  //   ));
+
+  //   let index_str = "proj" + project.id;
+
+  //   let filteredOut = false;
+
+  //   // if (filterType != 0 && project.type != filterType) {
+  //   //   filteredOut = true;
+  //   // }
+
+  //   if (project.id < 17) {
+  //     console.log("filtered out for " + project.id + ": " + filteredOut);
+  //     // if (filterType == 0 || filterType == project.type) {
+  //       return (
+  //         <WorkItem
+  //           as={motion.div}
+  //           initial="initial"
+  //           animate="in"
+  //           exit={projectDisplayed === project.id ? "outSelected" : "outOther"}
+  //           variants={pageVariants3}
+  //           transition={{
+  //             type: "tween",
+  //             ease: [0.7, 0, 0.13, 1],
+  //             duration: 0.8,
+  //             delay: project.id * 0.16,
+  //           }}
+  //           onClick={() => handleDisplayProject(project.id)}
+  //           projectDisplayed={projectDisplayed}
+  //           projectId={project.id}
+  //           filteredOut={false}
+  //         >
+  //           <WorkContents
+  //             to={"/" + project.id + "/works"}
+  //             id={"proj" + project.id}
+  //             projectType={project.type}
+  //             // filter={filterType}
+  //             filteredOut={false}
+  //             projectDisplayed={projectDisplayed}
+  //             projectId={project.id}
+  //           >
+  //             <WorkIndex>{zerofilled}</WorkIndex>
+  //             <WorkName>{project.name}</WorkName>
+  //             <TagsContainer>{tagsDisplayed}</TagsContainer>
+  //             <TagsDivider />
+  //           </WorkContents>
+  //           {/* <Image hoverAllowed={hoverAllowed}>
+  //             <img src={"imgs/" + project.imgs[0]} />
+  //           </Image> */}
+  //         </WorkItem>
+  //       );
+  //     // }
+  //   }
+  // });
+
+
+  const proj1 = { name: 'June ggg ONE One GGG One ogg', val: 1, isCS: true, tags: ['UX Design', 'Figma', 'React.JS'], link: ['https://www.junehomes.com'] }
+  const proj2 = { name: 'Two', val: 2, isCS: false, tags: ['2UX Design', 'Figma', 'React.JS'], link: [] }
+  const proj3 = { name: 'three', val: 3, isCS: false, tags: ['3UX Design', 'Figma', 'React.JS'], link: [] }
+  const proj4 = { name: 'four', val: 4, isCS: true, tags: ['4UX Design', 'Figma', 'React.JS'], link: ['https://www.junehomes.com'] }
+  const proj5 = { name: 'five', val: 5, isCS: false, tags: ['5UX Design', 'Figma', 'React.JS'], link: [] }
+  const proj6 = { name: 'six', val: 6, isCS: false, tags: ['6UX Design', 'Figma', 'React.JS'], link: [] }
+  const proj7 = { name: 'seven', val: 7, isCS: true, tags: ['7UX Design', 'Figma', 'React.JS'], link: [] }
+  const proj8 = { name: 'eight', val: 8, isCS: false, tags: ['8UX Design', 'Figma', 'React.JS'], link: [] }
+  const proj9 = { name: 'nine', val: 9, isCS: false, tags: ['9UX Design', 'Figma', 'React.JS'], link: [] }
+  
+  const myProjects = [ proj1, proj2, proj3, proj4, proj5, proj6, proj7, proj8, proj9 ];
+
+  const ListContainerRef = useRef();
+
+  let observerOptions = {
+    root: ListContainerRef.target,
+    rootMargin: '-49% 0px -50% 0px',
+    // threshold: 0.1
+  }
+
+  const myRefs = [];
+  myRefs.push(useRef());
+  myRefs.push(useRef());
+  myRefs.push(useRef());
+  myRefs.push(useRef());
+  myRefs.push(useRef());
+  myRefs.push(useRef());
+  myRefs.push(useRef());
+  myRefs.push(useRef());
+  myRefs.push(useRef());
+
+  useEffect (() => {
+      // const observer = new IntersectionObserver((projectsList) => {
+      //     console.log("projects list", projectsList);
+      //     console.log('root', projectsList.root);
+      // }, observerOptions)
+      for (var i = 0; i < myRefs.length; i++) { 
+          // console.log('curr', myRefs[i].current);
+          // console.log('root', root);
+          const observer = new IntersectionObserver((projectsList) => {
+            if (projectsList[0].isIntersecting) {
+              console.log('scroll - current proj index', projectValue);
+              setProjectValue(projectsList[0].target.id);
+              projectsList[0].target.style.opacity = 1.0;
+            } else {
+              projectsList[0].target.style.opacity = 0.5;
+            }
+          }, observerOptions)
+          observer.observe(myRefs[i].current);
+      }
+  }, [])
+
+  function timeout(delay) {
+    return new Promise( res => setTimeout(res, delay) );
+  }
+
+  const handleClick = (index) => {
+    // console.log('proj clicked', index);
+    console.log('clicked - current proj index', projectValue);
+    myRefs[index].current?.scrollIntoView({ behavior: 'smooth' });
+    // await timeout(1000); //for 1 sec delay
+    // setProjectValue(index);
+  }
+
+  //MAIN PROJECTS LIST
+  let projects_list = myProjects.map((project, index) => {
+
+    // var refName = 'ref' + {project};
+    // const { ref: refName, inView: inView2, entry } = useInView({
+    //   rootMargin: '-210px'
+    // });
+
+    if (project.isCS) {
       return (
-        <WorkImageItem>
-          <Image>
-            <img src={"imgs/" + project.imgs[0]} />
-          </Image>
-        </WorkImageItem>
+        <WorkItem id={index} ref={myRefs[index]} onClick={()=> handleClick(index)} currProj={projectValue} thisProj={index}>
+          {project.name}
+          {/* <Fake>{projectValue}</Fake> */}
+          <CaseStudy>CASE STUDY</CaseStudy>
+        </WorkItem>
+      )
+    } else {
+      return (
+        <WorkItem id={index} ref={myRefs[index]} onClick={()=> handleClick(index)} currProj={projectValue} thisProj={index}>
+          {project.name}
+          {/* <Fake>{projectValue}</Fake> */}
+        </WorkItem>
+        // <InView>
+        //   {({ inView, ref, entry }) => (
+        //     <WorkItem ref={refName} id={"testID" + project}>
+        //       {project.name}
+        //       <ImageHover heightVar={"1" + project.val + "%"}>
+        //         <img src={"testProjCover" + project.val + ".png"} />
+        //       </ImageHover>  
+        //     </WorkItem>
+        //   )}
+        // </InView>
       )
     }
   });
 
-  // LIST OF PROJECTS
-  let project_names = projects.map((project) => {
-    // means no content displayed
-    var zerofilled = ("0" + project.id).slice(-2);
 
-    const tagsDisplayed = project.tags.map((tag, index) => (
-      <ProjTags
-        tag={tag}
-        key={tag.id}
-        index={index}
-        tagsLength={project.tags.length}
-      />
-    ));
+  //test projects list
+  // const { ref: refName, inView: inView2, entry: entry2 } = useInView({
+  //   rootMargin: '-210px'
+  // });
 
-    let index_str = "proj" + project.id;
 
-    let filteredOut = false;
 
-    if (filterType != 0 && project.type != filterType) {
-      filteredOut = true;
+  // console.log('current proj index', projectValue);
+  // console.log('curr project visit', myProjects[projectValue].link.length);
+
+  let tagsDisplayed = myProjects[projectValue].tags.map((tag, index) => (
+    <ProjTags
+      tag={tag}
+      key={tag.id}
+      index={index}
+      tagsLength={4}
+    />
+  ));
+
+  let visit_link = () => {
+    if (myProjects[projectValue].link.length == 1) {
+      // console.log("got to link");
+
+      return (
+        <VisitLink href={myProjects[projectValue].link[0]} target="_blank">
+          Visit ↗
+        </VisitLink>
+      )
+    } else {
+      return;
     }
-
-    if (project.id < 17) {
-      console.log("filtered out for " + project.id + ": " + filteredOut);
-      // if (filterType == 0 || filterType == project.type) {
-        return (
-          <WorkItem
-            as={motion.div}
-            initial="initial"
-            animate="in"
-            exit={projectDisplayed === project.id ? "outSelected" : "outOther"}
-            variants={pageVariants3}
-            transition={{
-              type: "tween",
-              ease: [0.7, 0, 0.13, 1],
-              duration: 0.8,
-              delay: project.id * 0.16,
-            }}
-            onClick={() => handleDisplayProject(project.id)}
-            projectDisplayed={projectDisplayed}
-            projectId={project.id}
-            filteredOut={false}
-          >
-            <WorkContents
-              to={"/" + project.id + "/works"}
-              id={"proj" + project.id}
-              projectType={project.type}
-              filter={filterType}
-              filteredOut={false}
-              projectDisplayed={projectDisplayed}
-              projectId={project.id}
-            >
-              <WorkIndex>{zerofilled}</WorkIndex>
-              <WorkName>{project.name}</WorkName>
-              <TagsContainer>{tagsDisplayed}</TagsContainer>
-              <TagsDivider />
-            </WorkContents>
-            {/* <Image hoverAllowed={hoverAllowed}>
-              <img src={"imgs/" + project.imgs[0]} />
-            </Image> */}
-          </WorkItem>
-        );
-      // }
-    }
-  });
+  }
 
   function ProjContent({ project }) {
     if (projectDisplayed == project.id) {
@@ -303,62 +476,9 @@ const Works = ({ projects, aboutToggle }) => {
   //   }
   // });
 
-  // function NextProjPreview() {
-
-  //   console.log("loprojects: " + projects.length);
-  //   // console.log("proj: " + projects[1].name);
-
-  //   // var indexChecked = index - 1;
-
-  //   // if (index > 18) {
-  //   //  indexChecked = 1;
-  //   // } else if (index == 0) {
-  //   //   indexChecked = 18;
-  //   // }
-
-  //   if ((projectDisplayed + 1) > 18) {
-  //     return (
-  //       <p>{projects[0].name}</p>
-  //     );
-  //   } else {
-  //     return (
-  //       <p>{projects[projectDisplayed + 1].name}</p>
-  //     )
-  //   }
-
-  //   // var name = projects[indexChecked].name;
-
-  //   // return (
-  //     // <h1>{projects[1].name}</h1>
-  //     // <p>{name}</p>
-  //     // <p>hi</p>
-  //   // );
-  // }
-
-  // function PrevProjPreview(index) {
-  //   var indexChecked = index;
-
-  //   if (index == 0) {
-  //   }
-
-  //   return )
-  //   return (
-  //     <p>{projects[indexChecked].name}</p>
-  //   );
-  // }
-
   let project_content = projects.map((project) => {
     return <ProjContent project={project} key={project.id} />;
   });
-
-  const toggleWithType = (filter) => {
-    console.log("filter type: " + filterType);
-    if (filterType != filter) {
-      setFilterType(filter);
-    } else {
-      setFilterType(0);
-    }
-  };
 
   const pageVariants = {
     initial: {
@@ -390,26 +510,6 @@ const Works = ({ projects, aboutToggle }) => {
     },
   };
 
-  const filtersVariants = {
-    initial: {
-      y: "-8.5rem",
-      // opacity: 0
-    },
-    in: {
-      y: "0vh",
-      // opacity: 1
-    },
-    out: {
-      y: "-8.5rem",
-      transition: {
-          type: "tween",
-          ease: [0.7, 0, 0.13, 1],
-          duration: 0.85,
-      }
-      // opacity: 0
-    },
-  };
-
   const pageTransition = {
     type: "tween",
     ease: [0.7, 0, 0.13, 1],
@@ -425,7 +525,7 @@ const Works = ({ projects, aboutToggle }) => {
       // transition: {
       //   staggerChildren: 1, delayChildren: 0.5, duration: 2
       // }
-      transiiton: {
+      transiiton: { 
         type: "tween",
         ease: [0.7, 0, 0.13, 1],
         duration: 10,
@@ -453,70 +553,19 @@ const Works = ({ projects, aboutToggle }) => {
 
   // console.log(window.screen.height);
 
+  let rightImageSource = "testProjCover" + projectValue + ".png";
+
   //TODO: Fix filters not working
   return (
     <Container
-      id="head"
-      as={motion.div}
-      initial="initial"
-      animate="in"
-      exit="out"
+      // id="head"
+      // as={motion.div}
+      // initial="initial"
+      // animate="in"
+      // exit="out"
       // variants={pageVariants2}
       // transition={pageTransition}
     >
-      <FiltersContainer 
-          as={motion.div} 
-          initial="initial"
-          animate="in"
-          exit="out"
-          variants={filtersVariants}
-          transition={{
-            type: "tween",
-            ease: [0.7, 0, 0.13, 1],
-            duration: 0.8,
-            delay: 7 * 0.12,
-          }}
-        >
-            <Filter 
-              as={motion.div} 
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={filtersVariants}
-              transition={{
-                type: "tween",
-                ease: [0.7, 0, 0.13, 1],
-                duration: 0.8,
-                delay: 7 * 0.12,
-              }}
-              filterVal={filterType} fType={2} bgColor={'green'} onClick={() => toggleWithType(2)}>SD</Filter>
-            <Filter 
-              as={motion.div} 
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={filtersVariants}
-              transition={{
-                type: "tween",
-                ease: [0.7, 0, 0.13, 1],
-                duration: 0.8,
-                delay: 8 * 0.12,
-              }}
-              filterVal={filterType} fType={1} bgColor={'yellow'} onClick={() => toggleWithType(1)}>GD</Filter>
-            <Filter 
-              as={motion.div} 
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={filtersVariants}
-              transition={{
-                type: "tween",
-                ease: [0.7, 0, 0.13, 1],
-                duration: 0.8,
-                delay: 9 * 0.12,
-              }}
-              filterVal={filterType} fType={3} bgColor={'blue'} onClick={() => toggleWithType(3)}>UX</Filter>
-        </FiltersContainer>
       {/* <Label as={motion.div} initial="initial"
           animate="in"
           exit="out"
@@ -540,13 +589,101 @@ const Works = ({ projects, aboutToggle }) => {
       >
         top
       </TopOfWorks> */}
-      <WorksContainer id="topWorks">
-        {project_names}
-      </WorksContainer>
+      {/* <Divider /> */}
+
+      <WorkListContainer id="topWorks"
+        ref={ListContainerRef}
+        as={motion.div}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0, transition: {
+              type: "tween",
+              ease: [0.7, 0, 0.13, 1],
+              duration: 0.5,
+          } }}
+        transition={{
+            type: "tween",
+            ease: [0.7, 0, 0.13, 1],
+            duration: 0.8,
+        }}
+      >
+        {/* {project_names} */}
+        {/* <HitMarker /> */}
+        <Marker />
+        <WorkActions
+          as={motion.div}
+          initial={{ y: '150px' }}
+          animate={{ y: 0, position: 'fixed' }}
+          exit={{ y: '150px', transition: {
+                type: "tween",
+                ease: [0.7, 0, 0.13, 1],
+                duration: 0.5,
+                delay: 0.1
+            } }}
+          transition={{
+              type: "tween",
+              ease: [0.7, 0, 0.13, 1],
+              duration: 0.5,
+              delay: 0.1
+          }}
+        >
+          <WorkName>{projectValue}</WorkName>
+          <TagsContainer>{tagsDisplayed}</TagsContainer>
+
+          <Details
+            to={"/" + projectValue + "/works"}
+            id={"proj1"}
+          >
+            Details  →
+          </Details>
+          {visit_link}
+        </WorkActions>
+
+        {projects_list}
+
+      </WorkListContainer>
+
       {/* <WorksContainer id="topWorks" zVal="999">
         {project_previews}
       </WorksContainer> */}
       {/* </WorksContainerMove> */}
+
+      <ContentBg
+        // bgFileName={rightImageSource}
+        as={motion.div}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{
+            type: "tween",
+            ease: [0.7, 0, 0.13, 1],
+            duration: 0.8,
+        }}
+      >
+        <img src={rightImageSource}/>
+        <BgBlur />
+      </ContentBg>
+
+      <WorkImageContainer>
+        <WorkImage
+          as={motion.div}
+          initial={{ opacity: 0, scale: 0.99 }}
+          animate={{ opacity: 1, scale: 1}}
+          exit={{ opacity: 0, scale: 0.99, transition: {
+                type: "tween",
+                ease: [0.7, 0, 0.13, 1],
+                duration: 0.5,
+            } }}
+          transition={{
+              type: "tween",
+              ease: [0.7, 0, 0.13, 1],
+              duration: 0.5,
+          }}
+        >
+          <img src={rightImageSource}/>
+        </WorkImage>
+      </WorkImageContainer>
+
       {/* <ContentContainer
           as={motion.div} initial={{ x: '-101vw', y: '0' }} 
           animate={hoverAllowed ? { x: '-101vw', y: '-100vh' } : { x: '0', y: '-100vh'}}
