@@ -9,6 +9,7 @@ import {
   Container,
   Marker,
   HitMarker,
+  ClickableArea,
   ProjectTag,
   ContentBg,
   WorkListContainer,
@@ -375,18 +376,12 @@ const Works = ({ projects, aboutToggle }) => {
   }
 
   //MAIN PROJECTS LIST
-  let projects_list = myProjects.map((project, index) => {
-
-    // var refName = 'ref' + {project};
-    // const { ref: refName, inView: inView2, entry } = useInView({
-    //   rootMargin: '-210px'
-    // });
+    let projects_list = projects.map((project, index) => {
 
     if (project.isCS) {
       return (
         <WorkItem id={index} ref={myRefs[index]} onClick={()=> handleClick(index)} currProj={projectValue} thisProj={index}>
           {project.name}
-          {/* <Fake>{projectValue}</Fake> */}
           <CaseStudy>CASE STUDY</CaseStudy>
         </WorkItem>
       )
@@ -394,18 +389,7 @@ const Works = ({ projects, aboutToggle }) => {
       return (
         <WorkItem id={index} ref={myRefs[index]} onClick={()=> handleClick(index)} currProj={projectValue} thisProj={index}>
           {project.name}
-          {/* <Fake>{projectValue}</Fake> */}
         </WorkItem>
-        // <InView>
-        //   {({ inView, ref, entry }) => (
-        //     <WorkItem ref={refName} id={"testID" + project}>
-        //       {project.name}
-        //       <ImageHover heightVar={"1" + project.val + "%"}>
-        //         <img src={"testProjCover" + project.val + ".png"} />
-        //       </ImageHover>  
-        //     </WorkItem>
-        //   )}
-        // </InView>
       )
     }
   });
@@ -421,21 +405,20 @@ const Works = ({ projects, aboutToggle }) => {
   // console.log('current proj index', projectValue);
   // console.log('curr project visit', myProjects[projectValue].link.length);
 
-  let tagsDisplayed = myProjects[projectValue].tags.map((tag, index) => (
+  let tagsDisplayed = projects[projectValue].tags.map((tag, index) => (
     <ProjTags
       tag={tag}
       key={tag.id}
       index={index}
-      tagsLength={4}
+      // tagsLength={4}
     />
   ));
 
   let visit_link = () => {
-    if (myProjects[projectValue].link.length == 1) {
+    if (projects[projectValue].link.length == 1) {
       // console.log("got to link");
-
       return (
-        <VisitLink href={myProjects[projectValue].link[0]} target="_blank">
+        <VisitLink href={projects[projectValue].link[0]} target="_blank">
           Visit ↗
         </VisitLink>
       )
@@ -443,6 +426,7 @@ const Works = ({ projects, aboutToggle }) => {
       return;
     }
   }
+
 
   function ProjContent({ project }) {
     if (projectDisplayed == project.id) {
@@ -553,7 +537,7 @@ const Works = ({ projects, aboutToggle }) => {
 
   // console.log(window.screen.height);
 
-  let rightImageSource = "testProjCover" + projectValue + ".png";
+  let rightImageSource = "imgs/" + projects[projectValue].imgs[0];
 
   //TODO: Fix filters not working
   return (
@@ -589,7 +573,7 @@ const Works = ({ projects, aboutToggle }) => {
       >
         top
       </TopOfWorks> */}
-      {/* <Divider /> */}
+      <Divider />
 
       <WorkListContainer id="topWorks"
         ref={ListContainerRef}
@@ -632,7 +616,7 @@ const Works = ({ projects, aboutToggle }) => {
 
           <Details
             to={"/" + projectValue + "/works"}
-            id={"proj1"}
+            id={"proj" + projectValue}
           >
             Details  →
           </Details>
@@ -663,6 +647,10 @@ const Works = ({ projects, aboutToggle }) => {
         <img src={rightImageSource}/>
         <BgBlur />
       </ContentBg>
+
+      <ClickableArea to={"/" + projectValue + "/works"} id={"proj1"}>
+          View Details →
+      </ClickableArea>
 
       <WorkImageContainer>
         <WorkImage

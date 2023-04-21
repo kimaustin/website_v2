@@ -8,6 +8,8 @@ import { Container, BodySection, WorksImageContainer, BasicTxt1, BasicTxt2, Sele
 
 const Main = ({projects}) => {
         
+  console.log('initial projects', projects);
+  
     const [scrollName, setScrollName] = useState(false);
 
     const descVariants = {
@@ -147,38 +149,37 @@ const Main = ({projects}) => {
                 variants={pageVariants}
                 transition={pageTransition}
                 > */}
-            <Header
+            {/* <Header
                 as={motion.div} initial="initial"
                 animate="in"
                 exit="out"
                 variants={headerVariants}
                 transition={pageTransition}
                 >
-                    {/* Austin Kim <span style={{fontFamily: "JejuMyeongjo", letterSpacing: "-1.1rem"}}>(호연)</span> */}
                     Hello,
-            </Header>
+            </Header> */}
             {/* <MainImg> */}
                 {/* <ProgressiveImages
                     src={require("imgs/me2.jpeg")}
                 > */}
-            <img 
+            {/* <img 
                 as={motion.img} initial="initial"
                 animate="in"
                 exit="out"
                 variants={imgVariants}
                 transition={pageTransition}
                 src={"imgs/me2.jpeg"} onerror='this.style.display = "none"' alt={'Me'}>
-            </img>
+            </img> */}
                 {/* </ProgressiveImage> */}
             {/* </MainImg> */}
-            <MainDesc 
+            {/* <MainDesc 
                 as={motion.div} initial="initial"
                 animate="in"
                 exit="out"
                 variants={descVariants}
                 transition={pageTransition}
                 >I'm Austin, a web/UX/UI/graphic <br />designer with a background in Computer <br />Science and Design.<br />
-            </MainDesc>
+            </MainDesc> */}
             <ButtonContainer
                 as={motion.div}
                 initial="initial"

@@ -9,9 +9,9 @@ export const Container = styled.div`
     width: 31.5vw;
     /* width: 100vw; */
     /* background: #1E1C1F; */
-    background: green;
-    background: rgba(30, 28, 31, 0.65);
-    backdrop-filter: blur(11px);
+    // background: green;
+    background: rgba(30, 30, 31, 0.60);
+    backdrop-filter: blur(12px);
     border-bottom: .5px solid #403F3F;
     z-index: 999;
 

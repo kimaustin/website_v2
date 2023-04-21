@@ -7,9 +7,9 @@ export const Container = styled.div`
   position: fixed;
   /* margin: 1rem; */
   left: 0;
-  top: 0;
+  top: 103px;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 103px);
 
   /* top: 6.6vh; */
   /* overflow-y: scroll;
@@ -48,18 +48,18 @@ export const LeftSection = styled.div`
 export const RightSection = styled.div`
     position: fixed;
     left: 31.5vw;
-    top: 0;
+    top: 103px;
     /* justify-content: center; */
     align-items: left;
     /* text-align: right; */
     padding-bottom: 19px;
     padding-top: 19px;
     padding-left: 30px;
-    padding-right: 70px;
+    padding-right: calc(20px + 4vw);
 
     z-index: 990;
 
-    height: 100vh;
+    height: calc(100vh - 103px);
     width: calc(68.5vw + 18px);
     /* width: calc(63.4vw - 10.5rem);
     left: calc(27.15vw + 6rem); */
@@ -125,25 +125,30 @@ export const Overview = styled.div`
 
 export const PicContainer = styled.div`
     top: 0;
+    width: 100%;
+    height: calc(88vh - 103px);
     padding-left: 12%;
     margin-bottom: ${({ isLast }) => isLast ? '3.6vh' : '18px'};
     /* margin-bottom: 2.45rem; */
     /* margin-left: calc(25.15vw + 6.5rem); */
     /* margin-left: calc(27vw + 3rem); */
-
+    // height: calc(90vh);
     /* border: 2px solid blue; */
     align-items: left;
     /* text-align: left; */
-    position: ${({isLast}) => isLast ? 'sticky' : 'relative'};
+    position: relative;
+    // position: ${({isLast}) => isLast ? 'sticky' : 'relative'};
     /* width: calc(62.1% - 4rem); */
     /* 100 - (7.1 + 3rem + 27 + 3rem) */
     /* width: calc(100% - 50px); */
-
     
     img {
         object-fit: scale-down;
-        max-height: 90vh;
+        // max-height: 100%;
+        // max-width: 100%;
         max-width: 100%;
+        max-height: 100%;
+        z-index: -1;
         /* border: 1px solid #201D17; */
     }
 `
@@ -170,7 +175,7 @@ export const PicDesc = styled.p`
     position: relative;
     margin-left: 12%;
     /* width: calc(62.1% - 4rem); */
-    width: 80%;
+    width: 70%;
     top: 0;
     padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '20px'};
 

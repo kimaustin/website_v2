@@ -11,6 +11,8 @@ defmodule Portfolio.Repo.Migrations.CreateProjects do
       add :imgs, {:array, :string}
       add :tags, {:array, :string}
       add :type, :integer
+      add :link, :string
+      add :isCS, :boolean
 
       timestamps()
     end

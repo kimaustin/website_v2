@@ -23,10 +23,11 @@ import Close from "./components/About";
 import MobileToggle from "./components/MobileToggle";
 import WIP from "./components/WIP";
 import { Provider } from "react-redux";
+import SideProjects from "./components/SideProjects";
+import Blog from "./components/Blog";
 
 //Our App Components
 function App() {
-
   
   const [isOpen, setIsOpen] = useState(true);
 
@@ -45,6 +46,8 @@ function App() {
     }
   }
 
+  const [sideProjectsToggle, setSideProjectsToggle] = useState(false);
+
   // const location = useLocation();
   //TODO: make 2 Styled Component Themes, declare state that is one Theme.
   //----- ON dark/mode press, change state to other theme. Pass in state to each component.
@@ -62,6 +65,7 @@ function App() {
       <Navigation toggle={toggleAbout} aboutToggle={aboutToggle}/>
       {/* <Navigation /> */}
       <AboutPanel aboutToggle={aboutToggle} toggle={toggleAbout}><Close onClick={toggleAbout}>close</Close></AboutPanel>
+      <SideProjects sideProjectsToggle={sideProjectsToggle} />
       <Route
         render={({ location }) => (
           <AnimatePresence exitBeforeEnter>
@@ -69,6 +73,7 @@ function App() {
               <Route exact path="/" component={Main} />
               <Route exact path="/works" component={Works} />
               <Route exact path="/test" component={Home} />
+              <Route exact path="/blog" component={Blog} /> 
               {/* <Route exact path="/info" component={About} /> */}
               <Route path="/:workId?/works" component={WorkExpanded} exact />
               <Route path="/:workId?/images" component={Images} />

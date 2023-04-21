@@ -5,15 +5,13 @@ import { ListContainer } from './WorkElements';
 import { motion } from "framer-motion";
 import MobileTopButton from '../MobileTopButton';
 import { Container, Header, TableOfContents, Subsection, Fancy, NavButtons, PrevWork, NextWork, Back, Content, FixedContent, Title, TagsContainer, Tag, Details, Overview, PicContainer, Thumbnails, ThumbnailSelector, PicScroll, LeftSection, Controls, RightSection, Label, PicDesc, HeaderDecorated, TOCItem, InsideHeaderLine, InsideHeaderContainer } from './WorkExpandedElements';
-import { Work } from './SingleWorkElements';
+// import { Work } from './SingleWorkElements';
 // import { load_defaults } from '../../api';
 // import { restore_session } from '../../store';
 
-// restore_session();
-// load_defaults();
 
-const WorkExpanded = () => {
-// const WorkExpanded = ({ projects }) => {
+// const WorkExpanded = () => {
+const WorkExpanded = ({ projects }) => {
 
     // useEffect(() => {
     //     window.addEventListener("beforeunload", alertUser);
@@ -29,22 +27,24 @@ const WorkExpanded = () => {
     //     // e.returnValue = "";
     //   };
 
+    const [showTOC, setShowTOC] = useState(false);
     const [currImage, setCurrImage] = useState(1);
 
     // const ref = useRef();
 
 
-    // const location = useLocation();
-    // let work_id = location.pathname.split("/works")[0];
-    // // let work = get_project(work_id.substring(1, work_id.length));
-    
+    const location = useLocation();
+    let work_id = location.pathname.split("/works")[0];
+    // let work = get_project(work_id.substring(1, work_id.length));
 
     // // console.log("work viewed: " + work_id);
     // // console.log(work_id.substring(1, work_id.length));
     // // console.log("projects length: " + projects.length);
     // // console.log("proj obj from api: " + JSON.stringify(work));
     
-    // let work = projects[work_id.substring(1, work_id.length) - 1];
+    let work = projects[work_id.substring(1, work_id.length)];
+
+    console.log('selected work', work);
 
     // // let prev_id = work_id;
     // var next_id;
@@ -70,10 +70,10 @@ const WorkExpanded = () => {
     //     prev_id = work_id - 1;
     // }
 
-    // var isLast = false;
-    // if (work_id == projects.length) {
-    //     isLast = true;
-    // }
+    var isLast = false;
+    if (work_id == projects.length) {
+        isLast = true;
+    }
     
     // TODO triggers something when certain scroll level has been reached
     // const changeSelector = () => {
@@ -90,14 +90,14 @@ const WorkExpanded = () => {
     //     window.addEventListener('scroll', changeSelector)
     // }, []);
     
-    let work = { id: '1', content: ['', 'SS:Introduction', 'THIS IS THE INTRODUCTION', '/test/pic1.png', '/test/pic2.png', 'THIS IS A DESCRIPTION', 'SS:Section 2', '/test/pic3.png',  '/test/pic4.png', 'SS:Last Section', 'THIS IS A DESCRIPTION', '/test/pic3.png'], tags: ['tag 1', 'tag 2', 'tag 3'], name: 'project 1 name', desc: 'work description', isCS: false, date: 'March 2022' };
+    // let work = { id: '1', content: ['', 'SS:Introduction', 'THIS IS THE INTRODUCTION', '/test/pic1.png', '/test/pic2.png', 'THIS IS A DESCRIPTION', 'SS:Section 2', '/test/pic3.png',  '/test/pic4.png', 'SS:Last Section', 'THIS IS A DESCRIPTION', '/test/pic3.png'], tags: ['tag 1', 'tag 2', 'tag 3'], name: 'project 1 name', desc: 'work description', isCS: false, date: 'March 2022' };
     
-    let totalImgs = work.content.length;
-    let thumbHeight = ((36 / totalImgs) - 1) + "vh";
+    // let totalImgs = work.imgs.length;
+    // let thumbHeight = ((36 / totalImgs) - 1) + "vh";
     // console.log("each thumb height: " + thumbHeight);
     // height -> 36 / work
 
-    console.log("imgs: " + work.content);
+    console.log("imgs: " + work.imgs);
 
     const imgVariants = {
         initial: {
@@ -151,25 +151,23 @@ const WorkExpanded = () => {
     myPicRefs.push(useRef());
     
     const handleClick = (index) => {
-        console.log('index', index, myPicRefs);
-        console.log('ref clicked', myPicRefs[index].current);
-
+        // console.log('index', index, myPicRefs);
+        // console.log('ref clicked', myPicRefs[index].current);
         myPicRefs[index].current?.scrollIntoView({ behavior: 'smooth' });
     }
     
-
     // MAIN CONTENT HANDLER --------->
     function Picture_Displayed({picture, index}) {
         let index_int = index + 1; 
         let index_str = 'pic' + index_int;
         // console.log("does " + picture + " contain /: " + picture.includes("/"));
-        console.log('content', picture, index);        
+        // console.log('content', picture, index);        
 
-        let is_last = false;
+        // let is_last = false;
 
-        if (work.content.length == (1 + index)) {
-            is_last = true;
-        } 
+        // if (work.imgs.length == (1 + index)) {
+        //     is_last = true;
+        // } 
 
         if (index == 0) {
             return (
@@ -177,13 +175,14 @@ const WorkExpanded = () => {
                     <HeaderDecorated>
                         <Fancy> &#123; </Fancy>
                             <InsideHeaderContainer>
-                                <InsideHeaderLine>{work.date}</InsideHeaderLine>
+                                <InsideHeaderLine>{work.semester}</InsideHeaderLine>
                                 <InsideHeaderLine>{work.name}</InsideHeaderLine>
                             </InsideHeaderContainer>
                         <Fancy> &#125; </Fancy>
                     </HeaderDecorated>
                     <Overview>
-                        A series of three self-promotional posters. Explored which traits are core to my identity, and what differentiates me from my peers. Intended to express my identity in a way that creates emotional resonance in a memorable, yet authentic manner. 
+                        {work.desc}
+                        {/* A series of three self-promotional posters. Explored which traits are core to my identity, and what differentiates me from my peers. Intended to express my identity in a way that creates emotional resonance in a memorable, yet authentic manner.  */}
                     </Overview>
                 </Header>
             );
@@ -192,7 +191,7 @@ const WorkExpanded = () => {
                 return (
                     <PicContainer id={index_str}
                         index={index}
-                        isLast={is_last}
+                        // isLast={is_last}
                         as={motion.div}
                         initial="initial"
                         animate="in"
@@ -205,8 +204,9 @@ const WorkExpanded = () => {
                             delay: (index + 1) * 0.1,
                         }}
                         >
-                        {/* <img src={"/imgs/" + picture} alt={picture} id="project-img"></img>    */}
-                        <img src={picture}/>
+                        <img src={"/imgs/" + picture} alt={picture} id="project-img"></img>   
+                        {/* <img src={"imgs/" + work.imgs[index]}/> */}
+                        {/* <img src={"imgs/testProjCover0.png"}/> */}
                     </PicContainer>
                 );
             } else if (picture.startsWith('SS:')) {
@@ -221,7 +221,7 @@ const WorkExpanded = () => {
                return (
                    <PicDesc
                     index={index}
-                    isLast={is_last}
+                    // isLast={is_last}
                     as={motion.div}
                     initial="initial"
                     animate="in"
@@ -243,14 +243,13 @@ const WorkExpanded = () => {
 
 
     function ListofTOC({subsection, index}) {
-
         if (subsection.startsWith('SS:')) {
-            // let header_name = subsection.split(':');
+            setShowTOC(true);
+
             let header_name = subsection.slice(3);
-            // console.log('got to recognize subsection');
-            // ref={myRefs[index]} onClick={()=> handleClick(index)}
+
             return (
-                <TOCItem  onClick={()=> handleClick(index)}>{header_name}</TOCItem>
+                <TOCItem onClick={()=> handleClick(index)}>{header_name}</TOCItem>
             )
         } else {
             return (
@@ -260,24 +259,24 @@ const WorkExpanded = () => {
     }
 
     const updateCurrImage = (img_index) => {
-        console.log("curr img index: " + img_index);
+        // console.log("curr img index: " + img_index);
         if (currImage != img_index) {
             setCurrImage(currImage);
         }
     };
 
-    function Each_Thumbnail({picture, index}) {
-        let index_int = index + 1; 
-        let index_str = 'pic' + index_int;
-        console.log("total: " + totalImgs);
+    // function Each_Thumbnail({picture, index}) {
+    //     let index_int = index + 1; 
+    //     let index_str = 'pic' + index_int;
+    //     console.log("total: " + totalImgs);
 
-        return (
-            <PicScroll to={index_str} smooth={true} duration={500} spy={true} 
-                offset={-80} exact="true" relHeight={thumbHeight}>
-                <img src={"/imgs/" + picture} style={{maxHeight: '100%', maxWidth: '100%', border: '.5px solid black'}} id="project-img" alt={picture}></img>    
-            </PicScroll>
-        )
-    };
+    //     return (
+    //         <PicScroll to={index_str} smooth={true} duration={500} spy={true} 
+    //             offset={-80} exact="true" relHeight={thumbHeight}>
+    //             <img src={"/imgs/" + picture} style={{maxHeight: '100%', maxWidth: '100%', border: '.5px solid black'}} id="project-img" alt={picture}></img>    
+    //         </PicScroll>
+    //     )
+    // };
 
     function Tags({tag}) {
         return (
@@ -285,11 +284,11 @@ const WorkExpanded = () => {
         )
     };
 
-    const pictures_displayed = work.content.map((picture, index) => (
+    const pictures_displayed = work.imgs.map((picture, index) => (
         <Picture_Displayed picture={picture} key={picture.id} index={index} />
     ));
 
-    const table_of_contents = work.content.map((subsection, index) => (
+    const table_of_contents = work.imgs.map((subsection, index) => (
         // <Get_TOC subsection={subsection} key={subsection.id} index={index}/>
         <ListofTOC subsection={subsection} key={subsection.id} index={index} />
         // <TOCItem>{subsection}</TOCItem>
@@ -302,9 +301,6 @@ const WorkExpanded = () => {
     // const tags_displayed = work.tags.map((tag) => (
     //     <Tags tag={tag} key={tag.id} />
     // ));
-
-
-
 
 
 
@@ -416,10 +412,10 @@ const WorkExpanded = () => {
                     duration: 0.7,
                 }}
             >
-                <Back to="/works">Back</Back>
+                <Back to="/works">￩ All Works</Back>
                 <TableOfContents>
                     {/* <TOCItem style={{ fontSize: '20px' }}>Study Overview</TOCItem> */}
-                    <p style={{ paddingBottom: '6px' }}> Study Overview</p>
+                    <p style={{ paddingBottom: '6px' }}> {showTOC ? 'Study Overview' : ''}</p>
                     {table_of_contents}
                 </TableOfContents>
                 <Back href={"https://www.junehomes.com"} target="_blank">Visit</Back>
@@ -433,5 +429,5 @@ const WorkExpanded = () => {
   
 // load_defaults();
 
-export default WorkExpanded;
-// export default connect(({ projects }) => ({ projects }))(WorkExpanded);
+// export default WorkExpanded;
+export default connect(({ projects }) => ({ projects }))(WorkExpanded);

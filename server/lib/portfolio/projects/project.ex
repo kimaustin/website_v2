@@ -11,6 +11,8 @@ defmodule Portfolio.Projects.Project do
     field :semester, :string
     field :tags, {:array, :string}
     field :type, :integer
+    field :link, :string
+    field :isCS, :boolean
 
     timestamps()
   end
@@ -18,7 +20,7 @@ defmodule Portfolio.Projects.Project do
   @doc false
   def changeset(project, attrs) do
     project
-    |> cast(attrs, [:name, :class, :class_short, :semester, :desc, :imgs, :tags, :type])
-    |> validate_required([:name, :class, :class_short, :semester, :desc, :imgs, :tags, :type])
+    |> cast(attrs, [:name, :class, :class_short, :semester, :desc, :imgs, :tags, :type, :link, :isCS])
+    |> validate_required([:name, :class, :class_short, :semester, :desc, :imgs, :tags, :type, :link, :isCS])
   end
 end

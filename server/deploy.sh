@@ -7,7 +7,7 @@ export MIX_ENV=prod
 # export NODEBIN=`pwd`/assets/node_modules/.bin
 # export PATH="$PATH:$NODEBIN"
 export PORT=6111
-export DATABASE_URL=ecto://website:website_pass@localhost/website_prod
+export DATABASE_URL=ecto://websitev2:websiteV2@localhost/website_v2
 
 
 echo "Building..."

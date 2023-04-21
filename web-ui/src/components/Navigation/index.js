@@ -85,11 +85,11 @@ const Navigation = ({toggle, aboutToggle}) => {
         //     animate={aboutToggle ? {  x: '25vw', y: 0 } : { x: '0', y: '0' }}
         //     transition={pageTransition}>
         <Container>
-            <Divider />
+            {/* <Divider /> */}
             <Indicator currpage={currPage}
                 as={motion.div} 
                 initial={{ x: '24px' }}
-                animate={(currPage == 'works') ? { x: '24px'} : (currPage == 'test' ? { x: '86px' } : { x: '24px'})}
+                animate={(currPage == 'works') ? { x: '24px'} : (currPage == 'test' ? { x: '86px' } : (currPage == '' ? { x: 'calc(168px)' } : { x: '24px'}))}
                 transition={pageTransition}
             />
             <AboutContainer as={motion.div} initial={{ x: '20.5rem', y: '105vh' }} 
@@ -128,10 +128,10 @@ const Navigation = ({toggle, aboutToggle}) => {
                 <NavDOMLink2 currpage={currPage} thispage={'test'} to="/test">
                     The Lab
                 </NavDOMLink2>
-                <NavDOMLink2 currpage={currPage} thispage={'photo'}>
+                <NavDOMLink2 currpage={currPage} thispage={''} to="/">
                     Photography
                 </NavDOMLink2>
-                <NavDOMLink2 currpage={currPage} thispage={'blog'}>
+                <NavDOMLink2 currpage={currPage} thispage={'blog'} to="/blog">
                     Blog
                 </NavDOMLink2>
             </NonMobile2>
