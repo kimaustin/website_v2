@@ -6,17 +6,46 @@ import { motion } from "framer-motion";
 export const Container = styled(motion.div)`
   position: fixed;
   top: 0;
-  left: 31.5vw;
-  padding-left: 22px;
+  left: 30vw;
   // padding-left: 22px;
-  padding-top: 8px;
+  // padding-left: 22px;
+  // padding-top: 8px;
   height: 103px;
-  width: 68.5vw;
+  width: 70vw;
   // background: rgba(70, 70, 70, 0.60);
-  background: rgba(55, 55, 55, 0.7); // Make sure this color has an opacity of less than 1
+  background: rgba(55, 55, 55, 0.65); // Make sure this color has an opacity of less than 1
   backdrop-filter: blur(20px); // This be the blur
   border-bottom: .5px solid #403F3F;
   border-left: .5px solid #403F3F;
+
+  z-index: 999;
+
+  // align-items: start;
+  // justify-content: start;
+  // align-content: start;
+
+  // white-space: nowrap;
+  // overflow: auto;
+  // overflow-y: hidden;
+  // overflow-x: scroll;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  @media screen and (max-width: 767px) {
+    height: 128px;
+    // height: 180px;
+    left: 0;
+    width: 100vw;
+    border-left: unset;
+    border-bottom: 1px solid #424242;
+  }
+`;
+
+export const ScrollContainer = styled.div`
+  padding-left: 22px;
+  padding-top: 12px;
+  height: 121px;
+  width: 70vw;
 
   z-index: 999;
 
@@ -25,11 +54,19 @@ export const Container = styled(motion.div)`
   align-content: start;
 
   white-space: nowrap;
-  // overflow: auto;
   overflow-y: hidden;
   overflow-x: scroll;
+
   -webkit-overflow-scrolling: touch;
-`;
+
+  @media screen and (max-width: 767px) {
+    padding-top: 10px;
+    height: 140px;
+    width: 100vw;
+    padding-left: 16px;
+    padding-right: 18px;
+  }
+`
 
 export const ImageContainer = styled(LinkRouter)`
   // display: inline-grid;
@@ -43,13 +80,59 @@ export const ImageContainer = styled(LinkRouter)`
 
   img {
     max-width: 100%;
-    max-height: 90%;
+    max-height: calc(87% - 18px);
     align-content: start;
     object-fit: scale-down;
   }
 
   &:hover {
     opacity: 1;
+  }
+
+  @media screen and (max-width: 767px) {
+    opacity: 1;
+    height: 122px;
+    padding-right: 10px;
+
+    img {
+      max-height: calc(86px);
+    }
+  }
+`
+
+export const Label = styled.div`
+  display: none;
+
+  @media screen and (max-width: 767px) {
+    display: block;
+    z-index: 999;
+    position: fixed;
+    left: 16px;
+    top: 108px;
+    text-align: left;
+
+    font-family: "SS3";
+    font-size: 10px;
+    color: #6A6A6A;
+    // color: green;
+  }
+`
+
+export const Version = styled.div`
+  display: none;
+
+  @media screen and (max-width: 767px) {
+    display: block;
+    z-index: 999;
+    position: fixed;
+    right: 16px;
+    top: 108px;
+    text-align: right;
+
+    font-family: "SS3";
+    font-size: 10px;
+    color: #6A6A6A;
+    // color: green;
   }
 `
 
@@ -79,7 +162,7 @@ export const WorkListContainer = styled.div`
   padding-top: calc(48vh - 33px);
   /* padding-top: 124px; */
   padding-left: 24px;
-  padding-right: calc(68.5vw + 28px);
+  padding-right: calc(70vw + 28px);
   z-index: 999;
   /* border-right: .75px solid #403F3F; */
 
@@ -100,10 +183,10 @@ export const ClickableArea = styled(LinkRouter)`
   // display: none;
   position: fixed;
   top: 0;
-  left: 31.5vw;
-  // margin-left: 31.5vw;
+  left: 30vw;
+  // margin-left: 30vw;
   height: 100vh;
-  width: 68.5vw;
+  width: 70vw;
   background: rgba(150, 150, 150, 0.50);
   opacity: 0;
   backdrop-filter: blur(20px);
@@ -128,7 +211,7 @@ export const Marker = styled.div`
   /* top: calc(50vh - 20px); */
   top: calc(48vh);
   /* top: 156px; */
-  width: 31.5vw;
+  width: 30vw;
   /* width: 18px; */
   border-bottom: 1px solid #C6C6C6;
 `;
@@ -190,7 +273,7 @@ export const WorkActions = styled.div`
   position: fixed;
   left: 16px;
   bottom: 16px;
-  width: calc(31.5vw - 32px);
+  width: calc(30vw - 32px);
   height: 124px;
   padding-left: 22px;
   padding-right: 22px;
@@ -258,7 +341,7 @@ export const VisitLink = styled.a`
   align-content: right;
   text-align: right;
   padding: 4px;
-  left: calc(31.5vw - 94px);
+  left: calc(30vw - 94px);
   margin-top: 82px;
   float: right;
 

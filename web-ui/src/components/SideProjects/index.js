@@ -10,8 +10,11 @@ import {
   Marker,
   ClickableArea,
   WorkItem,
+  Label,
+  Version,
   CaseStudy,
   WorkActions,
+  ScrollContainer,
   WorkName,
   TagsContainer,
   ProjectTag,
@@ -145,7 +148,25 @@ const SideProjects = ({ projects, sideProjectsToggle }) => {
 
   return (
     <Container>
-      {imgPreviews}
+      <Label>Work Photo Index</Label>
+      <Version>v2.13</Version>
+      <ScrollContainer
+        as={motion.div}
+        initial={{ y: '-103px' }}
+        animate={{ y: 0 }}
+        exit={{ y: '103px', transition: {
+              type: "tween",
+              ease: [0.7, 0, 0.13, 1],
+              duration: 0.5,
+          } }}
+        transition={{
+            type: "tween",
+            ease: [0.7, 0, 0.13, 1],
+            duration: 1,
+        }}
+      >
+        {imgPreviews}
+      </ScrollContainer>
     </Container>
   )
 }

@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { useLocation } from 'react-router-dom';
 import AboutPanel from '../AboutPanel';
-import { Container, NavContainer, Indicator, Logo, NavHome, NonMobile, NonMobile1, PhotoIndexContainer, NavDOMLink, NavDOMLink2, NavDOMLinkAbout, InfoLink, Mobile, AboutContainer, Kim, InfoWrapper, Rotating, NonMobile2, Filter, Divider} from './NavigationElements';
+import { Container, NavContainer, MobileMenuToggle, Indicator, OpenMenu, Logo, NavHome, NonMobile, NonMobile1, PhotoIndexContainer, NavDOMLink, NavDOMLink2, NavDOMLinkAbout, InfoLink, Mobile, AboutContainer, Kim, InfoWrapper, Rotating, NonMobile2, Filter, Divider} from './NavigationElements';
 
-const Navigation = ({toggle, aboutToggle}) => {
+const Navigation = ({toggle, aboutToggle, mobileToggle}) => {
 
     const location = useLocation();
     
     let currPage = location.pathname.split("/").pop();
 
     const [showInfo, setShowInfo] = useState(false);
+    const [mobileMenu, setMobileMenu] = useState(false);
     const [filterType, setFilterType] = useState(0);
     // const [currPage, setCurrPage] = useState(0);
 
@@ -20,8 +21,8 @@ const Navigation = ({toggle, aboutToggle}) => {
         console.log("Toggle Info: " + showInfo);
     };
 
-    // function checkAbout() {
-    //     if (aboutToggle) {
+    // function toggleMobileMenu() {
+    //     if (mobileMenu) {
     //         {toggle};
     //     }
     // }
@@ -92,23 +93,18 @@ const Navigation = ({toggle, aboutToggle}) => {
                 animate={(currPage == 'works') ? { x: '24px'} : (currPage == 'test' ? { x: '86px' } : (currPage == '' ? { x: 'calc(168px)' } : { x: '24px'}))}
                 transition={pageTransition}
             />
-            <AboutContainer as={motion.div} initial={{ x: '20.5rem', y: '105vh' }} 
+            {/* <AboutContainer as={motion.div} initial={{ x: '20.5rem', y: '105vh' }} 
                             animate={showInfo ? {  x: '20.5rem', y: -18 } : { x: '20.5rem', y: '-105vh' }}
                             transition={pageTransition} showInfo={showInfo}>
                 <AboutPanel />
-            </AboutContainer>
-            {/* <NavContainer> */}
+            </AboutContainer> */}
             <NonMobile>
-                <Logo />
-                <NavHome currpage={currPage} thispage={'works'} to="/works">호연</NavHome>
+                <NavHome currpage={currPage} thispage={'works'} to="/works"><Logo /><a style={{ marginLeft: '8px', marginTop: '0' }}>호연</a></NavHome>
+                <MobileMenuToggle onClick={mobileToggle}>Menu</MobileMenuToggle>
             </NonMobile>
             <NonMobile1>
-                {/* <NavDOMLink currpage={currPage} thispage={'test'} to="/test">Click me for fun</NavDOMLink> */}
-                {/* <NavDOMLink currpage={currPage} thispage={'main'} to="/">Blog</NavDOMLink> */}
                 <NavDOMLinkAbout currpage={aboutToggle} thispage={true} onClick={() => toggle('info')}>About/Contact</NavDOMLinkAbout>
-                {/* <NavDOMLink currpage={currPage}>Get in touch</NavDOMLink> */}
             </NonMobile1>
-            {/* </NavContainer> */}
             <NonMobile2 
                 // as={motion.div} 
                 // initial="initial"
@@ -135,8 +131,6 @@ const Navigation = ({toggle, aboutToggle}) => {
                     Blog
                 </NavDOMLink2>
             </NonMobile2>
-            {/* <PhotoIndexContainer><p>small photo index here</p></PhotoIndexContainer> */}
-            {/* <Mobile onClick={toggle}><Rotating>↑</Rotating></Mobile> */}
         </Container>
     );
 };

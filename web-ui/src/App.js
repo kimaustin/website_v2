@@ -16,7 +16,7 @@ import WorkExpanded from "./components/Works/WorkExpanded";
 import Images from "./components/ImageZoom";
 import About from "./components/About";
 import AboutPanel from "./components/AboutPanel";
-// import NavBar from "./components/Navbar";
+import NavBar from "./components/Navbar";
 import Topbar from "./components/Topbar";
 import Lab from "./components/Lab";
 import Close from "./components/About";
@@ -25,26 +25,33 @@ import WIP from "./components/WIP";
 import { Provider } from "react-redux";
 import SideProjects from "./components/SideProjects";
 import Blog from "./components/Blog";
+import CloseOverlay from "./components/CloseOverlay";
 
 //Our App Components
 function App() {
   
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
+    console.log("mobile nav toggled", isOpen);
     setIsOpen(!isOpen);
   };
 
   const [aboutToggle, setAboutToggle] = useState(false);
   
   const toggleAbout = (currPage) => {
-    console.log("about toggled");
-    if(currPage == 'info') {
+    if (currPage == 'info') {
+      console.log("about toggled");
       setAboutToggle(!aboutToggle);
     } else {
       setAboutToggle(false);
     }
   }
+
+  // const toggleAbout = () => {
+  //   console.log("about toggled");
+  //   setAboutToggle(!setAboutToggle);
+  // };
 
   const [sideProjectsToggle, setSideProjectsToggle] = useState(false);
 
@@ -61,11 +68,11 @@ function App() {
   return (
     <Router>
       <GlobalFonts />
-      {/* <NavBar /> */}
-      <Navigation toggle={toggleAbout} aboutToggle={aboutToggle}/>
-      {/* <Navigation /> */}
+      <NavBar mobileToggle={toggle} isOpen={isOpen}/>
+      <Navigation toggle={toggleAbout} aboutToggle={aboutToggle} mobileToggle={toggle}/>
       <AboutPanel aboutToggle={aboutToggle} toggle={toggleAbout}><Close onClick={toggleAbout}>close</Close></AboutPanel>
       <SideProjects sideProjectsToggle={sideProjectsToggle} />
+      <CloseOverlay isOpen={isOpen} aboutToggle={aboutToggle} toggleAbout={toggleAbout} mobileToggle={toggle}/>
       <Route
         render={({ location }) => (
           <AnimatePresence exitBeforeEnter>

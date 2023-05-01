@@ -2,28 +2,42 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useInView, inView, InView } from 'react-intersection-observer';
 import { connect } from "react-redux";
 import { motion } from "framer-motion";
-import { Link as LinkRouter } from 'react-router-dom';
+import { Link as LinkRouter, useHistory, useNavigate, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import SingleWork from "./SingleWork";
 import MobileTopButton from "../MobileTopButton";
 import {
   Container,
   Marker,
+  MarkerL,
+  MarkerR,
   HitMarker,
+  MobileWorkItem,
+  DeskWorkItem,
+  WorkArrow,
   ClickableArea,
   ProjectTag,
   ContentBg,
   WorkListContainer,
+  DetailsExpanded,
   WorkName,
   WorkDesc,
   VisitLink,
   Fake,
+  TextHover,
   ImageHover,
+  Indicator,
+  TopLine,
+  IndicatorLong,
   WorkItem,
+  WorkTitle,
+  WorkClass,
+  BottomWork,
   WorkIndex,
   TagsContainer,
   WorkContents,
   TagsDivider,
-  WorkActions,
+  WorkPreview,
   Details,
   WorkImageContainer,
   WorkImage,
@@ -49,6 +63,7 @@ const Works = ({ projects, aboutToggle }) => {
   const [projectDisplayed, setProjectDisplayed] = useState(0);
   const [hoverAllowed, setHoverAllowed] = useState(true);
   const [imageZoomed, setImageZoomed] = useState(false);
+  const [animateProject, setAnimateProject] = useState(999);
 
   const { ref: myRef1, inView, entry } = useInView({
     rootMargin: '-210px'
@@ -197,7 +212,7 @@ const Works = ({ projects, aboutToggle }) => {
     // } else {
     //   return <ProjectTag>{tag}. </ProjectTag>;
     // }
-      return <ProjectTag>{tag}. <p /></ProjectTag>;
+      return <ProjectTag>{tag}.<br /></ProjectTag>;
   }
 
   const pageVariants3 = {
@@ -327,11 +342,18 @@ const Works = ({ projects, aboutToggle }) => {
 
   let observerOptions = {
     root: ListContainerRef.target,
-    rootMargin: '-49% 0px -50% 0px',
+    rootMargin: '-48% 0px -51% 0px',
     // threshold: 0.1
   }
 
   const myRefs = [];
+  myRefs.push(useRef());
+  myRefs.push(useRef());
+  myRefs.push(useRef());
+  myRefs.push(useRef());
+  myRefs.push(useRef());
+  myRefs.push(useRef());
+  myRefs.push(useRef());
   myRefs.push(useRef());
   myRefs.push(useRef());
   myRefs.push(useRef());
@@ -352,55 +374,133 @@ const Works = ({ projects, aboutToggle }) => {
           // console.log('root', root);
           const observer = new IntersectionObserver((projectsList) => {
             if (projectsList[0].isIntersecting) {
-              console.log('scroll - current proj index', projectValue);
+              // console.log('scroll - current proj index', projectValue);
               setProjectValue(projectsList[0].target.id);
+              setAnimateProject(i);
               projectsList[0].target.style.opacity = 1.0;
+              // projectsList[0].target.style.width = "95%";
+              // projectsList[0].target.style.marginLeft = "5%";
+              // projectsList[0].target.style.color = 'white';
             } else {
-              projectsList[0].target.style.opacity = 0.5;
+              setAnimateProject(999);
+              // projectsList[0].target.style.color = '#B7B7B7';
+              projectsList[0].target.style.opacity = 0.55;
+              // projectsList[0].target.style.width = "100%";
+              // projectsList[0].target.style.marginLeft = 0;
             }
           }, observerOptions)
           observer.observe(myRefs[i].current);
       }
   }, [])
 
-  function timeout(delay) {
-    return new Promise( res => setTimeout(res, delay) );
-  }
+  const historyPage = useHistory();
 
+  const delay = ms => new Promise(
+    resolve => setTimeout(resolve, ms)
+  );
+
+  const loader = async (index) => {
+    // myRefs[index].current?.scrollIntoView({ behavior: 'smooth' });
+
+    // return redirect("/" + projectValue + "/works");
+  };
+
+  const handleMobileClick = async event => {
+    console.log('before');
+    myRefs[event].current?.scrollIntoView({ behavior: 'smooth' });
+    // setProjectValue(event);
+
+    await delay(600);
+  
+    historyPage.push("/" + event + "/works");
+    console.log('after');
+  };
+  
   const handleClick = (index) => {
     // console.log('proj clicked', index);
-    console.log('clicked - current proj index', projectValue);
+    // console.log('clicked - current proj index', projectValue);
     myRefs[index].current?.scrollIntoView({ behavior: 'smooth' });
+    // navigate("/" + projectValue + "/works");
+
     // await timeout(1000); //for 1 sec delay
     // setProjectValue(index);
   }
+  
 
   //MAIN PROJECTS LIST
-    let projects_list = projects.map((project, index) => {
+  let projects_list = projects.map((project, index) => {
 
-    if (project.isCS) {
+    let project_tags = project.tags.map((tag, index) => (
+      <ProjectTag>{tag}</ProjectTag>
+    ));
+
+    let height_varPreview = "calc(120px + " + ((index) * (90 / (projects.length + 3))) + "vh)";
+    
+    if (project.class_short == "June") {
+      // console.log('comparison', projectValue, index);
       return (
-        <WorkItem id={index} ref={myRefs[index]} onClick={()=> handleClick(index)} currProj={projectValue} thisProj={index}>
-          {project.name}
-          <CaseStudy>CASE STUDY</CaseStudy>
+        <WorkItem id={index} ref={myRefs[index]} currProj={projectValue} thisProj={index}
+          // as={motion.div}
+          // initial="initial"
+          // animate="in"
+          // exit={projectValue === index ? "outSelected" : "outOther"}
+          // variants={pageVariants3}
+          // transition={{
+          //   type: "tween",
+          //   ease: [0.7, 0, 0.13, 1],
+          //   duration: 0.8,
+          //   delay: index * 0.16,
+          // }}
+        >
+          <DeskWorkItem onClick={()=> handleClick(index)}>
+            <TopLine>
+                <CaseStudy>CASE STUDY</CaseStudy>
+                <TagsContainer>
+                  {project_tags}
+                </TagsContainer>
+              </TopLine>
+              <WorkTitle>{project.name}</WorkTitle>
+          </DeskWorkItem>
+          <MobileWorkItem onClick={()=> handleMobileClick(index)}>
+            <TopLine>
+              <CaseStudy>CASE STUDY</CaseStudy>
+              <TagsContainer>
+                {project_tags}
+              </TagsContainer>
+            </TopLine>
+            <WorkTitle>{project.name}</WorkTitle>
+          </MobileWorkItem>
         </WorkItem>
       )
     } else {
+      // console.log('comparison', projectValue, index);
       return (
         <WorkItem id={index} ref={myRefs[index]} onClick={()=> handleClick(index)} currProj={projectValue} thisProj={index}>
-          {project.name}
+          <DeskWorkItem onClick={()=> handleClick(index)}>
+            <TopLine>
+                <TagsContainer>
+                  {project_tags}
+                </TagsContainer>
+              </TopLine>
+              <WorkTitle>{project.name}</WorkTitle>
+          </DeskWorkItem>
+          <MobileWorkItem onClick={()=> handleMobileClick(index)}>
+            <TopLine>
+              <TagsContainer>
+                {project_tags}
+              </TagsContainer>
+            </TopLine>
+            <WorkTitle>{project.name}</WorkTitle>
+          </MobileWorkItem>
         </WorkItem>
       )
     }
   });
 
-
   //test projects list
   // const { ref: refName, inView: inView2, entry: entry2 } = useInView({
   //   rootMargin: '-210px'
   // });
-
-
 
   // console.log('current proj index', projectValue);
   // console.log('curr project visit', myProjects[projectValue].link.length);
@@ -415,7 +515,7 @@ const Works = ({ projects, aboutToggle }) => {
   ));
 
   let visit_link = () => {
-    if (projects[projectValue].link.length == 1) {
+    if (projects[projectValue].link.length > 0) {
       // console.log("got to link");
       return (
         <VisitLink href={projects[projectValue].link[0]} target="_blank">
@@ -423,7 +523,9 @@ const Works = ({ projects, aboutToggle }) => {
         </VisitLink>
       )
     } else {
-      return;
+      return (
+        <></>
+      );
     }
   }
 
@@ -538,6 +640,8 @@ const Works = ({ projects, aboutToggle }) => {
   // console.log(window.screen.height);
 
   let rightImageSource = "imgs/" + projects[projectValue].imgs[0];
+  let height_var = "calc(118px + " + ((projectValue) * (88 / (projects.length + 3))) + "vh)";
+  let mobile_height_var = "calc(140px + " + ((projectValue) * (54 / (projects.length + 11))) + "vh)";
 
   //TODO: Fix filters not working
   return (
@@ -588,45 +692,40 @@ const Works = ({ projects, aboutToggle }) => {
         transition={{
             type: "tween",
             ease: [0.7, 0, 0.13, 1],
-            duration: 0.8,
+            duration: 1,
         }}
       >
         {/* {project_names} */}
         {/* <HitMarker /> */}
         <Marker />
-        <WorkActions
-          as={motion.div}
-          initial={{ y: '150px' }}
-          animate={{ y: 0, position: 'fixed' }}
-          exit={{ y: '150px', transition: {
-                type: "tween",
-                ease: [0.7, 0, 0.13, 1],
-                duration: 0.5,
-                delay: 0.1
-            } }}
-          transition={{
-              type: "tween",
-              ease: [0.7, 0, 0.13, 1],
-              duration: 0.5,
-              delay: 0.1
-          }}
-        >
-          <WorkName>{projectValue}</WorkName>
-          <TagsContainer>{tagsDisplayed}</TagsContainer>
-
-          <Details
-            to={"/" + projectValue + "/works"}
-            id={"proj" + projectValue}
-          >
-            Details  →
-          </Details>
-          {visit_link}
-        </WorkActions>
-
+        <MarkerL />
+        <MarkerR />
         {projects_list}
-
       </WorkListContainer>
 
+      <WorkPreview
+        heightVar={height_var}
+        mobileHVar={mobile_height_var}
+          // as={motion.div}
+          // initial={{ y: '-195px' }}
+          // animate={{ y: 0, position: 'fixed' }}
+          // exit={{ y: '-195px', transition: {
+          //       type: "tween",
+          //       ease: [0.7, 0, 0.13, 1],
+          //       duration: 0.5,
+          //       delay: 0.1
+          //   } }}
+          // transition={{
+          //     type: "tween",
+          //     ease: [0.7, 0, 0.13, 1],
+          //     duration: 0.5,
+          //     delay: 0.1
+          // }}
+        >
+          <img src={rightImageSource}/>
+          <WorkName>{projects[projectValue].class}</WorkName>
+          <WorkDesc>{projects[projectValue].semester}</WorkDesc>
+      </WorkPreview>
       {/* <WorksContainer id="topWorks" zVal="999">
         {project_previews}
       </WorksContainer> */}
@@ -648,11 +747,53 @@ const Works = ({ projects, aboutToggle }) => {
         <BgBlur />
       </ContentBg>
 
-      <ClickableArea to={"/" + projectValue + "/works"} id={"proj1"}>
-          View Details →
+      <ClickableArea
+        as={motion.div}
+        initial={{ y: '20vh' }}
+        animate={{ y: '0', position: 'fixed' }}
+        exit={{ y: '20vh', transition: {
+              type: "tween",
+              ease: [0.7, 0, 0.13, 1],
+              duration: 0.6
+          } }}
+        transition={{
+            type: "tween",
+            ease: [0.7, 0, 0.13, 1],
+            duration: 0.5,
+            delay: 0.5
+        }}
+      >
+        {/* <VisitLink href={"http://www.w3schools.com"} target="_blank">
+          Visit 
+        </VisitLink>
+        {visit_link} */}
+        <Details
+          to={"/" + projectValue + "/works"}
+          id={"proj" + projectValue}
+        >
+          View →
+        </Details>
       </ClickableArea>
 
-      <WorkImageContainer>
+      {/* <ClickableArea>
+        {projects[projectValue].name}
+      </ClickableArea> */}
+
+      <WorkImageContainer
+        as={motion.div}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0, transition: {
+            type: "tween",
+            ease: [0.7, 0, 0.13, 1],
+            duration: 0.8,
+          }}}
+        transition={{
+            type: "tween",
+            ease: [0.7, 0, 0.13, 1],
+            duration: 0.6,
+            delay: 0.2
+        }}>
         <WorkImage
           as={motion.div}
           initial={{ opacity: 0, scale: 0.99 }}
@@ -696,4 +837,4 @@ const Works = ({ projects, aboutToggle }) => {
   );
 };
 
-export default connect(({ projects }) => ({ projects }))(Works);
+export default withRouter(connect(({ projects }) => ({ projects }))(Works));

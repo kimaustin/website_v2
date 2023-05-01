@@ -9,7 +9,7 @@ html {
   min-height: 100%;
   scroll-behavior: smooth;
   cursor: crosshair;
-  // overflow: none;
+  overflow: hidden;
   // cursor: url("/imgs/c1.svg"), pointer;
         // cursor: crosshair;
   // cursor:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAaCAMAAABigZc2AAAACVBMVEX///8AAAD///9+749PAAAAAXRSTlMAQObYZgAAAFpJREFUeNp9jUEOwEAIAhn+/+imjbs1bC0XzQioSUAAYZs0mcVY051RbGXfFsyxibTVHXhuhXYlbuRGPbe7kz3g0wf679OuizDBdCaberLE4AsjGliD02eNugA+MQFAPqynHQAAAABJRU5ErkJggg==),auto; 
@@ -19,8 +19,10 @@ html {
 
 body {
   // overflow: none;
-  background: #1E1C1F;
+  // background: #1E1C1F;
+  background: #000000;
   min-height: 100vh;
+  overflow: hidden;
   // border-left: 0.5rem solid red;
   // overflow: hidden;
   // background: black;

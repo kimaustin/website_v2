@@ -4,7 +4,7 @@ import { useLocation, Redirect } from 'react-router-dom';
 import { ListContainer } from './WorkElements';
 import { motion } from "framer-motion";
 import MobileTopButton from '../MobileTopButton';
-import { Container, Header, TableOfContents, Subsection, Fancy, NavButtons, PrevWork, NextWork, Back, Content, FixedContent, Title, TagsContainer, Tag, Details, Overview, PicContainer, Thumbnails, ThumbnailSelector, PicScroll, LeftSection, Controls, RightSection, Label, PicDesc, HeaderDecorated, TOCItem, InsideHeaderLine, InsideHeaderContainer } from './WorkExpandedElements';
+import { Container, Header, TableOfContents, Visit, TopSticky, LeftTitle, CaseStudy, CaseStudy2, MobileTOCLabel, MobileTOCContainer, OverviewTag, MobileTOC, Subsection, InlineLink, Sub2, Fancy, NavButtons, PrevWork, NextWork, Back, Content, FixedContent, Title, TagsContainer, Tag, Details, Overview, PicContainer, Thumbnails, ThumbnailSelector, PicScroll, Controls, WorkContent, Label, Desc, DateClass, TOCItem, TOCItem2, Date, Class, InsideHeaderContainer, DividerTOC } from './WorkExpandedElements';
 // import { Work } from './SingleWorkElements';
 // import { load_defaults } from '../../api';
 // import { restore_session } from '../../store';
@@ -13,91 +13,32 @@ import { Container, Header, TableOfContents, Subsection, Fancy, NavButtons, Prev
 // const WorkExpanded = () => {
 const WorkExpanded = ({ projects }) => {
 
-    // useEffect(() => {
-    //     window.addEventListener("beforeunload", alertUser);
-    //     return () => {
-    //       window.removeEventListener("beforeunload", window.location = "http://localhost:3000/works");
-    //     };
-    //   }, []);
-    //   const alertUser = (e) => {
-    //       console.log("redirect catch");
-    //       window.location = "http://localhost:3000/works";
-    //       <Redirect push to="/works"/>;
-    //     e.preventDefault();
-    //     // e.returnValue = "";
-    //   };
-
     const [showTOC, setShowTOC] = useState(false);
     const [currImage, setCurrImage] = useState(1);
 
-    // const ref = useRef();
-
-
     const location = useLocation();
     let work_id = location.pathname.split("/works")[0];
-    // let work = get_project(work_id.substring(1, work_id.length));
-
-    // // console.log("work viewed: " + work_id);
-    // // console.log(work_id.substring(1, work_id.length));
-    // // console.log("projects length: " + projects.length);
-    // // console.log("proj obj from api: " + JSON.stringify(work));
     
     let work = projects[work_id.substring(1, work_id.length)];
 
     console.log('selected work', work);
 
-    // // let prev_id = work_id;
-    // var next_id;
-    // var prev_id;
 
-    // if (work.id == 16) {
-    //     next_id = 1;
-    //     prev_id = parseInt(work_id.substring(1, work_id.length)) - 1;
-    //     console.log("caught max case");
-    // } else if (work.id == 1) {
-    //     console.log("caught 0 case");
-    //     next_id = parseInt(work_id.substring(1, work_id.length)) + 1; 
-    //     prev_id = 16;
-    // } else {
-    //     next_id = parseInt(work_id.substring(1, work_id.length)) + 1; 
-    //     prev_id = parseInt(work_id.substring(1, work_id.length)) - 1;
-    // }
+    const [mobileTOC, setMobileTOC] = useState(false);
 
-    // // let first = true;
-    // if (work_id == 1) {
-    //     prev_id = work_id;
-    // } else {
-    //     prev_id = work_id - 1;
-    // }
+    const toggleMobileTOC = () => {
+        console.log("mobile about showing", mobileTOC);
+        // setMobileTOC(true);
+        setMobileTOC(!mobileTOC);
+    };
 
     var isLast = false;
+
     if (work_id == projects.length) {
         isLast = true;
     }
-    
-    // TODO triggers something when certain scroll level has been reached
-    // const changeSelector = () => {
-    //     // if scroll = project number * divided value
-    //     if(window.scrollY >= 80) {
-    //         // setCurrImage(true);
 
-    //     } else {
-    //         // setCurrImage(false);
-    //     }
-    // };
-    
-    // useEffect(() => {
-    //     window.addEventListener('scroll', changeSelector)
-    // }, []);
-    
-    // let work = { id: '1', content: ['', 'SS:Introduction', 'THIS IS THE INTRODUCTION', '/test/pic1.png', '/test/pic2.png', 'THIS IS A DESCRIPTION', 'SS:Section 2', '/test/pic3.png',  '/test/pic4.png', 'SS:Last Section', 'THIS IS A DESCRIPTION', '/test/pic3.png'], tags: ['tag 1', 'tag 2', 'tag 3'], name: 'project 1 name', desc: 'work description', isCS: false, date: 'March 2022' };
-    
-    // let totalImgs = work.imgs.length;
-    // let thumbHeight = ((36 / totalImgs) - 1) + "vh";
-    // console.log("each thumb height: " + thumbHeight);
-    // height -> 36 / work
-
-    console.log("imgs: " + work.imgs);
+    // console.log("imgs: " + work.imgs);
 
     const imgVariants = {
         initial: {
@@ -149,45 +90,127 @@ const WorkExpanded = ({ projects }) => {
     myPicRefs.push(useRef());
     myPicRefs.push(useRef());
     myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
+    myPicRefs.push(useRef());
     
-    const handleClick = (index) => {
-        // console.log('index', index, myPicRefs);
-        // console.log('ref clicked', myPicRefs[index].current);
-        myPicRefs[index].current?.scrollIntoView({ behavior: 'smooth' });
+    // const handleClick = (index) => {
+    //     console.log('index', index, myPicRefs);
+    //     console.log('ref clicked', myPicRefs[index].current);
+    //     myPicRefs[index].current?.scrollIntoView({ behavior: 'smooth' });
+    // }
+
+  const handleClick = async event => {
+    // console.log('before');
+    toggleMobileTOC();
+    // await delay(300);
+    myPicRefs[event].current?.scrollIntoView({ behavior: 'smooth' });
+    // console.log('after');
+  };
+
+
+  let project_tags = work.tags.map((tag, index) => (
+    <Tag>{tag}</Tag>
+  ));
+  
+//   let case_study = <></>
+
+    let is_cs = false;
+
+    if (work.class_short == "June") {
+        is_cs = true;
     }
-    
-    // MAIN CONTENT HANDLER --------->
-    function Picture_Displayed({picture, index}) {
+//   if 
+
+// MAIN CONTENT HANDLER --------->
+    function Content_Displayed({picture, index}) {
         let index_int = index + 1; 
         let index_str = 'pic' + index_int;
-        // console.log("does " + picture + " contain /: " + picture.includes("/"));
-        // console.log('content', picture, index);        
 
-        // let is_last = false;
-
-        // if (work.imgs.length == (1 + index)) {
-        //     is_last = true;
-        // } 
 
         if (index == 0) {
             return (
                 <Header>
-                    <HeaderDecorated>
-                        <Fancy> &#123; </Fancy>
-                            <InsideHeaderContainer>
-                                <InsideHeaderLine>{work.semester}</InsideHeaderLine>
-                                <InsideHeaderLine>{work.name}</InsideHeaderLine>
-                            </InsideHeaderContainer>
-                        <Fancy> &#125; </Fancy>
-                    </HeaderDecorated>
+                    <DateClass>
+                        {/* <Fancy> &#123; </Fancy> */}
+                            {/* <InsideHeaderContainer> */}
+                                <Date>{work.semester} <CaseStudy isCS={is_cs}> Case Study</CaseStudy></Date>
+                                <Class>{work.class}</Class>
+                            {/* </InsideHeaderContainer> */}
+                        {/* <Fancy> &#125; </Fancy> */}
+                    </DateClass>
+                    <Title>{work.name}</Title>
+                    <Tag style={{ color: 'white', fontWeight: '600', paddingBottom: '6px' }}>Tags</Tag>
+                    <TagsContainer>{project_tags}</TagsContainer>
                     <Overview>
+                        <OverviewTag>Overview</OverviewTag>
                         {work.desc}
                         {/* A series of three self-promotional posters. Explored which traits are core to my identity, and what differentiates me from my peers. Intended to express my identity in a way that creates emotional resonance in a memorable, yet authentic manner.  */}
                     </Overview>
                 </Header>
             );
         } else {
-            if (picture.includes("/")) {
+            if (picture.startsWith('LINK:')) {
+                let link_url = picture.slice('5');
+
+                return (
+                    <InlineLink href={link_url} target="_blank">
+                        {link_url}
+                    </InlineLink>
+                )
+            } else if (picture.startsWith('SS2:')) {
+                let sub_name = picture.slice('4');
+
+                return (
+                    <Sub2 ref={myPicRefs[index]}>
+                        {sub_name}
+                    </Sub2>
+                )
+            } else if (picture.includes("/")) {
                 return (
                     <PicContainer id={index_str}
                         index={index}
@@ -205,8 +228,6 @@ const WorkExpanded = ({ projects }) => {
                         }}
                         >
                         <img src={"/imgs/" + picture} alt={picture} id="project-img"></img>   
-                        {/* <img src={"imgs/" + work.imgs[index]}/> */}
-                        {/* <img src={"imgs/testProjCover0.png"}/> */}
                     </PicContainer>
                 );
             } else if (picture.startsWith('SS:')) {
@@ -219,7 +240,7 @@ const WorkExpanded = ({ projects }) => {
                 )
             } else {
                return (
-                   <PicDesc
+                   <Desc
                     index={index}
                     // isLast={is_last}
                     as={motion.div}
@@ -235,7 +256,7 @@ const WorkExpanded = ({ projects }) => {
                     }}
                    >
                        {picture}
-                   </PicDesc>
+                   </Desc>
                )
            }
         }
@@ -251,6 +272,12 @@ const WorkExpanded = ({ projects }) => {
             return (
                 <TOCItem onClick={()=> handleClick(index)}>{header_name}</TOCItem>
             )
+        } else if (subsection.startsWith('SS2:')) {
+            let sub_name = subsection.slice(4);
+
+            return (
+                <TOCItem2 onClick={()=> handleClick(index)}>{sub_name}</TOCItem2>
+            )
         } else {
             return (
                 <></>
@@ -265,27 +292,14 @@ const WorkExpanded = ({ projects }) => {
         }
     };
 
-    // function Each_Thumbnail({picture, index}) {
-    //     let index_int = index + 1; 
-    //     let index_str = 'pic' + index_int;
-    //     console.log("total: " + totalImgs);
-
-    //     return (
-    //         <PicScroll to={index_str} smooth={true} duration={500} spy={true} 
-    //             offset={-80} exact="true" relHeight={thumbHeight}>
-    //             <img src={"/imgs/" + picture} style={{maxHeight: '100%', maxWidth: '100%', border: '.5px solid black'}} id="project-img" alt={picture}></img>    
-    //         </PicScroll>
-    //     )
-    // };
-
     function Tags({tag}) {
         return (
             <Tag>{tag}</Tag>
         )
     };
 
-    const pictures_displayed = work.imgs.map((picture, index) => (
-        <Picture_Displayed picture={picture} key={picture.id} index={index} />
+    const content_displayed = work.imgs.map((picture, index) => (
+        <Content_Displayed picture={picture} key={picture.id} index={index} />
     ));
 
     const table_of_contents = work.imgs.map((subsection, index) => (
@@ -293,16 +307,6 @@ const WorkExpanded = ({ projects }) => {
         <ListofTOC subsection={subsection} key={subsection.id} index={index} />
         // <TOCItem>{subsection}</TOCItem>
     ));
-
-    // const thumbnails_displayed = work.content.map((picture, index) => (
-    //     <Each_Thumbnail picture={picture} key={picture.id} index={index} />
-    // ));
-
-    // const tags_displayed = work.tags.map((tag) => (
-    //     <Tags tag={tag} key={tag.id} />
-    // ));
-
-
 
     const leftVariants = {
         initial: {
@@ -357,9 +361,6 @@ const WorkExpanded = ({ projects }) => {
     }
 
 
-
-
-
     return (
         <Container id='head'
             // as={motion.div}
@@ -367,23 +368,24 @@ const WorkExpanded = ({ projects }) => {
             // animate="in"
             // exit="out"
         >
-            {/* <LeftSection
-                // as={motion.div}
-                // initial="initial"
-                // animate="in"
-                // exit="out"
-                // variants={leftVariants}
-                // transition={leftTransition}
+            <TopSticky
+                isCS={is_cs}
+                as={motion.div}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{
+                    type: "tween",
+                    ease: [0.7, 0, 0.13, 1],
+                    duration: 0.5,
+                }}
             >
-                    {work.id} 
-                    <Title>{work.name}</Title>
-                    <Label>OVERVIEW</Label>
-                    <Details>{work.desc}</Details>
-                    <Label>TOOLS</Label>
-                    <TagsContainer>{tags_displayed}</TagsContainer>
-            </LeftSection> */}
-
-            <RightSection
+                <Date>{work.semester}</Date>
+                <Class>{work.class}</Class>
+            </TopSticky>
+            
+            <WorkContent
+                isCS={is_cs}
                 as={motion.div}
                 initial={{ y: '100vh' }}
                 animate={{ y: 0 }}
@@ -398,8 +400,8 @@ const WorkExpanded = ({ projects }) => {
                     duration: 1.2,
                 }}
             >
-                {pictures_displayed}
-            </RightSection>
+                {content_displayed}
+            </WorkContent>
 
             <Controls
                 as={motion.div}
@@ -412,22 +414,47 @@ const WorkExpanded = ({ projects }) => {
                     duration: 0.7,
                 }}
             >
-                <Back to="/works">￩ All Works</Back>
-                <TableOfContents>
-                    {/* <TOCItem style={{ fontSize: '20px' }}>Study Overview</TOCItem> */}
-                    <p style={{ paddingBottom: '6px' }}> {showTOC ? 'Study Overview' : ''}</p>
-                    {table_of_contents}
-                </TableOfContents>
-                <Back href={"https://www.junehomes.com"} target="_blank">Visit</Back>
+                <Back to="/works">← All Projects</Back>
+                <CaseStudy2>Case Study</CaseStudy2>
+                <LeftTitle>{work.name}</LeftTitle>
+                {/* <Visit href={"https://www.junehomes.com"} target="_blank">Visit ↗</Visit> */}
             </Controls>
 
+            <TableOfContents
+                isCS={is_cs}
+                as={motion.div}
+                initial={{ x: '100vw' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100vw' }}
+                transition={{
+                    type: "tween",
+                    ease: [0.7, 0, 0.13, 1],
+                    duration: 0.6,
+                }}
+            >
+                    <p style={{ paddingBottom: '6px' }}> {showTOC ? 'Table of Contents' : ''}</p>
+                    {table_of_contents}
+            </TableOfContents>
 
-            {/* <MobileTopButton /> */}
+            <MobileTOCContainer
+                as={motion.div} 
+                initial={{ x: 0, y: '436px' }}
+                animate={mobileTOC ? {  x: 0, y: '90px' } : { x: 0, y: '436px' }}
+                transition={{
+                type: "tween",
+                ease: [0.28, 1.35, 1.5, .91],
+                duration: 0.35  
+                }}
+            >
+                <DividerTOC onClick={toggleMobileTOC}>
+                    <MobileTOCLabel>Table of Contents ☰</MobileTOCLabel>
+                </DividerTOC>
+                <MobileTOC>
+                    {table_of_contents}
+                </MobileTOC>
+            </MobileTOCContainer>
         </Container>
     );
 };
   
-// load_defaults();
-
-// export default WorkExpanded;
 export default connect(({ projects }) => ({ projects }))(WorkExpanded);
