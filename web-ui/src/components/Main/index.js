@@ -187,7 +187,7 @@ const Main = ({projects}) => {
                 exit="out"
                 variants={btnVariants}
                 transition={pageTransition}>
-                <DownButton to={"/works"}>
+                <DownButton to={"/"}>
                   → View Projects ←
                   {/* <lilMove>→</lilMove> */}
                 </DownButton>

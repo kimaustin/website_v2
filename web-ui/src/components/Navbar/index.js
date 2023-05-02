@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Nav, NavbarContainer, NavLogo, Styled1, Styled2, Styled3, Social, About, Menu, Details1, MobileAboutContainer, Logo, NavHome, Close, NavMenu, NavItem, NavLinksDOM, NavLinks, CloseBtn, NavBtnLink } from './NavbarElements';
+import { Container, Nav, NavbarContainer, NavLogo, Styled1, Styled2, Styled3, Social, About, Menu, Details1, MobileAboutContainer, Logo, NavHome, Close, NavMenu, NavItem, NavLinksDOM, NavLinksDOM2, NavLinks, CloseBtn, NavBtnLink } from './NavbarElements';
 import { motion } from "framer-motion";
 
 const Navbar = ({mobileToggle, isOpen}) => {
@@ -27,7 +27,7 @@ const Navbar = ({mobileToggle, isOpen}) => {
             duration: 0.3
             }}
         >
-            <NavHome onClick={mobileToggle} to="/works"><Logo /><a style={{ marginLeft: '8px', marginTop: '1px' }}>호연</a></NavHome>
+            <NavHome onClick={mobileToggle} to="/"><Logo /><a style={{ marginLeft: '8px', marginTop: '1px' }}>호연</a></NavHome>
             <NavMenu
                 as={motion.div} initial={{ x: '0vw', y: 0 }} 
                 animate={mobileAbout ? {  x: '-100vw', y: 0 } : { x: '0vw', y: 0 }}
@@ -37,10 +37,13 @@ const Navbar = ({mobileToggle, isOpen}) => {
                 duration: 0.35
                 }}
             >
-                <NavLinksDOM onClick={mobileToggle} to="/works">Work</NavLinksDOM>
-                <NavLinksDOM onClick={mobileToggle} to="/test">The Lab</NavLinksDOM>
+                <NavLinksDOM onClick={mobileToggle} to="/">Work</NavLinksDOM>
+                {/* <NavLinksDOM onClick={mobileToggle} to="/test">The Lab</NavLinksDOM>
                 <NavLinksDOM onClick={mobileToggle} to="">Photography</NavLinksDOM>
-                <NavLinksDOM onClick={mobileToggle} to="/blog">Blog</NavLinksDOM>
+                <NavLinksDOM onClick={mobileToggle} to="/blog">Blog</NavLinksDOM> */}
+                <NavLinksDOM2>The Lab</NavLinksDOM2>
+                <NavLinksDOM2>Photography</NavLinksDOM2>
+                <NavLinksDOM2>Blog</NavLinksDOM2>
                 <Details1>Built by me in React + Elixir<br />Last Updated: Apr 2, 2023</Details1>
             </NavMenu>
             <MobileAboutContainer

@@ -76,7 +76,12 @@ export const TopSticky = styled.div`
     // border: 1px solid white;
 
     @media screen and (max-width: 767px) {
-        display: none;
+        // display: none;
+        top: 146px;
+        padding-top: 1px;
+        left: unset;
+        right: 14px;
+        width: 70vw;
     }
 `
 
@@ -121,16 +126,20 @@ export const Date = styled.div`
     // padding-bottom: 2px;
     font-family: "SS3";
     font-size: 12px;
-    font-weight: 600;
     color: #9E9E9E;
 
     // border: 1px solid blue;
+    @media screen and (max-width: 767px) {
+        float: right;
+        text-align: right;
+    }
 `
 
 export const Class = styled.div`
     // padding-bottom: 2px;
     font-family: "SS3";
     font-size: 12px;
+    font-weight: 600;
     color: #9E9E9E;
     float: right;
     text-align: right;
@@ -485,35 +494,69 @@ export const MobileTOCContainer = styled.div`
         position: fixed;
         display: grid;
         width: 100vw;
-        height: 420px;
-        // height: calc(100vh + );
-        position: fixed;
+        height: 60vh;
+        // height: 100vh;
+        // height: calc(100vh + 180px);
         // top: 0;
         left: 0;
+        // top: 100vh;
         // bottom: 50px;
         z-index: 999;
-        padding: 8px 14px 22px 14px;
+        // padding: 8px 14px 118px 14px;
         border-top: 1px solid #313131;
 
-        // color: white;
-        // background: blue;
-        background: rgba(28, 28, 28, 0.75);
-        backdrop-filter: blur(10px);
+        background: rgba(50, 50, 50, 0.65);
+        backdrop-filter: blur(12px);
+        // overflow-x: hidden;
+        // overflow-y: scroll;
         overflow-y: hidden;
+
+        // background: blue;
+
     }
 `
 
 export const MobileTOC = styled.div`
     position: absolute;
-    top: 42px;
+    top: -24px;
+    left: 0;
     overflow-y: auto;
     height: 100%;
     // width: calc(100vw) - 28px;
     width: 100%;
     padding-left: 14px;
     padding-right: 14px;
-    padding-bottom: 100px;
-    padding-top: 8px;
+    padding-bottom: 90px;
+    padding-top: 16px;
+`
+
+export const MobileTOCToggle = styled.div`
+    display: none;    
+
+    @media screen and (max-width: 767px) {
+        display: block;
+        z-index: 1000;
+        position: fixed;
+        left: 0;
+        bottom: 50px;
+        height: 40px;
+        width: 100vw;
+        background: rgba(38, 38, 40, 0.6);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid #313131;
+    }
+    
+`
+
+export const CloseTOC = styled.div`
+    z-index: 999;
+    position: absolute;
+    right: 14px;
+    top: 16px;
+
+    font-family: 'SS3';
+    font-size: 14px;
+    color: white;
 `
 
 export const DividerTOC = styled.div`
@@ -522,7 +565,7 @@ export const DividerTOC = styled.div`
     left: 0;
     top: 0;
     padding: 10px 14px 0px 14px;
-    height: 42px;
+    height: 40px;
     width: 100vw;
     border-bottom: .5px solid #313131;
 `
@@ -548,9 +591,10 @@ export const TOCItem = styled.div`
     }
 
     @media screen and (max-width: 767px) {
-        opacity: 1;
+        opacity: 0.9;
+        color: white;
         padding-top: 24px;
-        font-size: 16px;
+        font-size: 19px;
     }
 `
 
@@ -572,7 +616,7 @@ export const TOCItem2 = styled.div`
     @media screen and (max-width: 767px) {
         opacity: 1;
         padding-top: 14px;
-        font-size: 12px;
+        font-size: 14px;
         margin-left: 16px;
     }
 `
@@ -629,10 +673,12 @@ export const Title = styled.h1`
 
 export const TagsContainer = styled.div`
     display: inline-grid;
+    padding-top: 2px;
     padding-bottom: 32px;
 
     @media screen and (max-width: 767px) {
         display: grid;
+        padding-top: 4px;
         // grid-template-columns: unset;
     }
 `

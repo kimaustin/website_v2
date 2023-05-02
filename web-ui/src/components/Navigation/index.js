@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { useLocation } from 'react-router-dom';
 import AboutPanel from '../AboutPanel';
-import { Container, NavContainer, MobileMenuToggle, Indicator, OpenMenu, Logo, NavHome, NonMobile, NonMobile1, PhotoIndexContainer, NavDOMLink, NavDOMLink2, NavDOMLinkAbout, InfoLink, Mobile, AboutContainer, Kim, InfoWrapper, Rotating, NonMobile2, Filter, Divider} from './NavigationElements';
+import { Container, NavContainer, MobileMenuToggle, Indicator, OpenMenu, NavDOMLink3, Logo, NavHome, NonMobile, NonMobile1, PhotoIndexContainer, NavDOMLink, NavDOMLink2, NavDOMLinkAbout, InfoLink, Mobile, AboutContainer, Kim, InfoWrapper, Rotating, NonMobile2, Filter, Divider} from './NavigationElements';
 
 const Navigation = ({toggle, aboutToggle, mobileToggle}) => {
 
@@ -90,7 +90,7 @@ const Navigation = ({toggle, aboutToggle, mobileToggle}) => {
             <Indicator currpage={currPage}
                 as={motion.div} 
                 initial={{ x: '24px' }}
-                animate={(currPage == 'works') ? { x: '24px'} : (currPage == 'test' ? { x: '86px' } : (currPage == '' ? { x: 'calc(168px)' } : { x: '24px'}))}
+                animate={(currPage == '') ? { x: '24px'} : (currPage == 'test' ? { x: '24px' } : (currPage == '' ? { x: 'calc(24px)' } : { x: '24px'}))}
                 transition={pageTransition}
             />
             {/* <AboutContainer as={motion.div} initial={{ x: '20.5rem', y: '105vh' }} 
@@ -118,18 +118,22 @@ const Navigation = ({toggle, aboutToggle, mobileToggle}) => {
                 //     delay: 1 * 0.12,
                 // }}
             >
-                <NavDOMLink2 currpage={currPage} thispage={'works'} to="/works">
+                <NavDOMLink2 currpage={currPage} thispage={'works'} to="/">
                     Work
                 </NavDOMLink2>
-                <NavDOMLink2 currpage={currPage} thispage={'test'} to="/test">
+                {/* <NavDOMLink3 currpage={currPage} thispage={'test'} to="/test">
                     The Lab
-                </NavDOMLink2>
-                <NavDOMLink2 currpage={currPage} thispage={''} to="/">
+                </NavDOMLink3> */}
+                {/* <NavDOMLink2 currpage={currPage} thispage={''} to="/">
                     Photography
                 </NavDOMLink2>
                 <NavDOMLink2 currpage={currPage} thispage={'blog'} to="/blog">
                     Blog
-                </NavDOMLink2>
+                </NavDOMLink2> */}
+                <NavDOMLink3>The Lab</NavDOMLink3>
+                <NavDOMLink3>Photography</NavDOMLink3>
+                <NavDOMLink3>Blog</NavDOMLink3>
+
             </NonMobile2>
         </Container>
     );

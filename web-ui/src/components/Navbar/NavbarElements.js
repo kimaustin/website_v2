@@ -266,8 +266,28 @@ export const NavLinksDOM = styled(LinkRouter)`
     padding-bottom: 16px;
     opacity: 0.9;
 
+    &:active {
+        border-bottom: 3px solid #01bf71;
+    }
+`
 
-    
+
+export const NavLinksDOM2 = styled(LinkRouter)`
+    z-index: 999;
+    display: block;
+    // align-items: center;
+    text-decoration: none;
+    // height: 100%;
+    /* cursor: pointer; */
+
+
+    color: #FFFFFF;
+    font-family: 'OpenSans';
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    padding-bottom: 16px;
+    opacity: 0.4;
 
     &:active {
         border-bottom: 3px solid #01bf71;

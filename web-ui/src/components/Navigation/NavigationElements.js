@@ -280,6 +280,35 @@ export const NavDOMLink2 = styled(LinkRouter)`
     }
 `;
 
+export const NavDOMLink3 = styled(LinkRouter)`
+    display: inline-grid;
+    position: relative;
+    padding-right: 30px;
+
+    color: #D2CACA;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: "SS3";
+
+    opacity: 0.5;
+
+    &:hover {
+        // text-decoration: underline;
+        cursor: not-allowed;
+    }
+
+    @media screen and (max-height: 767px) {
+        border-bottom: 0;
+        padding: 0;
+        width: calc(100vw / 3);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-top: 0;
+        border-left: 2px solid #201D17;
+    }
+`;
+
 export const Filter = styled.div`
   display: inline-grid;
   position: relative;

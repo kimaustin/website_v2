@@ -4,12 +4,10 @@ import { useLocation, Redirect } from 'react-router-dom';
 import { ListContainer } from './WorkElements';
 import { motion } from "framer-motion";
 import MobileTopButton from '../MobileTopButton';
-import { Container, Header, TableOfContents, Visit, TopSticky, LeftTitle, CaseStudy, CaseStudy2, MobileTOCLabel, MobileTOCContainer, OverviewTag, MobileTOC, Subsection, InlineLink, Sub2, Fancy, NavButtons, PrevWork, NextWork, Back, Content, FixedContent, Title, TagsContainer, Tag, Details, Overview, PicContainer, Thumbnails, ThumbnailSelector, PicScroll, Controls, WorkContent, Label, Desc, DateClass, TOCItem, TOCItem2, Date, Class, InsideHeaderContainer, DividerTOC } from './WorkExpandedElements';
+import { Container, Header, TableOfContents, Visit, CloseTOC, MobileTOCToggle, TopSticky, LeftTitle, CaseStudy, CaseStudy2, MobileTOCLabel, MobileTOCContainer, OverviewTag, MobileTOC, Subsection, InlineLink, Sub2, Fancy, NavButtons, PrevWork, NextWork, Back, Content, FixedContent, Title, TagsContainer, Tag, Details, Overview, PicContainer, Thumbnails, ThumbnailSelector, PicScroll, Controls, WorkContent, Label, Desc, DateClass, TOCItem, TOCItem2, Date, Class, InsideHeaderContainer, DividerTOC } from './WorkExpandedElements';
 // import { Work } from './SingleWorkElements';
 // import { load_defaults } from '../../api';
 // import { restore_session } from '../../store';
-
-
 // const WorkExpanded = () => {
 const WorkExpanded = ({ projects }) => {
 
@@ -21,7 +19,7 @@ const WorkExpanded = ({ projects }) => {
     
     let work = projects[work_id.substring(1, work_id.length)];
 
-    console.log('selected work', work);
+    // console.log('selected work', work);
 
 
     const [mobileTOC, setMobileTOC] = useState(false);
@@ -178,8 +176,8 @@ const WorkExpanded = ({ projects }) => {
                     <DateClass>
                         {/* <Fancy> &#123; </Fancy> */}
                             {/* <InsideHeaderContainer> */}
-                                <Date>{work.semester} <CaseStudy isCS={is_cs}> Case Study</CaseStudy></Date>
-                                <Class>{work.class}</Class>
+                                <CaseStudy isCS={is_cs}> Case Study</CaseStudy>
+                                {/* <Class>{work.class}</Class> */}
                             {/* </InsideHeaderContainer> */}
                         {/* <Fancy> &#125; </Fancy> */}
                     </DateClass>
@@ -414,7 +412,7 @@ const WorkExpanded = ({ projects }) => {
                     duration: 0.7,
                 }}
             >
-                <Back to="/works">← All Projects</Back>
+                <Back to="/">← All Projects</Back>
                 <CaseStudy2>Case Study</CaseStudy2>
                 <LeftTitle>{work.name}</LeftTitle>
                 {/* <Visit href={"https://www.junehomes.com"} target="_blank">Visit ↗</Visit> */}
@@ -432,27 +430,31 @@ const WorkExpanded = ({ projects }) => {
                     duration: 0.6,
                 }}
             >
-                    <p style={{ paddingBottom: '6px' }}> {showTOC ? 'Table of Contents' : ''}</p>
-                    {table_of_contents}
+                <p style={{ paddingBottom: '6px' }}> {showTOC ? 'Table of Contents' : ''}</p>
+                {table_of_contents}
             </TableOfContents>
 
             <MobileTOCContainer
-                as={motion.div} 
-                initial={{ x: 0, y: '436px' }}
-                animate={mobileTOC ? {  x: 0, y: '90px' } : { x: 0, y: '436px' }}
+                as={motion.div}
+                initial={{ x: 0, y: '100vh' }}
+                animate={mobileTOC ? {  x: 0, y: '15vh' } : { x: 0, y: '100vh' }}
                 transition={{
                 type: "tween",
                 ease: [0.28, 1.35, 1.5, .91],
                 duration: 0.35  
                 }}
             >
-                <DividerTOC onClick={toggleMobileTOC}>
-                    <MobileTOCLabel>Table of Contents ☰</MobileTOCLabel>
-                </DividerTOC>
+                <CloseTOC onClick={toggleMobileTOC}>✕</CloseTOC>
                 <MobileTOC>
                     {table_of_contents}
                 </MobileTOC>
             </MobileTOCContainer>
+
+            <MobileTOCToggle>
+                <DividerTOC onClick={toggleMobileTOC}>
+                    <MobileTOCLabel>Table of Contents ☰</MobileTOCLabel>
+                </DividerTOC>
+            </MobileTOCToggle>
         </Container>
     );
 };
