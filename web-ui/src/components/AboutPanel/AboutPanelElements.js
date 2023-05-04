@@ -29,9 +29,10 @@ export const Content = styled.div`
     overflow: hidden;
     width: 100%;
     z-index: 999;
+    padding-right: 22px;
     padding-left: 20px;
-    pointer-events: none;
     padding-top: 20px;
+    pointer-events: none;
 
     text-align: left;
 
@@ -71,14 +72,14 @@ export const Styled1 = styled.span`
 
 export const Styled2 = styled.div`
     display: flex;
-    padding-left: 22px;
+    // padding-left: 22px;
     width: 100%;
     margin-top: 40px;
     
     color: #CCCCCC;
     font-size: 14px;
     font-family: 'OpenSans';
-    line-height: 19px;
+    line-height: 20px;
 `
 
 export const Bottom = styled.div`

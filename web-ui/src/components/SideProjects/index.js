@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useInView, inView, InView } from 'react-intersection-observer';
 import { connect } from "react-redux";
+import { useLocation } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { Link as LinkRouter } from 'react-router-dom';
 import {
@@ -25,6 +26,18 @@ import {
 const SideProjects = ({ projects, sideProjectsToggle }) => {
 
   const [projectValue, setProjectValue] = useState(0);
+
+  // const location = useLocation();
+
+  // const [isMain, setIsMain] = useState(false);
+
+  // if (location.pathname === "") {
+  //   setIsMain(true);
+  // }
+
+  const location = useLocation();
+    
+  let currPage = location.pathname.split("/").pop();
 
   const ListContainerRef = useRef();
 
@@ -147,7 +160,16 @@ const SideProjects = ({ projects, sideProjectsToggle }) => {
 
 
   return (
-    <Container>
+    <Container
+      as={motion.div} 
+      initial={{ opacity: 1, y: '0vh' }} 
+      animate={(currPage == '') ? {  opacity: 0, y: '-100vh' } : { opacity: 1, y: '0vh' }}
+      transition={{
+      type: "tween",
+      ease: [0.28, 1.35, 1.5, .91],
+      duration: 0.3
+      }}
+    >
       <Label>Work Photo Index</Label>
       <Version>v2.13</Version>
       <ScrollContainer

@@ -13,8 +13,8 @@ export const Container = styled(motion.div)`
   height: 103px;
   width: 70vw;
   // background: rgba(70, 70, 70, 0.60);
-  background: rgba(55, 55, 55, 0.65); // Make sure this color has an opacity of less than 1
-  backdrop-filter: blur(20px); // This be the blur
+  background: rgba(55, 55, 55, 0.75); // Make sure this color has an opacity of less than 1
+  backdrop-filter: blur(11px); // This be the blur
   border-bottom: .5px solid #403F3F;
   border-left: .5px solid #403F3F;
 

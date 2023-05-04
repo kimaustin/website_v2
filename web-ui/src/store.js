@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from 'redux';
-import { get_all_projects } from './api';
+import { get_all_projects, fetch_projects } from './api';
 
 //--------------------------SESSION--------------------------
 function save_session(sess) {
@@ -77,6 +77,7 @@ function root_reducer(state, action) {
 }
 
 get_all_projects();
+// fetch_projects();
 
 let preloadedState;
 const persistedProjectsString = localStorage.getItem('projects');

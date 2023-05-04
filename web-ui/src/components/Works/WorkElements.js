@@ -6,10 +6,11 @@ import { motion } from "framer-motion";
 export const Container = styled(motion.div)`
   position: fixed;
   left: 0;
-  top: 103px;
+  // top: 103px;
+  top: 0;
   z-index: 998;
   width: 100vw;
-  height: calc(100vh - 103px);
+  height: calc(100vh);
 
   ::-webkit-scrollbar {
     display: none;
@@ -41,10 +42,10 @@ export const WorkListContainer = styled.div`
   width: calc(100vw);
   height: calc(100vh - 103px + 103px);
   overflow-y: scroll;
-  padding-bottom: calc(50vh - 62px + 21px);
+  padding-bottom: calc(51vh - 62px + 22px);
   // padding-top: calc(44vh - 94px);
   padding-top: calc(48vh - 128px - 21px + 103px);
-  padding-left: 24px;
+  padding-left: 20px;
   padding-right: calc(70vw + 28px);
   z-index: 999;
 
@@ -60,7 +61,7 @@ export const WorkListContainer = styled.div`
   @media screen and (max-width: 767px) {
     z-index: 998;
     width: 100vw;
-    padding-left: 16px;
+    padding-left: 14px;
     padding-top: calc(48vh - 128px - 16px + 103px);
     padding-bottom: calc(50vh - 62px + 42px);
   }
@@ -112,7 +113,7 @@ border-bottom: 4px solid #FFFFFF;
 `;
 
 
-export const ClickableArea = styled(LinkRouter)`
+export const ClickableArea = styled.div`
   z-index: 999;
   // display: inline-grid;
   // grid-template-columns: 1fr 1fr;
@@ -120,13 +121,13 @@ export const ClickableArea = styled(LinkRouter)`
   // top: 103px;
   left: 30vw;
   bottom: 0;
-  padding-top: 2.8vh;
+  // padding-top: 2.8vh;
   // padding-top: calc(49vh - 103px);
   // margin-left: 30vw;
   height: 8vh;
   // height: calc(100vh - 103px);
   width: 70vw;
-  background: rgba(89, 86, 98, 0.3);
+  background: rgba(89, 86, 98, 0.35);
   // opacity: 0;
   backdrop-filter: blur(14px);
 
@@ -135,16 +136,24 @@ export const ClickableArea = styled(LinkRouter)`
   text-decoration: none;
   color: black;
   text-align: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+
+  color: #FFFFFF;
+  font-size: 19px;
+  font-family: "OpenSans";
 
   &:hover {
     background: rgba(140, 140, 140, 0.8);
     backdrop-filter: blur(6px);
+    color: #E3E3E3;
   }
 
   @media screen and (max-width: 767px) {
     left: unset;
     right: 16px;
-    margin-bottom: 90px;
+    margin-bottom: 70px;
     width: calc(18vw - 16px);
     text-align: right;
     display: grid;
@@ -167,7 +176,7 @@ export const WorkItem = styled.div`
   // display: grid;
   // grid-template-rows: 24px 1fr;
 
-  margin-bottom: 38px;
+  margin-bottom: 28px;
 
   scroll-margin-top: calc(48vh - 128px - 21px + 103px);
 
@@ -182,7 +191,8 @@ export const WorkItem = styled.div`
 
   @media screen and (max-width: 767px) {
     width: calc(82vw - 16px);
-    margin-bottom: 20px;    
+    scroll-margin-top: calc(48vh - 2px - 30px);
+    margin-bottom: 18px;    
   }
 `;
 
@@ -196,7 +206,7 @@ export const DeskWorkItem = styled.div`
   transition: 5s scale ease-in-out;
 
   color: #FFFFFF;
-  padding: 0 .25rem;
+  padding: 0 4px;
 
   &:hover {
     opacity: 1;
@@ -214,7 +224,7 @@ export const MobileWorkItem = styled.div`
     transition: 5s scale ease-in-out;
 
     color: #FFFFFF;
-    padding: 0 .25rem;
+    padding: 0 4px;
 
     display: grid;
     grid-template-rows: 24px 1fr;
@@ -230,8 +240,8 @@ export const TopLine = styled.div`
   // grid-template-columns: 20px 1fr 6fr;
   // grid-template-rows: 1fr;
   // height: 8px;
-  align-items: end;
-  text-align: right;
+  align-items: start;
+  text-align: left;
 
   // border: 1px solid pink;
   
@@ -285,7 +295,7 @@ export const CaseStudy = styled.a`
   font-family: "SS3";
   font-size: 12px;
   letter-spacing: .25px;
-  text-align: right;
+  text-align: left;
   text-transform: uppercase;
   margin-right: 2px;
 
@@ -314,9 +324,9 @@ export const BottomWork = styled.div`
 
 export const WorkTitle = styled.div`
   // width: 100%;
-  float: right;
-  text-align: right;
-  align-items: end;
+  float: left;
+  text-align: start;
+  align-items: start;
   // margin-top: 20px;
 
   font-family: "SS3";
@@ -330,7 +340,7 @@ export const WorkTitle = styled.div`
     float: left;
     text-align: left;
     align-items: start;
-    width: 
+    width: 96%;
   }
 `
 
@@ -620,8 +630,8 @@ export const TagsContainer = styled.div`
   display: inline-block;
   // position: relative;
   // bottom: 0;
-  align-items: end;
-  text-align: right;
+  align-items: start;
+  text-align: left;
 
   @media screen and (max-width: 767px) {
     // margin-top: -20px;
@@ -635,7 +645,7 @@ export const ProjectTag = styled.a`
   // height: 26px;
   font-size: 12px;
   // writing-mode: vertical-rl;
-  padding-left: 8px;
+  padding-right: 7px;
   // overflow: hidden; 
   // text-overflow: ellipsis;
 
@@ -647,23 +657,19 @@ export const ProjectTag = styled.a`
 `;
 
 export const Details = styled(LinkRouter)`
-  // float: right;
-  // text-align: center;
-  // align-items: center;
-  // justify-content: center;
-  // padding-top: 47vh;
-  // padding-top: 2.8vh;
-  // width: 100%;
-  // height: 100%;
-  opacity: 0.8;
+  z-index: 1000;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  opacity: 0.9;
+  width: 70vw;
+  height: 8vh;
+  padding-top: 2.6vh;
+  // padding-right: 48%;
   
-  // width: 35vw;
-  // height: calc(100vh - 103px);
-  // margin-right: 16px;
-
-  // background: rgba(140, 140, 140, 0.1);
-  // opacity: 0.5;
-  // backdrop-filter: blur(12px);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 
   text-decoration: none;
   color: #FFFFFF;
@@ -672,9 +678,11 @@ export const Details = styled(LinkRouter)`
 
   @media screen and (max-width: 767px) {
     // background: blue;
-    opacity: 1;
-    float: right;
-    text-align: right;
+    // opacity: 1;
+    // font-size: 14px;
+    // float: right;
+    // text-align: right;
+    display: none;
   }
 `
 
@@ -718,7 +726,8 @@ export const VisitLink = styled.a`
 export const ContentBg = styled.div`
   /* z-index: -1; */
   position: fixed;
-  top: 103px;
+  // top: 103px;
+  top: 0;
   left: 30vw;
   height: calc(100vh);
   width: 70vw;
@@ -743,7 +752,7 @@ export const ContentBg = styled.div`
 
   @media screen and (max-width: 767px) {
     z-index: 999;
-    top: 84px;
+    top: 0;
     left: 0;
     width: 100vw;
     height: 18vh;
@@ -759,8 +768,8 @@ export const BgBlur = styled.div`
   height: 100vh;
   width: 70vw;
   /* overflow: hidden; */
-  background: rgba(100, 100, 100, 0.45); // Make sure this color has an opacity of less than 1
-  backdrop-filter: blur(24px); // This be the blur
+  background: rgba(100, 100, 100, 0.35); // Make sure this color has an opacity of less than 1
+  backdrop-filter: blur(22px); // This be the blur
 
   @media screen and (max-width: 767px) {
     left: 0;

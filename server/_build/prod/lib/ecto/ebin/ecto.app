@@ -83,5 +83,5 @@
                         'Elixir.Mix.Tasks.Ecto.Drop',
                         'Elixir.Mix.Tasks.Ecto.Gen.Repo']},
               {registered,[]},
-              {vsn,"3.7.1"},
+              {vsn,"3.9.4"},
               {mod,{'Elixir.Ecto.Application',[]}}]}.

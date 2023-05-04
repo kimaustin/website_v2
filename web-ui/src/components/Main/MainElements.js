@@ -70,12 +70,14 @@ export const MainImg = styled.div`
     /* position: absolute; */
     /* left: 0; */
     /* top: 0; */
-    /* left: 50%;
-    top: 50%;
-    transform: translate(0, -50%); */
+    left: 10vw;
+    top: 10vh;
+    // transform: translate(0, -50%); */
     display: block;
-    width: 17.5vw;
-    height: 35vh;
+    width: 90vw;
+    height: 90vh;
+
+    opacity: 0.4;
 
     justify-content: center;
     align-items: center;
@@ -83,7 +85,8 @@ export const MainImg = styled.div`
 
     img {
         /* max-height: 35vh; */
-        width: 100%;
+        max-height: 90vh;
+        max-width: 90vw;
         /* max-width: 17.5vw; */
         /* width: 18vw; */
         object-fit: cover;
@@ -191,26 +194,29 @@ export const ButtonContainer = styled.div`
 
 export const DownButton = styled(LinkRouter)`
     /* position: absolute; */
-    position: relative;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
     /* left: 0; */
     /* top: 0; */
     /* width: 100; */
     /* bottom: 42vh; */
     /* margin-top: 2rem; */
+    // padding-left: .95rem;
+    padding-top: 48.5vh;
+    // padding-right: .95rem;
+    // padding-bottom: .5rem;
+    // padding: auto;
 
-    padding-left: .95rem;
-    padding-top: .45rem;
-    padding-right: .95rem;
-    padding-bottom: .5rem;
-
-    font-size: 1.7vh;
-    font-family: 'OpenSans';
+    color: white;
+    font-size: 19px;
+    font-family: 'SS3';
     /* letter-spacing: -.01rem; */
     /* border-bottom: 1px solid #201D17; */
-    text-transform: uppercase;
+    // text-transform: uppercase;
     text-decoration: none;
-
-    /* border: 1px solid blue; */
 
     text-align: center;
     justify-content: center;
@@ -221,34 +227,12 @@ export const DownButton = styled(LinkRouter)`
     /* background: #FFFDFA; */
     color: #FFFFFF;
 
-    position: absolute;
-    /* left: 0; */
-    top: calc(60% + 21vh);
-    left: 43vw;
-    /* top: 100%; */
-    /* top: calc(50% + 18%); */
-    /* transform: translate(0, -50%); */
-    /* width: 100vw; */
-    width: 14vw;
-
-    cursor: pointer;
-    
     &:hover {
-        /* color: #FDFEF5;
-        background: #201D17; */
-        /* transform: skew(-2deg); */
-        transform: rotateZ(10deg);
         opacity: 0.5;
     }
 
-    @media screen and (max-width: 811px) {
-        /* width: 30%; */
-        /* padding-left: 2.5%; */
-        /* left: 65.5%; */
-        /* bottom: 8%; */
-
-        letter-spacing: -.035rem;
-        font-size: 1rem;
+    @media screen and (max-width: 767px) {
+        font-size: 14px;
     }
 `;
 

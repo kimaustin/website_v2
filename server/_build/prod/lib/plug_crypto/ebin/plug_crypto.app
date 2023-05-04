@@ -6,5 +6,5 @@
                         'Elixir.Plug.Crypto.MessageEncryptor',
                         'Elixir.Plug.Crypto.MessageVerifier']},
               {registered,[]},
-              {vsn,"1.2.2"},
+              {vsn,"1.2.5"},
               {mod,{'Elixir.Plug.Crypto.Application',[]}}]}.

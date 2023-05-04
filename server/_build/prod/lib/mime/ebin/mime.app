@@ -4,5 +4,5 @@
               {description,"A MIME type module for Elixir"},
               {modules,['Elixir.MIME']},
               {registered,[]},
-              {vsn,"2.0.2"},
+              {vsn,"2.0.3"},
               {env,[]}]}.

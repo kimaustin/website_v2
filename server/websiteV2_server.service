@@ -1,0 +1,18 @@
+[Unit]
+Description=WebSiteV2_Server
+
+[Service]
+Type=simple
+User=portfolio
+Group=portfolio
+Restart=on-failure
+Environment=MIX_ENV=prod
+Environment=PORT=6111
+Environment=PROD=true
+Environment=LANG=en_US.UTF-8
+
+WorkingDirectory=/home/portfolio/v2/server
+ExecStart=/bin/bash /home/portfolio/v2/server/start.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { useLocation } from 'react-router-dom';
 import AboutPanel from '../AboutPanel';
-import { Container, NavContainer, MobileMenuToggle, Indicator, OpenMenu, NavDOMLink3, Logo, NavHome, NonMobile, NonMobile1, PhotoIndexContainer, NavDOMLink, NavDOMLink2, NavDOMLinkAbout, InfoLink, Mobile, AboutContainer, Kim, InfoWrapper, Rotating, NonMobile2, Filter, Divider} from './NavigationElements';
+import { Container, NavContainer, MobileAbout, MobileMenuToggle, Indicator, OpenMenu, NavDOMLink3, Logo, NavHome, NonMobile, NonMobile1, PhotoIndexContainer, NavDOMLink, NavDOMLink2, NavDOMLinkAbout, InfoLink, Mobile, AboutContainer, Kim, InfoWrapper, Rotating, NonMobile2, Filter, Divider} from './NavigationElements';
 
 const Navigation = ({toggle, aboutToggle, mobileToggle}) => {
 
@@ -85,7 +85,16 @@ const Navigation = ({toggle, aboutToggle, mobileToggle}) => {
         // <Container currPage={currPage} as={motion.div} initial={{ x: '0', y: '0' }} 
         //     animate={aboutToggle ? {  x: '25vw', y: 0 } : { x: '0', y: '0' }}
         //     transition={pageTransition}>
-        <Container>
+        <Container
+            as={motion.div} 
+            initial={{ opacity: 1, y: '0vh' }} 
+            animate={(currPage == '') ? {  opacity: 0, y: '-100vh' } : { opacity: 1, y: '0vh' }}
+            transition={{
+            type: "tween",
+            ease: [0.28, 1.35, 1.5, .91],
+            duration: 0.3
+            }}
+        >
             {/* <Divider /> */}
             <Indicator currpage={currPage}
                 as={motion.div} 
@@ -99,8 +108,9 @@ const Navigation = ({toggle, aboutToggle, mobileToggle}) => {
                 <AboutPanel />
             </AboutContainer> */}
             <NonMobile>
-                <NavHome currpage={currPage} thispage={'works'} to="/works"><Logo /><a style={{ marginLeft: '8px', marginTop: '0' }}>호연</a></NavHome>
-                <MobileMenuToggle onClick={mobileToggle}>Menu</MobileMenuToggle>
+                <NavHome currpage={currPage} thispage={''} to="/"><Logo /><a style={{ marginLeft: '8px', marginTop: '0' }}>호연</a></NavHome>
+                <MobileMenuToggle onClick={mobileToggle}>Menu/About</MobileMenuToggle>
+                {/* <MobileAbout onClick={mobileToggle}>Menu</MobileAbout> */}
             </NonMobile>
             <NonMobile1>
                 <NavDOMLinkAbout currpage={aboutToggle} thispage={true} onClick={() => toggle('info')}>About/Contact</NavDOMLinkAbout>
@@ -118,7 +128,7 @@ const Navigation = ({toggle, aboutToggle, mobileToggle}) => {
                 //     delay: 1 * 0.12,
                 // }}
             >
-                <NavDOMLink2 currpage={currPage} thispage={'works'} to="/">
+                <NavDOMLink2 currpage={currPage} thispage={'works'} to="/works">
                     Work
                 </NavDOMLink2>
                 {/* <NavDOMLink3 currpage={currPage} thispage={'test'} to="/test">

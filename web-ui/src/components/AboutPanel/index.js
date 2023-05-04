@@ -34,10 +34,10 @@ const About = ({ toggle, aboutToggle }) => {
           <Styled2 style={{ marginTop: '12px' }}>I love experimenting with new technologies, techniques, patterns, styles, and sounds.</Styled2>
         </Content>
         <Bottom>
-          <Social onClick={() => window.open("imgs/ResumeFall2021.pdf")} target="_blank">Resume ↗</Social>
+          <Social onClick={() => window.open("/imgs/Resume_Spring23.pdf")} target="_blank">Resume ↗</Social>
           <Social href="https://www.instagram.com/nektine/" target="_blank">Instagram ↗</Social>
           <Social href="mailto:nektinemedia@gmail.com" target="_blank">Email ↗</Social>
-          <Styled1 style={{paddingTop: '30px' }}>Last Updated: Apr 2, 2023</Styled1>
+          <Styled1 style={{paddingTop: '30px' }}>Last Updated: May 4, 2023</Styled1>
           <Styled1 style={{paddingTop: '6px', paddingBottom: '40px'}}>Built by me in React (framer, styled-components) + Elixir.</Styled1>
           <Close onClick={toggle}>Close ✕</Close>
         </Bottom>

@@ -8,9 +8,11 @@ defmodule Portfolio.Repo.Migrations.CreateProjects do
       add :class_short, :string
       add :semester, :string
       add :desc, :text
-      add :imgs, {:array, :string}
+      add :imgs, {:array, :text}
       add :tags, {:array, :string}
       add :type, :integer
+      add :link, :string
+      add :isCS, :boolean
 
       timestamps()
     end

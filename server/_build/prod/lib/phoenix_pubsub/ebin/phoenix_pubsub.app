@@ -6,6 +6,7 @@
                         'Elixir.Phoenix.PubSub.Application',
                         'Elixir.Phoenix.PubSub.BroadcastError',
                         'Elixir.Phoenix.PubSub.PG2',
+                        'Elixir.Phoenix.PubSub.PG2Worker',
                         'Elixir.Phoenix.PubSub.Supervisor',
                         'Elixir.Phoenix.Tracker',
                         'Elixir.Phoenix.Tracker.Clock',
@@ -14,5 +15,5 @@
                         'Elixir.Phoenix.Tracker.Shard',
                         'Elixir.Phoenix.Tracker.State']},
               {registered,[]},
-              {vsn,"2.0.0"},
+              {vsn,"2.1.1"},
               {mod,{'Elixir.Phoenix.PubSub.Application',[]}}]}.

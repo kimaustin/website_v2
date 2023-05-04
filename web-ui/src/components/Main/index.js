@@ -14,24 +14,18 @@ const Main = ({projects}) => {
 
     const descVariants = {
         initial: {
-            y: '50vh',
-            x: 0,
             opacity: 0,
           },
           in: {
-            y: '0vh',
             opacity: 1,
-            x: 0,
             transition: {
               type: "tween",
               ease: [0.87, 0, 0.13, 1],
-              duration: 1.2,
-              delay: .2,
+              duration: 1,
               }
           },
           out: {
-            y: '50vh',
-            x: '0'
+            opacity: 0,
           }
     }
 
@@ -111,12 +105,12 @@ const Main = ({projects}) => {
         initial: {
             opacity: 0,
             // x: "-100vw",
-            scale: 0.8
+            // scale: 0.8
         },
         in: {
             opacity: 1,
-            x: 0,
-            scale: 1
+            // x: 0,
+            // scale: 1
         },
         out: {
             // scale: 0.2,
@@ -158,20 +152,20 @@ const Main = ({projects}) => {
                 >
                     Hello,
             </Header> */}
-            {/* <MainImg> */}
-                {/* <ProgressiveImages
-                    src={require("imgs/me2.jpeg")}
+            <MainImg>
+                {/* <ProgressiveImage
+                    src={require("/imgs/sample.jpeg")}
                 > */}
-            {/* <img 
-                as={motion.img} initial="initial"
-                animate="in"
-                exit="out"
-                variants={imgVariants}
-                transition={pageTransition}
-                src={"imgs/me2.jpeg"} onerror='this.style.display = "none"' alt={'Me'}>
-            </img> */}
+                  <img 
+                      as={motion.img} initial="initial"
+                      animate="in"
+                      exit="out"
+                      variants={imgVariants}
+                      transition={pageTransition}
+                      src={"/imgs/sample.jpeg"} onerror='this.style.display = "none"' alt={'Me'}>
+                  </img>
                 {/* </ProgressiveImage> */}
-            {/* </MainImg> */}
+            </MainImg>
             {/* <MainDesc 
                 as={motion.div} initial="initial"
                 animate="in"
@@ -181,14 +175,15 @@ const Main = ({projects}) => {
                 >I'm Austin, a web/UX/UI/graphic <br />designer with a background in Computer <br />Science and Design.<br />
             </MainDesc> */}
             <ButtonContainer
-                as={motion.div}
-                initial="initial"
-                animate="in"
-                exit="out"
-                variants={btnVariants}
-                transition={pageTransition}>
-                <DownButton to={"/"}>
-                  → View Projects ←
+                // as={motion.div}
+                // initial="initial"
+                // animate="in"
+                // exit="out"
+                // variants={descVariants}
+                // transition={pageTransition}
+              >
+                <DownButton to={"/works"}>
+                  Click to enter site
                   {/* <lilMove>→</lilMove> */}
                 </DownButton>
             </ButtonContainer>

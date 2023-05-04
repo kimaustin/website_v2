@@ -7,9 +7,10 @@ export const Container = styled.div`
     position: fixed;
     /* margin: 1rem; */
     left: 0;
-    top: 103px;
+    top: 0;
+    // top: 103px;
     width: 100vw;
-    height: calc(100vh - 103px);
+    height: calc(100vh);
 
     /* top: 6.6vh; */
     /* overflow-y: scroll;
@@ -33,17 +34,19 @@ export const Container = styled.div`
 export const WorkContent = styled.div`
     z-index: 990;
     position: fixed;
-    left: ${({ isCS }) => (isCS ? '16vw' : '24vw')};
-    top: 103px;
-    height: calc(100vh - 103px);
+    left: ${({ isCS }) => (isCS ? '16vw' : '26vw')};
+    top: 0;
+    // top: 103px;
+    height: calc(100vh);
+    // height: calc(100vh - 103px);
     // width: calc(72vw + 48px);
-    width: calc(68vw - 20px + 12px);
+    width: ${({ isCS }) => (isCS ? 'calc(68vw - 20px + 12px)' : 'calc(74vw + 14px)')};
 
     align-items: left;
     padding-bottom: 100px;
-    padding-top: 0px;
+    padding-top: calc(70px + 103px);
     padding-left: 20px;
-    padding-right: 32px;
+    padding-right: ${({ isCS }) => (isCS ? '32px' : 'calc(14px + 8vw)')};
 
     // background: rgba(64, 63, 63, 0.3);
     // border: 1px solid blue;
@@ -54,11 +57,14 @@ export const WorkContent = styled.div`
 
     @media screen and (max-width: 767px) {
         left: 0;
-        top: 128px;
+        // top: 128px;
         width: calc(100vw + 14px);
-        height: calc(100vh - 124px - 90px);
+        // height: calc(100vh - 124px - 90px);
+        height: 100vh;
         padding-left: 14px;
         padding-right: 28px;
+        // padding-bottom: 90px;
+        padding-top: 128px;
     }
 `
 
@@ -66,17 +72,18 @@ export const TopSticky = styled.div`
     z-index: 999;
     position: fixed;
     top: 125px;
-    left: ${({ isCS }) => (isCS ? 'calc(16vw + 20px)' : 'calc(24vw + 20px)')};
+    left: ${({ isCS }) => (isCS ? 'calc(16vw + 20px)' : 'calc(26vw + 20px)')};
     width: calc(68vw - 80px + 12px);
     height: 18px;
     display: inline-grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 
     // background: green;
     // border: 1px solid white;
 
     @media screen and (max-width: 767px) {
         // display: none;
+        grid-template-columns: 1fr 1fr;
         top: 146px;
         padding-top: 1px;
         left: unset;
@@ -89,8 +96,11 @@ export const Header = styled.div`
     align-items: start;
     padding-top: 0px;
     padding-bottom: 40px;
-    margin-left: 12%;
-    width: 76%;
+    // margin-left: 12%;
+    width: 100%;
+
+    margin-left: 0;
+    // width: 100%;
 
     // border: 1px solid blue;
 
@@ -126,6 +136,8 @@ export const Date = styled.div`
     // padding-bottom: 2px;
     font-family: "SS3";
     font-size: 12px;
+    line-height: 145%;
+    letter-spacing: 0.15px;
     color: #9E9E9E;
 
     // border: 1px solid blue;
@@ -173,7 +185,7 @@ export const LeftTitle = styled.div`
     align-items: start;
     font-size: 14px;
     color: white;
-    line-height: 133%; 
+    line-height: 138%; 
 
     display: inline-grid;
 
@@ -205,7 +217,7 @@ export const Overview = styled.div`
     color: #F6F6F6;
     font-family: "SS3";
     font-size: 30px;
-    line-height: 121%;
+    line-height: 124%;
     font-weight: 500;
 
     @media screen and (max-width: 767px) {
@@ -226,11 +238,11 @@ export const PicContainer = styled.div`
     // height: calc(88vh - 103px);
     // padding-left: 12%;
     margin-bottom: ${({ isLast }) => isLast ? '3.6vh' : '30px'};
-    margin-top: 12px;
+    margin-top: 14px;
     // height: calc(90vh);
     // border: 2px solid blue;
-    align-items: center;
-    text-align: center;
+    align-items: start;
+    text-align: left;
     position: relative;
     // position: ${({isLast}) => isLast ? 'sticky' : 'relative'};
     // overflow: hidden;
@@ -244,7 +256,7 @@ export const PicContainer = styled.div`
         object-fit: scale-down;
         // max-height: 100%;
         // max-width: 100%;
-        max-height: 84vh;
+        max-height: 83vh;
         max-width: calc(68vw - 80px + 12px);
         // width: 80vw;
         z-index: -1;
@@ -266,13 +278,14 @@ export const PicContainer = styled.div`
 
 export const Subsection = styled.div`
     position: relative;
-    margin-left: 12%;
+    // margin-left: 12%;
+    margin-left: 0;
     /* width: calc(62.1% - 4rem); */
     width: 76%;
     // top: 0;
-    padding-top: 28px;
-    padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '16px'};
-    scroll-margin-top: 20px;
+    padding-top: 34px;
+    padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '20px'};
+    scroll-margin-top: 158px;
 
     /* border: 2px solid blue; */
 
@@ -283,6 +296,7 @@ export const Subsection = styled.div`
     /* align-items: right; */
 
     @media screen and (max-width: 767px) {
+        scroll-margin-top: 178px;
         width: 100%;
         margin-left: 0;
         // padding-top: 28px;
@@ -292,13 +306,17 @@ export const Subsection = styled.div`
 
 export const Sub2 = styled.div`
     position: relative;
-    margin-left: 12%;
+    // margin-left: 12%;
     /* width: calc(62.1% - 4rem); */
     width: 76%;
+    // width: 100%;
+    margin-left: 0;
     // max-width: 80ch;
     // top: 0;
+    padding-top: 4px;
     padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '16px'};
-    scroll-margin-top: 20px;
+    // scroll-margin-top: calc(103px + 20px);
+    scroll-margin-top: 158px;
 
     /* border: 2px solid blue; */
 
@@ -310,20 +328,24 @@ export const Sub2 = styled.div`
     /* align-items: right; */
 
     @media screen and (max-width: 767px) {
+        padding-top: unset;
         width: 100%;
+        scroll-margin-top: 178px;
         margin-left: 0;
     }
 `
 
 export const InlineLink = styled.div`
     position: relative;
-    margin-left: 12%;
+    // margin-left: 12%;
+    margin-left: 0;
     /* width: calc(62.1% - 4rem); */
-    width: 76%;
-    // max-width: 80ch;
+    // width: 100%;
+    // width: 76%;
+    max-width: 80ch;
     top: 0;
     padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '16px'};
-    scroll-margin-top: 18px;
+    scroll-margin-top: 158px;
 
     /* border: 2px solid blue; */
 
@@ -340,6 +362,7 @@ export const InlineLink = styled.div`
     }
 
     @media screen and (max-width: 767px) {
+        scroll-margin-top: 178px;
         margin-left: 0;
         width: 100%;
     }
@@ -347,11 +370,12 @@ export const InlineLink = styled.div`
 
 export const Desc = styled.p`
     position: relative;
-    margin-left: 12%;
-    margin-top: -10px;
+    // margin-left: 12%;
+    margin-left: 0;
+    margin-top: -6px;
     /* width: calc(62.1% - 4rem); */
-    width: 76%;
-    // max-width: 80ch;
+    // width: 76%;
+    max-width: 80ch;
     // max-width: 600px;
     // top: 0;
     padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '24px'};
@@ -406,6 +430,56 @@ export const Controls = styled.div`
     }   
 `
 
+export const NavButtons = styled.div`
+    z-index: 999;
+    position: absolute;
+    left: 0;
+    bottom: calc(50px);
+    width: calc(100% - 26px);
+    // cursor: pointer;
+    /* border: 1.5px solid black; */
+`
+
+export const WorkNav = styled(LinkRouter)`
+    // width: 3vw;  
+    // height: 3vw;
+    // padding-right: 1rem;
+
+    font-size: 14px;
+    font-family: "SS3";
+    padding-bottom: 6px;
+
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        opacity: 0.6;
+    }
+`
+
+export const NextWork = styled(LinkRouter)`
+    width: 3vw;
+    height: 3vw;
+
+    font-size: 1rem;
+    font-family: "JejuMyeongjo";
+
+    color: #201D17;
+    text-decoration: none;
+
+    cursor: pointer;
+    /* opacity: ${({isLast}) => (isLast ? '0.4' : '1')}; */
+    /* pointer-events: ${({ isLast }) => (isLast ? 'none' : 'auto')}; */
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+        /* background: black; */
+        /* color: white; */
+        opacity: 0.6;
+    }
+`
+
 export const Back = styled(LinkRouter)`
     /* height: 2.8vw; */
     color: #FFFFFF;
@@ -457,14 +531,14 @@ export const TableOfContents = styled.div`
 
     z-index: 999;
     position fixed;
-    right: 28px;
+    right: 20px;
     top: 103px;
     // width: calc(100vw -);
     width: 16vw;
     height: calc(100vh - 103px);
 
     padding-top: 20px;
-    padding-left: 20px;
+    padding-left: 22px;
     // padding-bottom: 20px;
     padding-right: 26px;
     
@@ -476,9 +550,10 @@ export const TableOfContents = styled.div`
 
     p {
         color: #FFFFFF;
+        opacity: 0.9;
         font-family: "OpenSans";
         font-weight: 600;
-        font-size: 14px;
+        font-size: 19px;
     }
 
     @media screen and (max-width: 767px) {
@@ -494,7 +569,7 @@ export const MobileTOCContainer = styled.div`
         position: fixed;
         display: grid;
         width: 100vw;
-        height: 60vh;
+        height: 70vh;
         // height: 100vh;
         // height: calc(100vh + 180px);
         // top: 0;
@@ -505,7 +580,7 @@ export const MobileTOCContainer = styled.div`
         // padding: 8px 14px 118px 14px;
         border-top: 1px solid #313131;
 
-        background: rgba(50, 50, 50, 0.65);
+        background: rgba(50, 50, 50, 0.6);
         backdrop-filter: blur(12px);
         // overflow-x: hidden;
         // overflow-y: scroll;
@@ -526,7 +601,7 @@ export const MobileTOC = styled.div`
     width: 100%;
     padding-left: 14px;
     padding-right: 14px;
-    padding-bottom: 90px;
+    padding-bottom: 100px;
     padding-top: 16px;
 `
 
@@ -534,7 +609,7 @@ export const MobileTOCToggle = styled.div`
     display: none;    
 
     @media screen and (max-width: 767px) {
-        display: block;
+        display: ${({ isCS }) => (isCS ? 'block' : 'none')};
         z-index: 1000;
         position: fixed;
         left: 0;
@@ -578,9 +653,12 @@ export const MobileTOCLabel = styled.div`
 `
 
 export const TOCItem = styled.div`
-    padding-top: 20px;
-    color: #A3A3A3;
+    padding-top: 30px;
+    padding-bottom: 4px;
+    color: #FFFFFF;
     font-family: "SS3";
+    font-weight: 500;
+    letter-spacing: 0.2px;
     font-size: 14px;
 
     &:hover {
@@ -593,31 +671,33 @@ export const TOCItem = styled.div`
     @media screen and (max-width: 767px) {
         opacity: 0.9;
         color: white;
-        padding-top: 24px;
+        padding-top: 22px;
+        padding-bottom: 2px;
         font-size: 19px;
     }
 `
 
 export const TOCItem2 = styled.div`
-    padding-top: 10px;
-    margin-left: 14px;
-    color: #A3A3A3;
+    padding-top: 8px;
+    // margin-left: 14px;
+    color: #CACACA;
     font-family: "SS3";
-    font-size: 12px;
-    line-height: 17px;
-    opacity: 0.7;
+    font-size: 14px;
+    line-height: 19px;
+    // opacity: 0.7;
 
     &:hover {
         /* background: black; */
         /* color: white; */
-        opacity: 1;
+        opacity: 0.6;
     }
 
     @media screen and (max-width: 767px) {
-        opacity: 1;
-        padding-top: 14px;
+        color: white;
+        opacity: 0.75;
+        padding-top: 12px;
         font-size: 14px;
-        margin-left: 16px;
+        // margin-left: 16px;
     }
 `
 
@@ -672,23 +752,48 @@ export const Title = styled.h1`
 `
 
 export const TagsContainer = styled.div`
-    display: inline-grid;
-    padding-top: 2px;
-    padding-bottom: 32px;
+    // display: inline-grid;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+
+    // padding-top: 2px;
+    // padding-bottom: 32px;
 
     @media screen and (max-width: 767px) {
-        display: grid;
-        padding-top: 4px;
+        // width: unset;
+        // justify-content: unset;
+        // display: grid;
+        // padding-top: 4px;
         // grid-template-columns: unset;
+        display: none;
+    }
+`
+
+export const MobileTags = styled.div`
+    display: none;
+
+    @media screen and (max-width: 767px) {
+        width: 100%;
+        display: grid;
+        padding-top: 2px;
+        padding-bottom: 20px;
     }
 `
 
 export const Tag = styled.p`
-    padding-bottom: 4px;
+    // padding-bottom: 4px;
+    padding-left: 2px;
+    padding-right: 2px;
 
     color: #949494;
     font-family: "SS3";
-    font-size: 14px;
+    font-size: 12px;
+
+    @media screen and (max-width: 767px) {
+        font-size: 14px;
+        padding-top: 4px;
+    }
 `
 
 export const Details = styled.div`
@@ -808,64 +913,6 @@ export const Top = styled(LinkScroll)`
         color: white;        
     }
 `
-
-export const NavButtons = styled.div`
-    z-index: 998;
-    position: absolute;
-    left: 0;
-    bottom: calc(4vh);
-    cursor: pointer;
-    /* border: 1.5px solid black; */
-`
-
-export const PrevWork = styled(LinkRouter)`
-    width: 3vw;
-    height: 3vw;
-    padding-right: 1rem;
-
-    font-size: 1rem;
-    font-family: "JejuMyeongjo";
-
-    color: #201D17;
-    text-decoration: none;
-    /* opacity: ${({ first }) => (first ? '0.4' : '1')}; */
-    /* pointer-events: ${({ first }) => (first ? 'none' : 'auto')}; */
-    transition: all 0.1s ease-in-out;
-
-    /* opacity: ${({ currId }) => currId === 1 && 0.4};
-    user-select: ${({ currId }) => currId === 1 && 'none'};
-    pointer-events: ${({ currId }) => currId === 1 && 'none'}; */
-
-    &:hover {
-        /* background: black; */
-        /* color: white; */
-        opacity: 0.6;
-    }
-`
-
-export const NextWork = styled(LinkRouter)`
-    width: 3vw;
-    height: 3vw;
-
-    font-size: 1rem;
-    font-family: "JejuMyeongjo";
-
-    color: #201D17;
-    text-decoration: none;
-
-    cursor: pointer;
-    /* opacity: ${({isLast}) => (isLast ? '0.4' : '1')}; */
-    /* pointer-events: ${({ isLast }) => (isLast ? 'none' : 'auto')}; */
-    transition: all 0.1s ease-in-out;
-
-    &:hover {
-        /* background: black; */
-        /* color: white; */
-        opacity: 0.6;
-    }
-`
-
-
 
 
 

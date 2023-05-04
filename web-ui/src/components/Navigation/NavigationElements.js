@@ -10,8 +10,8 @@ export const Container = styled.div`
     /* width: 100vw; */
     /* background: #1E1C1F; */
     // background: green;
-    background: rgba(30, 30, 31, 0.60);
-    backdrop-filter: blur(12px);
+    background: rgba(30, 30, 31, 0.65);
+    backdrop-filter: blur(11px);
     border-bottom: .5px solid #403F3F;
     z-index: 999;
 
@@ -105,7 +105,7 @@ export const Logo = styled.a`
 `
 
 export const NavHome = styled(LinkRouter)`
-    font-size: 13px;
+    font-size: 14px;
     // height: 18px;
     // color: #FFFFFF;
     // text-decoration: none;
@@ -161,6 +161,26 @@ export const MobileMenuToggle = styled.div`
     }
 `;
 
+export const MobileAbout = styled.div`
+    display: none;
+
+    @media screen and (max-width: 767px) {
+        display: inline-grid;
+        // position: absolute;
+        // right: 0;
+        align-items: center;
+        align-content: center;
+        // float: right;
+        text-align: center;
+        // width: 100%;
+        justify-content: center;
+        color: white;
+
+        font-family: 'SS3';
+        font-size: 14px;
+    }
+`
+
 export const NonMobile1 = styled.div`
     padding-top: 16px;
     padding-right: 22px;
@@ -168,6 +188,12 @@ export const NonMobile1 = styled.div`
     float: right;
 
     @media screen and (max-width: 767px) {
+        // padding-right: unset;
+        // float: unset;
+        // text-align: center;
+        // align-items: center;
+        // align-content: center;
+        // justify-content: center;
         display: none;
     }
 `;
@@ -178,7 +204,7 @@ export const NavDOMLink = styled(LinkRouter)`
     /* width: 100%; */
     color: #FFFFFF;
     font-family: 'SS3';
-    font-size: 13px;
+    font-size: 14px;
     /* display: flex; */
     /* align-items: left; */
     text-decoration: none;
@@ -210,7 +236,7 @@ export const NavDOMLinkAbout = styled(LinkRouter)`
     color: #FFFFFF;
     /* display: flex; */
     font-family: 'SS3';
-    font-size: 13px;
+    font-size: 14px;
     /* align-items: left; */
     text-decoration: none;
     /* letter-spacing: -.1rem; */
@@ -261,7 +287,7 @@ export const NavDOMLink2 = styled(LinkRouter)`
 
     color: #D2CACA;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 14px;
     font-family: "SS3";
 
     &:hover {
@@ -287,7 +313,7 @@ export const NavDOMLink3 = styled(LinkRouter)`
 
     color: #D2CACA;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 14px;
     font-family: "SS3";
 
     opacity: 0.5;
@@ -316,7 +342,7 @@ export const Filter = styled.div`
 
   color: #D2CACA;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 14px;
   font-family: "SS3";
 
   &:hover {

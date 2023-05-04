@@ -21,6 +21,7 @@ export const Container = styled.div`
     /* cursor: url("/imgs/cursor1.svg"), auto; */
 
     @media screen and (max-width: 767px) {
+        
     }
 `
 

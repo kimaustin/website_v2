@@ -4,4 +4,4 @@
               {modules,['Elixir.Argon2','Elixir.Argon2.Base',
                         'Elixir.Argon2.Stats']},
               {registered,[]},
-              {vsn,"2.4.0"}]}.
+              {vsn,"2.4.1"}]}.

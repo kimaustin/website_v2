@@ -58,6 +58,7 @@ import { FixedContent } from "./WorkExpandedElements";
 
 // Scrollbar.init(document.querySelector('#my-scrollbar'), options);
 
+
 const Works = ({ projects, aboutToggle }) => {
 
   const [projectDisplayed, setProjectDisplayed] = useState(0);
@@ -362,7 +363,6 @@ const Works = ({ projects, aboutToggle }) => {
   myRefs.push(useRef());
   myRefs.push(useRef());
   myRefs.push(useRef());
-  myRefs.push(useRef());
 
   useEffect (() => {
       // const observer = new IntersectionObserver((projectsList) => {
@@ -505,14 +505,14 @@ const Works = ({ projects, aboutToggle }) => {
   // console.log('current proj index', projectValue);
   // console.log('curr project visit', myProjects[projectValue].link.length);
 
-  let tagsDisplayed = projects[projectValue].tags.map((tag, index) => (
-    <ProjTags
-      tag={tag}
-      key={tag.id}
-      index={index}
-      // tagsLength={4}
-    />
-  ));
+  // let tagsDisplayed = projects[projectValue].tags.map((tag, index) => (
+  //   <ProjTags
+  //     tag={tag}
+  //     key={tag.id}
+  //     index={index}
+  //     // tagsLength={4}
+  //   />
+  // ));
 
   let visit_link = () => {
     if (projects[projectValue].link.length > 0) {
@@ -562,9 +562,9 @@ const Works = ({ projects, aboutToggle }) => {
   //   }
   // });
 
-  let project_content = projects.map((project) => {
-    return <ProjContent project={project} key={project.id} />;
-  });
+  // let project_content = projects.map((project) => {
+  //   return <ProjContent project={project} key={project.id} />;
+  // });
 
   const pageVariants = {
     initial: {
@@ -748,20 +748,22 @@ const Works = ({ projects, aboutToggle }) => {
       </ContentBg>
 
       <ClickableArea
-        as={motion.div}
-        initial={{ y: '20vh' }}
-        animate={{ y: '0', position: 'fixed' }}
-        exit={{ y: '20vh', transition: {
-              type: "tween",
-              ease: [0.7, 0, 0.13, 1],
-              duration: 0.6
-          } }}
-        transition={{
-            type: "tween",
-            ease: [0.7, 0, 0.13, 1],
-            duration: 0.5,
-            delay: 0.5
-        }}
+        // to={"/" + projectValue + "/works"}
+        // id={"proj" + projectValue}
+        // as={motion.div}
+        // initial={{ y: '20vh' }}
+        // animate={{ y: '0', position: 'fixed' }}
+        // exit={{ y: '20vh', transition: {
+        //       type: "tween",
+        //       ease: [0.7, 0, 0.13, 1],
+        //       duration: 0.6
+        //   } }}
+        // transition={{
+        //     type: "tween",
+        //     ease: [0.7, 0, 0.13, 1],
+        //     duration: 0.5,
+        //     delay: 0.5
+        // }}
       >
         {/* <VisitLink href={"http://www.w3schools.com"} target="_blank">
           Visit 
@@ -771,7 +773,7 @@ const Works = ({ projects, aboutToggle }) => {
           to={"/" + projectValue + "/works"}
           id={"proj" + projectValue}
         >
-          View →
+          View Details
         </Details>
       </ClickableArea>
 

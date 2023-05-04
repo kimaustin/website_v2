@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Nav, NavbarContainer, NavLogo, Styled1, Styled2, Styled3, Social, About, Menu, Details1, MobileAboutContainer, Logo, NavHome, Close, NavMenu, NavItem, NavLinksDOM, NavLinksDOM2, NavLinks, CloseBtn, NavBtnLink } from './NavbarElements';
+import { useLocation } from 'react-router-dom';
 import { motion } from "framer-motion";
 
 const Navbar = ({mobileToggle, isOpen}) => {
+
+    const location = useLocation();
+    let currPage = location.pathname.split("/").pop();
 
     const [mobileAbout, setMobileAbout] = useState(false);
 
@@ -18,7 +22,7 @@ const Navbar = ({mobileToggle, isOpen}) => {
 
     return (
         <Container
-            // example_var={mobileAbout}
+            example_var={mobileAbout}
             as={motion.div} initial={{ x: 0, y: '430px' }} 
             animate={isOpen ? {  x: 0, y: 0 } : { x: 0, y: '430px' }}
             transition={{
@@ -37,7 +41,7 @@ const Navbar = ({mobileToggle, isOpen}) => {
                 duration: 0.35
                 }}
             >
-                <NavLinksDOM onClick={mobileToggle} to="/">Work</NavLinksDOM>
+                <NavLinksDOM onClick={mobileToggle} to="/works">Work</NavLinksDOM>
                 {/* <NavLinksDOM onClick={mobileToggle} to="/test">The Lab</NavLinksDOM>
                 <NavLinksDOM onClick={mobileToggle} to="">Photography</NavLinksDOM>
                 <NavLinksDOM onClick={mobileToggle} to="/blog">Blog</NavLinksDOM> */}
@@ -59,7 +63,7 @@ const Navbar = ({mobileToggle, isOpen}) => {
                 <Styled1>Currently based in Brooklyn, NY</Styled1>
                 <Styled2>I’m a multi-disciplinary designer, developer, artist with a passion for building meaningful, impactful, and engaging experiences. I love experimenting with new technologies, techniques, patterns, styles, and sounds.</Styled2>
                 <Styled3>Open for work and collaboration</Styled3>
-                <Social onClick={() => window.open("imgs/ResumeFall2021.pdf")} target="_blank">Resume ↗</Social>
+                <Social onClick={() => window.open("/imgs/Resume_Spring23.pdf")} target="_blank">Resume ↗</Social>
                 <Social href="https://www.instagram.com/nektine/" target="_blank">Instagram ↗</Social>
                 <Social href="mailto:nektinemedia@gmail.com" target="_blank">Email ↗</Social>
             </MobileAboutContainer>

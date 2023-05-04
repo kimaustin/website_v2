@@ -73,14 +73,16 @@ function App() {
       <AboutPanel aboutToggle={aboutToggle} toggle={toggleAbout}><Close onClick={toggleAbout}>close</Close></AboutPanel>
       <SideProjects sideProjectsToggle={sideProjectsToggle} />
       <CloseOverlay isOpen={isOpen} aboutToggle={aboutToggle} toggleAbout={toggleAbout} mobileToggle={toggle}/>
+      
+      // TODO: 
       <Route
         render={({ location }) => (
           <AnimatePresence exitBeforeEnter>
             <Switch location={location} key={location.pathname}>
-              <Route exact path="/" component={Works} />
-              <Route exact path="/works" component={Main} />
-              <Route exact path="/test" component={Home} />
-              <Route exact path="/blog" component={Blog} /> 
+              <Route exact path="/" component={Main} />
+              <Route exact path="/works" component={Works} />
+              {/* <Route exact path="/test" component={Home} /> */}
+              {/* <Route exact path="/blog" component={Blog} />  */}
               {/* <Route exact path="/info" component={About} /> */}
               <Route path="/:workId?/works" component={WorkExpanded} exact />
               <Route path="/:workId?/images" component={Images} />

@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { useLocation, Redirect } from 'react-router-dom';
 import { ListContainer } from './WorkElements';
+import { withRouter } from 'react-router';
 import { motion } from "framer-motion";
 import MobileTopButton from '../MobileTopButton';
-import { Container, Header, TableOfContents, Visit, CloseTOC, MobileTOCToggle, TopSticky, LeftTitle, CaseStudy, CaseStudy2, MobileTOCLabel, MobileTOCContainer, OverviewTag, MobileTOC, Subsection, InlineLink, Sub2, Fancy, NavButtons, PrevWork, NextWork, Back, Content, FixedContent, Title, TagsContainer, Tag, Details, Overview, PicContainer, Thumbnails, ThumbnailSelector, PicScroll, Controls, WorkContent, Label, Desc, DateClass, TOCItem, TOCItem2, Date, Class, InsideHeaderContainer, DividerTOC } from './WorkExpandedElements';
+import { Container, Header, TableOfContents, Visit, CloseTOC, MobileTags, MobileTOCToggle, TopSticky, LeftTitle, CaseStudy, CaseStudy2, MobileTOCLabel, MobileTOCContainer, OverviewTag, MobileTOC, Subsection, InlineLink, Sub2, Fancy, NavButtons, WorkNav, NextWork, Back, Content, FixedContent, Title, TagsContainer, Tag, Details, Overview, PicContainer, Thumbnails, ThumbnailSelector, PicScroll, Controls, WorkContent, Label, Desc, DateClass, TOCItem, TOCItem2, Date, Class, InsideHeaderContainer, DividerTOC } from './WorkExpandedElements';
 // import { Work } from './SingleWorkElements';
 // import { load_defaults } from '../../api';
 // import { restore_session } from '../../store';
@@ -16,12 +17,45 @@ const WorkExpanded = ({ projects }) => {
 
     const location = useLocation();
     let work_id = location.pathname.split("/works")[0];
+    let work_id_trunc = work_id.substring(1, work_id.length);
     
-    let work = projects[work_id.substring(1, work_id.length)];
+    console.log('this work_id: ', work_id);
+    // console.log('this work id: ', work.id);
+    console.log('truncated work id: ', work_id_trunc);
 
-    // console.log('selected work', work);
+    let work = projects[work_id_trunc];
+    // let work = projects[work.id];
 
+    console.log('selected work', work.name);
 
+    console.log('selected work id', work.id);
+
+    var next_id;
+    var prev_id;
+
+    if (work_id_trunc == 14) {
+        next_id = 0;
+        prev_id = parseInt(work_id.substring(1, work_id.length)) - 1;
+        console.log("caught max case");
+    } else if (work_id_trunc == 0) {
+        console.log("caught 0 case");
+        next_id = parseInt(work_id.substring(1, work_id.length)) + 1; 
+        prev_id = 14;
+    } else {
+        next_id = parseInt(work_id.substring(1, work_id.length)) + 1; 
+        prev_id = parseInt(work_id.substring(1, work_id.length)) - 1;
+    }
+
+    console.log("prev id", prev_id);
+    console.log("next id", next_id);
+
+    var next_proj = projects[next_id];
+    var prev_proj = projects[prev_id];
+
+    console.log("next id name", next_proj.name);
+    console.log("prev id name", prev_proj.name);
+
+    
     const [mobileTOC, setMobileTOC] = useState(false);
 
     const toggleMobileTOC = () => {
@@ -169,7 +203,6 @@ const WorkExpanded = ({ projects }) => {
         let index_int = index + 1; 
         let index_str = 'pic' + index_int;
 
-
         if (index == 0) {
             return (
                 <Header>
@@ -182,8 +215,8 @@ const WorkExpanded = ({ projects }) => {
                         {/* <Fancy> &#125; </Fancy> */}
                     </DateClass>
                     <Title>{work.name}</Title>
-                    <Tag style={{ color: 'white', fontWeight: '600', paddingBottom: '6px' }}>Tags</Tag>
-                    <TagsContainer>{project_tags}</TagsContainer>
+                    {/* <Tag style={{ color: 'white', fontWeight: '600', paddingBottom: '6px' }}>Tags</Tag> */}
+                    <MobileTags>{project_tags}</MobileTags>
                     <Overview>
                         <OverviewTag>Overview</OverviewTag>
                         {work.desc}
@@ -213,17 +246,17 @@ const WorkExpanded = ({ projects }) => {
                     <PicContainer id={index_str}
                         index={index}
                         // isLast={is_last}
-                        as={motion.div}
-                        initial="initial"
-                        animate="in"
-                        exit="out"
-                        variants={imgVariants}
-                        transition={{
-                            type: "tween",
-                            ease: [0.7, 0, 0.13, 1],
-                            duration: 0.85,
-                            delay: (index + 1) * 0.1,
-                        }}
+                        // as={motion.div}
+                        // initial="initial"
+                        // animate="in"
+                        // exit="out"
+                        // variants={imgVariants}
+                        // transition={{
+                        //     type: "tween",
+                        //     ease: [0.7, 0, 0.13, 1],
+                        //     duration: 0.85,
+                        //     delay: (index + 1) * 0.1,
+                        // }}
                         >
                         <img src={"/imgs/" + picture} alt={picture} id="project-img"></img>   
                     </PicContainer>
@@ -241,17 +274,17 @@ const WorkExpanded = ({ projects }) => {
                    <Desc
                     index={index}
                     // isLast={is_last}
-                    as={motion.div}
-                    initial="initial"
-                    animate="in"
-                    exit="out"
-                    variants={imgVariants}
-                    transition={{
-                        type: "tween",
-                        ease: [0.7, 0, 0.13, 1],
-                        duration: 0.85,
-                        delay: (index + 1) * 0.1,
-                    }}
+                    // as={motion.div}
+                    // initial="initial"
+                    // animate="in"
+                    // exit="out"
+                    // variants={imgVariants}
+                    // transition={{
+                    //     type: "tween",
+                    //     ease: [0.7, 0, 0.13, 1],
+                    //     duration: 0.85,
+                    //     delay: (index + 1) * 0.1,
+                    // }}
                    >
                        {picture}
                    </Desc>
@@ -379,6 +412,7 @@ const WorkExpanded = ({ projects }) => {
                 }}
             >
                 <Date>{work.semester}</Date>
+                <TagsContainer>{project_tags}</TagsContainer>
                 <Class>{work.class}</Class>
             </TopSticky>
             
@@ -412,10 +446,16 @@ const WorkExpanded = ({ projects }) => {
                     duration: 0.7,
                 }}
             >
-                <Back to="/">← All Projects</Back>
+                <Back to="/works">← All Projects</Back>
                 <CaseStudy2>Case Study</CaseStudy2>
                 <LeftTitle>{work.name}</LeftTitle>
                 {/* <Visit href={"https://www.junehomes.com"} target="_blank">Visit ↗</Visit> */}
+                <NavButtons>
+                    <Date>Previous</Date>
+                    <WorkNav style={{ paddingTop: '4px' }} to={"/" + prev_id + "/works"} currId={work.id}>{prev_proj.name}</WorkNav>
+                    <Date style={{ paddingTop: '28px' }}>Next</Date>
+                    <WorkNav  style={{ paddingTop: '4px' }} to={"/" + next_id + "/works"} currId={work.id}>{next_proj.name}</WorkNav>
+                </NavButtons>
             </Controls>
 
             <TableOfContents
@@ -430,14 +470,14 @@ const WorkExpanded = ({ projects }) => {
                     duration: 0.6,
                 }}
             >
-                <p style={{ paddingBottom: '6px' }}> {showTOC ? 'Table of Contents' : ''}</p>
+                <Date style={{ textTransform: 'uppercase' }}> {showTOC ? 'Table of Contents' : ''}</Date>
                 {table_of_contents}
             </TableOfContents>
 
             <MobileTOCContainer
                 as={motion.div}
                 initial={{ x: 0, y: '100vh' }}
-                animate={mobileTOC ? {  x: 0, y: '15vh' } : { x: 0, y: '100vh' }}
+                animate={mobileTOC ? {  x: 0, y: '30vh' } : { x: 0, y: '100vh' }}
                 transition={{
                 type: "tween",
                 ease: [0.28, 1.35, 1.5, .91],
@@ -450,7 +490,7 @@ const WorkExpanded = ({ projects }) => {
                 </MobileTOC>
             </MobileTOCContainer>
 
-            <MobileTOCToggle>
+            <MobileTOCToggle isCS={is_cs}>
                 <DividerTOC onClick={toggleMobileTOC}>
                     <MobileTOCLabel>Table of Contents ☰</MobileTOCLabel>
                 </DividerTOC>
@@ -459,4 +499,4 @@ const WorkExpanded = ({ projects }) => {
     );
 };
   
-export default connect(({ projects }) => ({ projects }))(WorkExpanded);
+export default withRouter(connect(({ projects }) => ({ projects }))(WorkExpanded));
