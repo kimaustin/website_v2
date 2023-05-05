@@ -34,19 +34,19 @@ export const Container = styled.div`
 export const WorkContent = styled.div`
     z-index: 990;
     position: fixed;
-    left: ${({ isCS }) => (isCS ? '15vw' : '25vw')};
+    left: ${({ isCS }) => (isCS ? '15vw' : '20vw')};
     top: 0;
     // top: 103px;
     height: calc(100vh);
     // height: calc(100vh - 103px);
     // width: calc(72vw + 48px);
-    width: ${({ isCS }) => (isCS ? 'calc(67vw - 20px + 31px)' : 'calc(75vw + 14px)')};
+    width: ${({ isCS }) => (isCS ? 'calc(67vw - 20px + 31px)' : 'calc(80vw + 14px)')};
 
     align-items: left;
     padding-bottom: 100px;
     padding-top: calc(30px + 103px);
     padding-left: 20px;
-    padding-right: ${({ isCS }) => (isCS ? '32px' : 'calc(14px + 7vw)')};
+    padding-right: ${({ isCS }) => (isCS ? '32px' : 'calc(14px + 11vw)')};
 
     // background: rgba(64, 63, 63, 0.3);
     /* border: 1px solid blue; */
@@ -72,8 +72,8 @@ export const TopSticky = styled.div`
     z-index: 999;
     position: fixed;
     top: 120.5px;
-    left: ${({ isCS }) => (isCS ? 'calc(15vw + 20.5px)' : 'calc(25vw + 20px)')};
-    width: calc(68vw - 80px + 11.5px);
+    left: ${({ isCS }) => (isCS ? 'calc(15vw + 20.5px)' : 'calc(20vw + 20px)')};
+    width:  ${({ isCS }) => (isCS ? 'calc(68vw - 80px + 11.5px)' : 'calc(75vw - 80px + 11.5px)')};
     height: 18px;
     display: inline-grid;
     grid-template-columns: 74px 1fr 1fr;
@@ -255,14 +255,16 @@ export const PicContainer = styled.div`
     // padding-left: 20px;
     padding-right: 20px;
     margin-right: 12px;
-    width: calc(68vw - 80px + 12px);
+    /* width: calc(68vw - 80px + 12px); */
+    width:  ${({ isCS }) => (isCS ? 'calc(68vw - 80px + 12)' : 'calc(75vw - 80px + 12px)')};
+
 
     img {
         object-fit: scale-down;
         // max-height: 100%;
         // max-width: 100%;
         max-height: 83vh;
-        max-width: calc(68vw - 80px + 12px);
+        max-width: ${({ isCS }) => (isCS ? 'calc(68vw - 80px + 12)' : 'calc(75vw - 80px + 12px)')};
         // width: 80vw;
         z-index: -1;
         /* border: 1px solid #201D17; */
@@ -340,7 +342,7 @@ export const Sub2 = styled.div`
     }
 `
 
-export const InlineLink = styled.a`
+export const InlineLink = styled.div`
     position: relative;
     // margin-left: 12%;
     margin-left: 0;
