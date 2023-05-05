@@ -11,12 +11,12 @@ const Navbar = ({mobileToggle, isOpen}) => {
     const [mobileAbout, setMobileAbout] = useState(false);
     
     const toggleMobileAbout = () => {
-        console.log("mobile about showing", mobileAbout);
+        // console.log("mobile about showing", mobileAbout);
         setMobileAbout(true);
     };
 
     const toggleMobileAbout2 = () => {
-        console.log("mobile menu showing", mobileAbout);
+        // console.log("mobile menu showing", mobileAbout);
         setMobileAbout(false);
     };
 

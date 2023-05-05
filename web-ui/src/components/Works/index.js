@@ -408,14 +408,14 @@ const Works = ({ projects, toggleLight }) => {
   };
 
   const handleMobileClick = async event => {
-    console.log('before');
+    // console.log('before');
     myRefs[event].current?.scrollIntoView({ behavior: 'smooth' });
     // setProjectValue(event);
 
     await delay(600);
   
     historyPage.push("/" + event + "/works");
-    console.log('after');
+    // console.log('after');
   };
   
   const handleClick = (index) => {
@@ -641,8 +641,8 @@ const Works = ({ projects, toggleLight }) => {
 
   // console.log(window.screen.height);
 
-  // let rightImageSource = "imgs/" + projects[projectValue].imgs[0];
-  let rightImageSource = projects[projectValue].imgs[0];
+  let rightImageSource = "imgs/" + projects[projectValue].imgs[0];
+  // let rightImageSource = projects[projectValue].imgs[0];
   let height_var = "calc(122px + " + ((projectValue) * (88 / (projects.length + 3))) + "vh)";
   let mobile_height_var = "calc(140px + " + ((projectValue) * (54 / (projects.length + 11))) + "vh)";
 

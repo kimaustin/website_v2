@@ -19,7 +19,7 @@ const Navigation = ({toggle, aboutToggle, mobileToggle, toggleLight, toggleDark,
     const toggleShowInfo = () => {
         var tempShowInfo = showInfo;
         setShowInfo(!tempShowInfo);
-        console.log("Toggle Info: " + showInfo);
+        // console.log("Toggle Info: " + showInfo);
     };
 
     // function toggleMobileMenu() {

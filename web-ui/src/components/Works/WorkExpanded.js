@@ -19,16 +19,16 @@ const WorkExpanded = ({ projects }) => {
     let work_id = location.pathname.split("/works")[0];
     let work_id_trunc = work_id.substring(1, work_id.length);
     
-    console.log('this work_id: ', work_id);
+    // console.log('this work_id: ', work_id);
     // console.log('this work id: ', work.id);
-    console.log('truncated work id: ', work_id_trunc);
+    // console.log('truncated work id: ', work_id_trunc);
 
     let work = projects[work_id_trunc];
     // let work = projects[work.id];
 
-    console.log('selected work', work.name);
+    // console.log('selected work', work.name);
 
-    console.log('selected work id', work.id);
+    // console.log('selected work id', work.id);
 
     var next_id;
     var prev_id;
@@ -36,9 +36,9 @@ const WorkExpanded = ({ projects }) => {
     if (work_id_trunc == 14) {
         next_id = 0;
         prev_id = parseInt(work_id.substring(1, work_id.length)) - 1;
-        console.log("caught max case");
+        // console.log("caught max case");
     } else if (work_id_trunc == 0) {
-        console.log("caught 0 case");
+        // console.log("caught 0 case");
         next_id = parseInt(work_id.substring(1, work_id.length)) + 1; 
         prev_id = 14;
     } else {
@@ -46,20 +46,20 @@ const WorkExpanded = ({ projects }) => {
         prev_id = parseInt(work_id.substring(1, work_id.length)) - 1;
     }
 
-    console.log("prev id", prev_id);
-    console.log("next id", next_id);
+    // console.log("prev id", prev_id);
+    // console.log("next id", next_id);
 
     var next_proj = projects[next_id];
     var prev_proj = projects[prev_id];
 
-    console.log("next id name", next_proj.name);
-    console.log("prev id name", prev_proj.name);
+    // console.log("next id name", next_proj.name);
+    // console.log("prev id name", prev_proj.name);
 
     
     const [mobileTOC, setMobileTOC] = useState(false);
 
     const toggleMobileTOC = () => {
-        console.log("mobile about showing", mobileTOC);
+        // console.log("mobile about showing", mobileTOC);
         // setMobileTOC(true);
         setMobileTOC(!mobileTOC);
     };

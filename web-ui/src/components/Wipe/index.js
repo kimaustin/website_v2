@@ -4,7 +4,7 @@ import { Container, DarkWipe, LightWipe } from './WipeElements';
 
 const Wipe = ({ isLightTheme }) => {
     // console.log('theme toggle status', isLightTheme);
-    console.log('check');
+    // console.log('check');
 
     return (
         <Container

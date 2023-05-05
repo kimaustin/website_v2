@@ -103,48 +103,30 @@ const SideProjects = ({ projects, sideProjectsToggle }) => {
   // let imgPreviews = projects.map((project, index) => {
     return (
       <ImageContainer to={'/' + index + '/works'}>
-        {/* <img src={'imgs/' + project.imgs[0]}></img> */}
-        <img src={project.imgs[0]}></img>
+        <img src={'imgs/' + project.imgs[0]}></img>
+        {/* <img src={project.imgs[0]}></img> */}
       </ImageContainer>
     )
   })
 
 
   //MAIN PROJECTS LIST
-  let projects_list = projects.map((project, index) => {
-
-    // var refName = 'ref' + {project};
-    // const { ref: refName, inView: inView2, entry } = useInView({
-    //   rootMargin: '-210px'
-    // });
-
-    if (project.isCS) {
-      return (
-        <WorkItem id={index} ref={myRefs[index]} onClick={()=> handleClick(index)} currProj={projectValue} thisProj={index}>
-          {project.name}
-          {/* <Fake>{projectValue}</Fake> */}
-          <CaseStudy>CASE STUDY</CaseStudy>
-        </WorkItem>
-      )
-    } else {
-      return (
-        <WorkItem id={index} ref={myRefs[index]} onClick={()=> handleClick(index)} currProj={projectValue} thisProj={index}>
-          {project.name}
-          {/* <Fake>{projectValue}</Fake> */}
-        </WorkItem>
-        // <InView>
-        //   {({ inView, ref, entry }) => (
-        //     <WorkItem ref={refName} id={"testID" + project}>
-        //       {project.name}
-        //       <ImageHover heightVar={"1" + project.val + "%"}>
-        //         <img src={"testProjCover" + project.val + ".png"} />
-        //       </ImageHover>  
-        //     </WorkItem>
-        //   )}
-        // </InView>
-      )
-    }
-  });
+  // let projects_list = projects.map((project, index) => {
+  //   if (project.isCS) {
+  //     return (
+  //       <WorkItem id={index} ref={myRefs[index]} onClick={()=> handleClick(index)} currProj={projectValue} thisProj={index}>
+  //         {project.name}
+  //         <CaseStudy>CASE STUDY</CaseStudy>
+  //       </WorkItem>
+  //     )
+  //   } else {
+  //     return (
+  //       <WorkItem id={index} ref={myRefs[index]} onClick={()=> handleClick(index)} currProj={projectValue} thisProj={index}>
+  //         {project.name}
+  //       </WorkItem>
+  //     )
+  //   }
+  // });
 
   // function ProjTags({ tag, key, index }) {
   //   if (index < 5) {

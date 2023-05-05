@@ -34,7 +34,7 @@ import Scrollbar from "smooth-scrollbar";
 
 const Blog = ({ projects }) => {
 
-  console.log('initial projects', projects);
+  // console.log('initial projects', projects);
 
   const [projectValue, setProjectValue] = useState(0);
 

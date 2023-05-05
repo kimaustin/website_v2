@@ -340,7 +340,7 @@ export const Sub2 = styled.div`
     }
 `
 
-export const InlineLink = styled.div`
+export const InlineLink = styled.a`
     position: relative;
     // margin-left: 12%;
     margin-left: 0;

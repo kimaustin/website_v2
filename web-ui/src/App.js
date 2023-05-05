@@ -37,7 +37,7 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
-    console.log("mobile nav toggled", isOpen);
+    // console.log("mobile nav toggled", isOpen);
     setIsOpen(!isOpen);
   };
 
@@ -45,7 +45,7 @@ function App() {
   
   const toggleAbout = (currPage) => {
     if (currPage == 'info') {
-      console.log("about toggled");
+      // console.log("about toggled");
       setAboutToggle(!aboutToggle);
     } else {
       setAboutToggle(false);
