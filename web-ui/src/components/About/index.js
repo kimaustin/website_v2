@@ -150,7 +150,7 @@ const About = ({ toggle, aboutToggle }) => {
           }}
         >
           Built by me in <InlineLink href="https://react.dev" target="_blank">React</InlineLink> + <InlineLink href="https://elixir-lang.org" target="_blank">Elixir</InlineLink>. <br />
-          Last Updated 03/22/23.
+          Last Updated Apr 4, 2023
         </Styled2>
 
         <Content>

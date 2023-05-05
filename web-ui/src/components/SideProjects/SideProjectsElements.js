@@ -4,45 +4,33 @@ import { Link as LinkScroll } from "react-scroll";
 import { motion } from "framer-motion";
 
 export const Container = styled(motion.div)`
+  z-index: 999;
   position: fixed;
   top: 0;
   left: 30vw;
-  // padding-left: 22px;
-  // padding-left: 22px;
-  // padding-top: 8px;
   height: 103px;
   width: 70vw;
-  // background: rgba(70, 70, 70, 0.60);
-  background: rgba(55, 55, 55, 0.75); // Make sure this color has an opacity of less than 1
-  backdrop-filter: blur(11px); // This be the blur
-  border-bottom: .5px solid #403F3F;
-  border-left: .5px solid #403F3F;
 
-  z-index: 999;
+  background: ${props => props.theme.bgSide}; // Make sure this color has an opacity of less than 1
+  backdrop-filter: blur(14px); // This be the blur
+  border-bottom: .5px solid ${props => props.theme.border};
+  border-left: .5px solid ${props => props.theme.border};
 
-  // align-items: start;
-  // justify-content: start;
-  // align-content: start;
-
-  // white-space: nowrap;
-  // overflow: auto;
-  // overflow-y: hidden;
-  // overflow-x: scroll;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
 
   @media screen and (max-width: 767px) {
     height: 128px;
-    // height: 180px;
     left: 0;
     width: 100vw;
     border-left: unset;
-    border-bottom: 1px solid #424242;
+    backdrop-filter: blur(8px); // This be the blur
+    border-bottom: 1px solid ${props => props.theme.border};
   }
 `;
 
 export const ScrollContainer = styled.div`
-  padding-left: 22px;
+  padding-left: 20px;
   padding-top: 12px;
   height: 121px;
   width: 70vw;
@@ -63,8 +51,8 @@ export const ScrollContainer = styled.div`
     padding-top: 10px;
     height: 140px;
     width: 100vw;
-    padding-left: 16px;
-    padding-right: 18px;
+    padding-left: 14px;
+    /* padding-right: 20px; */
   }
 `
 
@@ -74,9 +62,14 @@ export const ImageContainer = styled(LinkRouter)`
   height: 103px;
   align-items: start;
   justify-content: start;
-  padding-right: 14px;
+  padding-right: 11px;
   // margin-top: 5.15px;
-  opacity: 0.75;
+  opacity: 0.7;
+
+  font-family: 'SS3';
+  font-size: 14px;
+  color: ${props => props.theme.secondary};
+  text-decoration: none;
 
   img {
     max-width: 100%;
@@ -84,6 +77,8 @@ export const ImageContainer = styled(LinkRouter)`
     align-content: start;
     object-fit: scale-down;
   }
+
+  transition: all 0.1s ease-in-out;
 
   &:hover {
     opacity: 1;
@@ -107,13 +102,14 @@ export const Label = styled.div`
     display: block;
     z-index: 999;
     position: fixed;
-    left: 16px;
-    top: 108px;
+    left: 14px;
+    top: 105.5px;
     text-align: left;
 
     font-family: "SS3";
-    font-size: 10px;
-    color: #6A6A6A;
+    font-size: 12px;
+    color: ${props => props.theme.secondary};
+    opacity: 0.8;
     // color: green;
   }
 `
@@ -125,18 +121,39 @@ export const Version = styled.div`
     display: block;
     z-index: 999;
     position: fixed;
-    right: 16px;
-    top: 108px;
+    right: 14px;
+    top: 105.5px;
     text-align: right;
 
     font-family: "SS3";
-    font-size: 10px;
-    color: #6A6A6A;
+    font-size: 12px;
+    color: ${props => props.theme.secondary};
+    opacity: 0.8;
     // color: green;
   }
 `
 
+export const ErrorImg = styled.div`
+  display: block;
+  /* width: 6vw; */
+  /* height: 103px; */
+  /* padding-right: 20px; */
+  margin-top: 30px;
+  opacity: 0.8;
 
+  font-family: 'SS3';
+  font-size: 14px;
+  color: ${props => props.theme.secondary};
+  text-decoration: none;
+
+  /* background: ${props => props.theme.border}; */
+
+  @media screen and (max-width: 767px) {
+    /* width: 40px; */
+    height: 122px;
+    padding-right: 20px;
+  }
+`
 
 
 

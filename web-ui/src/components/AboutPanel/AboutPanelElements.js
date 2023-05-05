@@ -4,24 +4,25 @@ export const Container = styled.div`
     z-index: 1000;
     display: block;
     position: fixed;
-    width: 24vw;
+    width: 26vw;
     height: 100vh;
     overflow: hidden;
 
     /* opacity: 0.7;  */
     /* background: #403939; */
-    background: rgba(64, 57, 57, 0.7);
-    backdrop-filter: blur(11px);
+    background: ${props => props.theme.bgSide};
+    backdrop-filter: blur(12px);
 
-    border-right: 1px solid #5F5F5F;
+    border-right: 1px solid ${props => props.theme.border};;
     /* filter: blur(-2x); */
     /* -webkit-filter: blur(-1.5px); */
     /* cursor: url("/imgs/cursor1.svg"), auto; */
 
     @media screen and (max-width: 767px) {
-       width: 100vw;
-       border-right: unset;
-       display: none;
+        width: 100vw;
+        border-right: unset;
+        backdrop-filter: blur(10px);
+        display: none;
     }
 `
 
@@ -46,6 +47,7 @@ export const Logo = styled.div`
     height: 18px;
     background-image: url("logo.png");
     background-size: cover;
+    border: 1px solid ${props => props.theme.border};
 `
 
 export const Name = styled.div`
@@ -54,7 +56,7 @@ export const Name = styled.div`
     padding-top: 22px;
     padding-bottom: 16px;
 
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};;
     font-size: 24px;
     font-family: 'OpenSans';
     line-height: 31.2px;
@@ -64,7 +66,7 @@ export const Styled1 = styled.span`
     display: flex; 
     width: 100%;
     
-    color: #CCCCCC;
+    color: ${props => props.theme.secondary};;
     font-size: 12px;
     font-family: 'OpenSans';
     line-height: 16.7px;
@@ -74,12 +76,13 @@ export const Styled2 = styled.div`
     display: flex;
     // padding-left: 22px;
     width: 100%;
-    margin-top: 40px;
+    margin-top: 18px;
+    /* padding-bottom: 4px; */
     
-    color: #CCCCCC;
+    color: ${props => props.theme.primary};;
     font-size: 14px;
     font-family: 'OpenSans';
-    line-height: 20px;
+    line-height: 21px;
 `
 
 export const Bottom = styled.div`
@@ -95,7 +98,7 @@ export const Bottom = styled.div`
 
 export const Close = styled.p`
     z-index: 999;
-    color: white;
+    color: ${props => props.theme.primary};;
     font-family: 'SS3';
     font-size: 14px;
 
@@ -103,6 +106,7 @@ export const Close = styled.p`
 
     &:hover {
         text-decoration: underline;
+        opacity: 0.8;
     }
 `
 
@@ -163,7 +167,7 @@ export const ProfileContainer = styled.div`
     width: 100%;
     height: 37.5%;
 
-    border-bottom: 1px solid #201D17;
+    border-bottom: 1px solid ${props => props.theme.border};;
     /* width: 100%; */
     overflow: hidden;
 
@@ -243,7 +247,7 @@ export const Social = styled.a`
     font-family: 'SS3';
     font-size: 14px;
 
-    color: white;
+    color: ${props => props.theme.primary};;
     text-decoration: none;
 
     &:hover {

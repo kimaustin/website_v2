@@ -9,7 +9,7 @@ const Navbar = ({mobileToggle, isOpen}) => {
     let currPage = location.pathname.split("/").pop();
 
     const [mobileAbout, setMobileAbout] = useState(false);
-
+    
     const toggleMobileAbout = () => {
         console.log("mobile about showing", mobileAbout);
         setMobileAbout(true);
@@ -45,10 +45,12 @@ const Navbar = ({mobileToggle, isOpen}) => {
                 {/* <NavLinksDOM onClick={mobileToggle} to="/test">The Lab</NavLinksDOM>
                 <NavLinksDOM onClick={mobileToggle} to="">Photography</NavLinksDOM>
                 <NavLinksDOM onClick={mobileToggle} to="/blog">Blog</NavLinksDOM> */}
-                <NavLinksDOM2>The Lab</NavLinksDOM2>
-                <NavLinksDOM2>Photography</NavLinksDOM2>
-                <NavLinksDOM2>Blog</NavLinksDOM2>
-                <Details1>Built by me in React + Elixir<br />Last Updated: Apr 2, 2023</Details1>
+                {/* <NavLinksDOM2>The Lab</NavLinksDOM2> */}
+                {/* <NavLinksDOM2>Photography</NavLinksDOM2> */}
+                {/* <NavLinksDOM2>Blog</NavLinksDOM2> */}
+                <NavLinksDOM2>(Blog coming Soon)</NavLinksDOM2>
+                <NavLinksDOM2>(Photos coming Soon)</NavLinksDOM2>
+                <Details1>Built by me in React + Elixir<br />Last Updated: Apr 4, 2023</Details1>
             </NavMenu>
             <MobileAboutContainer
                 as={motion.div} initial={{ x: '100vw', y: 0 }} 
@@ -71,7 +73,7 @@ const Navbar = ({mobileToggle, isOpen}) => {
             <Menu 
                 onClick={toggleMobileAbout2}
                 as={motion.div} initial={{ x: '60vw', opacity: 0, zIndex: -1 }} 
-                animate={mobileAbout ? {  x: '0vw', opacity: 1, zIndex: 1 } : { x: '50vw', opacity: 0, zIndex: -1 }}
+                animate={mobileAbout ? {  x: '0vw', opacity: 1, zIndex: 1 } : { x: '60vw', opacity: 0, zIndex: -1 }}
                 transition={{
                 type: "tween",
                 ease: [0.28, 1.35, 1.5, .91],

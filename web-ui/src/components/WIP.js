@@ -5,10 +5,10 @@ import { keyframes } from "styled-components";
 const WIP = () => {
     return (
         // <SimpleBox>Work In Progress</SimpleBox>
-        <SimpleBox>
-            Under Construction
-            <p style={{fontSize: '1.75vh', fontFamily: 'JejuMyeongjo'}}>Please use the desktop version for the full experience.</p>
-        </SimpleBox>
+        <InProgress>
+            Work In Progress
+            {/* <p style={{fontSize: '1.75vh', fontFamily: 'JejuMyeongjo'}}>Please use the desktop version for the full experience.</p> */}
+        </InProgress>
         // <Container>
         //     <Marquee starter={true}>WORK IN PROGRESS WORK IN PROGRESS WORK IN PROGRESS WORK IN PROGRESS WORK IN PROGRESS WORK IN PROGRESS WORK IN PROGRESS WORK IN PROGRESS WORK IN PROGRESS WORK IN PROGRESS</Marquee>
         // </Container>
@@ -16,6 +16,20 @@ const WIP = () => {
 };
 
 export default WIP;
+
+const InProgress = styled.div`
+    z-index: 1000;
+    position: fixed;
+    text-align: right;
+    float: right;
+    color: ${props => props.theme.secondary};
+    opacity: 0.5;
+
+    @media screen and (max-width: 767px) {
+        right: 14px;
+        bottom: 62px;
+    }
+`
 
 
 const Container = styled.div`

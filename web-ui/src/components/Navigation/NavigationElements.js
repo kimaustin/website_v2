@@ -10,16 +10,16 @@ export const Container = styled.div`
     /* width: 100vw; */
     /* background: #1E1C1F; */
     // background: green;
-    background: rgba(30, 30, 31, 0.65);
-    backdrop-filter: blur(11px);
-    border-bottom: .5px solid #403F3F;
+    background: ${props => props.theme.bgNav};
+    backdrop-filter: blur(12px);
+    border-bottom: .5px solid ${props => props.theme.border};
     z-index: 999;
 
     @media screen and (max-width: 767px) {
         top: unset;
         bottom: 0;
         width: 100vw;
-        border-top: .5px solid #313131;
+        border-top: .5px solid ${props => props.theme.border};
         border-bottom: unset;
         height: 52px;
     }
@@ -51,7 +51,7 @@ export const Indicator = styled.div`
     }; */
     /* left: 20px; */
 
-    background: white;
+    background: ${props => props.theme.primary};
     opacity: 0.8;
 
     @media screen and (max-height: 767px) {
@@ -64,7 +64,7 @@ export const NavContainer = styled.div`
     height: 100%;
     width: 30vw;
     /* background: #1E1C1F; */
-    background: rgba(30, 28, 31, 0.6);
+    /* background: rgba(30, 28, 31, 0.6); */
     backdrop-filter: blur(13.5px);
     /* border-bottom: .75px solid #464242; */
     display: inline-block;
@@ -72,31 +72,37 @@ export const NavContainer = styled.div`
 `
 
 export const NonMobile = styled.div`
-    display: flex;
+    display: inline-grid;
+    grid-template-columns: 50px 1fr 78px;
+    width: calc(30vw - 45px);
+    height: 18px;
+    padding-top: 2px;
+    /* overflow: hidden; */
+
     position: fixed;
-    padding-left: 24px;
-    padding-top: 19px;
+    left: 22px;
+    top: 18px;
+
+    /* border: 1px solid green; */
 
     @media screen and (max-width: 767px) {
-        width: 100vw;
-        padding-left: 18px;
-        padding-right: 18px;
-        display: inline-grid;
-        grid-template-columns: 1fr 1fr;
-        padding-top: 16px;
+        width: calc(100vw - 28px);
+        /* width: 50%; */
+        grid-template-columns: 1fr 1fr 1fr;
+        height: 24px;
+        left: 14px;
+        overflow: unset;
+        padding-top: 4px;
+        top: 11px;
     }
 `;
  
-export const OpenMenu = styled.div`
-    color: black;
-    font-size: 16px;
-`
-
 export const Logo = styled.a`
     width: 14px;
     height: 14px;
     background-image: url("logo.png");
     background-size: cover;
+    border: 1px solid ${props => props.theme.border};
 
     @media screen and (max-width: 767px) {
         // height: 14px;
@@ -106,16 +112,17 @@ export const Logo = styled.a`
 
 export const NavHome = styled(LinkRouter)`
     font-size: 14px;
+    letter-spacing: 0.5px;
     // height: 18px;
     // color: #FFFFFF;
     // text-decoration: none;
     // font-family: 'OpenSans';
 
-    position: relative;
+    /* position: relative; */
     display: flex;
     height: 18px;
     // margin-bottom: 36px;
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     text-decoration: none;
     font-family: 'SS3';
     justify-content: start;
@@ -136,11 +143,104 @@ export const NavHome = styled(LinkRouter)`
 
     @media screen and (max-width: 767px) {
         height: 14px;
-        padding-top: 1px;
+        padding-top: 3px;
         font-size: 14px;
         float: left;
     }
 `;
+
+export const Switcher = styled.div`
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* text-align: center; */
+    width: 100%;
+    height: 26px;
+    margin-top: -4.5px;
+    /* margin-left: 012.5%; */
+    border-radius: 30px;
+    overflow: hidden;
+    border: 1px solid ${props => props.theme.border};
+    /* height: 16px; */
+
+    /* &:hover {
+        background: ${isLight => (isLight ? 'rgba(30, 30, 31, 0.1)' : 'rgba(242, 249, 256, 1)')};
+        cursor: pointer;
+    } */
+
+    @media screen and (max-width: 767px) {
+        margin-top: -3px;
+        height: 28px;
+        width: 70%;
+        margin-left: 17%;
+    }
+`
+
+export const ThemeIndicator = styled.div`
+    z-index: -1;
+    /* position: relative; */
+    /* top: 0;  */
+    /* left: 0; */
+    /* font-size: 20px; */
+    width: 160%;
+    height: 100%;
+    font-family: 'SS3';
+    /* margin-top: 0px; */
+    background: ${props => props.theme.primary};
+    /* background: green; */
+    border-radius: 30px;
+    /* height: 24px; */
+
+`
+
+export const LightIcon = styled.div`
+    z-index: 999;
+    font-size: 15px;
+    padding-left: 47%;
+    padding-top: 4.75px;
+    width: 150%;
+    color: ${isLight => (isLight ? 'rgba(242, 249, 256, 1)' : 'rgba(30, 30, 31, 1)')};
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    
+    &:hover {
+        opacity: .8;
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 767px) {
+        padding-left: 49.5%;
+        padding-top: 5.75px;
+    }
+`
+
+export const DarkIcon = styled.div`
+    z-index: 999;
+    font-size: 13px;
+    text-align: center;
+    /* padding-left: 0%; */
+    padding-top: 5.7px;
+    padding-left: 0px;
+    width: 150%;
+    margin-left: -50%;
+    color: ${isLight => (isLight ? 'rgba(30, 30, 31, 1)' : 'rgba(242, 249, 256, 1)')};
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+
+    &:hover {
+        opacity: .8;
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 767px) {
+        padding-top: 6.75px;
+        padding-right: .5px;
+        padding-left: unset;
+    }
+`
 
 export const MobileMenuToggle = styled.div`
     display: none;
@@ -148,13 +248,14 @@ export const MobileMenuToggle = styled.div`
     @media screen and (max-width: 767px) {
         display: inline-grid;
         // position: absolute;
+        padding-top: 2px;
         right: 0;
-        align-items: end;
-        align-content: end;
+        /* align-items: end; */
+        /* align-content: end; */
         float: right;
         text-align: right;
         // width: 100%;
-        color: white;
+        color: ${props => props.theme.primary};
 
         font-family: 'SS3';
         font-size: 14px;
@@ -174,7 +275,7 @@ export const MobileAbout = styled.div`
         text-align: center;
         // width: 100%;
         justify-content: center;
-        color: white;
+        color: ${props => props.theme.primary};
 
         font-family: 'SS3';
         font-size: 14px;
@@ -202,7 +303,7 @@ export const NavDOMLink = styled(LinkRouter)`
     /* padding-bottom: 1.5rem; */
     padding-left: 23px;
     /* width: 100%; */
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-family: 'SS3';
     font-size: 14px;
     /* display: flex; */
@@ -230,38 +331,33 @@ export const NavDOMLink = styled(LinkRouter)`
 `;
 
 export const NavDOMLinkAbout = styled(LinkRouter)`
-    /* padding-bottom: 1.5rem; */
-    padding-left: 24px;
-    /* width: 100%; */
-    color: #FFFFFF;
-    /* display: flex; */
+    float: right;
+    padding-right: 18px;
+    text-align: right;
+    text-decoration: none;
+    
     font-family: 'SS3';
     font-size: 14px;
-    /* align-items: left; */
-    text-decoration: none;
-    /* letter-spacing: -.1rem; */
-    /* border-top: 2px solid #201D17; */
+    color: ${props => props.theme.primary};
 
-    color: ${({currpage, thispage}) => 
-        currpage === thispage && '#FDFEF5'
-    };
-/* 
-    background: ${({currpage, thispage}) => 
-        currpage === thispage && '#201D17;'
-    }; */
-
-    /* transition: all .2s ease-in-out; */
+    transition: all .2s ease-in-out;
     
     &:hover {
         text-decoration: underline;
+    }
+
+    @media screen and (max-width: 767px) {
+        display: none;
     }
 `;
 
 export const NonMobile2 = styled.div`
     position: fixed;
     top: 55px;
+    display: flex;
+    /* justify-content; space-between; */
     /* padding-top: 3px; */
-    padding-left: 24px;
+    padding-left: 22px;
     /* padding-bottom: 14px; */
     width: 30vw;
     height: 48px;
@@ -285,7 +381,7 @@ export const NavDOMLink2 = styled(LinkRouter)`
     position: relative;
     padding-right: 30px;
 
-    color: #D2CACA;
+    color: ${props => props.theme.primary};
     text-decoration: none;
     font-size: 14px;
     font-family: "SS3";
@@ -311,12 +407,12 @@ export const NavDOMLink3 = styled(LinkRouter)`
     position: relative;
     padding-right: 30px;
 
-    color: #D2CACA;
+    color: ${props => props.theme.primary};
     text-decoration: none;
     font-size: 14px;
     font-family: "SS3";
 
-    opacity: 0.5;
+    opacity: 0.25;
 
     &:hover {
         // text-decoration: underline;
@@ -380,7 +476,7 @@ export const AboutContainer = styled.div`
     display: ${({ showInfo }) => (showInfo ? 'block' : 'none')};
     width: 28vw;
     height: 101vh;
-    background: white;
+    /* background: ${props => props.theme.bgNav}; */
 `
 
 export const InfoWrapper = styled.span`

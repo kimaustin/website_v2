@@ -19,7 +19,7 @@ export const Container = styled.div`
     } */
 
     // background: rgba(64, 63, 63, 0.3);
-    background: black;
+    background: ${props => props.theme.bg};
 
     cursor: crosshair;
 
@@ -34,23 +34,23 @@ export const Container = styled.div`
 export const WorkContent = styled.div`
     z-index: 990;
     position: fixed;
-    left: ${({ isCS }) => (isCS ? '16vw' : '26vw')};
+    left: ${({ isCS }) => (isCS ? '15vw' : '25vw')};
     top: 0;
     // top: 103px;
     height: calc(100vh);
     // height: calc(100vh - 103px);
     // width: calc(72vw + 48px);
-    width: ${({ isCS }) => (isCS ? 'calc(68vw - 20px + 12px)' : 'calc(74vw + 14px)')};
+    width: ${({ isCS }) => (isCS ? 'calc(67vw - 20px + 31px)' : 'calc(75vw + 14px)')};
 
     align-items: left;
     padding-bottom: 100px;
-    padding-top: calc(70px + 103px);
+    padding-top: calc(30px + 103px);
     padding-left: 20px;
-    padding-right: ${({ isCS }) => (isCS ? '32px' : 'calc(14px + 8vw)')};
+    padding-right: ${({ isCS }) => (isCS ? '32px' : 'calc(14px + 7vw)')};
 
     // background: rgba(64, 63, 63, 0.3);
-    // border: 1px solid blue;
-    background: black;
+    /* border: 1px solid blue; */
+    /* background: ${props => props.theme.primary}; */
 
     overflow-y: scroll;
     overflow-x: hidden;
@@ -64,26 +64,27 @@ export const WorkContent = styled.div`
         padding-left: 14px;
         padding-right: 28px;
         // padding-bottom: 90px;
-        padding-top: 128px;
+        padding-top: 132px;
     }
 `
 
 export const TopSticky = styled.div`
     z-index: 999;
     position: fixed;
-    top: 125px;
-    left: ${({ isCS }) => (isCS ? 'calc(16vw + 20px)' : 'calc(26vw + 20px)')};
-    width: calc(68vw - 80px + 12px);
+    top: 120.5px;
+    left: ${({ isCS }) => (isCS ? 'calc(15vw + 20.5px)' : 'calc(25vw + 20px)')};
+    width: calc(68vw - 80px + 11.5px);
     height: 18px;
     display: inline-grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 74px 1fr 1fr;
+    // 756px max
 
     // background: green;
-    // border: 1px solid white;
+    /* border: 1px solid blue; */
 
     @media screen and (max-width: 767px) {
         // display: none;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 80px;
         top: 146px;
         padding-top: 1px;
         left: unset;
@@ -94,7 +95,6 @@ export const TopSticky = styled.div`
 
 export const Header = styled.div`
     align-items: start;
-    padding-top: 0px;
     padding-bottom: 40px;
     // margin-left: 12%;
     width: 100%;
@@ -138,7 +138,7 @@ export const Date = styled.div`
     font-size: 12px;
     line-height: 145%;
     letter-spacing: 0.15px;
-    color: #9E9E9E;
+    color: ${props => props.theme.secondary};
 
     // border: 1px solid blue;
     @media screen and (max-width: 767px) {
@@ -152,7 +152,8 @@ export const Class = styled.div`
     font-family: "SS3";
     font-size: 12px;
     font-weight: 600;
-    color: #9E9E9E;
+    line-height: 145%;
+    color: ${props => props.theme.secondary};
     float: right;
     text-align: right;
     
@@ -163,7 +164,7 @@ export const CaseStudy = styled.a`
     display: ${({ isCS }) => (isCS ? 'inline-grid' : 'none')};
     font-family: "SS3";
     font-size: 12px;
-    color: #95ACFF;
+    color: ${props => props.theme.cs};
     text-transform: uppercase;
 `
 
@@ -171,7 +172,7 @@ export const CaseStudy2 = styled.a`
     display: inline-grid;;
     font-family: "SS3";
     font-size: 12px;
-    color: #95ACFF;
+    color: ${props => props.theme.cs};
     text-transform: uppercase;
 
     @media screen and (max-width: 767px) {
@@ -184,7 +185,7 @@ export const LeftTitle = styled.div`
     display: flex;
     align-items: start;
     font-size: 14px;
-    color: white;
+    color: ${props => props.theme.primary};
     line-height: 138%; 
 
     display: inline-grid;
@@ -211,25 +212,29 @@ export const Overview = styled.div`
     text-align: left;
     /* padding-left: 12%; */
     // padding-bottom: 38px;
-
+    /* width: 80%; */
+    max-width: 756px;
     // border-bottom: 1px solid #757575;
 
-    color: #F6F6F6;
+    color: ${props => props.theme.secondary};
     font-family: "SS3";
     font-size: 30px;
-    line-height: 124%;
-    font-weight: 500;
+    line-height: 128%;
+    /* font-weight: 500; */
 
     @media screen and (max-width: 767px) {
         font-size: 24px;
+        width: 100%;
+        line-height: 130%;
     }
 `
 
 export const OverviewTag = styled.p`
-    color: #B5B5B5;
+    color: ${props => props.theme.secondary};
     font-family: "SS3";
     font-size: 12px;
     text-transform: uppercase;
+    margin-bottom: -4px;
 `
 
 export const PicContainer = styled.div`
@@ -289,7 +294,7 @@ export const Subsection = styled.div`
 
     /* border: 2px solid blue; */
 
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-family: "SS3";
     font-size: 26px;
     text-align: left;
@@ -320,7 +325,7 @@ export const Sub2 = styled.div`
 
     /* border: 2px solid blue; */
 
-    color: #A1A1A1;
+    color: ${props => props.theme.secondary};
     font-family: "SS3";
     font-weight: 500;
     font-size: 19px;
@@ -350,7 +355,7 @@ export const InlineLink = styled.div`
     /* border: 2px solid blue; */
 
     opacity: 0.7;
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};;
     text-decoration: underline;
     font-family: "SS3";
     font-size: 19px;
@@ -381,7 +386,7 @@ export const Desc = styled.p`
     padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '24px'};
     /* border: 2px solid blue; */
 
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-family: "SS3";
     font-size: 19px;
     text-align: left;
@@ -403,11 +408,11 @@ export const Controls = styled.div`
     top: 103px;
     left: 20px;
     height: calc(100vh - 103px);
-    width: 16vw;
+    width: 11vw;
 
     // padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 22px;
+    /* padding-right: 24px; */
+    padding-top: 18px;
     /* align-items: right; */
     // text-align: right;
 
@@ -434,7 +439,7 @@ export const NavButtons = styled.div`
     z-index: 999;
     position: absolute;
     left: 0;
-    bottom: calc(50px);
+    bottom: calc(36px);
     width: calc(100% - 26px);
     // cursor: pointer;
     /* border: 1.5px solid black; */
@@ -449,40 +454,36 @@ export const WorkNav = styled(LinkRouter)`
     font-family: "SS3";
     padding-bottom: 6px;
 
-    color: white;
+    color: ${props => props.theme.primary};
     text-decoration: none;
-    transition: all 0.2s ease-in-out;
+    /* transition: all 0.2s ease-in-out; */
 
     &:hover {
         opacity: 0.6;
     }
 `
 
-export const NextWork = styled(LinkRouter)`
-    width: 3vw;
-    height: 3vw;
+export const MobileWorkNav = styled(LinkRouter)`
+    display: none;
+    
+    @media screen and (max-width: 767px) {
+        font-size: 14px;
+        font-family: "SS3";
+        padding-bottom: 6px;
 
-    font-size: 1rem;
-    font-family: "JejuMyeongjo";
+        color: ${props => props.theme.primary};
+        text-decoration: none;
+        transition: all 0.2s ease-in-out;
 
-    color: #201D17;
-    text-decoration: none;
-
-    cursor: pointer;
-    /* opacity: ${({isLast}) => (isLast ? '0.4' : '1')}; */
-    /* pointer-events: ${({ isLast }) => (isLast ? 'none' : 'auto')}; */
-    transition: all 0.1s ease-in-out;
-
-    &:hover {
-        /* background: black; */
-        /* color: white; */
-        opacity: 0.6;
+        &:hover {
+            opacity: 0.6;
+        }
     }
 `
 
 export const Back = styled(LinkRouter)`
     /* height: 2.8vw; */
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-family: "SS3";
     font-size: 14px;
 
@@ -502,7 +503,7 @@ export const Back = styled(LinkRouter)`
 `
 
 export const Visit = styled.div`
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-family: "SS3";
     font-size: 14px;
 
@@ -531,25 +532,25 @@ export const TableOfContents = styled.div`
 
     z-index: 999;
     position fixed;
-    right: 20px;
+    right: 0;
     top: 103px;
     // width: calc(100vw -);
-    width: 16vw;
+    width: 18vw;
     height: calc(100vh - 103px);
 
-    padding-top: 20px;
+    padding-top: 18px;
     padding-left: 22px;
     // padding-bottom: 20px;
-    padding-right: 26px;
+    padding-right: 48px;
     
     overflow-x: hidden;
     overflow-y: scroll;
 
-    background: black;
-    // border: 1px solid orange;
+    background: ${props => props.theme.bg};
+    /* border: 1px solid orange; */
 
     p {
-        color: #FFFFFF;
+        color: ${props => props.theme.primary};
         opacity: 0.9;
         font-family: "OpenSans";
         font-weight: 600;
@@ -557,7 +558,6 @@ export const TableOfContents = styled.div`
     }
 
     @media screen and (max-width: 767px) {
-        margin-left: 100vw;
         display: none;
     }
 `
@@ -578,9 +578,9 @@ export const MobileTOCContainer = styled.div`
         // bottom: 50px;
         z-index: 999;
         // padding: 8px 14px 118px 14px;
-        border-top: 1px solid #313131;
+        border-top: 1px solid ${props => props.theme.border};
 
-        background: rgba(50, 50, 50, 0.6);
+        background: ${props => props.theme.bgNav};
         backdrop-filter: blur(12px);
         // overflow-x: hidden;
         // overflow-y: scroll;
@@ -616,9 +616,9 @@ export const MobileTOCToggle = styled.div`
         bottom: 50px;
         height: 40px;
         width: 100vw;
-        background: rgba(38, 38, 40, 0.6);
+        background: ${props => props.theme.bgNav};
         backdrop-filter: blur(12px);
-        border-top: 1px solid #313131;
+        border-top: 1px solid ${props => props.theme.border};
     }
     
 `
@@ -631,7 +631,7 @@ export const CloseTOC = styled.div`
 
     font-family: 'SS3';
     font-size: 14px;
-    color: white;
+    color: ${props => props.theme.primary};
 `
 
 export const DividerTOC = styled.div`
@@ -640,14 +640,14 @@ export const DividerTOC = styled.div`
     left: 0;
     top: 0;
     padding: 10px 14px 0px 14px;
-    height: 40px;
+    height: 37px;
     width: 100vw;
-    border-bottom: .5px solid #313131;
+    border-bottom: .5px solid ${props => props.theme.border};
 `
 
 export const MobileTOCLabel = styled.div`
     // padding-bottom: 12px;
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-family: "SS3";
     font-size: 14px;
 `
@@ -655,7 +655,7 @@ export const MobileTOCLabel = styled.div`
 export const TOCItem = styled.div`
     padding-top: 30px;
     padding-bottom: 4px;
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-family: "SS3";
     font-weight: 500;
     letter-spacing: 0.2px;
@@ -664,13 +664,13 @@ export const TOCItem = styled.div`
     &:hover {
         /* background: black; */
         /* color: white; */
-        opacity: 0.6;
+        opacity: 0.8;
         text-decoration: underline;
     }
 
     @media screen and (max-width: 767px) {
         opacity: 0.9;
-        color: white;
+        color: ${props => props.theme.primary};
         padding-top: 22px;
         padding-bottom: 2px;
         font-size: 19px;
@@ -680,7 +680,7 @@ export const TOCItem = styled.div`
 export const TOCItem2 = styled.div`
     padding-top: 8px;
     // margin-left: 14px;
-    color: #CACACA;
+    color: ${props => props.theme.secondary};
     font-family: "SS3";
     font-size: 14px;
     line-height: 19px;
@@ -689,11 +689,13 @@ export const TOCItem2 = styled.div`
     &:hover {
         /* background: black; */
         /* color: white; */
-        opacity: 0.6;
+        opacity: 0.8;
+        text-decoration: underline;
+
     }
 
     @media screen and (max-width: 767px) {
-        color: white;
+        color: ${props => props.theme.primary};
         opacity: 0.75;
         padding-top: 12px;
         font-size: 14px;
@@ -738,25 +740,33 @@ export const FixedContent = styled.div`
 `
 
 export const Title = styled.h1`
-    color: white;
+    color: ${props => props.theme.primary};
     font-family: "SS3";
-    font-size: 32px;
-    line-height: 38px;
+    font-size: 42px;
+    line-height: 126%;
+    margin-bottom: 40px;
+    max-width: 756px;
 
     @media screen and (max-width: 767px) {
         // margin-top: -14px;
         // margin-bottom: -6px;
-        margin-top: 4px;
+        margin-top: 2px;
         margin-bottom: 10px;
     }
 `
 
 export const TagsContainer = styled.div`
-    // display: inline-grid;
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
+    /* display: inline-block; */
+    /* display: flex; */
+    /* float: left; */
+    /* text-align: left; */
+    width: 100%;
+    /* text-align: right; */
+    /* align-content: end; */
+    /* justify-content: space-between; */
+    /* width: 80%; */
 
+    /* border: 1px solid blue; */
     // padding-top: 2px;
     // padding-bottom: 32px;
 
@@ -776,23 +786,33 @@ export const MobileTags = styled.div`
     @media screen and (max-width: 767px) {
         width: 100%;
         display: grid;
-        padding-top: 2px;
-        padding-bottom: 20px;
+        padding-top: 0px;
+        padding-bottom: 38px;
     }
 `
 
 export const Tag = styled.p`
     // padding-bottom: 4px;
-    padding-left: 2px;
-    padding-right: 2px;
+    padding-right: 10px;
+    /* padding-right: 2px; */
 
-    color: #949494;
+    color: ${props => props.theme.secondary};
     font-family: "SS3";
     font-size: 12px;
+    line-height: 145%;
+
+    float: left;
+    text-align: left;
 
     @media screen and (max-width: 767px) {
         font-size: 14px;
-        padding-top: 4px;
+        padding-left: 0;
+        padding-top: 6px;
+
+        padding-right; unset;
+        line-height: unset;
+        float: unset;
+        text-align: unset;
     }
 `
 

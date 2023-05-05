@@ -391,7 +391,6 @@ const WorkExpanded = ({ projects }) => {
         duration: 0.85,
     }
 
-
     return (
         <Container id='head'
             // as={motion.div}
@@ -451,10 +450,10 @@ const WorkExpanded = ({ projects }) => {
                 <LeftTitle>{work.name}</LeftTitle>
                 {/* <Visit href={"https://www.junehomes.com"} target="_blank">Visit ↗</Visit> */}
                 <NavButtons>
-                    <Date>Previous</Date>
-                    <WorkNav style={{ paddingTop: '4px' }} to={"/" + prev_id + "/works"} currId={work.id}>{prev_proj.name}</WorkNav>
-                    <Date style={{ paddingTop: '28px' }}>Next</Date>
+                    <Date>Next</Date>
                     <WorkNav  style={{ paddingTop: '4px' }} to={"/" + next_id + "/works"} currId={work.id}>{next_proj.name}</WorkNav>
+                    <Date style={{ paddingTop: '28px' }}>Previous</Date>
+                    <WorkNav style={{ paddingTop: '4px' }} to={"/" + prev_id + "/works"} currId={work.id}>{prev_proj.name}</WorkNav>
                 </NavButtons>
             </Controls>
 
@@ -490,7 +489,24 @@ const WorkExpanded = ({ projects }) => {
                 </MobileTOC>
             </MobileTOCContainer>
 
-            <MobileTOCToggle isCS={is_cs}>
+            <MobileTOCToggle 
+                isCS={is_cs}
+                as={motion.div}
+                initial={{ y: '100vh' }}
+                animate={{ y: '0vh' }}
+                exit={{ y: '100vh', transition: {
+                    type: "tween",
+                    ease: [0.28, 1.35, 1.5, .91],
+                    duration: 0.5
+                    }
+                 }}
+                transition={{
+                type: "tween",
+                ease: [0.28, 1.35, 1.5, .91],
+                duration: 0.8,
+                delay: 0.6
+                }}
+            >
                 <DividerTOC onClick={toggleMobileTOC}>
                     <MobileTOCLabel>Table of Contents ☰</MobileTOCLabel>
                 </DividerTOC>

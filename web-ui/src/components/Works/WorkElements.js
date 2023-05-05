@@ -19,6 +19,9 @@ export const Container = styled(motion.div)`
   overflow-y: hidden;
   overflow-x: none;
   cursor: crosshair;
+
+  background: ${props => props.theme.bg};
+  /* background: green; */
 `
 
 export const Divider = styled.div`
@@ -28,57 +31,26 @@ export const Divider = styled.div`
   top: 0;
   height: 100vh;
 
-  border-left: .5px solid #403F3F;
+  border-left: .5px solid ${props => props.theme.border};
 
   @media screen and (max-width: 767px) {
     display: none;
   }
 `
 
-export const WorkListContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: calc(100vw);
-  height: calc(100vh - 103px + 103px);
-  overflow-y: scroll;
-  padding-bottom: calc(51vh - 62px + 22px);
-  // padding-top: calc(44vh - 94px);
-  padding-top: calc(48vh - 128px - 21px + 103px);
-  padding-left: 20px;
-  padding-right: calc(70vw + 28px);
-  z-index: 999;
-
-  overflow-x: hidden; 
-  
-  /* background: rgb(120, 120, 120, 0.5); */
-  /* background: #1E1C1F; */
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
-
-  @media screen and (max-width: 767px) {
-    z-index: 998;
-    width: 100vw;
-    padding-left: 14px;
-    padding-top: calc(48vh - 128px - 16px + 103px);
-    padding-bottom: calc(50vh - 62px + 42px);
-  }
-`;
-
 export const Marker = styled.div`
   position: fixed;
   left: 0;
   top: calc(48vh);
   width: 30vw;
-  border-bottom: 1px solid #FFFFFF;
-  opacity: 0.5;
+  border-bottom: 1.5px solid ${props => props.theme.primary};
+  opacity: 0.35;
 
   @media screen and (max-width: 767px) {
-    // width: 100vw;
+    border-bottom: 1px solid ${props => props.theme.secondary};
+    width: 100vw;
+    top: calc(48vh + 0.5px);
     display: none;
-    // top: calc(56vh);
   }
 `;
 
@@ -87,29 +59,30 @@ export const MarkerL = styled.div`
   left: 0;
   top: calc(48vh - 1.5px);
   width: 12px;
-  border-bottom: 4px solid #FFFFFF;
+  border-bottom: 4px solid ${props => props.theme.primary};
 
   @media screen and (max-width: 767px) {
-    border-bottom: 5px solid #FFFFFF;
-    top: calc(48vh - 2px);
-    width: 10px
+    border-bottom: 4px solid ${props => props.theme.secondary};
+    top: calc(48vh - 1.5px);
+    width: 8px;
   } 
 `;
 
 export const MarkerR = styled.div`
-position: fixed;
-left: calc(30vw - 12px);
-top: calc(48vh - 1.5px);
-width: 12px;
-border-bottom: 4px solid #FFFFFF;
+  position: fixed;
+  left: calc(30vw - 12px);
+  top: calc(48vh - 1.5px);
+  width: 12px;
+  border-bottom: 4px solid ${props => props.theme.primary};
 
-@media screen and (max-width: 767px) {
-    // left: unset;
-    // border-bottom: 5px solid #FFFFFF;
-    // right: 0;
-    // top: calc(48vh - 2px);
-    display: none;
-}
+  @media screen and (max-width: 767px) {
+      left: unset;
+      border-bottom: 4px solid ${props => props.theme.secondary};
+      right: 0;
+      top: calc(48vh - 1.5px);
+      width: 7px;
+      display: none;
+  }
 `;
 
 
@@ -127,27 +100,28 @@ export const ClickableArea = styled.div`
   height: 8vh;
   // height: calc(100vh - 103px);
   width: 70vw;
-  background: rgba(89, 86, 98, 0.35);
+  border-top: 0.5px solid ${props => props.theme.border};
+  background: ${props => props.theme.bgSide};
   // opacity: 0;
   backdrop-filter: blur(14px);
 
   // border: solid 1px green;
   
   text-decoration: none;
-  color: black;
+  /* color: black; */
   text-align: center;
   align-items: center;
   align-content: center;
   justify-content: center;
 
-  color: #FFFFFF;
+  color: ${props => props.theme.secondary};
   font-size: 19px;
   font-family: "OpenSans";
 
   &:hover {
-    background: rgba(140, 140, 140, 0.8);
+    background: ${props => props.theme.bgPreview};
     backdrop-filter: blur(6px);
-    color: #E3E3E3;
+    color: ${props => props.theme.primary};
   }
 
   @media screen and (max-width: 767px) {
@@ -172,6 +146,39 @@ export const ClickableArea = styled.div`
   }
 `;
 
+
+export const WorkListContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: calc(100vw);
+  height: calc(100vh - 103px + 103px);
+  overflow-y: scroll;
+  padding-bottom: calc(51vh - 62px + 22px);
+  // padding-top: calc(44vh - 94px);
+  padding-top: calc(48vh - 128px - 21px + 103px);
+  padding-left: 17.5px;
+  padding-right: calc(70vw + 32px);
+  z-index: 999;
+
+  overflow-x: hidden; 
+  
+  /* background: rgb(120, 120, 120, 0.5); */
+  /* background: #1E1C1F; */
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media screen and (max-width: 767px) {
+    z-index: 998;
+    width: 100vw;
+    padding-left: 11px;
+    padding-top: calc(48vh - 126px - 16px + 103px);
+    padding-bottom: calc(50vh - 62px + 42px);
+  }
+`;
+
 export const WorkItem = styled.div`
   // display: grid;
   // grid-template-rows: 24px 1fr;
@@ -191,7 +198,7 @@ export const WorkItem = styled.div`
 
   @media screen and (max-width: 767px) {
     width: calc(82vw - 16px);
-    scroll-margin-top: calc(48vh - 2px - 30px);
+    scroll-margin-top: calc(48vh - 2px - 36px);
     margin-bottom: 18px;    
   }
 `;
@@ -205,7 +212,7 @@ export const DeskWorkItem = styled.div`
 
   transition: 5s scale ease-in-out;
 
-  color: #FFFFFF;
+  color: ${props => props.theme.primary};
   padding: 0 4px;
 
   &:hover {
@@ -223,7 +230,7 @@ export const MobileWorkItem = styled.div`
   @media screen and (max-width: 767px) {
     transition: 5s scale ease-in-out;
 
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     padding: 0 4px;
 
     display: grid;
@@ -289,20 +296,24 @@ export const CaseStudy = styled.a`
   // margin-left: 20px;
   // margin-bottom: -17px;
   // float: right;
+  padding-left: 2px;
   padding-top: 2px;
 
-  color: #95ACFF;
+  color: ${props => props.theme.cs};
   font-family: "SS3";
   font-size: 12px;
-  letter-spacing: .25px;
+  font-weight: 500;
+  letter-spacing: 1px;
   text-align: left;
   text-transform: uppercase;
-  margin-right: 2px;
+  margin-right: 20px;
 
   // border: 1px solid green;
   @media screen and (max-width: 767px) {
+    padding-left: 1px;
     padding-right: 10px;
     font-size: 11px;
+    margin-right: unset;
     text-align: left;
   }
 `;
@@ -332,7 +343,7 @@ export const WorkTitle = styled.div`
   font-family: "SS3";
   font-size: 36px;
   line-height: 42px;
-  color: #FFFFFF;
+  color: ${props => props.theme.primary};
 
   @media screen and (max-width: 767px) {
     font-size: 26px;
@@ -350,7 +361,7 @@ export const WorkArrow = styled(LinkRouter)`
   @media screen and (max-width: 767px) {
     display: grid;
     font-family: "SS3";
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-size: 14px;
     
     padding-top: 8px;
@@ -367,7 +378,7 @@ export const WorkClass = styled.div`
     align-items: start;
     text-align: left;
     font-family: "SS3";
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-size: 12px;
     writing-mode: vertical-rl;
 `
@@ -519,15 +530,15 @@ export const WorkPreview = styled.div`
   align-content: center;
   text-align: left;
 
-  padding: 7px 7px 7px 10px;
+  padding: 6px 7px 7px 10px;
   border-radius: 6px;
-  border: 1px solid #2D2D2D;
+  border: 1px solid ${props => props.theme.bg};
 
   transition: 0.1s all ease-in-out;
   user-select: none;
   pointer-events: none;
 
-  background: rgba(8, 8, 8, 0.8);
+  background: ${props => props.theme.bgPreview};
   backdrop-filter: blur(14px);
 
   img {
@@ -543,7 +554,7 @@ export const WorkPreview = styled.div`
     height: 18vh;
     width: calc(21vw);
     left: unset;
-    right: 16px;
+    right: 14px;
     padding: 0;
     // border: 1px solid blue;
 
@@ -582,8 +593,8 @@ export const WorkName = styled.div`
   // width: 80%;
   align-content: end;
 
-  color: #FFFFFF;
-  opacity: 0.9;
+  color: ${props => props.theme.primary};
+  /* opacity: 0.9; */
   text-decoration: none;
   // text-transform: uppercase;
   font-size: 12px;
@@ -604,7 +615,7 @@ export const WorkDesc = styled.p`
   // width: 80%;
   align-content: start;
 
-  color: #B0B0B0;
+  color: ${props => props.theme.secondary};
   // opacity: 0.9;
   text-decoration: none;
   // text-transform: uppercase;
@@ -640,7 +651,7 @@ export const TagsContainer = styled.div`
 `;
 
 export const ProjectTag = styled.a`
-  color: #B0B0B0;
+  color: ${props => props.theme.secondary};
   font-family: "OpenSans";
   // height: 26px;
   font-size: 12px;
@@ -664,7 +675,7 @@ export const Details = styled(LinkRouter)`
   opacity: 0.9;
   width: 70vw;
   height: 8vh;
-  padding-top: 2.6vh;
+  padding-top: 2.7vh;
   // padding-right: 48%;
   
   text-align: center;
@@ -672,7 +683,7 @@ export const Details = styled(LinkRouter)`
   justify-content: center;
 
   text-decoration: none;
-  color: #FFFFFF;
+  color: ${props => props.theme.primary};
   font-size: 19px;
   font-family: "OpenSans";
 
@@ -705,7 +716,7 @@ export const VisitLink = styled.a`
   // float: right;
 
   text-decoration: none;
-  color: #FFFFFF;
+  color: ${props => props.theme.primary};
   opacity: 0.8;
   /* background: green; */
   font-size: 14px;
@@ -732,6 +743,7 @@ export const ContentBg = styled.div`
   height: calc(100vh);
   width: 70vw;
   /* align-items: center; */
+  background: ${props => props.theme.bg};
 
   /* background-image: ${(bgFileName) => 'url(bgFileName)'}; */
   /* background-image: url("bg2.png"); */
@@ -768,7 +780,7 @@ export const BgBlur = styled.div`
   height: 100vh;
   width: 70vw;
   /* overflow: hidden; */
-  background: rgba(100, 100, 100, 0.35); // Make sure this color has an opacity of less than 1
+  background: ${props => props.theme.bgBlur}; // Make sure this color has an opacity of less than 1
   backdrop-filter: blur(22px); // This be the blur
 
   @media screen and (max-width: 767px) {
@@ -800,11 +812,11 @@ export const WorkImageContainer = styled.div`
 export const WorkImage = styled.div`
   z-index: 999;
   /* padding: 22px; */
-  margin-top: 3vh;
+  margin-top: 2.5vh;
   margin-left: 28px;
-  width: calc(70vw - 56px);
+  width: calc(70vw - 55px);
   /* height: calc(100vh - 130px - 5rem); */
-  height: calc(85.9vh - 103px);
+  height: calc(86.5vh - 103px);
   text-align: center;
   align-items: center;
   /* justify-content: center; */
@@ -822,7 +834,7 @@ export const WorkImage = styled.div`
         height: 100%;
         /* max-height: calc(100vh - 38px); */
         // max-width: 100%;
-        max-width: calc(70vw - 50px);
+        max-width: calc(70vw - 54px);
         /* background-image: #201D17; */
         /* padding-left: 3.25rem; */
     }

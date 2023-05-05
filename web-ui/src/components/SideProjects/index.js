@@ -8,6 +8,7 @@ import {
   Container,
   ImageContainer,
   WorkListContainer,
+  ErrorImg,
   Marker,
   ClickableArea,
   WorkItem,
@@ -47,7 +48,20 @@ const SideProjects = ({ projects, sideProjectsToggle }) => {
     // threshold: 0.1
   }
 
+  // const proj1 = { name: 'June ggg ONE One GGG OOO ggg', class_short: 'June', val: 1, isCS: true, imgs: ["testProjCover1.png"], tags: ['UX Design', 'Figma', 'React.JS'], link: ['https://www.junehomes.com'] }
+  // const proj2 = { name: 'Two', val: 2, isCS: false, imgs: ["test/pic1.png"], tags: ['2UX Design', 'Figma', 'React.JS'], link: [] }
+  // const proj3 = { name: 'three', val: 3, isCS: false, imgs: ["test/pic2.png"], tags: ['3UX Design', 'Figma', 'React.JS'], link: [] }
+  // const proj4 = { name: 'four', val: 4, isCS: true, imgs: ["testProjCover4.png"], tags: ['4UX Design', 'Figma', 'React.JS'], link: ['https://www.junehomes.com'] }
+  // const proj5 = { name: 'five', val: 5, isCS: false, imgs: ["testProjCover5.png"], tags: ['5UX Design', 'Figma', 'React.JS'], link: [] }
+  // const proj6 = { name: 'six', val: 6, isCS: false, imgs: ["testProjCover6.png"], tags: ['6UX Design', 'Figma', 'React.JS'], link: [] }
+  // const proj7 = { name: 'seven', val: 7, isCS: true, imgs: ["testProjCover7.png"], tags: ['7UX Design', 'Figma', 'React.JS'], link: [] }
+  // const proj8 = { name: 'eight', val: 8, isCS: false, imgs: ["testProjCover8.png"], tags: ['8UX Design', 'Figma', 'React.JS'], link: [] }
+  // const proj9 = { name: 'nine', val: 9, isCS: false, imgs: ["testProjCover9.png", ""], tags: ['9UX Design', 'Figma', 'React.JS'], link: [] }
+  
+  // const myProjects = [ proj1, proj2, proj3, proj4, proj5, proj6, proj7, proj8, proj9 ];
+
   const myRefs = [];
+  myRefs.push(useRef());
   myRefs.push(useRef());
   myRefs.push(useRef());
   myRefs.push(useRef());
@@ -86,9 +100,11 @@ const SideProjects = ({ projects, sideProjectsToggle }) => {
   }
 
   let imgPreviews = projects.map((project, index) => {
+  // let imgPreviews = projects.map((project, index) => {
     return (
       <ImageContainer to={'/' + index + '/works'}>
-        <img src={'imgs/' + project.imgs[0]}></img>
+        {/* <img src={'imgs/' + project.imgs[0]}></img> */}
+        <img src={project.imgs[0]}></img>
       </ImageContainer>
     )
   })
@@ -162,21 +178,22 @@ const SideProjects = ({ projects, sideProjectsToggle }) => {
   return (
     <Container
       as={motion.div} 
-      initial={{ opacity: 1, y: '0vh' }} 
-      animate={(currPage == '') ? {  opacity: 0, y: '-100vh' } : { opacity: 1, y: '0vh' }}
+      initial={{ opacity: 1 }} 
+      animate={(currPage == '') ? {  opacity: 0 } : { opacity: 1 }}
       transition={{
       type: "tween",
       ease: [0.28, 1.35, 1.5, .91],
-      duration: 0.3
+      duration: 0.6,
+      delay: 0.3,
       }}
     >
       <Label>Work Photo Index</Label>
       <Version>v2.13</Version>
       <ScrollContainer
         as={motion.div}
-        initial={{ y: '-103px' }}
-        animate={{ y: 0 }}
-        exit={{ y: '103px', transition: {
+        initial={{ x: '100vw' }}
+        animate={{ x: '0' }}
+        exit={{ x: '100vw', transition: {
               type: "tween",
               ease: [0.7, 0, 0.13, 1],
               duration: 0.5,
@@ -184,10 +201,14 @@ const SideProjects = ({ projects, sideProjectsToggle }) => {
         transition={{
             type: "tween",
             ease: [0.7, 0, 0.13, 1],
-            duration: 1,
+            duration: 1.2,
+            delay: 0.6
         }}
       >
         {imgPreviews}
+        <ErrorImg>
+          If images are not loading, please reload from <a href="http://www.austinkim.works/works">here</a>.
+        </ErrorImg>
       </ScrollContainer>
     </Container>
   )

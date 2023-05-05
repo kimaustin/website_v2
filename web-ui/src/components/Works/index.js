@@ -48,6 +48,7 @@ import {
 } from "./WorkElements";
 import Scrollbar from "smooth-scrollbar";
 import { FixedContent } from "./WorkExpandedElements";
+import { ThemeProvider } from 'styled-components';
 
 // const options = {
 //   damping: 0.1,
@@ -59,7 +60,7 @@ import { FixedContent } from "./WorkExpandedElements";
 // Scrollbar.init(document.querySelector('#my-scrollbar'), options);
 
 
-const Works = ({ projects, aboutToggle }) => {
+const Works = ({ projects, toggleLight }) => {
 
   const [projectDisplayed, setProjectDisplayed] = useState(0);
   const [hoverAllowed, setHoverAllowed] = useState(true);
@@ -327,17 +328,17 @@ const Works = ({ projects, aboutToggle }) => {
   // });
 
 
-  const proj1 = { name: 'June ggg ONE One GGG One ogg', val: 1, isCS: true, tags: ['UX Design', 'Figma', 'React.JS'], link: ['https://www.junehomes.com'] }
-  const proj2 = { name: 'Two', val: 2, isCS: false, tags: ['2UX Design', 'Figma', 'React.JS'], link: [] }
-  const proj3 = { name: 'three', val: 3, isCS: false, tags: ['3UX Design', 'Figma', 'React.JS'], link: [] }
-  const proj4 = { name: 'four', val: 4, isCS: true, tags: ['4UX Design', 'Figma', 'React.JS'], link: ['https://www.junehomes.com'] }
-  const proj5 = { name: 'five', val: 5, isCS: false, tags: ['5UX Design', 'Figma', 'React.JS'], link: [] }
-  const proj6 = { name: 'six', val: 6, isCS: false, tags: ['6UX Design', 'Figma', 'React.JS'], link: [] }
-  const proj7 = { name: 'seven', val: 7, isCS: true, tags: ['7UX Design', 'Figma', 'React.JS'], link: [] }
-  const proj8 = { name: 'eight', val: 8, isCS: false, tags: ['8UX Design', 'Figma', 'React.JS'], link: [] }
-  const proj9 = { name: 'nine', val: 9, isCS: false, tags: ['9UX Design', 'Figma', 'React.JS'], link: [] }
+  // const proj1 = { name: 'June ggg ONE One GGG OOO ggg', class_short: 'June', val: 1, isCS: true, imgs: ["testProjCover1.png"], tags: ['UX Design', 'Figma', 'React.JS'], link: ['https://www.junehomes.com'] }
+  // const proj2 = { name: 'Two', val: 2, isCS: false, imgs: ["test/pic1.png"], tags: ['2UX Design', 'Figma', 'React.JS'], link: [] }
+  // const proj3 = { name: 'three', val: 3, isCS: false, imgs: ["test/pic2.png"], tags: ['3UX Design', 'Figma', 'React.JS'], link: [] }
+  // const proj4 = { name: 'four', val: 4, isCS: true, imgs: ["testProjCover4.png"], tags: ['4UX Design', 'Figma', 'React.JS'], link: ['https://www.junehomes.com'] }
+  // const proj5 = { name: 'five', val: 5, isCS: false, imgs: ["testProjCover5.png"], tags: ['5UX Design', 'Figma', 'React.JS'], link: [] }
+  // const proj6 = { name: 'six', val: 6, isCS: false, imgs: ["testProjCover6.png"], tags: ['6UX Design', 'Figma', 'React.JS'], link: [] }
+  // const proj7 = { name: 'seven', val: 7, isCS: true, imgs: ["testProjCover7.png"], tags: ['7UX Design', 'Figma', 'React.JS'], link: [] }
+  // const proj8 = { name: 'eight', val: 8, isCS: false, imgs: ["testProjCover8.png"], tags: ['8UX Design', 'Figma', 'React.JS'], link: [] }
+  // const proj9 = { name: 'nine', val: 9, isCS: false, imgs: ["testProjCover9.png", ""], tags: ['9UX Design', 'Figma', 'React.JS'], link: [] }
   
-  const myProjects = [ proj1, proj2, proj3, proj4, proj5, proj6, proj7, proj8, proj9 ];
+  // const myProjects = [ proj1, proj2, proj3, proj4, proj5, proj6, proj7, proj8, proj9 ];
 
   const ListContainerRef = useRef();
 
@@ -357,6 +358,7 @@ const Works = ({ projects, aboutToggle }) => {
   myRefs.push(useRef());
   myRefs.push(useRef());
   myRefs.push(useRef());
+
   myRefs.push(useRef());
   myRefs.push(useRef());
   myRefs.push(useRef());
@@ -384,7 +386,7 @@ const Works = ({ projects, aboutToggle }) => {
             } else {
               setAnimateProject(999);
               // projectsList[0].target.style.color = '#B7B7B7';
-              projectsList[0].target.style.opacity = 0.55;
+              projectsList[0].target.style.opacity = 0.5;
               // projectsList[0].target.style.width = "100%";
               // projectsList[0].target.style.marginLeft = 0;
             }
@@ -639,13 +641,15 @@ const Works = ({ projects, aboutToggle }) => {
 
   // console.log(window.screen.height);
 
-  let rightImageSource = "imgs/" + projects[projectValue].imgs[0];
-  let height_var = "calc(118px + " + ((projectValue) * (88 / (projects.length + 3))) + "vh)";
+  // let rightImageSource = "imgs/" + projects[projectValue].imgs[0];
+  let rightImageSource = projects[projectValue].imgs[0];
+  let height_var = "calc(122px + " + ((projectValue) * (88 / (projects.length + 3))) + "vh)";
   let mobile_height_var = "calc(140px + " + ((projectValue) * (54 / (projects.length + 11))) + "vh)";
 
   //TODO: Fix filters not working
   return (
-    <Container
+    <Container 
+      // onLoad={toggleLight}
       // id="head"
       // as={motion.div}
       // initial="initial"
@@ -654,6 +658,8 @@ const Works = ({ projects, aboutToggle }) => {
       // variants={pageVariants2}
       // transition={pageTransition}
     >
+      {/* <ThemeProvider theme={theme}> */}
+        <Divider/>
       {/* <Label as={motion.div} initial="initial"
           animate="in"
           exit="out"
@@ -677,7 +683,6 @@ const Works = ({ projects, aboutToggle }) => {
       >
         top
       </TopOfWorks> */}
-      <Divider />
 
       <WorkListContainer id="topWorks"
         ref={ListContainerRef}
@@ -685,14 +690,15 @@ const Works = ({ projects, aboutToggle }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0, transition: {
-              type: "tween",
-              ease: [0.7, 0, 0.13, 1],
-              duration: 0.5,
-          } }}
+          type: "tween",
+          ease: [0.7, 0, 0.13, 1],
+          duration: 0.2,
+        } }}
         transition={{
             type: "tween",
             ease: [0.7, 0, 0.13, 1],
-            duration: 1,
+            duration: 0.5,
+            delay: 0.5
         }}
       >
         {/* {project_names} */}
@@ -706,21 +712,20 @@ const Works = ({ projects, aboutToggle }) => {
       <WorkPreview
         heightVar={height_var}
         mobileHVar={mobile_height_var}
-          // as={motion.div}
-          // initial={{ y: '-195px' }}
-          // animate={{ y: 0, position: 'fixed' }}
-          // exit={{ y: '-195px', transition: {
-          //       type: "tween",
-          //       ease: [0.7, 0, 0.13, 1],
-          //       duration: 0.5,
-          //       delay: 0.1
-          //   } }}
-          // transition={{
-          //     type: "tween",
-          //     ease: [0.7, 0, 0.13, 1],
-          //     duration: 0.5,
-          //     delay: 0.1
-          // }}
+        as={motion.div}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0, transition: {
+              type: "tween",
+              ease: [0.7, 0, 0.13, 1],
+              duration: 0.1
+          } }}
+        transition={{
+            type: "tween",
+            ease: [0.7, 0, 0.13, 1],
+            duration: 0.2,
+            delay: 0.55
+        }}
         >
           <img src={rightImageSource}/>
           <WorkName>{projects[projectValue].class}</WorkName>
@@ -736,11 +741,15 @@ const Works = ({ projects, aboutToggle }) => {
         as={motion.div}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+        exit={{ opacity: 0, transition: {
+              type: "tween",
+              ease: [0.7, 0, 0.13, 1],
+              duration: 0.2
+        } }}
         transition={{
-            type: "tween",
-            ease: [0.7, 0, 0.13, 1],
-            duration: 0.8,
+          type: "tween",
+          ease: [0.7, 0, 0.13, 1],
+          duration: .4,
         }}
       >
         <img src={rightImageSource}/>
@@ -748,22 +757,22 @@ const Works = ({ projects, aboutToggle }) => {
       </ContentBg>
 
       <ClickableArea
-        // to={"/" + projectValue + "/works"}
-        // id={"proj" + projectValue}
-        // as={motion.div}
-        // initial={{ y: '20vh' }}
-        // animate={{ y: '0', position: 'fixed' }}
-        // exit={{ y: '20vh', transition: {
-        //       type: "tween",
-        //       ease: [0.7, 0, 0.13, 1],
-        //       duration: 0.6
-        //   } }}
-        // transition={{
-        //     type: "tween",
-        //     ease: [0.7, 0, 0.13, 1],
-        //     duration: 0.5,
-        //     delay: 0.5
-        // }}
+        to={"/" + projectValue + "/works"}
+        id={"proj" + projectValue}
+        as={motion.div}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0, transition: {
+              type: "tween",
+              ease: [0.7, 0, 0.13, 1],
+              duration: 0.3
+          } }}
+        transition={{
+            type: "tween",
+            ease: [0.7, 0, 0.13, 1],
+            duration: 0.8,
+            delay: 1.2
+        }}
       >
         {/* <VisitLink href={"http://www.w3schools.com"} target="_blank">
           Visit 
@@ -788,30 +797,31 @@ const Works = ({ projects, aboutToggle }) => {
         exit={{ opacity: 0, transition: {
             type: "tween",
             ease: [0.7, 0, 0.13, 1],
-            duration: 0.8,
+            duration: 0.3
           }}}
         transition={{
             type: "tween",
             ease: [0.7, 0, 0.13, 1],
             duration: 0.6,
-            delay: 0.2
         }}>
         <WorkImage
           as={motion.div}
-          initial={{ opacity: 0, scale: 0.99 }}
+          initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1}}
           exit={{ opacity: 0, scale: 0.99, transition: {
                 type: "tween",
                 ease: [0.7, 0, 0.13, 1],
-                duration: 0.5,
+                duration: 0.2,
             } }}
           transition={{
               type: "tween",
               ease: [0.7, 0, 0.13, 1],
-              duration: 0.5,
+              duration: 0.7,
+              delay: 0.5,
           }}
         >
           <img src={rightImageSource}/>
+          {/* <img src={"testProjCover" + projectValue + ".png"}/> */}
         </WorkImage>
       </WorkImageContainer>
 
@@ -835,6 +845,7 @@ const Works = ({ projects, aboutToggle }) => {
               <PrevProjLabel>Previous Project</PrevProjLabel>
             </PrevProj>
         </ContentBg> */}
+        {/* </ThemeProvider> */}
     </Container>
   );
 };

@@ -12,16 +12,16 @@ export const Container = styled.div`
     left: 0;
     display: flex;
 
-    background: rgba(50, 50, 50, 0.7);
+    background: ${props => props.theme.bgNav};
     backdrop-filter: blur(13px);
 
-    border-top: 1px solid #424242;
+    border-top: 1px solid ${props => props.theme.border};
     /* filter: blur(-2x); */
     /* -webkit-filter: blur(-1.5px); */
     /* cursor: url("/imgs/cursor1.svg"), auto; */
 
     @media screen and (max-width: 767px) {
-        
+        backdrop-filter: blur(10px);
     }
 `
 
@@ -57,7 +57,7 @@ export const NavHome = styled(LinkRouter)`
     height: 18px;
     // margin-bottom: 32px;
     font-size: 14px;
-    color: #FFFFFF;
+    color: ${props => props.theme.secondary};
     text-decoration: none;
     font-family: 'OpenSans';
     justify-content: start;
@@ -106,7 +106,7 @@ export const Close = styled.div`
     // height: 40px;
     padding-right: 14px;
     padding-bottom: 18px;
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-family: 'OpenSans';
     font-size: 14px;
     letter-spacing: 0.2px;
@@ -122,7 +122,7 @@ export const About = styled.div`
     left: 0;
     padding-left: 14px;
     padding-bottom: 18px;
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-family: 'SS3';
     font-size: 14px;
     letter-spacing: 0.2px;
@@ -138,8 +138,8 @@ export const Menu = styled.div`
     bottom: 0;
     left: 0;
     padding-left: 14px;
-    padding-bottom: 22px;
-    color: #FFFFFF;
+    padding-bottom: 18px;
+    color: ${props => props.theme.primary};
     font-family: 'SS3';
     font-size: 14px;
     letter-spacing: 0.2px;
@@ -154,16 +154,16 @@ export const MobileAboutContainer = styled.div`
     top: 0;
     align-items: start;
     text-align: left;
-    padding: 66px 0 0 14px;
+    padding: 60px 0 0 14px;
 
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-family: 'SS3';
     font-size: 22px;
 `
 
 export const Styled1 = styled.div`
-    padding-top: 2px;
-    color: #747474;
+    padding-top: 6px;
+    color: ${props => props.theme.secondary};
     font-family: 'SS3';
     font-size: 14px;
     letter-spacing: 0.2px;
@@ -171,7 +171,7 @@ export const Styled1 = styled.div`
 
 export const Styled2 = styled.div`
     padding-top: 14px;
-    color: #BEBEBE;
+    color: ${props => props.theme.secondary};
     font-family: 'SS3';
     font-size: 14px;
     letter-spacing: 0.2px;
@@ -179,8 +179,8 @@ export const Styled2 = styled.div`
 `
 
 export const Styled3 = styled.div`
-    padding-top: 20px;
-    color: #6C9EFF;
+    padding-top: 16px;
+    color: ${props => props.theme.cs};
     font-family: 'SS3';
     font-size: 14px;
     letter-spacing: 0.2px;
@@ -189,10 +189,10 @@ export const Styled3 = styled.div`
 
 export const Social = styled.div`
     padding-top: 16px;
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-family: 'SS3';
     font-size: 14px;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.1px;
 `
 
 export const NavMenu = styled.div`
@@ -205,7 +205,7 @@ export const NavMenu = styled.div`
     top: 0;
     align-items: start;
     text-align: left;
-    padding: 68px 0 0 14px;
+    padding: 64px 0 0 14px;
     // margin-right: -21.5px;
 
     @media screen and (max-width: 767px) {
@@ -219,14 +219,14 @@ export const Details1 = styled.div`
     position: absolute;
     top: 0px;
     left: 14px;
-    margin-top: 220px;
+    margin-top: 324px;
     width: 100vw;
     height: 20px;
     
-    color: #8F8F8F;
+    color: ${props => props.theme.secondary};
     font-family: 'OpenSans';
     font-size: 12px;
-    line-height: 138%;
+    line-height: 154%;
 `
 
 export const NavItem = styled.li`
@@ -234,7 +234,7 @@ export const NavItem = styled.li`
 `
 
 export const NavLinks = styled(LinkScroll)`
-    color: white;
+    /* color: white; */
     display: flex;
     align-items: start;
     text-align: left;
@@ -242,7 +242,7 @@ export const NavLinks = styled(LinkScroll)`
     // padding: 0 1rem;
     margin-bottom: 8px;
 
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-family: 'OpenSans';
     font-size: 14px;
 
@@ -259,7 +259,7 @@ export const NavLinksDOM = styled(LinkRouter)`
     // height: 100%;
     /* cursor: pointer; */
 
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-family: 'OpenSans';
     font-weight: 400;
     font-size: 14px;
@@ -282,7 +282,7 @@ export const NavLinksDOM2 = styled(LinkRouter)`
     /* cursor: pointer; */
 
 
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-family: 'OpenSans';
     font-weight: 400;
     font-size: 14px;
@@ -298,13 +298,13 @@ export const NavLinksDOM2 = styled(LinkRouter)`
 export const CloseBtn = styled.nav`
     position: absolute;
     right: 14px;
-    top: 12px;
+    top: 14px;
     width: 30px;
     height: 30px;
     padding: 4px;
     text-align: right;
 
-    color: #FFFFFF;
+    color: ${props => props.theme.primary};
     font-family: 'OpenSans';
     font-weight: 500;
     font-size: 16px;

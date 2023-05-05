@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { useLocation } from 'react-router-dom';
 import AboutPanel from '../AboutPanel';
-import { Container, NavContainer, MobileAbout, MobileMenuToggle, Indicator, OpenMenu, NavDOMLink3, Logo, NavHome, NonMobile, NonMobile1, PhotoIndexContainer, NavDOMLink, NavDOMLink2, NavDOMLinkAbout, InfoLink, Mobile, AboutContainer, Kim, InfoWrapper, Rotating, NonMobile2, Filter, Divider} from './NavigationElements';
-
-const Navigation = ({toggle, aboutToggle, mobileToggle}) => {
+import { Container, NavContainer, MobileAbout, Switcher, ThemeIndicator, DarkWipe, DarkIcon, LightIcon, MobileMenuToggle, Indicator, NavDOMLink3, Logo, NavHome, NonMobile, NonMobile1, PhotoIndexContainer, NavDOMLink, NavDOMLink2, NavDOMLinkAbout, InfoLink, Mobile, AboutContainer, Kim, InfoWrapper, Rotating, NonMobile2, Filter, Divider, LightLabel, IconContainer, IndicatorContainer} from './NavigationElements';
+import { FaMoon } from "react-icons/fa";
+import { IoSunnySharp } from "react-icons/io5";
+const Navigation = ({toggle, aboutToggle, mobileToggle, toggleLight, toggleDark, themeToggleStatus}) => {
 
     const location = useLocation();
     
@@ -87,19 +88,20 @@ const Navigation = ({toggle, aboutToggle, mobileToggle}) => {
         //     transition={pageTransition}>
         <Container
             as={motion.div} 
-            initial={{ opacity: 1, y: '0vh' }} 
-            animate={(currPage == '') ? {  opacity: 0, y: '-100vh' } : { opacity: 1, y: '0vh' }}
+            initial={{ opacity: 1 }} 
+            animate={(currPage == '') ? {  opacity: 0 } : { opacity: 1 }}
             transition={{
             type: "tween",
             ease: [0.28, 1.35, 1.5, .91],
-            duration: 0.3
+            duration: 0.6,
+            delay: 0.3,
             }}
         >
             {/* <Divider /> */}
             <Indicator currpage={currPage}
                 as={motion.div} 
                 initial={{ x: '24px' }}
-                animate={(currPage == '') ? { x: '24px'} : (currPage == 'test' ? { x: '24px' } : (currPage == '' ? { x: 'calc(24px)' } : { x: '24px'}))}
+                animate={(currPage == '') ? { x: '22px'} : (currPage == 'test' ? { x: '22px' } : (currPage == '' ? { x: 'calc(24px)' } : { x: '22.5px'}))}
                 transition={pageTransition}
             />
             {/* <AboutContainer as={motion.div} initial={{ x: '20.5rem', y: '105vh' }} 
@@ -108,13 +110,25 @@ const Navigation = ({toggle, aboutToggle, mobileToggle}) => {
                 <AboutPanel />
             </AboutContainer> */}
             <NonMobile>
-                <NavHome currpage={currPage} thispage={''} to="/"><Logo /><a style={{ marginLeft: '8px', marginTop: '0' }}>호연</a></NavHome>
-                <MobileMenuToggle onClick={mobileToggle}>Menu/About</MobileMenuToggle>
-                {/* <MobileAbout onClick={mobileToggle}>Menu</MobileAbout> */}
-            </NonMobile>
-            <NonMobile1>
+                <NavHome currpage={currPage} thispage={'works'} to="/works"><Logo /><a style={{ marginLeft: '8px', marginTop: '-1px' }}>호연</a></NavHome>
                 <NavDOMLinkAbout currpage={aboutToggle} thispage={true} onClick={() => toggle('info')}>About/Contact</NavDOMLinkAbout>
-            </NonMobile1>
+                <Switcher>
+                        <LightIcon onClick={toggleLight}><IoSunnySharp /></LightIcon>
+                        <ThemeIndicator 
+                            // onClick={toggleDark}
+                            isLight={themeToggleStatus}
+                            as={motion.div} 
+                            initial={{ marginLeft: '-105%' }} 
+                            animate={( themeToggleStatus ) ? { marginLeft: '-105%' } : { marginLeft: '45%' }}
+                            transition={{
+                            type: "tween",
+                            ease: [0.28, 1.35, 1.5, .91],
+                            duration: 0.4 }}
+                        />
+                        <DarkIcon onClick={toggleDark}><FaMoon /></DarkIcon>
+                </Switcher>
+                <MobileMenuToggle onClick={mobileToggle}>Menu/About</MobileMenuToggle>
+            </NonMobile>
             <NonMobile2 
                 // as={motion.div} 
                 // initial="initial"
@@ -140,10 +154,10 @@ const Navigation = ({toggle, aboutToggle, mobileToggle}) => {
                 <NavDOMLink2 currpage={currPage} thispage={'blog'} to="/blog">
                     Blog
                 </NavDOMLink2> */}
-                <NavDOMLink3>The Lab</NavDOMLink3>
-                <NavDOMLink3>Photography</NavDOMLink3>
-                <NavDOMLink3>Blog</NavDOMLink3>
-
+                <NavDOMLink3>(Blog coming soon)</NavDOMLink3>
+                <NavDOMLink3>(Photos coming soon)</NavDOMLink3>
+                {/* <NavDOMLink3>Photography</NavDOMLink3>
+                <NavDOMLink3>Blog</NavDOMLink3> */}
             </NonMobile2>
         </Container>
     );

@@ -20,7 +20,9 @@ html {
 body {
   // overflow: none;
   // background: #1E1C1F;
-  background: black;
+  // background: black;
+  // background: #F5FBFF;
+  // background: ${props => props.theme.background};
   min-height: 100vh;
   overflow: hidden;
   // border-left: 0.5rem solid red;

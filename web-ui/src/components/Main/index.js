@@ -1,35 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import { ThemeProvider } from "styled-components";
 import { motion } from "framer-motion";
 import { ProgressiveImage } from "react-progressive-image";
+import { useHistory } from 'react-router';
 
-import { Container, BodySection, WorksImageContainer, BasicTxt1, BasicTxt2, SelectedLabel, Divider, Divider2, MainBio, Name, Kim, DownButton, FilterPreview, FilterContent, SDTypeHover, SDContent, UXTypeHover, UXContent, TypeHover, Marquee, ImageContainer, Styled, HoverName, ArrowAnim, SelectedWorks, WorkItem, ItemIndex, ItemDetail, SelectedListContainer, ButtonContainer, Header, MainImg, MainDesc, lilMove } from './MainElements';
+import { Container, DownButton, MainImg } from './MainElements';
 
-const Main = ({projects}) => {
+const Main = () => {
         
-  console.log('initial projects', projects);
-  
-    const [scrollName, setScrollName] = useState(false);
+  const history = useHistory();
 
-    const descVariants = {
-        initial: {
-            opacity: 0,
-          },
-          in: {
-            opacity: 1,
-            transition: {
-              type: "tween",
-              ease: [0.87, 0, 0.13, 1],
-              duration: 1,
-              }
-          },
-          out: {
-            opacity: 0,
-          }
+  useEffect(() => {
+    const onPageLoad = () => {
+      // alert("hi");
+      // toggleLight;
+      history.push('/works');
+    };
+
+    if (document.readyState === 'complete') {
+      onPageLoad();
+    } else {
+      window.addEventListener('load', onPageLoad);
+      // Remove the event listener when component unmounts
+      return () => window.removeEventListener('load', onPageLoad);
     }
+  }, []);
 
-    const imgVariants = {
+  // console.log('initial projects', projects);
+  
+  const imgVariants = {
         initial: {
           y: '0',
           x: 0,
@@ -58,48 +57,6 @@ const Main = ({projects}) => {
           }
         } 
     }
-
-    const btnVariants = {
-        initial: {
-          y: '50vh',
-          x: 0,
-          opacity: 0,
-        },
-        in: {
-          y: '0vh',
-          opacity: 1,
-          x: 0,
-          transition: {
-            type: "tween",
-            ease: [0.87, 0, 0.13, 1],
-            duration: .9,
-            delay: .65,
-            }
-        },
-        out: {
-          y: '0',
-          opacity: 0,
-          x: '50vw'
-        }
-    }
-
-    const headerVariants = {
-        initial: {
-          y: '-50vh',
-          x: 0,
-          opacity: 0,
-        },
-        in: {
-          y: '0vh',
-          opacity: 1,
-          x: 0,
-        },
-        out: {
-          y: '-50vh',
-          x: '0'
-        }
-    }
-
 
     const pageVariants2 = {
         initial: {
@@ -136,22 +93,9 @@ const Main = ({projects}) => {
             variants={pageVariants2}
             transition={pageTransition}
             >
-            {/* <MainBio zVal={999}
-                as={motion.div} initial="initial"
-                animate="in"
-                exit="out"
-                variants={pageVariants}
-                transition={pageTransition}
-                > */}
-            {/* <Header
-                as={motion.div} initial="initial"
-                animate="in"
-                exit="out"
-                variants={headerVariants}
-                transition={pageTransition}
-                >
-                    Hello,
-            </Header> */}
+            <DownButton to={"/works"}>
+                  Click to enter site
+            </DownButton>
             <MainImg>
                 {/* <ProgressiveImage
                     src={require("/imgs/sample.jpeg")}
@@ -162,34 +106,12 @@ const Main = ({projects}) => {
                       exit="out"
                       variants={imgVariants}
                       transition={pageTransition}
-                      src={"/imgs/sample.jpeg"} onerror='this.style.display = "none"' alt={'Me'}>
+                      src={"/imgs/sample.jpeg"} onerror='this.style.display = "none"' alt={''}>
                   </img>
                 {/* </ProgressiveImage> */}
             </MainImg>
-            {/* <MainDesc 
-                as={motion.div} initial="initial"
-                animate="in"
-                exit="out"
-                variants={descVariants}
-                transition={pageTransition}
-                >I'm Austin, a web/UX/UI/graphic <br />designer with a background in Computer <br />Science and Design.<br />
-            </MainDesc> */}
-            <ButtonContainer
-                // as={motion.div}
-                // initial="initial"
-                // animate="in"
-                // exit="out"
-                // variants={descVariants}
-                // transition={pageTransition}
-              >
-                <DownButton to={"/works"}>
-                  Click to enter site
-                  {/* <lilMove>→</lilMove> */}
-                </DownButton>
-            </ButtonContainer>
-            {/* </MainBio> */}
         </Container>
     );
 };
 
-export default connect(({projects}) => ({projects}))(Main);
+export default Main;

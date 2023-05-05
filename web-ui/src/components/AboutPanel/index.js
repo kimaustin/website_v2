@@ -27,19 +27,17 @@ const About = ({ toggle, aboutToggle }) => {
           <Logo />
           <Name>Austin Kim <br />(호연)</Name>
           <Styled1>Currently based in <br /> Brooklyn, NY</Styled1>
-          <Styled1 style={{ color: '#6C9EFF', paddingTop: '10px' }}>Open for work and collaboration</Styled1>
-          <Styled2>
-            I’m a multi-disciplinary designer, developer, artist with a passion for building meaningful, impactful, and engaging experiences.
-          </Styled2>
-          <Styled2 style={{ marginTop: '12px' }}>I love experimenting with new technologies, techniques, patterns, styles, and sounds.</Styled2>
+          <Styled2>I’m a multi-disciplinary designer, developer, artist with a passion for building meaningful, impactful, and engaging experiences.</Styled2>
+          <Styled2>I love experimenting with new technologies, techniques, patterns, styles, and sounds.</Styled2>
         </Content>
         <Bottom>
+          <Styled1 style={{ color: '#6C9EFF', paddingTop: '10px' }}>Open for work and collaboration</Styled1>
           <Social onClick={() => window.open("/imgs/Resume_Spring23.pdf")} target="_blank">Resume ↗</Social>
           <Social href="https://www.instagram.com/nektine/" target="_blank">Instagram ↗</Social>
           <Social href="mailto:nektinemedia@gmail.com" target="_blank">Email ↗</Social>
           <Styled1 style={{paddingTop: '30px' }}>Last Updated: May 4, 2023</Styled1>
           <Styled1 style={{paddingTop: '6px', paddingBottom: '40px'}}>Built by me in React (framer, styled-components) + Elixir.</Styled1>
-          <Close onClick={toggle}>Close ✕</Close>
+          <Close onClick={toggle}>Close</Close>
         </Bottom>
       </Container>
     // </AboutContainer>
