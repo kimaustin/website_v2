@@ -10,3 +10,4 @@ server/config/*.secret.exs
 server/.elixir_ls/
 web-ui/build/
 web-ui/public/imgs/
+web-ui/node_modules/.cache/
