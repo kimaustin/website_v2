@@ -73,7 +73,7 @@ export const TopSticky = styled.div`
     position: fixed;
     top: 120.5px;
     left: ${({ isCS }) => (isCS ? 'calc(15vw + 20.5px)' : 'calc(20vw + 20px)')};
-    width:  ${({ isCS }) => (isCS ? 'calc(68vw - 80px + 11.5px)' : 'calc(75vw - 80px + 11.5px)')};
+    width:  ${({ isCS }) => (isCS ? 'calc(68vw - 80px + 13.5px)' : 'calc(74vw - 80px + 11.5px)')};
     height: 18px;
     display: inline-grid;
     grid-template-columns: 74px 1fr 1fr;
@@ -256,7 +256,7 @@ export const PicContainer = styled.div`
     padding-right: 20px;
     margin-right: 12px;
     /* width: calc(68vw - 80px + 12px); */
-    width:  ${({ isCS }) => (isCS ? 'calc(68vw - 80px + 12)' : 'calc(75vw - 80px + 12px)')};
+    width:  ${({ isCS }) => (isCS ? 'calc(68vw - 80px + 14)' : 'calc(74vw - 80px + 12px)')};
 
 
     img {
@@ -264,7 +264,7 @@ export const PicContainer = styled.div`
         // max-height: 100%;
         // max-width: 100%;
         max-height: 83vh;
-        max-width: ${({ isCS }) => (isCS ? 'calc(68vw - 80px + 12)' : 'calc(75vw - 80px + 12px)')};
+        max-width: ${({ isCS }) => (isCS ? 'calc(68vw - 80px + 14)' : 'calc(74vw - 80px + 12px)')};
         // width: 80vw;
         z-index: -1;
         /* border: 1px solid #201D17; */

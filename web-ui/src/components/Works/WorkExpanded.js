@@ -245,6 +245,7 @@ const WorkExpanded = ({ projects }) => {
                 return (
                     <PicContainer id={index_str}
                         index={index}
+                        isCS={is_cs}
                         // isLast={is_last}
                         // as={motion.div}
                         // initial="initial"
