@@ -33,14 +33,14 @@ const WorkExpanded = ({ projects }) => {
     var next_id;
     var prev_id;
 
-    if (work_id_trunc == 14) {
+    if (work_id_trunc == 13) {
         next_id = 0;
         prev_id = parseInt(work_id.substring(1, work_id.length)) - 1;
         // console.log("caught max case");
     } else if (work_id_trunc == 0) {
         // console.log("caught 0 case");
         next_id = parseInt(work_id.substring(1, work_id.length)) + 1; 
-        prev_id = 14;
+        prev_id = 13;
     } else {
         next_id = parseInt(work_id.substring(1, work_id.length)) + 1; 
         prev_id = parseInt(work_id.substring(1, work_id.length)) - 1;
