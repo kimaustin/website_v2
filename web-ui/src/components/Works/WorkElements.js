@@ -245,6 +245,7 @@ export const MobileWorkItem = styled.div`
 export const TopLine = styled.div`
   display: inline-block;
   width: 100%;
+  margin-bottom: 4px;
   // grid-template-columns: 20px 1fr 6fr;
   // grid-template-rows: 1fr;
   // height: 8px;
