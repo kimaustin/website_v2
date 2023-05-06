@@ -17,7 +17,7 @@ export const Container = styled.div`
 
     @media screen and (max-width: 767px) {
         top: unset;
-        bottom: 0;
+        bottom: 0px;
         width: 100vw;
         border-top: .5px solid ${props => props.theme.border};
         border-bottom: unset;
@@ -89,11 +89,16 @@ export const NonMobile = styled.div`
         width: calc(100vw - 28px);
         /* width: 50%; */
         grid-template-columns: 1fr 1fr 1fr;
-        height: 24px;
+        height: 52px;
+        /* height: 24px; */
         left: 14px;
         overflow: unset;
-        padding-top: 4px;
-        top: 11px;
+        padding-top: 15px;
+        /* position: unset; */
+        top: unset;
+        bottom: 0;
+        left: 14px;
+        paddig-left: 14px;
     }
 `;
  
@@ -170,8 +175,8 @@ export const Switcher = styled.div`
     @media screen and (max-width: 767px) {
         margin-top: -3px;
         height: 28px;
-        width: 70%;
-        margin-left: 17%;
+        /* width: 100%; */
+        /* margin-left: 17%; */
     }
 `
 

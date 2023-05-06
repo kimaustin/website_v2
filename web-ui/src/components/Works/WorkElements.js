@@ -176,7 +176,7 @@ export const WorkListContainer = styled.div`
     width: 100vw;
     padding-left: 11px;
     padding-top: calc(48vh - 126px - 16px + 103px);
-    padding-bottom: calc(50vh - 62px + 42px);
+    padding-bottom: calc(50vh - 64px + 42px);
   }
 `;
 
@@ -198,7 +198,7 @@ export const WorkItem = styled.div`
   // }
 
   @media screen and (max-width: 767px) {
-    width: calc(82vw - 16px);
+    width: calc(100vw - 32px);
     scroll-margin-top: calc(48vh - 2px - 36px);
     margin-bottom: 18px;    
   }
@@ -206,7 +206,7 @@ export const WorkItem = styled.div`
 
 export const DeskWorkItem = styled.div`
   display: grid;
-  grid-template-rows: 24px 1fr;
+  grid-template-rows: 1frpx 1fr;
 
   // margin-bottom: 38px;
   // scroll-margin-top: calc(48vh - 128px - 21px + 103px);
@@ -235,9 +235,9 @@ export const MobileWorkItem = styled.div`
     padding: 0 4px;
 
     display: grid;
-    grid-template-rows: 24px 1fr;
+    /* grid-template-rows: 1fr 1fr; */
 
-    width: calc(82vw - 16px);
+    width: calc(100vw - 32px);
     margin-bottom: 20px;   
   }
 `
@@ -256,6 +256,7 @@ export const TopLine = styled.div`
   @media screen and (max-width: 767px) {
     align-items: start;
     text-align: left;
+    margin-bottom: 5px;
   }
 `
 
@@ -352,7 +353,7 @@ export const WorkTitle = styled.div`
     float: left;
     text-align: left;
     align-items: start;
-    width: 96%;
+    width: 100%;
   }
 `
 

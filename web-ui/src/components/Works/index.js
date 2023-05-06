@@ -342,7 +342,7 @@ const Works = ({ projects, toggleLight }) => {
             } else {
               // setAnimateProject(999);
               // projectsList[0].target.style.color = '#B7B7B7';
-              projectsList[0].target.style.opacity = 0.5;
+              projectsList[0].target.style.opacity = 0.4;
               // projectsList[0].target.style.width = "100%";
               // projectsList[0].target.style.marginLeft = 0;
             }

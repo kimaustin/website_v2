@@ -115,7 +115,6 @@ const Navigation = ({toggle, aboutToggle, mobileToggle, toggleLight, toggleDark,
                 <Switcher>
                         <LightIcon onClick={toggleLight}><IoSunnySharp /></LightIcon>
                         <ThemeIndicator 
-                            // onClick={toggleDark}
                             isLight={themeToggleStatus}
                             as={motion.div} 
                             initial={{ marginLeft: '-105%' }} 

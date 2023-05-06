@@ -50,6 +50,7 @@ export const ScrollContainer = styled.div`
   @media screen and (max-width: 767px) {
     padding-top: 10px;
     height: 132px;
+    overflow-y: hidden;
     width: 100vw;
     padding-left: 14px;
     /* padding-right: 20px; */
@@ -152,6 +153,7 @@ export const ErrorImg = styled.div`
   @media screen and (max-width: 767px) {
     /* position: unset; */
     display: flex;
+    width: 90%;
     top: 10px;
     left: 14px;
     height: 90px;
