@@ -97,16 +97,18 @@ function App() {
 
   const toggleLight = async event => {
     if (!isLightTheme) {
-      setIsLightTheme(lightTheme);
+      setIsLightTheme(true);
+      await delay(150);
+      setColorTheme(lightTheme);
     }
-    await delay(150);
-    setColorTheme(lightTheme);
   }
 
   const toggleDark = async event => {
-    setIsLightTheme(false);
-    await delay(150);
-    setColorTheme(darkTheme);
+    if (isLightTheme) {
+      setIsLightTheme(false);
+      await delay(150);
+      setColorTheme(darkTheme);
+    }
   }
 
   return (

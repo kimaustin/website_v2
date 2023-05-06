@@ -194,15 +194,14 @@ export const ThemeIndicator = styled.div`
     /* background: green; */
     border-radius: 30px;
     /* height: 24px; */
-
 `
 
 export const LightIcon = styled.div`
     z-index: 999;
     font-size: 15px;
-    padding-left: 47%;
+    padding-left: 50%;
     padding-top: 4.75px;
-    width: 150%;
+    width: 100%;
     color: ${isLight => (isLight ? 'rgba(242, 249, 256, 1)' : 'rgba(30, 30, 31, 1)')};
 
     -webkit-user-select: none; /* Safari */
@@ -210,7 +209,7 @@ export const LightIcon = styled.div`
     user-select: none; /* Standard syntax */
     
     &:hover {
-        opacity: .8;
+        /* opacity: .8; */
         cursor: pointer;
     }
 
@@ -226,8 +225,8 @@ export const DarkIcon = styled.div`
     text-align: center;
     /* padding-left: 0%; */
     padding-top: 5.7px;
-    padding-left: 0px;
-    width: 150%;
+    padding-left: 40%;
+    width: 100%;
     margin-left: -50%;
     color: ${isLight => (isLight ? 'rgba(30, 30, 31, 1)' : 'rgba(242, 249, 256, 1)')};
 
@@ -236,7 +235,7 @@ export const DarkIcon = styled.div`
     user-select: none; /* Standard syntax */
 
     &:hover {
-        opacity: .8;
+        /* opacity: .8; */
         cursor: pointer;
     }
 
