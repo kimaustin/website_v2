@@ -20,5 +20,6 @@ export const Overlay = styled.div`
 
     background: ${props => props.theme.bgBlur};
     // background: blue;
-    backdrop-filter: blur(16px);
+    opacity: 0.4;
+    backdrop-filter: blur(13px);
 `

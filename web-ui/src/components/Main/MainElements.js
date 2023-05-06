@@ -11,7 +11,7 @@ export const Container = styled.div`
     top: 0;
     overflow: hidden;
 
-    background: ${props => props.theme.bg};;
+    /* background: ${props => props.theme.bg}; */
 
     /* text-align: center; */
     /* justify-content: center; */
@@ -40,6 +40,9 @@ export const Container = styled.div`
 
 
 export const Logo = styled.div`
+    position: fixed;
+    left: calc(50vw - 9px);
+    top: calc(50vh - 9px);
     width: 18px;
     height: 18px;
     background-image: url("logo.png");

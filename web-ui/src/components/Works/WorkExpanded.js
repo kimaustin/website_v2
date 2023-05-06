@@ -13,7 +13,7 @@ import { Container, Header, TableOfContents, Visit, CloseTOC, MobileTags, Mobile
 const WorkExpanded = ({ projects }) => {
 
     const [showTOC, setShowTOC] = useState(false);
-    const [currImage, setCurrImage] = useState(1);
+    // const [currImage, setCurrImage] = useState(1);
 
     const location = useLocation();
     let work_id = location.pathname.split("/works")[0];
@@ -72,28 +72,6 @@ const WorkExpanded = ({ projects }) => {
 
     // console.log("imgs: " + work.imgs);
 
-    const imgVariants = {
-        initial: {
-            opacity: 0,
-            y: "100vh",
-            scale: 0.9,
-        },
-        in: {
-            opacity: 1,
-            y: '0',
-            scale: 1,
-        },
-        out: {
-            opacity: 0,
-            // y: "-100vh",
-            scale: 0.9,
-            transition: {
-                type: "tween",
-                ease: [0.7, 0, 0.13, 1],
-                duration: 0.7,
-            }
-        },  
-    };
 
     const myPicRefs = [];
     myPicRefs.push(useRef());
@@ -317,19 +295,6 @@ const WorkExpanded = ({ projects }) => {
         }
     }
 
-    const updateCurrImage = (img_index) => {
-        // console.log("curr img index: " + img_index);
-        if (currImage != img_index) {
-            setCurrImage(currImage);
-        }
-    };
-
-    function Tags({tag}) {
-        return (
-            <Tag>{tag}</Tag>
-        )
-    };
-
     const content_displayed = work.imgs.map((picture, index) => (
         <Content_Displayed picture={picture} key={picture.id} index={index} />
     ));
@@ -340,64 +305,21 @@ const WorkExpanded = ({ projects }) => {
         // <TOCItem>{subsection}</TOCItem>
     ));
 
-    const leftVariants = {
-        initial: {
-            opacity: 0,
-            y: '0',
-            // y: "-100vh",
-            scale: 0.9,
-        },
-        in: {
-            opacity: 1,
-            // y: '2.5rem',
-            scale: 1,
-        },
-        out: {
-            opacity: 0,
-            // y: "-100vh",
-            scale: 1,
-        },
-    };
-
-    const controlVariants = {
-        initial: {
-            opacity: 0,
-            y: '0s',
-            x: '1.5rem',
-            // y: "-100vh",
-            scale: 0.9,
-        },
-        in: {
-            opacity: 1,
-            x: 0,
-            // y: '2.5rem',
-            scale: 1,
-        },
-        out: {
-            opacity: 0,
-            // y: "-100vh",
-            scale: 1,
-        },
-    };
-
-    const leftTransition = {
-        type: "tween",
-        ease: [0.7, 0, 0.13, 1],
-        duration: 0.6,
-    }
-
-    const rightTransition = {
-        type: "tween",
-        ease: [0.7, 0, 0.13, 1],
-        duration: 0.85,
-    }
-
     return (
         <Container id='head'
             // as={motion.div}
-            // initial="initial"
-            // animate="in"
-            // exit="out"
+            // initial={{ opacity: 0 }}
+            // animate={{ opacity: 1 }}
+            // exit={{ opacity: 0, transition: {
+            // type: "tween",
+            // ease: [0.7, 0, 0.13, 1],
+            // duration: 0.2,
+            // } }}
+            // transition={{
+            //     type: "tween",
+            //     ease: [0.7, 0, 0.13, 1],
+            //     duration: 0.5,
+            // }}
         >
             <TopSticky
                 isCS={is_cs}

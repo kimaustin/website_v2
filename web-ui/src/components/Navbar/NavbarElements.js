@@ -47,6 +47,8 @@ export const Logo = styled.a`
     height: 18px;
     background-image: url("logo.png");
     background-size: cover;
+
+    border: 1px solid ${props => props.theme.border};
 `
 
 export const NavHome = styled(LinkRouter)`

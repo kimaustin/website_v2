@@ -19,7 +19,7 @@ export const Container = styled.div`
     } */
 
     // background: rgba(64, 63, 63, 0.3);
-    background: ${props => props.theme.bg};
+    /* background: ${props => props.theme.bg}; */
 
     cursor: crosshair;
 
@@ -65,7 +65,7 @@ export const WorkContent = styled.div`
         padding-left: 14px;
         padding-right: 28px;
         // padding-bottom: 90px;
-        padding-top: 132px;
+        padding-top: 124px;
     }
 `
 
@@ -86,7 +86,7 @@ export const TopSticky = styled.div`
     @media screen and (max-width: 767px) {
         // display: none;
         grid-template-columns: 1fr 80px;
-        top: 146px;
+        top: 134px;
         padding-top: 1px;
         left: unset;
         right: 14px;
@@ -257,7 +257,7 @@ export const PicContainer = styled.div`
     position: relative;
     // position: ${({isLast}) => isLast ? 'sticky' : 'relative'};
     // overflow: hidden;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     
     // padding-left: 20px;
     padding-right: 20px;
@@ -433,7 +433,7 @@ export const Controls = styled.div`
         display: inline-grid;
         grid-template-rows: unset;
         grid-template-columns: 1fr 1fr;
-        top: 146px;
+        top: 136px;
         padding-left: 14px;
         padding-top: 0;
         height: 40px;

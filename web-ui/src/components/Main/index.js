@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { ThemeProvider } from "styled-components";
+import { connect } from "react-redux";
+import { withRouter } from 'react-router';
 import { motion } from "framer-motion";
 import { ProgressiveImage } from "react-progressive-image";
 import { useHistory } from 'react-router';
+import { Container, Logo } from './MainElements';
 
-import { Container, DownButton, MainImg } from './MainElements';
-
-const Main = () => {
+const Main = ({ projects }) => {
         
   const history = useHistory();
+  const [isStillLoading, setIsStillLoading] = useState(true);
 
   useEffect(() => {
     const onPageLoad = () => {
@@ -26,92 +27,48 @@ const Main = () => {
     }
   }, []);
 
-  // console.log('initial projects', projects);
-  
-  const imgVariants = {
-        initial: {
-          y: '0',
-          x: 0,
-          opacity: 0,
-        },
-        in: {
-          y: '0vh',
-          opacity: 1,
-          x: 0,
-          transition: {
-            type: "tween",
-            ease: [0.87, 0, 0.13, 1],
-            duration: 1,
-            delay: .5,
-            }
-        },
-        out: {
-          y: '0vh',
-          x: '0',
-          scale: 0,
-          transition: {
-            type: "tween",
-            ease: [0.87, 0, 0.13, 1],
-            duration: 1,
-            delay: .5,
-          }
-        } 
-    }
-
     const pageVariants2 = {
         initial: {
             opacity: 0,
-            // x: "-100vw",
-            // scale: 0.8
         },
         in: {
             opacity: 1,
-            // x: 0,
-            // scale: 1
         },
         out: {
-            // scale: 0.2,
-            opacity: 0
-            // opacity: 0,
-            // x: "-100vw",
-            // scale: 1.2
-        }
+            opacity: 0, transition: {
+              type: "tween",
+              ease: [0.87, 0, 0.13, 1],
+              duration: 0.2
+        }}
     };
     
     const pageTransition = {
         type: "tween",
         ease: [0.87, 0, 0.13, 1],
-        duration: 0.85
+        duration: 0.4
     };
 
     return (
         <Container 
-            as={motion.div}
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={pageVariants2}
-            transition={pageTransition}
+            // as={motion.div}
+            // initial="initial"
+            // animate="in"
+            // exit="out"
+            // variants={pageVariants2}
+            // transition={pageTransition}
             >
-            <DownButton to={"/works"}>
-                  Click to enter site
-            </DownButton>
-            <MainImg>
-                {/* <ProgressiveImage
-                    src={require("/imgs/sample.jpeg")}
-                > */}
-                  <img 
-                      as={motion.img} initial="initial"
-                      animate="in"
-                      exit="out"
-                      variants={imgVariants}
-                      transition={pageTransition}
-                      src={"/imgs/sample.jpeg"} onerror='this.style.display = "none"' alt={''}>
-                  </img>
-                {/* </ProgressiveImage> */}
-            </MainImg>
+            {/* <Logo 
+              as={motion.div} 
+              initial={{ scale: 1, opacity: 1 }} 
+              animate={{scale: 1, opacity: 1}}
+              exit={{ scale: 999, opacity: 1 }}
+              transition={{
+              type: "tween",
+              ease: [0.28, 1.35, 1.5, .91],
+              duration: 0.8 }}
+            /> */}
         </Container>
     );
 };
 
-export default Main;
+export default withRouter(connect(({ projects }) => ({ projects }))(Main));

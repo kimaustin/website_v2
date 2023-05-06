@@ -89,7 +89,7 @@ const Navigation = ({toggle, aboutToggle, mobileToggle, toggleLight, toggleDark,
         <Container
             as={motion.div} 
             initial={{ opacity: 1 }} 
-            animate={(currPage == '') ? {  opacity: 0 } : { opacity: 1 }}
+            // animate={(currPage == '') ? {  opacity: 0 } : { opacity: 1 }}
             transition={{
             type: "tween",
             ease: [0.28, 1.35, 1.5, .91],

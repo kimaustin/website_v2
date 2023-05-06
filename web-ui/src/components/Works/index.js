@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import { motion } from "framer-motion";
 import { Link as LinkRouter, useHistory, useNavigate, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import SingleWork from "./SingleWork";
-import MobileTopButton from "../MobileTopButton";
 import {
   Container,
   Marker,
@@ -46,16 +44,6 @@ import {
   CaseStudy,
   Divider
 } from "./WorkElements";
-import Scrollbar from "smooth-scrollbar";
-import { FixedContent } from "./WorkExpandedElements";
-import { ThemeProvider } from 'styled-components';
-
-// const options = {
-//   damping: 0.1,
-//   renderByPixels: true,
-//   alwaysShowTracks: false,
-//   continuousScrolling: false
-// }
 
 // Scrollbar.init(document.querySelector('#my-scrollbar'), options);
 
@@ -65,7 +53,7 @@ const Works = ({ projects, toggleLight }) => {
   const [projectDisplayed, setProjectDisplayed] = useState(0);
   const [hoverAllowed, setHoverAllowed] = useState(true);
   const [imageZoomed, setImageZoomed] = useState(false);
-  const [animateProject, setAnimateProject] = useState(999);
+  // const [animateProject, setAnimateProject] = useState(999);
 
   const { ref: myRef1, inView, entry } = useInView({
     rootMargin: '-210px'
@@ -206,48 +194,16 @@ const Works = ({ projects, toggleLight }) => {
 
   // ARROWS TO SWITCH BETWEEN PROJECTS, ANIMATE VERTICALLY
 
-  function ProjTags({ tag, index, tagsLength }) {
-    // if (index == tagsLength - 1) {
-    //   return (
-    //     <ProjectTag>{tag}.</ProjectTag>
-    //   );
-    // } else {
-    //   return <ProjectTag>{tag}. </ProjectTag>;
-    // }
-      return <ProjectTag>{tag}.<br /></ProjectTag>;
-  }
-
-  const pageVariants3 = {
-    initial: {
-      opacity: 0,
-      x: "-100vw",
-      scale: 0.8,
-    },
-    in: {
-      opacity: 1,
-      // y: '4.5rem',
-      x: 0,
-      scale: 1,
-    },
-    outOther: {
-      opacity: 0,
-      x: "-100vw",
-      scale: 1,
-      transition: {delay: 0, type: "tween",
-        ease: [0.7, 0, 0.13, 1],
-        duration: 0.85},
-    },
-    outSelected: {
-      opacity: 0,
-      position: 'aboslute',
-      top: 0,
-      scale: 1,
-      transition: {delay: 0.2, type: "tween",
-        ease: [0.7, 0, 0.13, 1],
-        duration: 0.7},
-    },
-  };
-
+  // function ProjTags({ tag, index, tagsLength }) {
+  //   // if (index == tagsLength - 1) {
+  //   //   return (
+  //   //     <ProjectTag>{tag}.</ProjectTag>
+  //   //   );
+  //   // } else {
+  //   //   return <ProjectTag>{tag}. </ProjectTag>;
+  //   // }
+  //     return <ProjectTag>{tag}.<br /></ProjectTag>;
+  // }
 
   // let project_previews = projects.map((project) => {
   //   if (project.id < 16) {
@@ -364,7 +320,7 @@ const Works = ({ projects, toggleLight }) => {
   myRefs.push(useRef());
   myRefs.push(useRef());
   myRefs.push(useRef());
-  myRefs.push(useRef());
+  // myRefs.push(useRef());
 
   useEffect (() => {
       // const observer = new IntersectionObserver((projectsList) => {
@@ -378,13 +334,13 @@ const Works = ({ projects, toggleLight }) => {
             if (projectsList[0].isIntersecting) {
               // console.log('scroll - current proj index', projectValue);
               setProjectValue(projectsList[0].target.id);
-              setAnimateProject(i);
+              // setAnimateProject(i);
               projectsList[0].target.style.opacity = 1.0;
               // projectsList[0].target.style.width = "95%";
               // projectsList[0].target.style.marginLeft = "5%";
               // projectsList[0].target.style.color = 'white';
             } else {
-              setAnimateProject(999);
+              // setAnimateProject(999);
               // projectsList[0].target.style.color = '#B7B7B7';
               projectsList[0].target.style.opacity = 0.5;
               // projectsList[0].target.style.width = "100%";
@@ -516,39 +472,39 @@ const Works = ({ projects, toggleLight }) => {
   //   />
   // ));
 
-  let visit_link = () => {
-    if (projects[projectValue].link.length > 0) {
-      // console.log("got to link");
-      return (
-        <VisitLink href={projects[projectValue].link[0]} target="_blank">
-          Visit ↗
-        </VisitLink>
-      )
-    } else {
-      return (
-        <></>
-      );
-    }
-  }
+  // let visit_link = () => {
+  //   if (projects[projectValue].link.length > 0) {
+  //     // console.log("got to link");
+  //     return (
+  //       <VisitLink href={projects[projectValue].link[0]} target="_blank">
+  //         Visit ↗
+  //       </VisitLink>
+  //     )
+  //   } else {
+  //     return (
+  //       <></>
+  //     );
+  //   }
+  // }
 
 
-  function ProjContent({ project }) {
-    if (projectDisplayed == project.id) {
-      return (
-        <SingleWork
-          project={project}
-          selected={true}
-          toggle={toggleImgZoom}
-          imageZoomed={imageZoomed}
-        ></SingleWork>
-      );
-    } else {
-      return (
-        // <SingleWork project={project} selected={true}></SingleWork>
-        <></>
-      );
-    }
-  }
+  // function ProjContent({ project }) {
+  //   if (projectDisplayed == project.id) {
+  //     return (
+  //       <SingleWork
+  //         project={project}
+  //         selected={true}
+  //         toggle={toggleImgZoom}
+  //         imageZoomed={imageZoomed}
+  //       ></SingleWork>
+  //     );
+  //   } else {
+  //     return (
+  //       // <SingleWork project={project} selected={true}></SingleWork>
+  //       <></>
+  //     );
+  //   }
+  // }
 
   // let proj_preview = projects.map((project) => {
   //   if ((projectDisplayed + 1) > 18) {
@@ -568,98 +524,48 @@ const Works = ({ projects, toggleLight }) => {
   //   return <ProjContent project={project} key={project.id} />;
   // });
 
-  const pageVariants = {
-    initial: {
-      y: "101vh",
-      // opacity: 0
-    },
-    in: {
-      y: "0",
-      // opacity: 1
-    },
-    out: {
-      y: "101vh",
-      // opacity: 0
-    },
-  };
-
-  const pageVariantsWorks = {
-    initial: {
-      x: "100vw",
-      // opacity: 0
-    },
-    in: {
-      x: "calc(7.15vw + 3rem)",
-      // opacity: 1
-    },
-    out: {
-      x: "100vw",
-      // opacity: 0
-    },
-  };
-
-  const pageTransition = {
-    type: "tween",
-    ease: [0.7, 0, 0.13, 1],
-    duration: 0.85,
-  };
-
-  const worksVariants = {
-    // transition: { staggerChildren: 0.07, delayChildren: 0.2 }
-    hidden: { y: "-20vh", opacity: 0 },
-    show: {
-      y: "0vw",
-      opacity: 1,
-      // transition: {
-      //   staggerChildren: 1, delayChildren: 0.5, duration: 2
-      // }
-      transiiton: { 
-        type: "tween",
-        ease: [0.7, 0, 0.13, 1],
-        duration: 10,
-      },
-    },
-  };
-
-  const pageVariants2 = {
-    initial: {
-      opacity: 0,
-      x: "-100vw",
-      scale: 0.8,
-    },
-    in: {
-      opacity: 1,
-      x: 0,
-      scale: 1,
-    },
-    out: {
-      opacity: 0,
-      x: "-100vw",
-      scale: 1.2,
-    },
-  };
 
   // console.log(window.screen.height);
 
   let rightImageSource = "imgs/" + projects[projectValue].imgs[0];
   // let rightImageSource = projects[projectValue].imgs[0];
   let height_var = "calc(122px + " + ((projectValue) * (88 / (projects.length + 3))) + "vh)";
-  let mobile_height_var = "calc(140px + " + ((projectValue) * (54 / (projects.length + 11))) + "vh)";
+  let mobile_height_var = "calc(134px + " + ((projectValue) * (54 / (projects.length + 4))) + "vh)";
 
   //TODO: Fix filters not working
   return (
     <Container 
-      // onLoad={toggleLight}
-      // id="head"
       // as={motion.div}
-      // initial="initial"
-      // animate="in"
-      // exit="out"
-      // variants={pageVariants2}
-      // transition={pageTransition}
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // exit={{ opacity: 0, transition: {
+      //   type: "tween",
+      //   ease: [0.7, 0, 0.13, 1],
+      //   duration: 0.2,
+      // } }}
+      // transition={{
+      //     type: "tween",
+      //     ease: [0.7, 0, 0.13, 1],
+      //     duration: 0.5,
+      // }}
     >
       {/* <ThemeProvider theme={theme}> */}
-        <Divider/>
+        <Divider
+           as={motion.div}
+           initial={{ y: '-100vh' }}
+           animate={{ y: '0' }}
+           exit={{ y: '-100vh', transition: {
+             type: "tween",
+             ease: [0.7, 0, 0.13, 1],
+             duration: 0.2,
+           } }}
+           transition={{
+               type: "tween",
+               ease: [0.7, 0, 0.13, 1],
+               duration: 0.6,
+              //  delay: 0.9
+           }}
+        />
       {/* <Label as={motion.div} initial="initial"
           animate="in"
           exit="out"
@@ -774,10 +680,6 @@ const Works = ({ projects, toggleLight }) => {
             delay: 1.2
         }}
       >
-        {/* <VisitLink href={"http://www.w3schools.com"} target="_blank">
-          Visit 
-        </VisitLink>
-        {visit_link} */}
         <Details
           to={"/" + projectValue + "/works"}
           id={"proj" + projectValue}
@@ -825,27 +727,6 @@ const Works = ({ projects, toggleLight }) => {
         </WorkImage>
       </WorkImageContainer>
 
-      {/* <ContentContainer
-          as={motion.div} initial={{ x: '-101vw', y: '0' }} 
-          animate={hoverAllowed ? { x: '-101vw', y: '-100vh' } : { x: '0', y: '-100vh'}}
-          transition={{
-            type: "tween",
-            ease: [0.7, 0, 0.13, 1],
-            duration: 0.9 }} showContent={!hoverAllowed}
-          >{project_content}
-        </ContentContainer> */}
-      {/* <ContentBg isBehind={imageZoomed} as={motion.div} initial={{ x: '100vw' }} 
-          animate={hoverAllowed ? { x: '100vw' } : { x: 'calc(94vw - 3.5rem - 1px)' }}
-          transition={{ duration: 0.7 }}>
-            <AllProjs onClick={() => (handleDisplayProject(-1))}>Close</AllProjs>
-            <NextProj onClick={() => (handleDisplayProject(projectDisplayed + 1))}>
-              <NextProjLabel>Next Project</NextProjLabel>
-            </NextProj>
-            <PrevProj onClick={() => (handleDisplayProject(projectDisplayed - 1))}>
-              <PrevProjLabel>Previous Project</PrevProjLabel>
-            </PrevProj>
-        </ContentBg> */}
-        {/* </ThemeProvider> */}
     </Container>
   );
 };

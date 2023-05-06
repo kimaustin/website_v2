@@ -20,7 +20,7 @@ export const Container = styled(motion.div)`
   overflow-x: none;
   cursor: crosshair;
 
-  background: ${props => props.theme.bg};
+  /* background: ${props => props.theme.bg}; */
   /* background: green; */
 `
 
@@ -31,9 +31,10 @@ export const Divider = styled.div`
   top: 0;
   height: 100vh;
 
-  border-left: .5px solid ${props => props.theme.border};
+  border-left: 1px solid ${props => props.theme.border};
 
   @media screen and (max-width: 767px) {
+    opacity: 0;
     display: none;
   }
 `

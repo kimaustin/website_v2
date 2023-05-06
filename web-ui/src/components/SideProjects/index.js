@@ -1,37 +1,23 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useInView, inView, InView } from 'react-intersection-observer';
 import { connect } from "react-redux";
 import { useLocation } from 'react-router-dom';
 import { motion } from "framer-motion";
-import { Link as LinkRouter } from 'react-router-dom';
 import {
   Container,
   ImageContainer,
-  WorkListContainer,
   ErrorImg,
-  Marker,
-  ClickableArea,
-  WorkItem,
   Label,
   Version,
-  CaseStudy,
-  WorkActions,
   ScrollContainer,
-  WorkName,
-  TagsContainer,
-  ProjectTag,
-  Details,
-  VisitLink
 } from './SideProjectsElements';
 
-const SideProjects = ({ projects, sideProjectsToggle }) => {
+const SideProjects = ({ projects }) => {
 
-  const [projectValue, setProjectValue] = useState(0);
+  // const [projectValue, setProjectValue] = useState(0);
+  const [showError, setShowError] = useState(false);
 
   // const location = useLocation();
-
   // const [isMain, setIsMain] = useState(false);
-
   // if (location.pathname === "") {
   //   setIsMain(true);
   // }
@@ -40,13 +26,13 @@ const SideProjects = ({ projects, sideProjectsToggle }) => {
     
   let currPage = location.pathname.split("/").pop();
 
-  const ListContainerRef = useRef();
+  // const ListContainerRef = useRef();
 
-  let observerOptions = {
-    root: ListContainerRef.target,
-    rootMargin: '0px -48% 0px -48%',
-    // threshold: 0.1
-  }
+  // let observerOptions = {
+  //   root: ListContainerRef.target,
+  //   rootMargin: '0px -48% 0px -48%',
+  //   // threshold: 0.1
+  // }
 
   // const proj1 = { name: 'June ggg ONE One GGG OOO ggg', class_short: 'June', val: 1, isCS: true, imgs: ["testProjCover1.png"], tags: ['UX Design', 'Figma', 'React.JS'], link: ['https://www.junehomes.com'] }
   // const proj2 = { name: 'Two', val: 2, isCS: false, imgs: ["test/pic1.png"], tags: ['2UX Design', 'Figma', 'React.JS'], link: [] }
@@ -60,22 +46,22 @@ const SideProjects = ({ projects, sideProjectsToggle }) => {
   
   // const myProjects = [ proj1, proj2, proj3, proj4, proj5, proj6, proj7, proj8, proj9 ];
 
-  const myRefs = [];
-  myRefs.push(useRef());
-  myRefs.push(useRef());
-  myRefs.push(useRef());
-  myRefs.push(useRef());
-  myRefs.push(useRef());
-  myRefs.push(useRef());
-  myRefs.push(useRef());
-  myRefs.push(useRef());
-  myRefs.push(useRef());
-  myRefs.push(useRef());
-  myRefs.push(useRef());
-  myRefs.push(useRef());
-  myRefs.push(useRef());
-  myRefs.push(useRef());
-  myRefs.push(useRef());
+  // const myRefs = [];
+  // myRefs.push(useRef());
+  // myRefs.push(useRef());
+  // myRefs.push(useRef());
+  // myRefs.push(useRef());
+  // myRefs.push(useRef());
+  // myRefs.push(useRef());
+  // myRefs.push(useRef());
+  // myRefs.push(useRef());
+  // myRefs.push(useRef());
+  // myRefs.push(useRef());
+  // myRefs.push(useRef());
+  // myRefs.push(useRef());
+  // myRefs.push(useRef());
+  // myRefs.push(useRef());
+  // myRefs.push(useRef());
 
   // useEffect (() => {
   //     for (var i = 0; i < myRefs.length; i++) { 
@@ -91,24 +77,28 @@ const SideProjects = ({ projects, sideProjectsToggle }) => {
   //     }
   // }, [])
 
-  const handleClick = (index) => {
-    // console.log('proj clicked', index);
-    // console.log('clicked - current proj index', projectValue);
-    myRefs[index].current?.scrollIntoView({ behavior: 'smooth' });
-    // await timeout(1000); //for 1 sec delay
-    // setProjectValue(index);
+  // const handleClick = (index) => {
+  //   // console.log('proj clicked', index);
+  //   // console.log('clicked - current proj index', projectValue);
+  //   myRefs[index].current?.scrollIntoView({ behavior: 'smooth' });
+  //   // await timeout(1000); //for 1 sec delay
+  //   // setProjectValue(index);
+  // }
+
+  const handleImgError = () => {
+    console.log("got to img error");
+    setShowError(true);
   }
 
   let imgPreviews = projects.map((project, index) => {
   // let imgPreviews = projects.map((project, index) => {
     return (
       <ImageContainer to={'/' + index + '/works'}>
-        <img src={'imgs/' + project.imgs[0]}></img>
+        <img src={'imgs/' + project.imgs[0]} alt="" onError={handleImgError}></img>
         {/* <img src={project.imgs[0]}></img> */}
       </ImageContainer>
     )
   })
-
 
   //MAIN PROJECTS LIST
   // let projects_list = projects.map((project, index) => {
@@ -169,13 +159,14 @@ const SideProjects = ({ projects, sideProjectsToggle }) => {
       delay: 0.3,
       }}
     >
+      <ErrorImg>{showError ? 'If image previws are not loading, please reload from the Works page.' : '' }</ErrorImg>
       <Label>Work Photo Index</Label>
       <Version>v2.13</Version>
       <ScrollContainer
         as={motion.div}
-        initial={{ x: '100vw' }}
-        animate={{ x: '0' }}
-        exit={{ x: '100vw', transition: {
+        initial={{ y: '130px' }}
+        animate={{ y: '0px' }}
+        exit={{ y: '130px', transition: {
               type: "tween",
               ease: [0.7, 0, 0.13, 1],
               duration: 0.5,
@@ -188,13 +179,10 @@ const SideProjects = ({ projects, sideProjectsToggle }) => {
         }}
       >
         {imgPreviews}
-        <ErrorImg>
-          If images are not loading, please reload from <a href="http://www.austinkim.works/works">here</a>.
-        </ErrorImg>
       </ScrollContainer>
     </Container>
   )
 }
 
-export default connect(({ projects, sideProjectsToggle }) => ({ projects, sideProjectsToggle }))(SideProjects);
+export default connect(({ projects }) => ({ projects }))(SideProjects);
 

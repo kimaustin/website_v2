@@ -30,6 +30,7 @@ import Blog from "./components/Blog";
 import CloseOverlay from "./components/CloseOverlay";
 import ThemeToggle from "./components/ThemeToggle";
 import Wipe from "./components/Wipe";
+import Background from "./components/Background";
 
 //Our App Components
 function App() {
@@ -64,7 +65,6 @@ function App() {
   //----- ON dark/mode press, change state to other theme. Pass in state to each component.
 
   const lightTheme = {
-    name: 'light',
     bg: "rgba(245, 251, 255, 1)",
     bgBlur: "rgba(222, 220, 226, 0.65)",
     bgSide: "rgba(242, 240, 244, 0.8)",
@@ -77,7 +77,6 @@ function App() {
   };
 
   const darkTheme = {
-    name: 'dark',
     bg: "black",
     bgBlur: "rgba(100, 100, 100, 0.35)",
     bgSide: "rgba(51, 49, 52, 0.8)",
@@ -91,16 +90,6 @@ function App() {
 
   const [colorTheme, setColorTheme] = useState(lightTheme);
   const [isLightTheme, setIsLightTheme] = useState(true);
-
-  // const toggleTheme = () => {
-  //   if (colorTheme == lightTheme) {
-  //   console.log("toggling to light");
-  //     setColorTheme(darkTheme);
-  //   } else {
-  //     console.log("toggling to dark");
-  //     setColorTheme(lightTheme);
-  //   }
-  // };
 
   const delay = ms => new Promise(
     resolve => setTimeout(resolve, ms)
@@ -119,12 +108,6 @@ function App() {
     await delay(150);
     setColorTheme(darkTheme);
   }
-
-  const pageTransition = {
-    type: "tween",
-    ease: [0.7, 0.1, 0.4, 1],
-    duration: 0.5
-  };
 
   return (
     <Router>
@@ -155,6 +138,7 @@ function App() {
         />
         {/* <Status /> */}
         {/* <WIP /> */}
+        <Background />
       </ThemeProvider>
     </Router>
   );
