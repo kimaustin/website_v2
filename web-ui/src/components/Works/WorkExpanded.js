@@ -375,7 +375,7 @@ const WorkExpanded = ({ projects }) => {
                 <NavButtons>
                     <Date>Next</Date>
                     <WorkNav  style={{ paddingTop: '4px' }} to={"/" + next_id + "/works"} currId={work.id}>{next_proj.name}</WorkNav>
-                    <Date style={{ paddingTop: '28px' }}>Previous</Date>
+                    <Date style={{ paddingTop: '30px' }}>Previous</Date>
                     <WorkNav style={{ paddingTop: '4px' }} to={"/" + prev_id + "/works"} currId={work.id}>{prev_proj.name}</WorkNav>
                 </NavButtons>
             </Controls>

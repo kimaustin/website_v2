@@ -45,7 +45,7 @@ export const Marker = styled.div`
   top: calc(48vh);
   width: 30vw;
   border-bottom: 1.5px solid ${props => props.theme.primary};
-  opacity: 0.35;
+  opacity: 0.3;
 
   @media screen and (max-width: 767px) {
     border-bottom: 1px solid ${props => props.theme.secondary};
@@ -155,10 +155,10 @@ export const WorkListContainer = styled.div`
   width: calc(100vw);
   height: calc(100vh - 103px + 103px);
   overflow-y: scroll;
-  padding-bottom: calc(51vh - 62px + 22px);
+  padding-bottom: calc(51vh - 62px + 1.4rem);
   // padding-top: calc(44vh - 94px);
-  padding-top: calc(48vh - 128px - 21px + 103px);
-  padding-left: 17.5px;
+  padding-top: calc(48vh - 128px - 1.7rem + 103px);
+  padding-left: 15px;
   padding-right: calc(70vw + 32px);
   z-index: 999;
 
@@ -167,6 +167,9 @@ export const WorkListContainer = styled.div`
   /* background: rgb(120, 120, 120, 0.5); */
   /* background: #1E1C1F; */
 
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  /* -webkit-overflow-scrolling: touch; */
   ::-webkit-scrollbar {
     display: none;
   }
@@ -184,9 +187,12 @@ export const WorkItem = styled.div`
   // display: grid;
   // grid-template-rows: 24px 1fr;
 
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 
-  scroll-margin-top: calc(48vh - 128px - 21px + 103px);
+  scroll-margin-top: calc(48vh - 128px - 1.7rem + 103px);
+
+  /* padding-top: calc(48vh - 128px - 1.7rem + 103px); */
+
 
   transition: 5s scale ease-in-out;
 
@@ -200,7 +206,7 @@ export const WorkItem = styled.div`
   @media screen and (max-width: 767px) {
     width: calc(100vw - 32px);
     scroll-margin-top: calc(48vh - 2px - 36px);
-    margin-bottom: 18px;    
+    margin-bottom: 16px;    
   }
 `;
 
@@ -238,14 +244,14 @@ export const MobileWorkItem = styled.div`
     /* grid-template-rows: 1fr 1fr; */
 
     width: calc(100vw - 32px);
-    margin-bottom: 20px;   
+    margin-bottom: 18px;   
   }
 `
 
 export const TopLine = styled.div`
   display: inline-block;
   width: 100%;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
   // grid-template-columns: 20px 1fr 6fr;
   // grid-template-rows: 1fr;
   // height: 8px;
@@ -299,24 +305,32 @@ export const CaseStudy = styled.a`
   // margin-left: 20px;
   // margin-bottom: -17px;
   // float: right;
-  padding-left: 2px;
-  padding-top: 2px;
+  padding: 3px 10px 2px 10px;
+  opacity: 0.9;
+  background: ${props => props.theme.cs};
+  /* padding-left: 2px; */
+  /* padding-top: 2px; */
+  /* padding-bottom: 1px; */
 
   color: ${props => props.theme.cs};
+  color: ${props => props.theme.bg};
   font-family: "SS3";
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 1px;
   text-align: left;
   text-transform: uppercase;
-  margin-right: 20px;
+  margin-right: 10px;
+  /* margin-top: 4px; */
+  border-radius: 100px;
 
   // border: 1px solid green;
   @media screen and (max-width: 767px) {
-    padding-left: 1px;
-    padding-right: 10px;
+    /* padding-left: 1px; */
+    /* padding-right: 10px; */
+    padding: 3px 8px 2px 8px;
     font-size: 11px;
-    margin-right: unset;
+    margin-right: 10px;
     text-align: left;
   }
 `;
@@ -344,13 +358,13 @@ export const WorkTitle = styled.div`
   // margin-top: 20px;
 
   font-family: "SS3";
-  font-size: 36px;
-  line-height: 42px;
+  font-size: 2.8rem;
+  line-height: 3.5rem;
   color: ${props => props.theme.primary};
 
   @media screen and (max-width: 767px) {
-    font-size: 26px;
-    line-height: 30px;
+    font-size: 28px;
+    line-height: 35px;
     float: left;
     text-align: left;
     align-items: start;
@@ -659,7 +673,7 @@ export const ProjectTag = styled.a`
   // height: 26px;
   font-size: 12px;
   // writing-mode: vertical-rl;
-  padding-right: 7px;
+  padding-right: 12px;
   // overflow: hidden; 
   // text-overflow: ellipsis;
 

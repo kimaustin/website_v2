@@ -10,6 +10,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
+    <script src="./src/p5.sound.js"></script>
     <Provider store={store}>
         <Normalize />
         <App />

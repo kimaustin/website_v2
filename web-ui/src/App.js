@@ -6,31 +6,22 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { ThemeProvider } from 'styled-components';
 
-import Home from "./components/Home";
 import Main from "./components/Main";
 import Navigation from "./components/Navigation";
 import Status from "./components/Status";
-import MobileBar from "./components/MobileBar";
-import { Button2 } from "./components/ButtonElement";
-import DarkModeButton from "./components/DarkModeButton";
 import Works from "./components/Works";
 import WorkExpanded from "./components/Works/WorkExpanded";
 import Images from "./components/ImageZoom";
-import About from "./components/About";
 import AboutPanel from "./components/AboutPanel";
 import NavBar from "./components/Navbar";
-import Topbar from "./components/Topbar";
 import Lab from "./components/Lab";
-import Close from "./components/About";
-import MobileToggle from "./components/MobileToggle";
-import WIP from "./components/WIP";
 import { Provider } from "react-redux";
 import SideProjects from "./components/SideProjects";
 import Blog from "./components/Blog";
 import CloseOverlay from "./components/CloseOverlay";
-import ThemeToggle from "./components/ThemeToggle";
 import Wipe from "./components/Wipe";
 import Background from "./components/Background";
+import Photography from "./components/Photography";
 
 //Our App Components
 function App() {
@@ -129,9 +120,9 @@ function App() {
                 <Route exact path="/" component={Main} />
                 <Route exact path="/works" component={Works} />
                 {/* <Route exact path="/works" render={(props) => <Works theme={colorTheme} {...props} />}/> */}
-                {/* <Route exact path="/test" component={Home} /> */}
+                <Route exact path="/test" component={Lab} />
                 {/* <Route exact path="/blog" component={Blog} />  */}
-                {/* <Route exact path="/info" component={About} /> */}
+                <Route exact path="/photo" component={Photography} />
                 <Route path="/:workId?/works" component={WorkExpanded} exact />
                 <Route path="/:workId?/images" component={Images} />
               </Switch>

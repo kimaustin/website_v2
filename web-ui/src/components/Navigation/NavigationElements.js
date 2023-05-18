@@ -5,7 +5,7 @@ export const Container = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    height: 103px;
+    height: 90px;
     width: 30vw;
     /* width: 100vw; */
     /* background: #1E1C1F; */
@@ -74,15 +74,47 @@ export const NavContainer = styled.div`
 export const NonMobile = styled.div`
     display: inline-grid;
     grid-template-columns: 50px 1fr 78px;
-    width: calc(30vw - 45px);
+    width: calc(30vw - 40px);
     height: 18px;
     padding-top: 2px;
     /* overflow: hidden; */
 
     position: fixed;
-    left: 22px;
-    top: 18px;
+    left: 20px;
+    top: 15px;
 
+    /* border: 1px solid green; */
+
+    @media screen and (max-width: 767px) {
+        width: calc(100vw - 28px);
+        /* width: 50%; */
+        grid-template-columns: 1fr 1fr 1fr;
+        height: 52px;
+        /* height: 24px; */
+        left: 14px;
+        overflow: unset;
+        padding-top: 15px;
+        /* position: unset; */
+        top: unset;
+        bottom: 0;
+        left: 14px;
+        paddig-left: 14px;
+    }
+`;
+
+export const SimpleNav = styled.div`
+    display: inline-grid;
+    /* grid-template-columns: 50px 1fr 78px; */
+    /* overflow: hidden; */
+    width: 36px;
+    height: calc(100vh - 90px);
+    padding: 18px 10px 18px 10px;
+
+    position: fixed;
+    left: 0;
+    top: 90px;
+
+    background: ${props => props.theme.bgNav};
     /* border: 1px solid green; */
 
     @media screen and (max-width: 767px) {
@@ -122,6 +154,8 @@ export const NavHome = styled(LinkRouter)`
     // color: #FFFFFF;
     // text-decoration: none;
     // font-family: 'OpenSans';
+    /* writing-mode: vertical-rl;
+    text-orientation: upright; */
 
     /* position: relative; */
     display: flex;
@@ -159,7 +193,7 @@ export const Switcher = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     /* text-align: center; */
     width: 100%;
-    height: 26px;
+    height: 25px;
     margin-top: -4.5px;
     /* margin-left: 012.5%; */
     border-radius: 30px;
@@ -199,9 +233,9 @@ export const ThemeIndicator = styled.div`
 export const LightIcon = styled.div`
     z-index: 999;
     font-size: 15px;
-    padding-left: 50%;
+    padding-left: 45%;
     padding-top: 4.75px;
-    width: 100%;
+    width: 150%;
     color: ${isLight => (isLight ? 'rgba(242, 249, 256, 1)' : 'rgba(30, 30, 31, 1)')};
 
     -webkit-user-select: none; /* Safari */
@@ -209,13 +243,13 @@ export const LightIcon = styled.div`
     user-select: none; /* Standard syntax */
     
     &:hover {
-        /* opacity: .8; */
+        opacity: .85;
         cursor: pointer;
     }
 
     @media screen and (max-width: 767px) {
-        padding-left: 49.5%;
-        padding-top: 5.75px;
+        padding-left: 55%;
+        padding-top: 5.4px;
     }
 `
 
@@ -225,8 +259,8 @@ export const DarkIcon = styled.div`
     text-align: center;
     /* padding-left: 0%; */
     padding-top: 5.7px;
-    padding-left: 40%;
-    width: 100%;
+    padding-left: 0%;
+    width: 150%;
     margin-left: -50%;
     color: ${isLight => (isLight ? 'rgba(30, 30, 31, 1)' : 'rgba(242, 249, 256, 1)')};
 
@@ -235,13 +269,12 @@ export const DarkIcon = styled.div`
     user-select: none; /* Standard syntax */
 
     &:hover {
-        /* opacity: .8; */
+        opacity: .7;
         cursor: pointer;
     }
 
     @media screen and (max-width: 767px) {
-        padding-top: 6.75px;
-        padding-right: .5px;
+        padding-right: 2px;
         padding-left: unset;
     }
 `
@@ -350,6 +383,10 @@ export const NavDOMLinkAbout = styled(LinkRouter)`
         text-decoration: underline;
     }
 
+    /* writing-mode: vertical-rl; */
+    /* text-transform: rotate(90); */
+    /* text-orientation: upright; */
+
     @media screen and (max-width: 767px) {
         display: none;
     }
@@ -357,21 +394,29 @@ export const NavDOMLinkAbout = styled(LinkRouter)`
 
 export const NonMobile2 = styled.div`
     position: fixed;
-    top: 55px;
-    display: flex;
-    /* justify-content; space-between; */
-    /* padding-top: 3px; */
-    padding-left: 22px;
-    /* padding-bottom: 14px; */
-    width: 30vw;
-    height: 48px;
-    overflow: hidden;
-    justify-items: stretch;
+    top: 56px;
+    left: 20px;
+    grid-gap: 1px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 20%);
+    justify-content: space-between;
+    /* justify-content: space-evenly; */
 
+    /* padding-top: 3px; */
+    /* padding-left: 20px; */
+    /* padding-bottom: 14px; */
+    width: calc(30vw - 40px);
+
+    height: 20px;
+    overflow: hidden;
+    /* justify-items: stretch; */
+
+    
     /* display: inline-grid; */
     /* grid-template-columns: 1fr 1fr 1fr 1fr; */
     /* grid-template-rows: 1fr; */
     /* row-gap: 8px; */
+    /* border: 1px solid blue; */
     /* border-top: 0.5px solid #403F3F; */
     /* border-bottom: 1px solid #464242; */
 
@@ -381,7 +426,7 @@ export const NonMobile2 = styled.div`
 `;
 
 export const NavDOMLink2 = styled(LinkRouter)`
-    display: inline-grid;
+    /* display: grid; */
     position: relative;
     padding-right: 30px;
 
@@ -390,9 +435,15 @@ export const NavDOMLink2 = styled(LinkRouter)`
     font-size: 14px;
     font-family: "SS3";
 
+    /* border: 1px solid green; */
+
     &:hover {
         text-decoration: underline;
     }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     @media screen and (max-height: 767px) {
         border-bottom: 0;
@@ -407,9 +458,11 @@ export const NavDOMLink2 = styled(LinkRouter)`
 `;
 
 export const NavDOMLink3 = styled(LinkRouter)`
-    display: inline-grid;
+    /* display: inline-grid; */
     position: relative;
     padding-right: 30px;
+
+    /* border: 1px solid green; */
 
     color: ${props => props.theme.primary};
     text-decoration: none;
@@ -417,6 +470,12 @@ export const NavDOMLink3 = styled(LinkRouter)`
     font-family: "SS3";
 
     opacity: 0.25;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
 
     &:hover {
         // text-decoration: underline;

@@ -41,15 +41,15 @@ const Navbar = ({mobileToggle, isOpen}) => {
                 duration: 0.35
                 }}
             >
-                <NavLinksDOM onClick={mobileToggle} to="/works">Work</NavLinksDOM>
+                <NavLinksDOM onClick={mobileToggle} to="/works">Index</NavLinksDOM>
                 {/* <NavLinksDOM onClick={mobileToggle} to="/test">The Lab</NavLinksDOM>
-                <NavLinksDOM onClick={mobileToggle} to="">Photography</NavLinksDOM>
                 <NavLinksDOM onClick={mobileToggle} to="/blog">Blog</NavLinksDOM> */}
                 {/* <NavLinksDOM2>The Lab</NavLinksDOM2> */}
-                {/* <NavLinksDOM2>Photography</NavLinksDOM2> */}
                 {/* <NavLinksDOM2>Blog</NavLinksDOM2> */}
                 <NavLinksDOM2>(Blog coming Soon)</NavLinksDOM2>
-                <NavLinksDOM2>(Photos coming Soon)</NavLinksDOM2>
+                <NavLinksDOM2>(Lab coming Soon)</NavLinksDOM2>
+                <NavLinksDOM onClick={mobileToggle} to="/photo">Photography</NavLinksDOM>
+                {/* <NavLinksDOM2>(Photos coming Soon)</NavLinksDOM2> */}
                 <Details1>Built by me in React + Elixir<br />Last Updated: Apr 4, 2023</Details1>
             </NavMenu>
             <MobileAboutContainer

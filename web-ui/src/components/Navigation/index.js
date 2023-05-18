@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { useLocation } from 'react-router-dom';
 import AboutPanel from '../AboutPanel';
-import { Container, NavContainer, MobileAbout, Switcher, ThemeIndicator, DarkWipe, DarkIcon, LightIcon, MobileMenuToggle, Indicator, NavDOMLink3, Logo, NavHome, NonMobile, NonMobile1, PhotoIndexContainer, NavDOMLink, NavDOMLink2, NavDOMLinkAbout, InfoLink, Mobile, AboutContainer, Kim, InfoWrapper, Rotating, NonMobile2, Filter, Divider, LightLabel, IconContainer, IndicatorContainer} from './NavigationElements';
+import { Container, NavContainer, MobileAbout, Switcher, ThemeIndicator, DarkWipe, DarkIcon, LightIcon, MobileMenuToggle, Indicator, NavDOMLink3, Logo, NavHome, NonMobile, NonMobile1, PhotoIndexContainer, NavDOMLink, NavDOMLink2, NavDOMLinkAbout, InfoLink, Mobile, AboutContainer, Kim, InfoWrapper, Rotating, NonMobile2, Filter, Divider, LightLabel, IconContainer, IndicatorContainer, SimpleNav} from './NavigationElements';
 import { FaMoon } from "react-icons/fa";
 import { IoSunnySharp } from "react-icons/io5";
 const Navigation = ({toggle, aboutToggle, mobileToggle, toggleLight, toggleDark, themeToggleStatus}) => {
@@ -98,12 +98,12 @@ const Navigation = ({toggle, aboutToggle, mobileToggle, toggleLight, toggleDark,
             }}
         >
             {/* <Divider /> */}
-            <Indicator currpage={currPage}
+            {/* <Indicator currpage={currPage}
                 as={motion.div} 
                 initial={{ x: '24px' }}
                 animate={(currPage == '') ? { x: '22px'} : (currPage == 'test' ? { x: '22px' } : (currPage == '' ? { x: 'calc(24px)' } : { x: '22.5px'}))}
                 transition={pageTransition}
-            />
+            /> */}
             {/* <AboutContainer as={motion.div} initial={{ x: '20.5rem', y: '105vh' }} 
                             animate={showInfo ? {  x: '20.5rem', y: -18 } : { x: '20.5rem', y: '-105vh' }}
                             transition={pageTransition} showInfo={showInfo}>
@@ -128,33 +128,46 @@ const Navigation = ({toggle, aboutToggle, mobileToggle, toggleLight, toggleDark,
                 </Switcher>
                 <MobileMenuToggle onClick={mobileToggle}>Menu/About</MobileMenuToggle>
             </NonMobile>
-            <NonMobile2 
-                // as={motion.div} 
-                // initial="initial"
-                // animate="in"
-                // exit="out"
-                // variants={filtersVariants}
-                // transition={{
-                //     type: "tween",
-                //     ease: [0.7, 0, 0.13, 1],
-                //     duration: 0.8,
-                //     delay: 1 * 0.12,
-                // }}
-            >
+            {/* <SimpleNav>
+                <NavHome currpage={currPage} thispage={'works'} to="/works">
+                    <Logo />
+                   호연
+                </NavHome>
+                <NavDOMLinkAbout currpage={aboutToggle} thispage={true} onClick={() => toggle('info')}>About/Contact</NavDOMLinkAbout>
+                <Switcher>
+                        <LightIcon onClick={toggleLight}><IoSunnySharp /></LightIcon>
+                        <ThemeIndicator 
+                            isLight={themeToggleStatus}
+                            as={motion.div} 
+                            initial={{ marginLeft: '-105%' }} 
+                            animate={( themeToggleStatus ) ? { marginLeft: '-105%' } : { marginLeft: '45%' }}
+                            transition={{
+                            type: "tween",
+                            ease: [0.28, 1.35, 1.5, .91],
+                            duration: 0.4 }}
+                        />
+                        <DarkIcon onClick={toggleDark}><FaMoon /></DarkIcon>
+                </Switcher>
+                <MobileMenuToggle onClick={mobileToggle}>Menu/About</MobileMenuToggle>
+            </SimpleNav> */}
+            <NonMobile2>
                 <NavDOMLink2 currpage={currPage} thispage={'works'} to="/works">
-                    Work
+                    Index
                 </NavDOMLink2>
-                {/* <NavDOMLink3 currpage={currPage} thispage={'test'} to="/test">
+                {/* <NavDOMLink2 currpage={currPage} thispage={'test'} to="/test">
                     The Lab
-                </NavDOMLink3> */}
-                {/* <NavDOMLink2 currpage={currPage} thispage={''} to="/">
-                    Photography
-                </NavDOMLink2>
-                <NavDOMLink2 currpage={currPage} thispage={'blog'} to="/blog">
+                </NavDOMLink2> */}
+                <NavDOMLink3>Lab</NavDOMLink3>
+                {/* <NavDOMLink2 currpage={currPage} thispage={'blog'} to="/blog">
                     Blog
                 </NavDOMLink2> */}
-                <NavDOMLink3>(Blog coming soon)</NavDOMLink3>
-                <NavDOMLink3>(Photos coming soon)</NavDOMLink3>
+                <NavDOMLink3>Blog</NavDOMLink3>
+                <NavDOMLink2 currpage={currPage} thispage={'photo'} to="/photo"
+                    style={{ textAlign: 'right', float: 'right' }}
+                >
+                    Photos
+                </NavDOMLink2>
+                {/* <NavDOMLink3>(Photos coming soon)</NavDOMLink3> */}
                 {/* <NavDOMLink3>Photography</NavDOMLink3>
                 <NavDOMLink3>Blog</NavDOMLink3> */}
             </NonMobile2>

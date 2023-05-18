@@ -8,8 +8,12 @@ export const Container = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 30vw;
-  height: 103px;
+  /* height: 103px; */
+  /* width: 70vw; */
+  /* left: 0; */
+  height: 90px;
   width: 70vw;
+
 
   background: ${props => props.theme.bgSide}; // Make sure this color has an opacity of less than 1
   backdrop-filter: blur(14px); // This be the blur
@@ -30,9 +34,9 @@ export const Container = styled(motion.div)`
 `;
 
 export const ScrollContainer = styled.div`
-  padding-left: 20px;
-  padding-top: 12px;
-  height: 121px;
+  padding-left: 18px;
+  padding-top: 10px;
+  height: 108px;
   width: 70vw;
 
   z-index: 999;
@@ -45,7 +49,11 @@ export const ScrollContainer = styled.div`
   overflow-y: hidden;
   overflow-x: scroll;
 
-  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
   @media screen and (max-width: 767px) {
     padding-top: 10px;
@@ -60,7 +68,7 @@ export const ScrollContainer = styled.div`
 export const ImageContainer = styled(LinkRouter)`
   // display: inline-grid;
   width: 7vw;
-  height: 103px;
+  height: 90px;
   align-items: start;
   justify-content: start;
   padding-right: 11px;
@@ -136,8 +144,8 @@ export const Version = styled.div`
 
 export const ErrorImg = styled.div`
   position: absolute;
-  left: 18px;
-  top: 17px;
+  left: 16px;
+  top: 15px;
   justify-content: start;
   opacity: 0.65;
 

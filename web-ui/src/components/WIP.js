@@ -18,16 +18,21 @@ const WIP = () => {
 export default WIP;
 
 const InProgress = styled.div`
-    z-index: 1000;
+    font-family: 'SS3';
+    font-size: 30px;
+    z-index: 999;
     position: fixed;
-    text-align: right;
-    float: right;
-    color: ${props => props.theme.secondary};
-    opacity: 0.5;
+    left: 20px;
+    top: 114px;
+    /* text-align: right; */
+    /* float: right; */
+    color: ${props => props.theme.cs};
+    opacity: 1;
 
     @media screen and (max-width: 767px) {
-        right: 14px;
-        bottom: 62px;
+        top: 134px;
+        left: 14px;
+        font-size: 20px;
     }
 `
 

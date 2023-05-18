@@ -45,7 +45,7 @@ export const WorkContent = styled.div`
 
     align-items: left;
     padding-bottom: 100px;
-    padding-top: calc(30px + 103px);
+    padding-top: calc(28px + 90px);
     padding-left: 20px;
     padding-right: ${({ isCS }) => (isCS ? '32px' : 'calc(14px + 11vw)')};
 
@@ -55,6 +55,12 @@ export const WorkContent = styled.div`
 
     overflow-y: scroll;
     overflow-x: hidden;
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    ::-webkit-scrollbar {
+        display: none;
+    }
 
     @media screen and (max-width: 767px) {
         left: 0;
@@ -72,7 +78,7 @@ export const WorkContent = styled.div`
 export const TopSticky = styled.div`
     z-index: 999;
     position: fixed;
-    top: 120.5px;
+    top: 103px;
     left: ${({ isCS }) => (isCS ? 'calc(15vw + 20.5px)' : 'calc(20vw + 20px)')};
     width:  ${({ isCS }) => (isCS ? 'calc(68vw - 60.5px)' : 'calc(74vw - 80px + 11.5px)')};
     height: 18px;
@@ -86,8 +92,7 @@ export const TopSticky = styled.div`
     @media screen and (max-width: 767px) {
         // display: none;
         grid-template-columns: 1fr 80px;
-        top: 134px;
-        padding-top: 1px;
+        top: 132px;
         left: unset;
         right: 14px;
         width: 70vw;
@@ -193,6 +198,7 @@ export const LeftTitle = styled.div`
 
     @media screen and (max-width: 767px) {
         display: none;
+        /* opacity: 0; */
     }
 `
 
@@ -377,7 +383,7 @@ export const InlineLink = styled.div`
     @media screen and (max-width: 767px) {
         scroll-margin-top: 178px;
         margin-left: 0;
-        width: 100%;
+        /* width: 100%; */
     }
 `
 
@@ -413,14 +419,14 @@ export const Controls = styled.div`
     display: inline-grid;
     grid-template-rows: 50px 20px 60px 16px;
     position: fixed;
-    top: 103px;
+    top: 90px;
     left: 20px;
     height: calc(100vh - 103px);
     width: 11vw;
 
     // padding-left: 20px;
     /* padding-right: 24px; */
-    padding-top: 18px;
+    padding-top: 14px;
     /* align-items: right; */
     // text-align: right;
 
@@ -433,7 +439,7 @@ export const Controls = styled.div`
         display: inline-grid;
         grid-template-rows: unset;
         grid-template-columns: 1fr 1fr;
-        top: 136px;
+        top: 132px;
         padding-left: 14px;
         padding-top: 0;
         height: 40px;
@@ -447,10 +453,14 @@ export const NavButtons = styled.div`
     z-index: 999;
     position: absolute;
     left: 0;
-    bottom: calc(36px);
+    bottom: calc(22px);
     width: calc(100% - 26px);
     // cursor: pointer;
     /* border: 1.5px solid black; */
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
 `
 
 export const WorkNav = styled(LinkRouter)`
@@ -540,16 +550,16 @@ export const TableOfContents = styled.div`
 
     z-index: 999;
     position fixed;
-    right: 0;
-    top: 103px;
+    right: -18px;
+    top: 90px;
     // width: calc(100vw -);
-    width: 18vw;
+    width: calc(18vw + 18px);
     height: calc(100vh - 103px);
 
-    padding-top: 18px;
+    padding-top: 14px;
     padding-left: 22px;
     // padding-bottom: 20px;
-    padding-right: 48px;
+    padding-right: 60px;
     
     overflow-x: hidden;
     overflow-y: scroll;
