@@ -72,7 +72,7 @@ export const ImageContainer = styled(LinkRouter)`
   height: 80px;
   align-items: start;
   justify-content: start;
-  padding-right: 9px;
+  padding-right: 8px;
   // margin-top: 5.15px;
   opacity: 0.55;
 
@@ -96,7 +96,7 @@ export const ImageContainer = styled(LinkRouter)`
 
   @media screen and (max-width: 767px) {
     opacity: 1;
-    height: 98px;
+    height: 88px;
     padding-right: 10px;
 
     img {

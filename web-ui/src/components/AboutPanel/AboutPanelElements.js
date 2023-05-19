@@ -30,7 +30,7 @@ export const Content = styled.div`
     overflow: hidden;
     width: 100%;
     z-index: 999;
-    padding-right: 22px;
+    padding-right: 24px;
     padding-left: 20px;
     padding-top: 20px;
     pointer-events: none;
