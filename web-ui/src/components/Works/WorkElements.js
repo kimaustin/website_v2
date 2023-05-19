@@ -61,8 +61,8 @@ export const Marker = styled.div`
 
 export const MarkerL = styled.div`
   position: fixed;
-  left: 42px;
-  top: calc(48vh - 17px);
+  left: 40px;
+  top: calc(48vh - 19px);
   width: 12px;
   /* border-bottom: 4px solid ${props => props.theme.primary}; */
   /* display: none; */
@@ -74,11 +74,11 @@ export const MarkerL = styled.div`
 
   @media screen and (max-width: 767px) {
     display: grid;
-    font-size: 10px;
-    font-weight: 400;
+    font-size: 12px;
+    font-weight: 600;
     left: 4px;
     /* border-bottom: 4px solid ${props => props.theme.primary}; */
-    top: calc(48vh - 10px);
+    top: calc(48vh - 8px);
     width: 8px;
   } 
 `;
