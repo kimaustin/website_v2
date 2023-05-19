@@ -96,7 +96,7 @@ export const ImageContainer = styled(LinkRouter)`
 
   @media screen and (max-width: 767px) {
     opacity: 1;
-    height: 106px;
+    height: 98px;
     padding-right: 10px;
 
     img {
