@@ -164,8 +164,8 @@ export const WorkListContainer = styled.div`
   padding-bottom: calc(51vh - 62px + 0.8rem);
   // padding-top: calc(44vh - 94px);
   padding-top: calc(48vh - 128px - 1.8rem + 103px);
-  padding-left: 22px;
-  padding-right: calc(69vw + 30px);
+  padding-left: 20px;
+  padding-right: calc(69vw - 46px);
   z-index: 999;
 
   overflow-x: hidden; 
@@ -366,8 +366,8 @@ export const WorkTitle = styled.div`
   // margin-top: 20px;
 
   font-family: "SS3";
-  font-size: 3.6rem;
-  line-height: 4.3rem;
+  font-size: 3.4rem;
+  line-height: 4rem;
   color: ${props => props.theme.primary};
 
   @media screen and (max-width: 767px) {

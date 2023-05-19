@@ -78,7 +78,7 @@ export const WorkContent = styled.div`
 export const TopSticky = styled.div`
     z-index: 999;
     position: fixed;
-    top: 94px;
+    top: 92px;
     left: ${({ isCS }) => (isCS ? 'calc(17vw + 20.5px)' : 'calc(21vw + 20px)')};
     width:  ${({ isCS }) => (isCS ? 'calc(66.5vw - 60.5px)' : 'calc(75vw - 80px + 11.5px)')};
     height: 18px;
@@ -269,15 +269,15 @@ export const PicContainer = styled.div`
     padding-right: 20px;
     margin-right: 12px;
     /* width: calc(68vw - 80px + 12px); */
-    width: ${({ isCS }) => (isCS ? 'calc(66.5vw - 81px)' : 'calc(75vw - 80px + 12px)')};
-
+    width: ${({ isCS }) => (isCS ? 'calc(66.5vw - 61px)' : 'calc(75vw - 80px + 12px)')};
+    /* 66.5vw - 81px */
 
     img {
         object-fit: scale-down;
         // max-height: 100%;
         // max-width: 100%;
         max-height: 83vh;
-        max-width: ${({ isCS }) => (isCS ? 'calc(66.5w - 81px)' : 'calc(75vw - 80px + 12px)')};
+        max-width: ${({ isCS }) => (isCS ? 'calc(66.5vw - 61px)' : 'calc(75vw - 80px + 12px)')};
         // width: 80vw;
         z-index: -1;
     }
@@ -419,7 +419,7 @@ export const Controls = styled.div`
     display: inline-grid;
     grid-template-rows: 40px 20px 60px 16px;
     position: fixed;
-    top: 81px;
+    top: 79px;
     left: 58px;
     height: calc(100vh - 83px);
     width: 11.5vw;
@@ -551,7 +551,7 @@ export const TableOfContents = styled.div`
     z-index: 999;
     position fixed;
     right: -18px;
-    top: 81px;
+    top: 79px;
     // width: calc(100vw -);
     width: calc(17vw + 18px);
     height: calc(100vh - 103px);

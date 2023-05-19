@@ -109,7 +109,7 @@ export const SimpleNav = styled.div`
     /* overflow: hidden; */
     width: 46px;
     height: calc(100vh - 80px);
-    padding: 20px 14px 20px 15px;
+    padding: 18px 14px 20px 15px;
 
     position: fixed;
     left: 0;

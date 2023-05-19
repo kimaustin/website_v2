@@ -74,7 +74,7 @@ export const ImageContainer = styled(LinkRouter)`
   justify-content: start;
   padding-right: 9px;
   // margin-top: 5.15px;
-  opacity: 0.65;
+  opacity: 0.55;
 
   font-family: 'SS3';
   font-size: 14px;
