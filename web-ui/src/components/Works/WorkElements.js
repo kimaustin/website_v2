@@ -62,21 +62,22 @@ export const Marker = styled.div`
 export const MarkerL = styled.div`
   position: fixed;
   left: 46px;
-  top: calc(48vh - 12px);
+  top: calc(48vh - 16px);
   width: 12px;
-  border-bottom: 4px solid ${props => props.theme.primary};
-  display: none;
+  /* border-bottom: 4px solid ${props => props.theme.primary}; */
+  /* display: none; */
 
   color: ${props => props.theme.primary};
   font-family: 'SS3';
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 600;
 
   @media screen and (max-width: 767px) {
     display: grid;
+    font-size: 22px;
     left: 0;
-    border-bottom: 4px solid ${props => props.theme.primary};
-    top: calc(48vh);
+    /* border-bottom: 4px solid ${props => props.theme.primary}; */
+    top: calc(48vh - 11px);
     width: 8px;
   } 
 `;
@@ -372,8 +373,8 @@ export const WorkTitle = styled.div`
   // margin-top: 20px;
 
   font-family: "SS3";
-  font-size: 3.3rem;
-  line-height: 3.9rem;
+  font-size: 3.2rem;
+  line-height: 3.8rem;
   color: ${props => props.theme.primary};
 
   @media screen and (max-width: 767px) {
@@ -833,7 +834,7 @@ export const WorkImageContainer = styled.div`
   height: calc(100vh - 80px);
   width: calc(69vw - 92px);
   top: 80px;
-  margin-left: calc(46px + 31vw);
+  margin-left: calc(46px + 32vw);
   align-items: center;
   
   /* border: 1px solid green; */

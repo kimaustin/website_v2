@@ -453,7 +453,7 @@ export const NavButtons = styled.div`
     z-index: 999;
     position: absolute;
     left: 0;
-    bottom: calc(20px);
+    bottom: calc(22px);
     width: calc(100% - 26px);
     // cursor: pointer;
     /* border: 1.5px solid black; */

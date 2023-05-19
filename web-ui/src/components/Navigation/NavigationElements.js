@@ -214,7 +214,7 @@ export const NavHome = styled(LinkRouter)`
 export const Switcher = styled.div`
     position: absolute;
     left: 34px;
-    bottom: 44px;
+    bottom: 46px;
     display: inline-grid;
     grid-template-columns: 1fr 1fr 1fr;
     /* text-align: center; */
@@ -442,7 +442,7 @@ export const NavDOMLinkAbout = styled(LinkRouter)`
     transform: rotate(-90deg);
 
     position: absolute;
-    bottom: 70px;
+    bottom: 72px;
     left: 15px;
 
     &:hover {
