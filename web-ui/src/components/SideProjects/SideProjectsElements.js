@@ -7,37 +7,38 @@ export const Container = styled(motion.div)`
   z-index: 999;
   position: fixed;
   top: 0;
-  left: 30vw;
+  /* left: 30vw; */
   /* height: 103px; */
+  width: 100vw;
+  left: 0;
+  height: 80px;
   /* width: 70vw; */
-  /* left: 0; */
-  height: 90px;
-  width: 70vw;
 
-
-  background: ${props => props.theme.bgSide}; // Make sure this color has an opacity of less than 1
-  backdrop-filter: blur(14px); // This be the blur
-  border-bottom: .5px solid ${props => props.theme.border};
-  border-left: .5px solid ${props => props.theme.border};
+  /* background: ${props => props.theme.bgSide}; // Make sure this color has an opacity of less than 1 */
+  /* background: green; */
+  /* backdrop-filter: blur(14px); // This be the blur */
+  /* border-bottom: .5px solid ${props => props.theme.border}; */
+  /* border-left: .5px solid ${props => props.theme.border}; */
 
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
 
   @media screen and (max-width: 767px) {
-    height: 120px;
+    height: 100px;
     left: 0;
     width: 100vw;
     border-left: unset;
-    backdrop-filter: blur(8px); // This be the blur
+    background: ${props => props.theme.bgSide}; // Make sure this color has an opacity of less than 1
+    backdrop-filter: blur(7px); // This be the blur
     border-bottom: 1px solid ${props => props.theme.border};
   }
 `;
 
 export const ScrollContainer = styled.div`
-  padding-left: 18px;
+  padding-left: 16px;
   padding-top: 10px;
-  height: 108px;
-  width: 70vw;
+  height: 96px;
+  width: 100vw;
 
   z-index: 999;
 
@@ -56,8 +57,8 @@ export const ScrollContainer = styled.div`
   }
 
   @media screen and (max-width: 767px) {
-    padding-top: 10px;
-    height: 132px;
+    padding-top: 8px;
+    height: 116px;
     overflow-y: hidden;
     width: 100vw;
     padding-left: 14px;
@@ -68,12 +69,12 @@ export const ScrollContainer = styled.div`
 export const ImageContainer = styled(LinkRouter)`
   // display: inline-grid;
   width: 7vw;
-  height: 90px;
+  height: 80px;
   align-items: start;
   justify-content: start;
-  padding-right: 11px;
+  padding-right: 9px;
   // margin-top: 5.15px;
-  opacity: 0.7;
+  opacity: 0.65;
 
   font-family: 'SS3';
   font-size: 14px;
@@ -82,7 +83,7 @@ export const ImageContainer = styled(LinkRouter)`
 
   img {
     max-width: 100%;
-    max-height: calc(87% - 18px);
+    max-height: calc(87% - 16px);
     align-content: start;
     object-fit: scale-down;
   }
@@ -112,13 +113,13 @@ export const Label = styled.div`
     z-index: 999;
     position: fixed;
     left: 14px;
-    top: 97.5px;
+    top: 80px;
     text-align: left;
 
     font-family: "SS3";
     font-size: 12px;
     color: ${props => props.theme.secondary};
-    opacity: 0.8;
+    opacity: 0.7;
     // color: green;
   }
 `
@@ -131,13 +132,13 @@ export const Version = styled.div`
     z-index: 999;
     position: fixed;
     right: 14px;
-    top: 97.5px;
+    top: 80px;
     text-align: right;
 
     font-family: "SS3";
     font-size: 12px;
     color: ${props => props.theme.secondary};
-    opacity: 0.8;
+    opacity: 0.7;
     // color: green;
   }
 `

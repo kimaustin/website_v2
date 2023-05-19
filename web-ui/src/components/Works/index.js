@@ -284,17 +284,17 @@ const Works = ({ projects, toggleLight }) => {
   // });
 
 
-  // const proj1 = { name: 'June ggg ONE One GGG OOO ggg', class_short: 'June', val: 1, isCS: true, imgs: ["testProjCover1.png"], tags: ['UX Design', 'Figma', 'React.JS'], link: ['https://www.junehomes.com'] }
-  // const proj2 = { name: 'Two', val: 2, isCS: false, imgs: ["test/pic1.png"], tags: ['2UX Design', 'Figma', 'React.JS'], link: [] }
-  // const proj3 = { name: 'three', val: 3, isCS: false, imgs: ["test/pic2.png"], tags: ['3UX Design', 'Figma', 'React.JS'], link: [] }
-  // const proj4 = { name: 'four', val: 4, isCS: true, imgs: ["testProjCover4.png"], tags: ['4UX Design', 'Figma', 'React.JS'], link: ['https://www.junehomes.com'] }
-  // const proj5 = { name: 'five', val: 5, isCS: false, imgs: ["testProjCover5.png"], tags: ['5UX Design', 'Figma', 'React.JS'], link: [] }
-  // const proj6 = { name: 'six', val: 6, isCS: false, imgs: ["testProjCover6.png"], tags: ['6UX Design', 'Figma', 'React.JS'], link: [] }
-  // const proj7 = { name: 'seven', val: 7, isCS: true, imgs: ["testProjCover7.png"], tags: ['7UX Design', 'Figma', 'React.JS'], link: [] }
-  // const proj8 = { name: 'eight', val: 8, isCS: false, imgs: ["testProjCover8.png"], tags: ['8UX Design', 'Figma', 'React.JS'], link: [] }
-  // const proj9 = { name: 'nine', val: 9, isCS: false, imgs: ["testProjCover9.png", ""], tags: ['9UX Design', 'Figma', 'React.JS'], link: [] }
+  const proj1 = { name: 'June ggg ONE One GGG OOO ggg', class_short: 'June', val: 1, isCS: true, imgs: ["testProjCover1.png"], tags: ['UX Design', 'Figma', 'React.JS'], link: ['https://www.junehomes.com'] }
+  const proj2 = { name: 'Two', val: 2, isCS: false, imgs: ["test/pic1.png"], tags: ['2UX Design', 'Figma', 'React.JS'], link: [] }
+  const proj3 = { name: 'three', val: 3, isCS: false, imgs: ["test/pic2.png"], tags: ['3UX Design', 'Figma', 'React.JS'], link: [] }
+  const proj4 = { name: 'four', val: 4, isCS: true, imgs: ["testProjCover4.png"], tags: ['4UX Design', 'Figma', 'React.JS'], link: ['https://www.junehomes.com'] }
+  const proj5 = { name: 'five', val: 5, isCS: false, imgs: ["testProjCover5.png"], tags: ['5UX Design', 'Figma', 'React.JS'], link: [] }
+  const proj6 = { name: 'six', val: 6, isCS: false, imgs: ["testProjCover6.png"], tags: ['6UX Design', 'Figma', 'React.JS'], link: [] }
+  const proj7 = { name: 'seven', val: 7, isCS: true, imgs: ["testProjCover7.png"], tags: ['7UX Design', 'Figma', 'React.JS'], link: [] }
+  const proj8 = { name: 'eight', val: 8, isCS: false, imgs: ["testProjCover8.png"], tags: ['8UX Design', 'Figma', 'React.JS'], link: [] }
+  const proj9 = { name: 'nine', val: 9, isCS: false, imgs: ["testProjCover9.png", ""], tags: ['9UX Design', 'Figma', 'React.JS'], link: [] }
   
-  // const myProjects = [ proj1, proj2, proj3, proj4, proj5, proj6, proj7, proj8, proj9 ];
+  const myProjects = [ proj1, proj2, proj3, proj4, proj5, proj6, proj7, proj8, proj9 ];
 
   const ListContainerRef = useRef();
 
@@ -327,7 +327,7 @@ const Works = ({ projects, toggleLight }) => {
       //     console.log("projects list", projectsList);
       //     console.log('root', projectsList.root);
       // }, observerOptions)
-      for (var i = 0; i < myRefs.length; i++) { 
+      for (var i = 0; i < projects.length; i++) { 
           // console.log('curr', myRefs[i].current);
           // console.log('root', root);
           const observer = new IntersectionObserver((projectsList) => {
@@ -392,7 +392,7 @@ const Works = ({ projects, toggleLight }) => {
       <ProjectTag>{tag}</ProjectTag>
     ));
 
-    let height_varPreview = "calc(120px + " + ((index) * (90 / (projects.length + 3))) + "vh)";
+    // let height_varPreview = "calc(120px + " + ((index) * (90 / (projects.length + 3))) + "vh)";
     
     if (project.class_short == "June") {
       // console.log('comparison', projectValue, index);
@@ -410,7 +410,7 @@ const Works = ({ projects, toggleLight }) => {
           //   delay: index * 0.16,
           // }}
         >
-          <DeskWorkItem onClick={()=> handleClick(index)}>
+          <DeskWorkItem onClick={()=> handleMobileClick(index)}>
             <TopLine>
                 <CaseStudy>CASE STUDY</CaseStudy>
                 <TagsContainer>
@@ -433,8 +433,8 @@ const Works = ({ projects, toggleLight }) => {
     } else {
       // console.log('comparison', projectValue, index);
       return (
-        <WorkItem id={index} ref={myRefs[index]} onClick={()=> handleClick(index)} currProj={projectValue} thisProj={index}>
-          <DeskWorkItem onClick={()=> handleClick(index)}>
+        <WorkItem id={index} ref={myRefs[index]} currProj={projectValue} thisProj={index}>
+          <DeskWorkItem onClick={()=> handleMobileClick(index)}>
             <TopLine>
                 <TagsContainer>
                   {project_tags}
@@ -528,8 +528,8 @@ const Works = ({ projects, toggleLight }) => {
   // console.log(window.screen.height);
 
   let rightImageSource = "imgs/" + projects[projectValue].imgs[0];
-  // let rightImageSource = projects[projectValue].imgs[0];
-  let height_var = "calc(122px + " + ((projectValue) * (88 / (projects.length + 3))) + "vh)";
+  // let rightImageSource = myProjects[projectValue].imgs[0];
+  let height_var = "calc(110px + " + ((projectValue) * (88 / (projects.length + 1))) + "vh)";
   let mobile_height_var = "calc(134px + " + ((projectValue) * (54 / (projects.length + 4))) + "vh)";
 
   //TODO: Fix filters not working
@@ -550,22 +550,21 @@ const Works = ({ projects, toggleLight }) => {
       // }}
     >
       {/* <ThemeProvider theme={theme}> */}
-        <Divider
-           as={motion.div}
-           initial={{ y: '-100vh' }}
-           animate={{ y: '0' }}
-           exit={{ y: '-100vh', transition: {
-             type: "tween",
-             ease: [0.7, 0, 0.13, 1],
-             duration: 0.2,
-           } }}
-           transition={{
-               type: "tween",
-               ease: [0.7, 0, 0.13, 1],
-               duration: 0.6,
-              //  delay: 0.9
-           }}
-        />
+      {/* <Divider
+          as={motion.div}
+          initial={{ y: '-100vh' }}
+          animate={{ y: '0' }}
+          exit={{ y: '-100vh', transition: {
+            type: "tween",
+            ease: [0.7, 0, 0.13, 1],
+            duration: 0.2,
+          } }}
+          transition={{
+              type: "tween",
+              ease: [0.7, 0, 0.13, 1],
+              duration: 0.6,
+          }}
+      /> */}
       {/* <Label as={motion.div} initial="initial"
           animate="in"
           exit="out"
@@ -611,7 +610,7 @@ const Works = ({ projects, toggleLight }) => {
         {/* <HitMarker /> */}
         <Marker />
         <MarkerL />
-        <MarkerR />
+        {/* <MarkerR /> */}
         {projects_list}
       </WorkListContainer>
 
@@ -662,7 +661,7 @@ const Works = ({ projects, toggleLight }) => {
         <BgBlur />
       </ContentBg>
 
-      <ClickableArea
+      {/* <ClickableArea
         to={"/" + projectValue + "/works"}
         id={"proj" + projectValue}
         as={motion.div}
@@ -686,7 +685,7 @@ const Works = ({ projects, toggleLight }) => {
         >
           View Details
         </Details>
-      </ClickableArea>
+      </ClickableArea> */}
 
       {/* <ClickableArea>
         {projects[projectValue].name}

@@ -5,18 +5,19 @@ export const Container = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    height: 90px;
-    width: 30vw;
+    height: calc(100vh);
+    width: 46px;
     /* width: 100vw; */
     /* background: #1E1C1F; */
     // background: green;
-    background: ${props => props.theme.bgNav};
-    backdrop-filter: blur(12px);
-    border-bottom: .5px solid ${props => props.theme.border};
+    /* background: ${props => props.theme.bgNav}; */
+    /* backdrop-filter: blur(12px); */
+    /* border-right: .5px solid ${props => props.theme.border}; */
     z-index: 999;
 
     @media screen and (max-width: 767px) {
         top: unset;
+        /* left: 0; */
         bottom: 0px;
         width: 100vw;
         border-top: .5px solid ${props => props.theme.border};
@@ -106,37 +107,44 @@ export const SimpleNav = styled.div`
     display: inline-grid;
     /* grid-template-columns: 50px 1fr 78px; */
     /* overflow: hidden; */
-    width: 36px;
-    height: calc(100vh - 90px);
-    padding: 18px 10px 18px 10px;
+    width: 46px;
+    height: calc(100vh - 80px);
+    padding: 20px 14px 20px 15px;
 
     position: fixed;
     left: 0;
-    top: 90px;
+    top: 80px;
 
-    background: ${props => props.theme.bgNav};
+    /* background: ${props => props.theme.bgNav}; */
     /* border: 1px solid green; */
 
     @media screen and (max-width: 767px) {
-        width: calc(100vw - 28px);
+        /* width: calc(100vw - 28px); */
+        border-top: 1px solid ${props => props.theme.border};
+
+        background: ${props => props.theme.bgNav};
+        backdrop-filter: blur(12px);
+        display: inline-grid;
+        width: 100vw;
         /* width: 50%; */
         grid-template-columns: 1fr 1fr 1fr;
         height: 52px;
         /* height: 24px; */
-        left: 14px;
         overflow: unset;
         padding-top: 15px;
         /* position: unset; */
         top: unset;
         bottom: 0;
-        left: 14px;
         paddig-left: 14px;
     }
 `;
  
 export const Logo = styled.a`
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
+    /* margin-left: -1px; */
+    margin-right: 6px;
+    margin-top: -1px;
     background-image: url("logo.png");
     background-size: cover;
     border: 1px solid ${props => props.theme.border};
@@ -149,7 +157,11 @@ export const Logo = styled.a`
 
 export const NavHome = styled(LinkRouter)`
     font-size: 14px;
-    letter-spacing: 0.5px;
+    position absolute;
+    letter-spacing: 2px;
+    line-height: 120%;
+    left: 28.5px;
+    top: 15.5px;
     // height: 18px;
     // color: #FFFFFF;
     // text-decoration: none;
@@ -157,9 +169,14 @@ export const NavHome = styled(LinkRouter)`
     /* writing-mode: vertical-rl;
     text-orientation: upright; */
 
+    transform-origin: 0 0;
+    transform: rotate(90deg);
+
     /* position: relative; */
     display: flex;
+    /* width: 18px; */
     height: 18px;
+    width: 90px;
     // margin-bottom: 36px;
     color: ${props => props.theme.primary};
     text-decoration: none;
@@ -181,6 +198,11 @@ export const NavHome = styled(LinkRouter)`
     }
 
     @media screen and (max-width: 767px) {
+        position: unset;
+        top: unset;
+        left: unset;
+        transform-origin: unset;
+        transform: unset;
         height: 14px;
         padding-top: 3px;
         font-size: 14px;
@@ -188,18 +210,26 @@ export const NavHome = styled(LinkRouter)`
     }
 `;
 
+
 export const Switcher = styled.div`
+    position: absolute;
+    left: 34px;
+    bottom: 44px;
     display: inline-grid;
     grid-template-columns: 1fr 1fr 1fr;
     /* text-align: center; */
-    width: 100%;
-    height: 25px;
-    margin-top: -4.5px;
+    width: 46px;
+    height: 21px;
+    
+    /* margin-top: -4.5px; */
     /* margin-left: 012.5%; */
     border-radius: 30px;
     overflow: hidden;
-    border: 1px solid ${props => props.theme.border};
+    border: 1px solid ${props => props.theme.secondary};
     /* height: 16px; */
+
+    transform-origin: 0 0;
+    transform: rotate(90deg);
 
     /* &:hover {
         background: ${isLight => (isLight ? 'rgba(30, 30, 31, 0.1)' : 'rgba(242, 249, 256, 1)')};
@@ -207,8 +237,16 @@ export const Switcher = styled.div`
     } */
 
     @media screen and (max-width: 767px) {
+        position: unset;
+        left: unset;
+        bottom: unset;
+        transform-origin: unset;
+        transform: unset;
+
+        margin-left: 10%;
         margin-top: -3px;
-        height: 28px;
+        height: 24px;
+        width: 80%;
         /* width: 100%; */
         /* margin-left: 17%; */
     }
@@ -221,20 +259,29 @@ export const ThemeIndicator = styled.div`
     /* left: 0; */
     /* font-size: 20px; */
     width: 160%;
-    height: 100%;
+
+    height: 20px;
     font-family: 'SS3';
     /* margin-top: 0px; */
     background: ${props => props.theme.primary};
     /* background: green; */
     border-radius: 30px;
     /* height: 24px; */
+
+    @media screen and (max-width: 767px) {
+        height: 24px;
+    }   
 `
 
 export const LightIcon = styled.div`
     z-index: 999;
-    font-size: 15px;
-    padding-left: 45%;
-    padding-top: 4.75px;
+    font-size: 24px;
+
+    padding-left: 40%;
+    margin-top: -.5px;
+    /* margin-bottom: 2px; */
+    padding-bottom: 3px;
+    /* padding-top: -1px; */
     width: 150%;
     color: ${isLight => (isLight ? 'rgba(242, 249, 256, 1)' : 'rgba(30, 30, 31, 1)')};
 
@@ -248,21 +295,27 @@ export const LightIcon = styled.div`
     }
 
     @media screen and (max-width: 767px) {
-        padding-left: 55%;
-        padding-top: 5.4px;
+        font-size: 34px;
+        padding-left: 45%;
+        margin-top: -3px;
     }
 `
 
 export const DarkIcon = styled.div`
     z-index: 999;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 600;
     text-align: center;
     /* padding-left: 0%; */
-    padding-top: 5.7px;
-    padding-left: 0%;
+    padding-top: 7px;
+    padding-left: 10px;
+    margin-top: -1px;
     width: 150%;
     margin-left: -50%;
     color: ${isLight => (isLight ? 'rgba(30, 30, 31, 1)' : 'rgba(242, 249, 256, 1)')};
+
+    /* transform-origin: 0 0; */
+    transform: rotate(-90deg);
 
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
@@ -274,8 +327,13 @@ export const DarkIcon = styled.div`
     }
 
     @media screen and (max-width: 767px) {
-        padding-right: 2px;
+        transform-origin: unset;
+        transform: unset;
+        padding-right: 0px;
+        margin-top: -8px;
         padding-left: unset;
+        font-size: 18px;
+        font-weight: 600;
     }
 `
 
@@ -379,6 +437,14 @@ export const NavDOMLinkAbout = styled(LinkRouter)`
 
     transition: all .2s ease-in-out;
     
+
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+
+    position: absolute;
+    bottom: 70px;
+    left: 15px;
+
     &:hover {
         text-decoration: underline;
     }

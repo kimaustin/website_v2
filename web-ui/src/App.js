@@ -57,7 +57,7 @@ function App() {
 
   const lightTheme = {
     bg: "rgba(245, 251, 255, 1)",
-    bgBlur: "rgba(222, 220, 226, 0.65)",
+    bgBlur: "rgba(222, 220, 226, 0.75)",
     bgSide: "rgba(242, 240, 244, 0.8)",
     bgNav: "rgba(247, 246, 251, 0.65)",
     bgPreview: "rgba(255, 255, 255, 0.7)",
@@ -69,7 +69,7 @@ function App() {
 
   const darkTheme = {
     bg: "black",
-    bgBlur: "rgba(100, 100, 100, 0.35)",
+    bgBlur: "rgba(100, 100, 100, 0.75)",
     bgSide: "rgba(51, 49, 52, 0.8)",
     bgNav: "rgba(30, 30, 31, 0.65)",
     bgPreview: "rgba(8, 8, 8, 0.85)",

@@ -109,68 +109,69 @@ const Navigation = ({toggle, aboutToggle, mobileToggle, toggleLight, toggleDark,
                             transition={pageTransition} showInfo={showInfo}>
                 <AboutPanel />
             </AboutContainer> */}
-            <NonMobile>
+            {/* <NonMobile>
                 <NavHome currpage={currPage} thispage={'works'} to="/works"><Logo /><a style={{ marginLeft: '8px', marginTop: '-1px' }}>호연</a></NavHome>
                 <NavDOMLinkAbout currpage={aboutToggle} thispage={true} onClick={() => toggle('info')}>About/Contact</NavDOMLinkAbout>
                 <Switcher>
                         <LightIcon onClick={toggleLight}><IoSunnySharp /></LightIcon>
+                        <LightIcon onClick={toggleLight}>*</LightIcon>
                         <ThemeIndicator 
                             isLight={themeToggleStatus}
                             as={motion.div} 
-                            initial={{ marginLeft: '-105%' }} 
-                            animate={( themeToggleStatus ) ? { marginLeft: '-105%' } : { marginLeft: '45%' }}
+                            initial={{ marginLeft: '-100%' }} 
+                            animate={( themeToggleStatus ) ? { marginLeft: '-100%' } : { marginLeft: '50%' }}
                             transition={{
                             type: "tween",
                             ease: [0.28, 1.35, 1.5, .91],
                             duration: 0.4 }}
                         />
                         <DarkIcon onClick={toggleDark}><FaMoon /></DarkIcon>
+                        <DarkIcon onClick={toggleDark}>)</DarkIcon>
                 </Switcher>
                 <MobileMenuToggle onClick={mobileToggle}>Menu/About</MobileMenuToggle>
-            </NonMobile>
-            {/* <SimpleNav>
+            </NonMobile> */}
+            <SimpleNav>
                 <NavHome currpage={currPage} thispage={'works'} to="/works">
-                    <Logo />
-                   호연
+                    <Logo /> 호연
                 </NavHome>
                 <NavDOMLinkAbout currpage={aboutToggle} thispage={true} onClick={() => toggle('info')}>About/Contact</NavDOMLinkAbout>
                 <Switcher>
-                        <LightIcon onClick={toggleLight}><IoSunnySharp /></LightIcon>
-                        <ThemeIndicator 
-                            isLight={themeToggleStatus}
-                            as={motion.div} 
-                            initial={{ marginLeft: '-105%' }} 
-                            animate={( themeToggleStatus ) ? { marginLeft: '-105%' } : { marginLeft: '45%' }}
-                            transition={{
-                            type: "tween",
-                            ease: [0.28, 1.35, 1.5, .91],
-                            duration: 0.4 }}
-                        />
-                        <DarkIcon onClick={toggleDark}><FaMoon /></DarkIcon>
+                    <LightIcon onClick={toggleLight}>*</LightIcon>
+                    <ThemeIndicator 
+                        isLight={themeToggleStatus}
+                        as={motion.div} 
+                        initial={{ marginLeft: '-105%' }} 
+                        animate={( themeToggleStatus ) ? { marginLeft: '-105%' } : { marginLeft: '45%' }}
+                        transition={{
+                        type: "tween",
+                        ease: [0.28, 1.35, 1.5, .91],
+                        duration: 0.4 }}
+                    />
+                    <DarkIcon onClick={toggleDark}>)</DarkIcon>
                 </Switcher>
                 <MobileMenuToggle onClick={mobileToggle}>Menu/About</MobileMenuToggle>
-            </SimpleNav> */}
-            <NonMobile2>
+            </SimpleNav>
+            {/* <NonMobile2>
                 <NavDOMLink2 currpage={currPage} thispage={'works'} to="/works">
                     Index
                 </NavDOMLink2>
-                {/* <NavDOMLink2 currpage={currPage} thispage={'test'} to="/test">
+                <NavDOMLink2 currpage={currPage} thispage={'test'} to="/test">
                     The Lab
-                </NavDOMLink2> */}
+                </NavDOMLink2>
                 <NavDOMLink3>Lab</NavDOMLink3>
-                {/* <NavDOMLink2 currpage={currPage} thispage={'blog'} to="/blog">
+                <NavDOMLink2 currpage={currPage} thispage={'blog'} to="/blog">
                     Blog
-                </NavDOMLink2> */}
+                </NavDOMLink2>
                 <NavDOMLink3>Blog</NavDOMLink3>
                 <NavDOMLink2 currpage={currPage} thispage={'photo'} to="/photo"
                     style={{ textAlign: 'right', float: 'right' }}
                 >
                     Photos
                 </NavDOMLink2>
-                {/* <NavDOMLink3>(Photos coming soon)</NavDOMLink3> */}
-                {/* <NavDOMLink3>Photography</NavDOMLink3>
-                <NavDOMLink3>Blog</NavDOMLink3> */}
-            </NonMobile2>
+                <NavDOMLink3>(Photos coming soon)</NavDOMLink3>
+                <NavDOMLink3>Photography</NavDOMLink3>
+                <NavDOMLink3>Blog</NavDOMLink3>
+            </NonMobile2> */}
         </Container>
     );
 };

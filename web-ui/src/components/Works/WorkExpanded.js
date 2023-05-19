@@ -368,7 +368,7 @@ const WorkExpanded = ({ projects }) => {
                     duration: 0.7,
                 }}
             >
-                <Back to="/works">← All Projects</Back>
+                <Back to="/works">← Index</Back>
                 <CaseStudy2>Case Study</CaseStudy2>
                 <LeftTitle>{work.name}</LeftTitle>
                 {/* <Visit href={"https://www.junehomes.com"} target="_blank">Visit ↗</Visit> */}

@@ -9,9 +9,9 @@ export const Container = styled.div`
     /* grid-template-rows: repeat(auto-fill, 15vh); */
     grid-gap: 6px;
     justify-content: space-evenly;
-    left: 0;
+    left: 46px;
     top: 0;
-    width: 100vw;
+    width: calc(100vw - 46px);
     height: 100vh;
     padding-left: 20px;
     padding-right: 20px;

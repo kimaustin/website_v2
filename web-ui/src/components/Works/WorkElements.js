@@ -5,11 +5,13 @@ import { motion } from "framer-motion";
 
 export const Container = styled(motion.div)`
   position: fixed;
-  left: 0;
+  /* left: 0; */
+  left: 46px;
   // top: 103px;
   top: 0;
   z-index: 998;
-  width: 100vw;
+  /* width: 100vw; */
+  width: calc(100vw - 46px);
   height: calc(100vh);
 
   ::-webkit-scrollbar {
@@ -27,7 +29,7 @@ export const Container = styled(motion.div)`
 export const Divider = styled.div`
   z-index: 999;
   position: fixed;
-  left: 30vw;
+  left: calc(46px + 31vw);
   top: 0;
   height: 100vh;
 
@@ -43,7 +45,8 @@ export const Marker = styled.div`
   position: fixed;
   left: 0;
   top: calc(48vh);
-  width: 30vw;
+  /* width: calc(31vw + 46px); */
+  width: calc(100vw);
   border-bottom: 1.5px solid ${props => props.theme.primary};
   opacity: 0.3;
 
@@ -57,21 +60,24 @@ export const Marker = styled.div`
 
 export const MarkerL = styled.div`
   position: fixed;
-  left: 0;
-  top: calc(48vh - 1.5px);
-  width: 12px;
-  border-bottom: 4px solid ${props => props.theme.primary};
+  /* left: 46px; */
+  /* top: calc(48vh - 1.5px); */
+  /* width: 12px; */
+  /* border-bottom: 4px solid ${props => props.theme.primary}; */
+  display: none;
 
   @media screen and (max-width: 767px) {
-    border-bottom: 4px solid ${props => props.theme.secondary};
-    top: calc(48vh - 1.5px);
+    display: grid;
+    left: 0;
+    border-bottom: 4px solid ${props => props.theme.primary};
+    top: calc(48vh);
     width: 8px;
   } 
 `;
 
 export const MarkerR = styled.div`
   position: fixed;
-  left: calc(30vw - 12px);
+  left: calc(31vw + 46px - 12px);
   top: calc(48vh - 1.5px);
   width: 12px;
   border-bottom: 4px solid ${props => props.theme.primary};
@@ -151,15 +157,15 @@ export const ClickableArea = styled.div`
 export const WorkListContainer = styled.div`
   position: fixed;
   top: 0;
-  left: 0;
-  width: calc(100vw);
+  left: 46px;
+  width: calc(100vw - 46px);
   height: calc(100vh - 103px + 103px);
   overflow-y: scroll;
-  padding-bottom: calc(51vh - 62px + 1.4rem);
+  padding-bottom: calc(51vh - 62px + 0.8rem);
   // padding-top: calc(44vh - 94px);
-  padding-top: calc(48vh - 128px - 1.7rem + 103px);
-  padding-left: 15px;
-  padding-right: calc(70vw + 32px);
+  padding-top: calc(48vh - 128px - 1.8rem + 103px);
+  padding-left: 22px;
+  /* padding-right: calc(70vw + 32px); */
   z-index: 999;
 
   overflow-x: hidden; 
@@ -177,6 +183,7 @@ export const WorkListContainer = styled.div`
   @media screen and (max-width: 767px) {
     z-index: 998;
     width: 100vw;
+    left: 0;
     padding-left: 11px;
     padding-top: calc(48vh - 126px - 16px + 103px);
     padding-bottom: calc(50vh - 64px + 42px);
@@ -187,9 +194,10 @@ export const WorkItem = styled.div`
   // display: grid;
   // grid-template-rows: 24px 1fr;
 
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 
-  scroll-margin-top: calc(48vh - 128px - 1.7rem + 103px);
+  scroll-margin-top: calc(48vh - 128px - 1.8rem + 103px);
+  /* calc(48vh - 128px - 2rem + 103px); */
 
   /* padding-top: calc(48vh - 128px - 1.7rem + 103px); */
 
@@ -212,7 +220,7 @@ export const WorkItem = styled.div`
 
 export const DeskWorkItem = styled.div`
   display: grid;
-  grid-template-rows: 1frpx 1fr;
+  /* grid-template-rows: 1fr; */
 
   // margin-bottom: 38px;
   // scroll-margin-top: calc(48vh - 128px - 21px + 103px);
@@ -251,7 +259,7 @@ export const MobileWorkItem = styled.div`
 export const TopLine = styled.div`
   display: inline-block;
   width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 1px;
   // grid-template-columns: 20px 1fr 6fr;
   // grid-template-rows: 1fr;
   // height: 8px;
@@ -305,7 +313,7 @@ export const CaseStudy = styled.a`
   // margin-left: 20px;
   // margin-bottom: -17px;
   // float: right;
-  padding: 3px 10px 2px 10px;
+  padding: 2px 8px 1px 8px;
   opacity: 0.9;
   background: ${props => props.theme.cs};
   /* padding-left: 2px; */
@@ -315,7 +323,7 @@ export const CaseStudy = styled.a`
   color: ${props => props.theme.cs};
   color: ${props => props.theme.bg};
   font-family: "SS3";
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 500;
   letter-spacing: 1px;
   text-align: left;
@@ -358,8 +366,8 @@ export const WorkTitle = styled.div`
   // margin-top: 20px;
 
   font-family: "SS3";
-  font-size: 2.8rem;
-  line-height: 3.5rem;
+  font-size: 3.6rem;
+  line-height: 4.3rem;
   color: ${props => props.theme.primary};
 
   @media screen and (max-width: 767px) {
@@ -540,15 +548,16 @@ export const WorkPreview = styled.div`
 
   position: fixed;
   overflow: hidden;
-  height: 52px;
-  width: 140px;
+  height: 50px;
+  width: 130px;
   top: ${props => (props.heightVar)};
-  left: calc(30vw + 10px);
+  right: 16px;
+  /* left: calc(31vw + 54px); */
   align-content: center;
   text-align: left;
 
-  padding: 6px 7px 7px 10px;
-  border-radius: 6px;
+  padding: 5px 7px 4px 12px;
+  border-radius: 5px;
   border: 1px solid ${props => props.theme.bg};
 
   transition: 0.1s all ease-in-out;
@@ -752,15 +761,18 @@ export const VisitLink = styled.a`
 `
 
 export const ContentBg = styled.div`
-  /* z-index: -1; */
+  z-index: -1;
   position: fixed;
   // top: 103px;
   top: 0;
-  left: 30vw;
+  /* left: calc(31vw + 40px); */
+  left: 0;
   height: calc(100vh);
-  width: 70vw;
+  /* width: calc(69vw - 40px); */
+  width: 100vw;
   /* align-items: center; */
   background: ${props => props.theme.bg};
+  /* background: blue; */
 
   /* background-image: ${(bgFileName) => 'url(bgFileName)'}; */
   /* background-image: url("bg2.png"); */
@@ -793,9 +805,11 @@ export const BgBlur = styled.div`
   /* z-index: 900; */
   position: fixed;
   top: 0;
-  left: 30vw;
+  left: 0;
+  width: 100vw;
+  /* left: calc(31vw + 46px); */
   height: 100vh;
-  width: 70vw;
+  /* width: calc(69vw - 46px); */
   /* overflow: hidden; */
   background: ${props => props.theme.bgBlur}; // Make sure this color has an opacity of less than 1
   backdrop-filter: blur(22px); // This be the blur
@@ -810,11 +824,13 @@ export const BgBlur = styled.div`
 
 export const WorkImageContainer = styled.div`
   position: fixed;
-  height: calc(100vh - 103px);
-  width: 70vw;
-  top: 103px;
-  margin-left: 30vw;
+  height: calc(100vh - 80px);
+  width: calc(69vw - 92px);
+  top: 80px;
+  margin-left: calc(46px + 31vw);
   align-items: center;
+  
+  /* border: 1px solid green; */
 
   @media screen and (max-width: 767px) {
     // z-index: 999;
@@ -829,11 +845,11 @@ export const WorkImageContainer = styled.div`
 export const WorkImage = styled.div`
   z-index: 999;
   /* padding: 22px; */
-  margin-top: 2.5vh;
-  margin-left: 28px;
-  width: calc(70vw - 55px);
+  margin-top: 3vh;
+  /* margin-left: 28px; */
+  width: calc(69vw - 92px - 5vw);
   /* height: calc(100vh - 130px - 5rem); */
-  height: calc(86.5vh - 103px);
+  height: calc(100vh - 80px - 6.5vh);
   text-align: center;
   align-items: center;
   /* justify-content: center; */
@@ -851,7 +867,7 @@ export const WorkImage = styled.div`
         height: 100%;
         /* max-height: calc(100vh - 38px); */
         // max-width: 100%;
-        max-width: calc(70vw - 54px);
+        max-width: calc(69vw - 92px - 5vw);
         /* background-image: #201D17; */
         /* padding-left: 3.25rem; */
     }

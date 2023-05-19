@@ -6,10 +6,10 @@ export const Container = styled.div`
     // display: flex;
     position: fixed;
     /* margin: 1rem; */
-    left: 0;
+    left: 46px;
     top: 0;
     // top: 103px;
-    width: 100vw;
+    width: calc(100vw - 46px);
     height: calc(100vh);
 
     /* top: 6.6vh; */
@@ -35,13 +35,13 @@ export const Container = styled.div`
 export const WorkContent = styled.div`
     z-index: 990;
     position: fixed;
-    left: ${({ isCS }) => (isCS ? '15vw' : '20vw')};
+    left: ${({ isCS }) => (isCS ? '16.75vw' : '21vw')};
     top: 0;
     // top: 103px;
     height: calc(100vh);
     // height: calc(100vh - 103px);
     // width: calc(72vw + 48px);
-    width: ${({ isCS }) => (isCS ? 'calc(67vw - 20px + 31px)' : 'calc(80vw + 14px)')};
+    width: ${({ isCS }) => (isCS ? 'calc(66.75vw - 20px + 31px)' : 'calc(81vw + 14px)')};
 
     align-items: left;
     padding-bottom: 100px;
@@ -71,16 +71,16 @@ export const WorkContent = styled.div`
         padding-left: 14px;
         padding-right: 28px;
         // padding-bottom: 90px;
-        padding-top: 124px;
+        padding-top: 98px;
     }
 `
 
 export const TopSticky = styled.div`
     z-index: 999;
     position: fixed;
-    top: 103px;
-    left: ${({ isCS }) => (isCS ? 'calc(15vw + 20.5px)' : 'calc(20vw + 20px)')};
-    width:  ${({ isCS }) => (isCS ? 'calc(68vw - 60.5px)' : 'calc(74vw - 80px + 11.5px)')};
+    top: 94px;
+    left: ${({ isCS }) => (isCS ? 'calc(16.75vw + 20.5px)' : 'calc(21vw + 20px)')};
+    width:  ${({ isCS }) => (isCS ? 'calc(66.75vw - 60.5px)' : 'calc(75vw - 80px + 11.5px)')};
     height: 18px;
     display: inline-grid;
     grid-template-columns: 74px 1fr 1fr;
@@ -92,7 +92,7 @@ export const TopSticky = styled.div`
     @media screen and (max-width: 767px) {
         // display: none;
         grid-template-columns: 1fr 80px;
-        top: 132px;
+        top: 112px;
         left: unset;
         right: 14px;
         width: 70vw;
@@ -269,7 +269,7 @@ export const PicContainer = styled.div`
     padding-right: 20px;
     margin-right: 12px;
     /* width: calc(68vw - 80px + 12px); */
-    width: ${({ isCS }) => (isCS ? 'calc(68vw - 61px)' : 'calc(74vw - 80px + 12px)')};
+    width: ${({ isCS }) => (isCS ? 'calc(66.75vw - 61px)' : 'calc(75vw - 80px + 12px)')};
 
 
     img {
@@ -277,7 +277,7 @@ export const PicContainer = styled.div`
         // max-height: 100%;
         // max-width: 100%;
         max-height: 83vh;
-        max-width: ${({ isCS }) => (isCS ? 'calc(68vw - 61px)' : 'calc(74vw - 80px + 12px)')};
+        max-width: ${({ isCS }) => (isCS ? 'calc(66.75w - 61px)' : 'calc(75vw - 80px + 12px)')};
         // width: 80vw;
         z-index: -1;
     }
@@ -417,12 +417,12 @@ export const Desc = styled.p`
 export const Controls = styled.div`
     z-index: 999;
     display: inline-grid;
-    grid-template-rows: 50px 20px 60px 16px;
+    grid-template-rows: 40px 20px 60px 16px;
     position: fixed;
-    top: 90px;
-    left: 20px;
-    height: calc(100vh - 103px);
-    width: 11vw;
+    top: 81px;
+    left: 58px;
+    height: calc(100vh - 83px);
+    width: 11.5vw;
 
     // padding-left: 20px;
     /* padding-right: 24px; */
@@ -439,7 +439,7 @@ export const Controls = styled.div`
         display: inline-grid;
         grid-template-rows: unset;
         grid-template-columns: 1fr 1fr;
-        top: 132px;
+        top: 112px;
         padding-left: 14px;
         padding-top: 0;
         height: 40px;
@@ -453,7 +453,7 @@ export const NavButtons = styled.div`
     z-index: 999;
     position: absolute;
     left: 0;
-    bottom: calc(22px);
+    bottom: calc(20px);
     width: calc(100% - 26px);
     // cursor: pointer;
     /* border: 1.5px solid black; */
@@ -551,7 +551,7 @@ export const TableOfContents = styled.div`
     z-index: 999;
     position fixed;
     right: -18px;
-    top: 90px;
+    top: 81px;
     // width: calc(100vw -);
     width: calc(18vw + 18px);
     height: calc(100vh - 103px);
