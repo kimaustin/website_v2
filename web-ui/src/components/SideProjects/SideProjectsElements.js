@@ -100,7 +100,7 @@ export const ImageContainer = styled(LinkRouter)`
     padding-right: 10px;
 
     img {
-      max-height: calc(78px);
+      max-height: calc(70px);
     }
   }
 `

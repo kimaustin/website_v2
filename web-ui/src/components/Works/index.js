@@ -610,7 +610,7 @@ const Works = ({ projects, toggleLight }) => {
         {/* <HitMarker /> */}
         <Marker />
         <MarkerL />
-        {/* <MarkerR /> */}
+        <MarkerR />
         {projects_list}
       </WorkListContainer>
 

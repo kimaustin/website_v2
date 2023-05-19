@@ -43,10 +43,11 @@ export const Divider = styled.div`
 
 export const Marker = styled.div`
   position: fixed;
-  left: 0;
+  /* left: 0; */
+  left: 46px;
   top: calc(48vh);
-  /* width: calc(31vw + 46px); */
-  width: calc(100vw);
+  width: calc(32vw + 46px);
+  /* width: calc(100vw); */
   border-bottom: 1.5px solid ${props => props.theme.primary};
   opacity: 0.3;
 
@@ -60,10 +61,10 @@ export const Marker = styled.div`
 
 export const MarkerL = styled.div`
   position: fixed;
-  /* left: 46px; */
-  /* top: calc(48vh - 1.5px); */
-  /* width: 12px; */
-  /* border-bottom: 4px solid ${props => props.theme.primary}; */
+  left: 46px;
+  top: calc(48vh - 1.5px);
+  width: 12px;
+  border-bottom: 4px solid ${props => props.theme.primary};
   display: none;
 
   @media screen and (max-width: 767px) {
@@ -77,7 +78,7 @@ export const MarkerL = styled.div`
 
 export const MarkerR = styled.div`
   position: fixed;
-  left: calc(31vw + 46px - 12px);
+  left: calc(32vw + 46px - 12px);
   top: calc(48vh - 1.5px);
   width: 12px;
   border-bottom: 4px solid ${props => props.theme.primary};
