@@ -35,8 +35,8 @@ export const Container = styled(motion.div)`
 `;
 
 export const ScrollContainer = styled.div`
-  padding-left: 16px;
-  padding-top: 10px;
+  padding-left: 14px;
+  padding-top: 11px;
   height: 96px;
   width: 100vw;
 

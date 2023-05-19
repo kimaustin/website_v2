@@ -165,7 +165,7 @@ export const WorkListContainer = styled.div`
   // padding-top: calc(44vh - 94px);
   padding-top: calc(48vh - 128px - 1.8rem + 103px);
   padding-left: 22px;
-  /* padding-right: calc(70vw + 32px); */
+  padding-right: calc(69vw + 30px);
   z-index: 999;
 
   overflow-x: hidden; 
@@ -845,7 +845,7 @@ export const WorkImageContainer = styled.div`
 export const WorkImage = styled.div`
   z-index: 999;
   /* padding: 22px; */
-  margin-top: 3vh;
+  margin-top: 2.5vh;
   /* margin-left: 28px; */
   width: calc(69vw - 92px - 5vw);
   /* height: calc(100vh - 130px - 5rem); */

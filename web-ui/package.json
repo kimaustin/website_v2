@@ -19,6 +19,7 @@
     "react-icons": "^4.8.0",
     "react-intersection-observer": "^9.4.3",
     "react-list-select": "^0.4.1",
+    "react-p5": "^1.3.35",
     "react-progressive-image": "^0.6.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",

@@ -35,13 +35,13 @@ export const Container = styled.div`
 export const WorkContent = styled.div`
     z-index: 990;
     position: fixed;
-    left: ${({ isCS }) => (isCS ? '16.75vw' : '21vw')};
+    left: ${({ isCS }) => (isCS ? '17vw' : '21vw')};
     top: 0;
     // top: 103px;
     height: calc(100vh);
     // height: calc(100vh - 103px);
     // width: calc(72vw + 48px);
-    width: ${({ isCS }) => (isCS ? 'calc(66.75vw - 20px + 31px)' : 'calc(81vw + 14px)')};
+    width: ${({ isCS }) => (isCS ? 'calc(66.5vw - 40px)' : 'calc(81vw + 14px)')};
 
     align-items: left;
     padding-bottom: 100px;
@@ -79,8 +79,8 @@ export const TopSticky = styled.div`
     z-index: 999;
     position: fixed;
     top: 94px;
-    left: ${({ isCS }) => (isCS ? 'calc(16.75vw + 20.5px)' : 'calc(21vw + 20px)')};
-    width:  ${({ isCS }) => (isCS ? 'calc(66.75vw - 60.5px)' : 'calc(75vw - 80px + 11.5px)')};
+    left: ${({ isCS }) => (isCS ? 'calc(17vw + 20.5px)' : 'calc(21vw + 20px)')};
+    width:  ${({ isCS }) => (isCS ? 'calc(66.5vw - 60.5px)' : 'calc(75vw - 80px + 11.5px)')};
     height: 18px;
     display: inline-grid;
     grid-template-columns: 74px 1fr 1fr;
@@ -269,7 +269,7 @@ export const PicContainer = styled.div`
     padding-right: 20px;
     margin-right: 12px;
     /* width: calc(68vw - 80px + 12px); */
-    width: ${({ isCS }) => (isCS ? 'calc(66.75vw - 61px)' : 'calc(75vw - 80px + 12px)')};
+    width: ${({ isCS }) => (isCS ? 'calc(66.5vw - 81px)' : 'calc(75vw - 80px + 12px)')};
 
 
     img {
@@ -277,7 +277,7 @@ export const PicContainer = styled.div`
         // max-height: 100%;
         // max-width: 100%;
         max-height: 83vh;
-        max-width: ${({ isCS }) => (isCS ? 'calc(66.75w - 61px)' : 'calc(75vw - 80px + 12px)')};
+        max-width: ${({ isCS }) => (isCS ? 'calc(66.5w - 81px)' : 'calc(75vw - 80px + 12px)')};
         // width: 80vw;
         z-index: -1;
     }
@@ -553,7 +553,7 @@ export const TableOfContents = styled.div`
     right: -18px;
     top: 81px;
     // width: calc(100vw -);
-    width: calc(18vw + 18px);
+    width: calc(17vw + 18px);
     height: calc(100vh - 103px);
 
     padding-top: 14px;

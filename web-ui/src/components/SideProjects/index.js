@@ -179,6 +179,8 @@ const SideProjects = ({ projects }) => {
         }}
       >
         {imgPreviews}
+        {imgPreviews}
+        {imgPreviews}
       </ScrollContainer>
     </Container>
   )
