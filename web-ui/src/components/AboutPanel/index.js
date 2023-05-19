@@ -28,6 +28,7 @@ const About = ({ toggle, aboutToggle }) => {
           <Name>Austin Kim <br />(호연)</Name>
           <Styled1>Currently based in <br /> Brooklyn, NY</Styled1>
           <Styled2>I’m a multi-disciplinary designer, developer, artist with a passion for building meaningful, impactful, and engaging experiences.</Styled2>
+          <Styled2>I graduated from Northeastern University in May of 2021 with a bachelors of Computer Science and Design, and since then, have been working on multiple web and graphic design projects in many fields.</Styled2>
           <Styled2>I love experimenting with new technologies, techniques, patterns, styles, and sounds.</Styled2>
         </Content>
         <Bottom>
