@@ -608,9 +608,9 @@ const Works = ({ projects, toggleLight }) => {
       >
         {/* {project_names} */}
         {/* <HitMarker /> */}
-        <Marker />
-        <MarkerL />
-        <MarkerR />
+        {/* <Marker /> */}
+        <MarkerL>&gt;</MarkerL>
+        {/* <MarkerR /> */}
         {projects_list}
       </WorkListContainer>
 

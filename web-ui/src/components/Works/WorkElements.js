@@ -62,10 +62,15 @@ export const Marker = styled.div`
 export const MarkerL = styled.div`
   position: fixed;
   left: 46px;
-  top: calc(48vh - 1.5px);
+  top: calc(48vh - 12px);
   width: 12px;
   border-bottom: 4px solid ${props => props.theme.primary};
   display: none;
+
+  color: ${props => props.theme.primary};
+  font-family: 'SS3';
+  font-size: 26px;
+  font-weight: 600;
 
   @media screen and (max-width: 767px) {
     display: grid;
