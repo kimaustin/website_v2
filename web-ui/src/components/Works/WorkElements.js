@@ -235,13 +235,16 @@ export const DeskWorkItem = styled.div`
   // margin-bottom: 38px;
   // scroll-margin-top: calc(48vh - 128px - 21px + 103px);
 
-  transition: .1s all ease-in-out;
+  transition: .225s all ease-in-out;
 
   color: ${props => props.theme.primary};
   padding: 0 4px;
 
   &:hover {
-    opacity: 1;
+    /* border-radius: 12px; */
+    transform: translateX( 6px );
+    /* background: green; */
+    /* opacity: 1; */
     cursor: pointer;
     /* padding-left: 20px; */
     /* color: ${props => props.theme.secondary}; */

@@ -368,7 +368,7 @@ const Works = ({ projects, toggleLight }) => {
     myRefs[event].current?.scrollIntoView({ behavior: 'smooth' });
     // setProjectValue(event);
 
-    await delay(600);
+    await delay(700);
   
     historyPage.push("/" + event + "/works");
     // console.log('after');
