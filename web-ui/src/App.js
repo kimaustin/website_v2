@@ -22,6 +22,7 @@ import CloseOverlay from "./components/CloseOverlay";
 import Wipe from "./components/Wipe";
 import Background from "./components/Background";
 import Photography from "./components/Photography";
+import Versions from "./components/Versions";
 
 //Our App Components
 function App() {
@@ -31,6 +32,13 @@ function App() {
   const toggle = () => {
     // console.log("mobile nav toggled", isOpen);
     setIsOpen(!isOpen);
+  };
+
+  const [versionDrawer, setVersionDrawer] = useState(false);
+
+  const toggleDrawer = () => {
+      console.log("drawer toggled to", versionDrawer);
+      setVersionDrawer(!versionDrawer);
   };
 
   const [aboutToggle, setAboutToggle] = useState(false);
@@ -57,7 +65,7 @@ function App() {
 
   const lightTheme = {
     bg: "rgba(245, 251, 255, 1)",
-    bgBlur: "rgba(222, 220, 226, 0.75)",
+    bgBlur: "rgba(230, 228, 234, 0.8)",
     bgSide: "rgba(242, 240, 244, 0.8)",
     bgNav: "rgba(247, 246, 251, 0.65)",
     bgPreview: "rgba(255, 255, 255, 0.7)",
@@ -68,8 +76,8 @@ function App() {
   };
 
   const darkTheme = {
-    bg: "black",
-    bgBlur: "rgba(100, 100, 100, 0.75)",
+    bg: "rgba(10, 10, 10, 1)",
+    bgBlur: "rgba(35, 35, 35, .65)",
     bgSide: "rgba(51, 49, 52, 0.8)",
     bgNav: "rgba(30, 30, 31, 0.65)",
     bgPreview: "rgba(8, 8, 8, 0.85)",
@@ -106,8 +114,9 @@ function App() {
     <Router>
       <ThemeProvider theme={colorTheme}>
         <GlobalFonts />
+        {/* <Versions drawerToggle={versionDrawer} toggle={toggleDrawer} /> */}
         <NavBar mobileToggle={toggle} isOpen={isOpen}/>
-        <Navigation toggle={toggleAbout} aboutToggle={aboutToggle} mobileToggle={toggle} toggleLight={toggleLight} toggleDark={toggleDark} themeToggleStatus={isLightTheme}/>
+        <Navigation drawerStatus={versionDrawer} toggleDrawer={toggleDrawer} toggle={toggleAbout} aboutToggle={aboutToggle} mobileToggle={toggle} toggleLight={toggleLight} toggleDark={toggleDark} themeToggleStatus={isLightTheme}/>
         <AboutPanel aboutToggle={aboutToggle} toggle={toggleAbout}></AboutPanel>
         <SideProjects sideProjectsToggle={sideProjectsToggle} />
         <Wipe isLightTheme={isLightTheme}/>

@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import { keyframes } from "styled-components";
+import { motion, AnimatePresence } from "framer-motion";
 
-const Versions = () => {
+const Versions = ({ drawerToggle, toggle }) => {
+
     return (
-        <Container>
-            <Logo>
-                
-            </Logo>
+        <Container
+            as={motion.div} 
+            initial={{ x: '-200px' }} 
+            animate={drawerToggle ? {  x: '6px' } : { x: '-200px' }}
+            transition={{
+              type: "tween",
+              ease: [0.28, 1.35, 1.5, .91],
+              duration: 0.25
+            }}
+        >
+            {/* <Logo onClick={toggle}>
+                <img src={"logo.png"} />
+            </Logo> */}
+            <Drawer>
+                <Item><a href={"https://google.com"}>V 1.0</a></Item>
+                <Item><a href={"https://google.com"}>V 2.0</a></Item>
+                <Item><a href={"https://google.com"}>V 2.5</a></Item>
+            </Drawer>
         </Container>
     );
 };
@@ -15,157 +31,54 @@ const Versions = () => {
 export default Versions;
 
 const Container = styled.div`
-    /* transform: rotateX(17deg); */
-    overflow: hidden;
-    background: yellow;
-    height: 100vh;
-    height: 1.75rem;
-    width: 2.4rem;
-    /* width: 5rem; */
-    /* width: 130vw; */
-    width: 100vw;
-    z-index: 999;
-    cursor: default;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    /* border-left: 1px solid black; */
-    display: flex;
+    z-index: 1001;
     position: fixed;
-    /* bottom: 51vh; */
-    opacity: 1;
-    /* right: -28%; */
-    top: 0;
     left: 0;
-    /* left: -11vw; */
-    /* top: 50%; */
-    pointer-events: none;
-    overflow-x: hidden;
+    top: calc(30vh - 70px);
+`
 
-    /* transform: rotate(90deg); */
+const Drawer = styled.div`
+    z-index: 999;
+    /* position: fixed; */
+    /* left: -200px; */
+    /* top: calc(50vh - 65px); */
+    /* bottom: 0; */
+    width: 130px;
+    /* height: 180px; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+    border-radius: 7px;
+    /* background: green; */
+    /* border: 1px solid ${props => props.theme.border}; */
+    background: ${props => props.theme.bgNav};
+    backdrop-filter: blur(12px);
+`
 
-    @media screen and (max-width: 768px) {
+const Item = styled.div`
+    padding-top: 6px;
+    /* padding-bottom: 8px; */
+    margin-bottom: 2px;
+    padding-left: 12px;
+    height: 32px;
+    color: ${props => props.theme.secondary};
+    transition: 0.075s all ease-in-out;    
+
+    a {
+        text-decoration: none;
+        font-family: 'SS3';
+        font-size: '14px';
+        width: 100%;
+
+        &:hover {
+            color: ${props => props.theme.primary};
+        }
+    }
+
+    &:hover {
+        color: ${props => props.theme.primary};
+        background: ${props => props.theme.bgNav};
         opacity: 1;
-        /* left: unset; */
-        top: calc(49% - .875rem);
-        top: unset;
-        bottom: calc(3.5vh);
-        bottom: 0;
-        height: calc(3.5vh + 1px);
-        width: 100vw;
-        left: 0;
-        border-left: 1px solid #201D17;
-        border-right: 1px solid #201D17;
-        /* height: 4vh; */
-        /* height: 1.75rem; */
-        /* top: 94vh; */
-        transform: unset;
-        overflow-x: hidden;     
-
-        /* display: none; */
-    }
-`
-
-const Marquee = styled.div`
-    /* writing-mode: vertical-rl; */
-    /* text-orientation: mixed; */
-    display: grid;
-    white-space: nowrap;
-    font-family: 'SpaceMono';
-    /* font-size: 1.2rem; */
-    font-size: 1rem;
-    color: black;
-    /* background: black; */
-    /* margin-top: .3rem; */
-    cursor: default;
-    /* margin-top: .75rem; */
-    position: relative;
-
-    /* &:hover { */
-    animation: ${({starter}) => (starter ? linearText1 : linearText2)} 25s linear infinite;
-        /* animation-delay: ${({starter}) => (starter ? '0s' : '20s')}; */
-    /* } */
-
-    @media screen and (max-width: 768px) {
-        /* padding-top: .15rem; */
-        justify-content: center;
-        align-items: center;
-        font-size: .7rem;
-    }
-`
-
-const linearText1 = keyframes`
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(100%);
-    };
-` 
-
-const linearText2 = keyframes`
-    from {
-        transform: translateX(-200%);
-    }
-    to {
-        transform: translateX(0%);
-    };
-` 
-
-const SimpleBox = styled.div `
-    /* padding-top: 40%;
-    padding-bottom: 40%;
-    background: #FFFDFA;
-
-    z-index: 999;
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    width: 100vw;
-    height: 100vh;
-
-    font-family: "JejuMyeongjo";
-    font-size: 3.5vh;
-
-    align-items: center;
-    text-align: center; */
-
-    display: none;
-
-    /* right: 2.25vh;
-    bottom: 3vh;
-    height: 5vh;
-    padding-left: 1.25vh;
-    padding-right: 1.25vh;
-
-    text-align: center;
-    align-items: center;
-    font-size: 3.5vh;
-    font-family: 'SpaceMono';
-    letter-spacing: -.25vh;
-
-    border: 3px solid #201D17;
-    background: yellow;
-    color: #201D17; */
-
-    @media screen and (max-width: 768px) {
-        display: grid;
-        padding-top: 40%;
-        padding-bottom: 40%;
-        background: #FFFDFA;
-
-        z-index: 999;
-        position: fixed;
-        top: 0;
-        left: 0;
-
-        width: 100vw;
-        height: 100vh;
-
-        font-family: "JejuMyeongjo";
-        font-size: 3.5vh;
-
-        align-items: center;
-        text-align: center;
+        cursor: pointer;
     }
 `

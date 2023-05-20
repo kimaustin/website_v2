@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { useLocation } from 'react-router-dom';
 import AboutPanel from '../AboutPanel';
-import { Container, NavContainer, MobileAbout, Switcher, ThemeIndicator, DarkWipe, DarkIcon, LightIcon, MobileMenuToggle, Indicator, NavDOMLink3, Logo, NavHome, NonMobile, NonMobile1, PhotoIndexContainer, NavDOMLink, NavDOMLink2, NavDOMLinkAbout, InfoLink, Mobile, AboutContainer, Kim, InfoWrapper, Rotating, NonMobile2, Filter, Divider, LightLabel, IconContainer, IndicatorContainer, SimpleNav} from './NavigationElements';
+import { Container, NavContainer, MobileAbout, DrawerToggle, Switcher, ThemeIndicator, DarkWipe, DarkIcon, LightIcon, MobileMenuToggle, Indicator, NavDOMLink3, Logo, NavHome, NonMobile, NonMobile1, PhotoIndexContainer, NavDOMLink, NavDOMLink2, NavDOMLinkAbout, InfoLink, Mobile, AboutContainer, Kim, InfoWrapper, Rotating, NonMobile2, Filter, Divider, LightLabel, IconContainer, IndicatorContainer, SimpleNav, VersionLabel} from './NavigationElements';
 import { FaMoon } from "react-icons/fa";
 import { IoSunnySharp } from "react-icons/io5";
-const Navigation = ({toggle, aboutToggle, mobileToggle, toggleLight, toggleDark, themeToggleStatus}) => {
+import { MarkerL } from '../Works/WorkElements';
+const Navigation = ({drawerStatus, toggleDrawer, toggle, aboutToggle, mobileToggle, toggleLight, toggleDark, themeToggleStatus}) => {
 
     const location = useLocation();
     
@@ -130,10 +131,16 @@ const Navigation = ({toggle, aboutToggle, mobileToggle, toggleLight, toggleDark,
                 </Switcher>
                 <MobileMenuToggle onClick={mobileToggle}>Menu/About</MobileMenuToggle>
             </NonMobile> */}
+            <MarkerL>&gt;</MarkerL>
             <SimpleNav>
+                {/* <MarkerL /> */}
                 <NavHome currpage={currPage} thispage={'works'} to="/works">
                     <Logo /> 호연
                 </NavHome>
+                {/* <DrawerToggle onClick={toggleDrawer} isOpen={drawerStatus}>
+                    <img src={"logo2.png"} />
+                    <VersionLabel>V 2.5</VersionLabel>
+                </DrawerToggle> */}
                 <NavDOMLinkAbout currpage={aboutToggle} thispage={true} onClick={() => toggle('info')}>About/Contact</NavDOMLinkAbout>
                 <Switcher>
                     <LightIcon onClick={toggleLight}>*</LightIcon>

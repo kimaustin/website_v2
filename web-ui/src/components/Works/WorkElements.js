@@ -60,17 +60,17 @@ export const Marker = styled.div`
 `;
 
 export const MarkerL = styled.div`
-  position: fixed;
-  left: 40px;
-  top: calc(48vh - 19px);
+  position: absolute;
+  left: 14px;
+  top: calc(48vh - 21px);
   width: 12px;
   /* border-bottom: 4px solid ${props => props.theme.primary}; */
   /* display: none; */
 
   color: ${props => props.theme.primary};
   font-family: 'SS3';
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 32px;
+  /* font-weight: 500; */
 
   @media screen and (max-width: 767px) {
     display: grid;
@@ -172,8 +172,8 @@ export const WorkListContainer = styled.div`
   padding-bottom: calc(51vh - 62px + 0.8rem);
   // padding-top: calc(44vh - 94px);
   padding-top: calc(48vh - 128px - 1.8rem + 103px);
-  padding-left: 20px;
-  padding-right: calc(67vw - 46px);
+  padding-left: 14px;
+  padding-right: calc(67vw - 48px);
   z-index: 999;
 
   overflow-x: hidden; 
@@ -192,7 +192,7 @@ export const WorkListContainer = styled.div`
     z-index: 998;
     width: 100vw;
     left: 0;
-    padding-left: 11px;
+    padding-left: 9.5px;
     padding-top: calc(48vh - 126px - 16px + 103px);
     padding-bottom: calc(50vh - 64px + 42px);
   }
@@ -215,9 +215,11 @@ export const WorkItem = styled.div`
   // color: #FFFFFF;
   // padding: 0 .25rem;
 
-  // &:hover {
-  //   opacity: 1;
-  // }
+  &:hover {
+    /* opacity: 1; */
+    /* cursor: pointer;
+    color: ${props => props.theme.secondary}; */
+  }
 
   @media screen and (max-width: 767px) {
     width: calc(100vw - 32px);
@@ -233,13 +235,17 @@ export const DeskWorkItem = styled.div`
   // margin-bottom: 38px;
   // scroll-margin-top: calc(48vh - 128px - 21px + 103px);
 
-  transition: 5s scale ease-in-out;
+  transition: .1s all ease-in-out;
 
   color: ${props => props.theme.primary};
   padding: 0 4px;
 
   &:hover {
     opacity: 1;
+    cursor: pointer;
+    /* padding-left: 20px; */
+    /* color: ${props => props.theme.secondary}; */
+    /* text-decoration: underline; */
   }
 
   @media screen and (max-width: 767px) {
@@ -819,7 +825,7 @@ export const BgBlur = styled.div`
   height: 100vh;
   /* width: calc(69vw - 46px); */
   /* overflow: hidden; */
-  background: ${props => props.theme.bgBlur}; // Make sure this color has an opacity of less than 1
+  background: ${props => props.theme.bgPreview}; // Make sure this color has an opacity of less than 1
   backdrop-filter: blur(22px); // This be the blur
 
   @media screen and (max-width: 767px) {
@@ -853,7 +859,7 @@ export const WorkImageContainer = styled.div`
 export const WorkImage = styled.div`
   z-index: 999;
   /* padding: 22px; */
-  margin-top: 2.5vh;
+  margin-top: 2.25vh;
   /* margin-left: 28px; */
   width: calc(69vw - 92px - 5vw);
   /* height: calc(100vh - 130px - 5rem); */

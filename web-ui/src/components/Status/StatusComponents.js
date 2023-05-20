@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { keyframes } from "styled-components";
 
 export const Container = styled.div`
+    z-index: 1001;
     width: 100vw;
     height: 100vh; 
     cursor: crosshair;
@@ -22,6 +23,8 @@ export const Container = styled.div`
 `
 
 export const BotSection = styled.div`
+    z-index: 1001;
+
     display: flex;
     position: fixed;
     bottom: 2.5rem;
@@ -47,6 +50,8 @@ export const BotSection = styled.div`
 `
 
 export const TopSection = styled.div`
+    z-index: 1001;
+
     display: flex;
     position: fixed;
     top: 3vh;
@@ -75,16 +80,20 @@ export const TopSection = styled.div`
 `
 
 export const HoverContainer = styled.div`
-    /* position: fixed;
+    z-index: 1001;
+
+    position: fixed;
     display: none;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 20vw;
     height: 20vw;
-    background: green; */
+    background: green;
+    
+    left: 50vw;
 
-    position: absolute;
+    /* position: absolute; */
     white-space: nowrap;
     will-change: transform;
     animation: marquee 10s linear infinite;

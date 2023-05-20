@@ -417,7 +417,7 @@ export const Desc = styled.p`
 export const Controls = styled.div`
     z-index: 999;
     display: inline-grid;
-    grid-template-rows: 40px 20px 60px 16px;
+    grid-template-rows: calc(48vh - 101px - 22px) 18px 60px 16px;
     position: fixed;
     top: 79px;
     left: 58px;
@@ -453,7 +453,7 @@ export const NavButtons = styled.div`
     z-index: 999;
     position: absolute;
     left: 0;
-    bottom: calc(22px);
+    bottom: calc(18px);
     width: calc(100% - 26px);
     // cursor: pointer;
     /* border: 1.5px solid black; */

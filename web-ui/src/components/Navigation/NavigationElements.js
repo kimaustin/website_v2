@@ -72,6 +72,66 @@ export const NavContainer = styled.div`
     /* z-index: 999; */
 `
 
+export const DrawerToggle = styled.div`
+    position: fixed;
+    left: 0;
+    top: calc(22vh);
+    width: 32px;
+    height: 70px;
+    margin-left: 6px;
+    padding: 9px 0px 0px 0px;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    /* margin-left: -1px; */
+    /* background-image: url("logo.png"); */
+    /* background-size: cover; */
+    overflow: hidden;
+    border-radius: 7px;
+    transition: 0.1s all ease-in-out;    
+
+    /* background: ${isOpen => (isOpen ? 'green' : 'red')}; */
+
+    img {
+        border-radius: 30px;
+        text-align: center;
+        width: calc(14px);
+        height: calc(14px);
+        object-fit: contain;
+    }
+
+    &:hover {
+        background: ${props => props.theme.bgNav};
+        opacity: 0.9;
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 767px) {
+        height: 14px;
+        width: 14px;
+    }
+`
+
+export const VersionLabel = styled.div`
+    position: absolute;
+    /* height: 0; */
+    bottom: -7px;
+    width: 100%;
+    left: 9.5px;
+    /* float: right; */
+    /* padding-right: 18px; */
+    /* text-align: right; */
+    /* text-decoration: none; */
+    font-family: 'SS3';
+    font-size: 12px;
+    color: ${props => props.theme.primary};
+
+    /* transition: all .2s ease-in-out; */
+
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+`
+
 export const NonMobile = styled.div`
     display: inline-grid;
     grid-template-columns: 50px 1fr 78px;
@@ -161,7 +221,7 @@ export const NavHome = styled(LinkRouter)`
     letter-spacing: 2px;
     line-height: 120%;
     left: 28.5px;
-    top: 15.5px;
+    top: 14px;
     // height: 18px;
     // color: #FFFFFF;
     // text-decoration: none;

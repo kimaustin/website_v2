@@ -609,7 +609,7 @@ const Works = ({ projects, toggleLight }) => {
         {/* {project_names} */}
         {/* <HitMarker /> */}
         {/* <Marker /> */}
-        <MarkerL>&gt;</MarkerL>
+        {/* <MarkerL>&gt;</MarkerL> */}
         {/* <MarkerR /> */}
         {projects_list}
       </WorkListContainer>
