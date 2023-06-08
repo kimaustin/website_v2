@@ -3,7 +3,7 @@ server {
     listen [::]:80;
 
     # TODO: DONE(?) ->This should be your server name.
-    server_name austinkim.works;
+    server_name v2.austinkim.works;
 
     location / {
         proxy_pass http://localhost:7111;
