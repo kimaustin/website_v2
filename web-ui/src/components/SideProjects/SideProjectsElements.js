@@ -43,13 +43,13 @@ export const ScrollContainer = styled.div`
   /* width: 100vw; */
   /* width: 100%; */
   z-index: 999;
-  display: grid;
+  /* display: grid; */
 
   align-items: start;
   justify-content: start;
   align-content: start;
 
-  /* white-space: nowrap; */
+  white-space: nowrap;
   overflow-y: scroll;
   overflow-x: hidden;
 

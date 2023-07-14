@@ -165,9 +165,9 @@ const SideProjects = ({ projects }) => {
       <Version>v2.13</Version>
       <ScrollContainer
         as={motion.div}
-        initial={{ y: '-140px' }}
-        animate={{ y: '0px' }}
-        exit={{ y: '-140px', transition: {
+        initial={{ opactiy: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0, transition: {
               type: "tween",
               ease: [0.7, 0, 0.13, 1],
               duration: 0.5,
@@ -175,8 +175,8 @@ const SideProjects = ({ projects }) => {
         transition={{
             type: "tween",
             ease: [0.7, 0, 0.13, 1],
-            duration: 1.2,
-            delay: 0.6
+            duration: 1,
+            delay: 0.3
         }}
       >
           {imgPreviews}
