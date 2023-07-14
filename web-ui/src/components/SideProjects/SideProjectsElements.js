@@ -12,7 +12,7 @@ export const Container = styled(motion.div)`
   /* left: 30vw; */
   /* width: calc(50vw + 12px); */
   width: 120px;
-  height: 100vh;;
+  height: 100vh;
   /* height: 80px; */
   /* width: 70vw; */
 
@@ -37,8 +37,8 @@ export const Container = styled(motion.div)`
 `;
 
 export const ScrollContainer = styled.div`
-  padding-left: 15px;
-  padding-top: 38px;
+  padding-left: 14px;
+  padding-top: 32px;
   /* height: 96px; */
   /* width: 100vw; */
   /* width: 100%; */
@@ -49,7 +49,7 @@ export const ScrollContainer = styled.div`
   justify-content: start;
   align-content: start;
 
-  white-space: nowrap;
+  /* white-space: nowrap; */
   overflow-y: scroll;
   overflow-x: hidden;
 
@@ -60,8 +60,8 @@ export const ScrollContainer = styled.div`
   }
 
   @media screen and (max-width: 767px) {
-    padding-top: 8px;
-    height: 116px;
+    padding-top: 7px;
+    height: 100px;
     overflow-y: hidden;
     overflow-x: scroll;
     width: 100vw;
@@ -71,14 +71,14 @@ export const ScrollContainer = styled.div`
 `
 
 export const ImageContainer = styled(LinkRouter)`
-  display: flex;
+  display: grid;
   /* width: 7vw; */
   width: 98px;
   height: 124px;
   align-items: start;
   justify-content: start;
   /* padding-right: 8px; */
-  padding-top: 8px;
+  padding-top: 1px;
   // margin-top: 5.15px;
   opacity: 0.6;
 
@@ -89,7 +89,7 @@ export const ImageContainer = styled(LinkRouter)`
 
   img {
     max-width: 100%;
-    max-height: calc(87% - 16px);
+    max-height: calc(85% - 16px);
     align-content: start;
     object-fit: scale-down;
   }
@@ -101,12 +101,14 @@ export const ImageContainer = styled(LinkRouter)`
   }
 
   @media screen and (max-width: 767px) {
+    display: inline-grid;
     opacity: 1;
     height: 88px;
+    padding-top: unset;
     padding-right: 10px;
 
     img {
-      max-height: calc(65px);
+      max-height: calc(62px);
     }
   }
 `

@@ -147,24 +147,7 @@ export const ClickableArea = styled.div`
   } */
 
   @media screen and (max-width: 767px) {
-    left: unset;
-    right: 16px;
-    margin-bottom: 70px;
-    width: calc(18vw - 16px);
-    text-align: right;
-    display: grid;
-
-    // display: none;
-    // width: 100vw;
-    // height: 8vh;
-
-    padding-top: unset;
-    padding-bottom: unset;
-    height: unset;
-    background: unset;
-    backdrop-filter: unset;
-
-    display: none;
+    opacity: 0;
   }
 `;
 
