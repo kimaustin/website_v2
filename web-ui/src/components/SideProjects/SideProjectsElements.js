@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { keyframes } from "styled-components";
 
 export const Container = styled(motion.div)`
-  z-index: 999;
+  z-index: 1000;
   position: fixed;
   top: 0;
   right: 0;
@@ -28,6 +28,7 @@ export const Container = styled(motion.div)`
   @media screen and (max-width: 767px) {
     height: 100px;
     left: 0;
+    right: unset;
     width: 100vw;
     border-left: unset;
     background: ${props => props.theme.bgSide}; // Make sure this color has an opacity of less than 1
@@ -71,9 +72,9 @@ export const ScrollContainer = styled.div`
 `
 
 export const ImageContainer = styled(LinkRouter)`
-  display: grid;
+  /* display: grid; */
   /* width: 7vw; */
-  width: 98px;
+  width: 92px;
   height: 124px;
   align-items: start;
   justify-content: start;
@@ -88,8 +89,8 @@ export const ImageContainer = styled(LinkRouter)`
   text-decoration: none;
 
   img {
-    max-width: 100%;
-    max-height: calc(85% - 16px);
+    max-width: calc(100%);
+    height: 124px;
     align-content: start;
     object-fit: scale-down;
   }
@@ -101,14 +102,16 @@ export const ImageContainer = styled(LinkRouter)`
   }
 
   @media screen and (max-width: 767px) {
-    display: inline-grid;
+    /* display: inline-grid; */
     opacity: 1;
+    width: 7vw;
     height: 88px;
     padding-top: unset;
-    padding-right: 10px;
+    padding-right: 9px;
 
     img {
       max-height: calc(62px);
+      max-width: calc(87% - 16px);
     }
   }
 `
