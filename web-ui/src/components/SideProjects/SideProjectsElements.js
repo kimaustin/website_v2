@@ -43,13 +43,14 @@ export const ScrollContainer = styled.div`
   /* width: 100vw; */
   /* width: 100%; */
   z-index: 999;
+  display: grid;
 
   align-items: start;
   justify-content: start;
   align-content: start;
 
   white-space: nowrap;
-  overflow-y: scrolly;
+  overflow-y: scroll;
   overflow-x: hidden;
 
   -ms-overflow-style: none;  /* IE and Edge */
@@ -70,15 +71,16 @@ export const ScrollContainer = styled.div`
 `
 
 export const ImageContainer = styled(LinkRouter)`
-  // display: inline-grid;
+  display: flex;
   /* width: 7vw; */
   width: 98px;
   height: 124px;
   align-items: start;
   justify-content: start;
-  padding-right: 8px;
+  /* padding-right: 8px; */
+  padding-top: 8px;
   // margin-top: 5.15px;
-  opacity: 0.55;
+  opacity: 0.6;
 
   font-family: 'SS3';
   font-size: 14px;

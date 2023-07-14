@@ -946,7 +946,7 @@ export const BgBlur = styled.div`
   /* width: calc(69vw - 46px); */
   /* overflow: hidden; */
   background: ${props => props.theme.bgPreview}; // Make sure this color has an opacity of less than 1
-  backdrop-filter: blur(23px); // This be the blur
+  backdrop-filter: blur(24px); // This be the blur
 
   @media screen and (max-width: 767px) {
     left: 0;
@@ -1017,7 +1017,7 @@ export const WorkImage = styled.div`
         /* max-height: calc(100vh - 38px); */
         // max-width: 100%;
         /* max-width: calc(69vw - 92px - 5vw); */
-        max-width: calc(63vw - 120px - 160px - 44px);
+        max-width: calc(63vw - 120px - 160px - 50px);
 
         /* background-image: #201D17; */
         /* padding-left: 3.25rem; */

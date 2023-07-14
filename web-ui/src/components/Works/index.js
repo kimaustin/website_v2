@@ -701,12 +701,12 @@ const Works = ({ projects, toggleLight }) => {
       <BlurCutoff />
       <ContentBg
         as={motion.div}
-        initial={{ scale: 1.12 }}
-        animate={{ scale: 1 }}
-        exit={{ opacity: 0, transition: {
+        initial={{ opacity: '0' }}
+        animate={{ opacity: '1' }}
+        exit={{ opacity: '0', transition: {
               type: "tween",
               ease: [0.7, 0, 0.13, 1],
-              duration: 0.2
+              duration: 0.3
         } }}
         transition={{
           type: "tween",
@@ -723,12 +723,12 @@ const Works = ({ projects, toggleLight }) => {
         // to={"/" + projectValue + "/works"}
         // id={"proj" + projectValue}
         as={motion.div}
-        initial={{ x: '50vw' }}
+        initial={{ x: '100vw' }}
         animate={{ x: '0' }}
-        exit={{ x: '50vw', transition: {
+        exit={{ x: '100vw', transition: {
               type: "tween",
               ease: [0.7, 0, 0.13, 1],
-              duration: 0.8
+              duration: 0.9
           } }}
         transition={{
             type: "tween",
@@ -809,8 +809,8 @@ const Works = ({ projects, toggleLight }) => {
               delay: 0.5,
           }}
         >
-          {/* <img src={rightImageSource}/> */}
-          <img src={"testProjCover" + projectValue + ".png"}/>
+          <img src={rightImageSource}/>
+          {/* <img src={"testProjCover" + projectValue + ".png"}/> */}
         </WorkImage>
       </WorkImageContainer>
 
