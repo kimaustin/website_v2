@@ -66,25 +66,29 @@ function App() {
   const lightTheme = {
     bg: "rgba(245, 251, 255, 1)",
     bgBlur: "rgba(230, 228, 234, 0.8)",
-    bgSide: "rgba(242, 240, 244, 0.8)",
-    bgNav: "rgba(247, 246, 251, 0.65)",
+    bgSide: "rgba(250, 246, 249, 1)",
+    bgSide2: "rgba(252, 248, 251, 1)",
+    bgNav: "rgba(250, 249, 251, 0.88)",
     bgPreview: "rgba(255, 255, 255, 0.7)",
     primary: "#000000",
     secondary: "#7D7D7D",
     cs: "#0047FD",
-    border: "#D1D4D7"
+    border: "#D1D4D7",
+    gradient: "linear-gradient(0deg, rgba(250, 246, 249, 1) 0%, rgba(250, 246, 249, 0) 100%);"
   };
 
   const darkTheme = {
-    bg: "rgba(10, 10, 10, 1)",
+    bg: "rgba(15, 12, 14, 1)",
     bgBlur: "rgba(35, 35, 35, .65)",
-    bgSide: "rgba(51, 49, 52, 0.8)",
-    bgNav: "rgba(30, 30, 31, 0.65)",
-    bgPreview: "rgba(8, 8, 8, 0.85)",
+    bgSide: "rgba(20, 15, 30, 1)",
+    bgSide2: "rgba(0, 0, 0, 1)",
+    bgNav: "rgba(30, 30, 31, 0.85)",
+    bgPreview: "rgba(8, 8, 8, 1)",
     primary: "rgba(245, 251, 255, 0.95)",
     secondary: "#BABABA",
     border: "#3E3E3E",
     cs: "#5685FF",
+    gradient: "linear-gradient(0deg, rgba(20, 15, 30, 1) 0%, rgba(20, 15, 30, 0) 100%);"
   }
 
   const [colorTheme, setColorTheme] = useState(lightTheme);
@@ -127,12 +131,12 @@ function App() {
             <AnimatePresence exitBeforeEnter>
               <Switch location={location} key={location.pathname}>
                 <Route exact path="/" component={Main} />
-                <Route exact path="/works" component={Works} />
+                <Route exact path="/index" component={Works} />
                 {/* <Route exact path="/works" render={(props) => <Works theme={colorTheme} {...props} />}/> */}
                 <Route exact path="/test" component={Lab} />
                 {/* <Route exact path="/blog" component={Blog} />  */}
                 <Route exact path="/photo" component={Photography} />
-                <Route path="/:workId?/works" component={WorkExpanded} exact />
+                <Route path="/:workId?/index" component={WorkExpanded} exact />
                 <Route path="/:workId?/images" component={Images} />
               </Switch>
             </AnimatePresence>

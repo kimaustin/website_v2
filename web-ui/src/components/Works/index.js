@@ -42,8 +42,15 @@ import {
   BgBlur,
   WorkList,
   CaseStudy,
-  Divider
+  Divider,
+  PreviewTag,
+  WorkOverview,
+  Overview,
+  OverviewContainer,
+  BlurCutoff,
+  OverviewGradient
 } from "./WorkElements";
+import { DetailsContainer } from './WorkExpandedElements';
 
 // Scrollbar.init(document.querySelector('#my-scrollbar'), options);
 
@@ -300,7 +307,7 @@ const Works = ({ projects, toggleLight }) => {
 
   let observerOptions = {
     root: ListContainerRef.target,
-    rootMargin: '-48% 0px -51% 0px',
+    rootMargin: '-49.5% 0px -49% 0px',
     // threshold: 0.1
   }
 
@@ -370,7 +377,7 @@ const Works = ({ projects, toggleLight }) => {
 
     await delay(700);
   
-    historyPage.push("/" + event + "/works");
+    historyPage.push("/" + event + "/index");
     // console.log('after');
   };
   
@@ -384,93 +391,125 @@ const Works = ({ projects, toggleLight }) => {
     // setProjectValue(index);
   }
   
+  let page_intro = (props) => {
+    return (
+      <WorkItem id={0} ref={myRefs[0]} currProj={projectValue} thisProj={0}>
+        <DeskWorkItem onClick={()=> handleClick(0)}>
+            <WorkTitle>Austin Kim / nektine</WorkTitle>
+        </DeskWorkItem>
+        <MobileWorkItem onClick={()=> handleClick(0)}>
+          <WorkTitle>Austin Kim / nektine</WorkTitle>
+        </MobileWorkItem>
+      </WorkItem>
+    );
+  }
 
   //MAIN PROJECTS LIST
   let projects_list = projects.map((project, index) => {
-
     let project_tags = project.tags.map((tag, index) => (
       <ProjectTag>{tag}</ProjectTag>
     ));
-
     // let height_varPreview = "calc(120px + " + ((index) * (90 / (projects.length + 3))) + "vh)";
-    
-    if (project.class_short == "June") {
-      // console.log('comparison', projectValue, index);
-      return (
-        <WorkItem id={index} ref={myRefs[index]} currProj={projectValue} thisProj={index}
-          // as={motion.div}
-          // initial="initial"
-          // animate="in"
-          // exit={projectValue === index ? "outSelected" : "outOther"}
-          // variants={pageVariants3}
-          // transition={{
-          //   type: "tween",
-          //   ease: [0.7, 0, 0.13, 1],
-          //   duration: 0.8,
-          //   delay: index * 0.16,
-          // }}
-        >
-          <DeskWorkItem onClick={()=> handleMobileClick(index)}>
-            <TopLine>
-                <CaseStudy>CASE STUDY</CaseStudy>
-                <TagsContainer>
-                  {project_tags}
-                </TagsContainer>
-              </TopLine>
-              <WorkTitle>{project.name}</WorkTitle>
-          </DeskWorkItem>
-          <MobileWorkItem onClick={()=> handleMobileClick(index)}>
-            <TopLine>
-              <CaseStudy>CASE STUDY</CaseStudy>
-              <TagsContainer>
-                {project_tags}
-              </TagsContainer>
-            </TopLine>
-            <WorkTitle>{project.name}</WorkTitle>
-          </MobileWorkItem>
-        </WorkItem>
-      )
-    } else {
-      // console.log('comparison', projectValue, index);
+    // if (project.class_short == "June") {
+    //   // console.log('comparison', projectValue, index);
+    //   return (
+    //     <WorkItem id={index} ref={myRefs[index]} currProj={projectValue} thisProj={index}
+    //       // as={motion.div}
+    //       // initial="initial"
+    //       // animate="in"
+    //       // exit={projectValue === index ? "outSelected" : "outOther"}
+    //       // variants={pageVariants3}
+    //       // transition={{
+    //       //   type: "tween",
+    //       //   ease: [0.7, 0, 0.13, 1],
+    //       //   duration: 0.8,
+    //       //   delay: index * 0.16,
+    //       // }}
+    //     >
+    //       <DeskWorkItem onClick={()=> handleMobileClick(index)}>
+    //         {/* <TopLine>
+    //             <CaseStudy>CASE STUDY</CaseStudy>
+    //             <TagsContainer>
+    //               {project_tags}
+    //             </TagsContainer>
+    //           </TopLine> */}
+    //           <WorkTitle>{project.name}</WorkTitle>
+    //       </DeskWorkItem>
+    //       {/* <MobileWorkItem onClick={()=> handleMobileClick(index)}> */}
+    //         {/* <TopLine>
+    //           <CaseStudy>CASE STUDY</CaseStudy>
+    //           <TagsContainer>
+    //             {project_tags}
+    //           </TagsContainer>
+    //         </TopLine> */}
+    //         {/* <WorkTitle>{project.name}</WorkTitle> */}
+    //       {/* </MobileWorkItem> */}
+    //     </WorkItem>
+    //   )
+    // } else {
+    //   // console.log('comparison', projectValue, index);
+    //   return (
+    //     <WorkItem id={index} ref={myRefs[index]} currProj={projectValue} thisProj={index}>
+    //       <DeskWorkItem onClick={()=> handleMobileClick(index)}>
+    //         {/* <TopLine>
+    //             <TagsContainer>
+    //               {project_tags}
+    //             </TagsContainer>
+    //           </TopLine> */}
+    //           <WorkTitle>{project.name}</WorkTitle>
+    //       </DeskWorkItem>
+    //       {/* <MobileWorkItem onClick={()=> handleMobileClick(index)}> */}
+    //         {/* <TopLine>
+    //           <TagsContainer>
+    //             {project_tags}
+    //           </TagsContainer>
+    //         </TopLine> */}
+    //         {/* <WorkTitle>{project.name}</WorkTitle> */}
+    //       {/* </MobileWorkItem> */}
+    //     </WorkItem>
+    //   )
+    // }
+
       return (
         <WorkItem id={index} ref={myRefs[index]} currProj={projectValue} thisProj={index}>
-          <DeskWorkItem onClick={()=> handleMobileClick(index)}>
-            <TopLine>
-                <TagsContainer>
+            <DeskWorkItem onClick={()=> handleClick(index)}>
+                <TopLine>
                   {project_tags}
-                </TagsContainer>
-              </TopLine>
-              <WorkTitle>{project.name}</WorkTitle>
-          </DeskWorkItem>
-          <MobileWorkItem onClick={()=> handleMobileClick(index)}>
-            <TopLine>
-              <TagsContainer>
-                {project_tags}
-              </TagsContainer>
-            </TopLine>
-            <WorkTitle>{project.name}</WorkTitle>
-          </MobileWorkItem>
+                </TopLine>
+                <WorkTitle>{project.name}</WorkTitle>
+            </DeskWorkItem>
         </WorkItem>
+      )
+  });
+
+  let tags_list = projects[projectValue].tags.map((tag, index) => {
+    if (tag == "Case Study") {
+      return (
+        <CaseStudy>CASE STUDY</CaseStudy>
+      )
+    } else {
+      return (
+        <ProjectTag>{tag}</ProjectTag>
       )
     }
   });
 
-  //test projects list
-  // const { ref: refName, inView: inView2, entry: entry2 } = useInView({
-  //   rootMargin: '-210px'
-  // });
+  // let project_tags = () => (
+  //   let project_tags2 = projects[projectValue].tags.map((tag, index) => (
+  //     <ProjectTag>{tag}</ProjectTag>
+  //   ));
+  //   // let reg_tags = () => {projects[projectValue].tags.map((tag, index))
+  //   //   <ProjectTag>{tag}</ProjectTag>
+  //   // }
+  //   if (project.class_short == "June") {
 
-  // console.log('current proj index', projectValue);
-  // console.log('curr project visit', myProjects[projectValue].link.length);
+  //     return {}
+  //   } else {
 
-  // let tagsDisplayed = projects[projectValue].tags.map((tag, index) => (
-  //   <ProjTags
-  //     tag={tag}
-  //     key={tag.id}
-  //     index={index}
-  //     // tagsLength={4}
-  //   />
-  // ));
+  //   }
+
+    
+  // );
 
   // let visit_link = () => {
   //   if (projects[projectValue].link.length > 0) {
@@ -529,10 +568,11 @@ const Works = ({ projects, toggleLight }) => {
 
   let rightImageSource = "imgs/" + projects[projectValue].imgs[0];
   // let rightImageSource = myProjects[projectValue].imgs[0];
-  let height_var = "calc(110px + " + ((projectValue) * (88 / (projects.length + 1))) + "vh)";
+  let height_var = "calc(94px + " + ((projectValue) * (86 / (projects.length))) + "vh)";
   let mobile_height_var = "calc(134px + " + ((projectValue) * (54 / (projects.length + 4))) + "vh)";
 
   //TODO: Fix filters not working
+  
   return (
     <Container 
       // as={motion.div}
@@ -588,6 +628,22 @@ const Works = ({ projects, toggleLight }) => {
       >
         top
       </TopOfWorks> */}
+      <Marker 
+        as={motion.div}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0, transition: {
+          type: "tween",
+          ease: [0.7, 0, 0.13, 1],
+          duration: 0.2,
+        } }}
+        transition={{
+            type: "tween",
+            ease: [0.7, 0, 0.13, 1],
+            duration: 0.5,
+            delay: 0.5
+        }}
+      />
 
       <WorkListContainer id="topWorks"
         ref={ListContainerRef}
@@ -608,7 +664,6 @@ const Works = ({ projects, toggleLight }) => {
       >
         {/* {project_names} */}
         {/* <HitMarker /> */}
-        {/* <Marker /> */}
         {/* <MarkerL>&gt;</MarkerL> */}
         {/* <MarkerR /> */}
         {projects_list}
@@ -633,19 +688,21 @@ const Works = ({ projects, toggleLight }) => {
         }}
         >
           <img src={rightImageSource}/>
-          <WorkName>{projects[projectValue].class}</WorkName>
           <WorkDesc>{projects[projectValue].semester}</WorkDesc>
+          <WorkName>{projects[projectValue].class}</WorkName>
+          <PreviewTag></PreviewTag>
       </WorkPreview>
+
       {/* <WorksContainer id="topWorks" zVal="999">
         {project_previews}
       </WorksContainer> */}
       {/* </WorksContainerMove> */}
 
+      <BlurCutoff />
       <ContentBg
-        // bgFileName={rightImageSource}
         as={motion.div}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={{ scale: 1.12 }}
+        animate={{ scale: 1 }}
         exit={{ opacity: 0, transition: {
               type: "tween",
               ease: [0.7, 0, 0.13, 1],
@@ -654,39 +711,70 @@ const Works = ({ projects, toggleLight }) => {
         transition={{
           type: "tween",
           ease: [0.7, 0, 0.13, 1],
-          duration: .4,
+          duration: .3,
         }}
       >
         <img src={rightImageSource}/>
+        {/* <img src={projects[projectValue].imgs[0]}/> */}
         <BgBlur />
       </ContentBg>
 
-      {/* <ClickableArea
-        to={"/" + projectValue + "/works"}
-        id={"proj" + projectValue}
+      <ClickableArea
+        // to={"/" + projectValue + "/works"}
+        // id={"proj" + projectValue}
         as={motion.div}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0, transition: {
+        initial={{ x: '50vw' }}
+        animate={{ x: '0' }}
+        exit={{ x: '50vw', transition: {
               type: "tween",
               ease: [0.7, 0, 0.13, 1],
-              duration: 0.3
+              duration: 0.8
           } }}
         transition={{
             type: "tween",
             ease: [0.7, 0, 0.13, 1],
             duration: 0.8,
-            delay: 1.2
+            delay: .2
         }}
       >
-        <Details
-          to={"/" + projectValue + "/works"}
-          id={"proj" + projectValue}
-        >
-          View Details
-        </Details>
-      </ClickableArea> */}
+        {/* {case_study} */} 
+        {/* {case_study_tag} */}
+        {/* <CaseStudy>{(projects[projectValue].class_short == "June") ? 'CASE STUDY' : ''}</CaseStudy> */}
+        <WorkDesc>{projects[projectValue].semester}</WorkDesc>
+        <WorkName>{projects[projectValue].class}</WorkName>
+        <OverviewContainer>
+          <Overview>OVERVIEW</Overview>
+          <WorkOverview>{projects[projectValue].desc}</WorkOverview>
+          <OverviewGradient />
+        </OverviewContainer>
+        <TagsContainer>
+          {tags_list}
+        </TagsContainer>
+      </ClickableArea>
 
+      <DetailsContainer
+          as={motion.div}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, transition: {
+                type: "tween",
+                ease: [0.7, 0, 0.13, 1],
+                duration: 0.3
+            } }}
+          transition={{
+              type: "tween",
+              ease: [0.7, 0, 0.13, 1],
+              duration: 0.3,
+              delay: 1.1
+          }}
+        >
+          <Details
+            to={"/" + projectValue + "/index"}
+            id={"proj" + projectValue}
+          >
+          View Details
+          </Details>
+      </DetailsContainer>
       {/* <ClickableArea>
         {projects[projectValue].name}
       </ClickableArea> */}
@@ -707,8 +795,8 @@ const Works = ({ projects, toggleLight }) => {
         }}>
         <WorkImage
           as={motion.div}
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1}}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 0.99, transition: {
                 type: "tween",
                 ease: [0.7, 0, 0.13, 1],
@@ -721,8 +809,8 @@ const Works = ({ projects, toggleLight }) => {
               delay: 0.5,
           }}
         >
-          <img src={rightImageSource}/>
-          {/* <img src={"testProjCover" + projectValue + ".png"}/> */}
+          {/* <img src={rightImageSource}/> */}
+          <img src={"testProjCover" + projectValue + ".png"}/>
         </WorkImage>
       </WorkImageContainer>
 

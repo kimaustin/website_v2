@@ -6,10 +6,10 @@ export const Container = styled.div`
     // display: flex;
     position: fixed;
     /* margin: 1rem; */
-    left: 46px;
+    left: 0;
     top: 0;
     // top: 103px;
-    width: calc(100vw - 46px);
+    width: calc(100vw);
     height: calc(100vh);
 
     /* top: 6.6vh; */
@@ -19,7 +19,7 @@ export const Container = styled.div`
     } */
 
     // background: rgba(64, 63, 63, 0.3);
-    /* background: ${props => props.theme.bg}; */
+    background: ${props => props.theme.bg};
 
     cursor: crosshair;
 
@@ -35,23 +35,31 @@ export const Container = styled.div`
 export const WorkContent = styled.div`
     z-index: 990;
     position: fixed;
-    left: ${({ isCS }) => (isCS ? '17vw' : '21vw')};
+    /* left: ${({ isCS }) => (isCS ? '17vw' : '21vw')}; */
+    left: calc(37vw - 0.5px);
     top: 0;
     // top: 103px;
     height: calc(100vh);
     // height: calc(100vh - 103px);
     // width: calc(72vw + 48px);
-    width: ${({ isCS }) => (isCS ? 'calc(66.5vw - 40px)' : 'calc(81vw + 14px)')};
+    /* width: ${({ isCS }) => (isCS ? 'calc(66.5vw - 40px)' : 'calc(81vw + 14px)')}; */
+    /* width: ${({ isCS }) => (isCS ? 'calc(66.5vw - 40px)' : 'calc(81vw + 14px)')}; */
+    width: calc(63vw - 120.5px);
 
     align-items: left;
-    padding-bottom: 100px;
-    padding-top: calc(28px + 90px);
-    padding-left: 20px;
-    padding-right: ${({ isCS }) => (isCS ? '32px' : 'calc(14px + 11vw)')};
+    padding-bottom: 34px;
+    /* padding-top: calc(28px + 90px); */
+    padding-top: calc(80px + 20px);
+    padding-left: 24px;
+    /* padding-right: ${({ isCS }) => (isCS ? '32px' : 'calc(14px + 11vw)')}; */
+    padding-right: 28px;
 
     // background: rgba(64, 63, 63, 0.3);
     /* border: 1px solid blue; */
     /* background: ${props => props.theme.primary}; */
+
+    border-left: 1px solid ${props => props.theme.border};
+    /* border-top: 1px solid ${props => props.theme.border}; */
 
     overflow-y: scroll;
     overflow-x: hidden;
@@ -70,32 +78,56 @@ export const WorkContent = styled.div`
         height: 100vh;
         padding-left: 14px;
         padding-right: 28px;
+        padding-bottom: 100px;
         // padding-bottom: 90px;
         padding-top: 98px;
+        border-left: unset;
     }
 `
 
 export const TopSticky = styled.div`
     z-index: 999;
     position: fixed;
-    top: 92px;
-    left: ${({ isCS }) => (isCS ? 'calc(17vw + 20.5px)' : 'calc(21vw + 20px)')};
-    width:  ${({ isCS }) => (isCS ? 'calc(66.5vw - 60.5px)' : 'calc(75vw - 80px + 11.5px)')};
-    height: 18px;
+    top: 0;
+    padding-top: 16px;
+    /* left: ${({ isCS }) => (isCS ? 'calc(17vw + 20.5px)' : 'calc(21vw + 20px)')}; */
+    left: calc(37vw);
+    padding-left: 24px;
+    padding-right: 24px;
+    /* width:  ${({ isCS }) => (isCS ? 'calc(66.5vw - 60.5px)' : 'calc(75vw - 80px + 11.5px)')}; */
+    width: calc(63vw - 120px);
+    height: 80px;
     display: inline-grid;
-    grid-template-columns: 74px 1fr 1fr;
+    /* grid-template-columns: 74px 1fr 1fr; */
+    grid-template-columns: auto auto;
+    grid-template-rows: 27px 1fr;
     // 756px max
+    overflow: hidden;
+
+    background: ${props => props.theme.bgNav};
+    backdrop-filter: blur(6px);
+    /* border-left: 1px solid ${props => props.theme.border}; */
+    border-bottom: 1px solid ${props => props.theme.border};
 
     // background: green;
     /* border: 1px solid blue; */
 
     @media screen and (max-width: 767px) {
         // display: none;
+        /* border-left: unset; */
+        border-bottom: unset;
         grid-template-columns: 1fr 80px;
-        top: 112px;
+        grid-template-rows: unset;
+        background: unset;
+        backdrop-filter: unset;
+        padding-right: unset;
+        padding-left: unset;
+        padding-top: unset;
+        top: 111.5px;
         left: unset;
         right: 14px;
         width: 70vw;
+        height: 18px;
     }
 `
 
@@ -145,9 +177,14 @@ export const Date = styled.div`
     line-height: 145%;
     letter-spacing: 0.15px;
     color: ${props => props.theme.secondary};
+    float: right;
+    text-align: right;
+    margin-top: 6px;
 
     // border: 1px solid blue;
     @media screen and (max-width: 767px) {
+        margin-top: unset;
+            
         float: right;
         text-align: right;
     }
@@ -162,8 +199,12 @@ export const Class = styled.div`
     color: ${props => props.theme.secondary};
     float: right;
     text-align: right;
+    margin-top: -5px;
     
     // border: 1px solid blue;
+    @media screen and (max-width: 767px) {
+        margin-top: unset;
+    }
 `
 
 export const CaseStudy = styled.a`
@@ -225,8 +266,8 @@ export const Overview = styled.div`
 
     color: ${props => props.theme.secondary};
     font-family: "SS3";
-    font-size: 30px;
-    line-height: 128%;
+    font-size: 26px;
+    /* line-height: 128%; */
     /* font-weight: 500; */
 
     @media screen and (max-width: 767px) {
@@ -237,11 +278,15 @@ export const Overview = styled.div`
 `
 
 export const OverviewTag = styled.p`
-    color: ${props => props.theme.secondary};
+    color: ${props => props.theme.primary};
     font-family: "SS3";
     font-size: 12px;
     text-transform: uppercase;
-    margin-bottom: -4px;
+    margin-bottom: 10px;
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: -4px;
+    }
 `
 
 // calc(67vw - 20px + 31px)(width)  + 15vw (left) +  20px (pRight) +     18vw(toc)
@@ -254,8 +299,8 @@ export const PicContainer = styled.div`
     // width: calc(68vw - 20px + 12px);
     // height: calc(88vh - 103px);
     // padding-left: 12%;
-    margin-bottom: ${({ isLast }) => isLast ? '3.6vh' : '30px'};
-    margin-top: 14px;
+    margin-bottom: ${({ isLast }) => isLast ? '3.6vh' : '26px'};
+    margin-top: -4px;
     // height: calc(90vh);
     // border: 2px solid blue;
     align-items: start;
@@ -266,20 +311,27 @@ export const PicContainer = styled.div`
     /* border: 1px solid blue; */
     
     // padding-left: 20px;
-    padding-right: 20px;
-    margin-right: 12px;
+    /* padding-right: 20px; */
+    /* margin-right: 12px; */
     /* width: calc(68vw - 80px + 12px); */
-    width: ${({ isCS }) => (isCS ? 'calc(66.5vw - 61px)' : 'calc(75vw - 80px + 12px)')};
+    /* width: ${({ isCS }) => (isCS ? 'calc(66.5vw - 61px)' : 'calc(75vw - 80px + 12px)')}; */
+    width: calc(63vw - 120px - 50px);
     /* 66.5vw - 81px */
 
     img {
         object-fit: scale-down;
         // max-height: 100%;
         // max-width: 100%;
-        max-height: 83vh;
-        max-width: ${({ isCS }) => (isCS ? 'calc(66.5vw - 61px)' : 'calc(75vw - 80px + 12px)')};
+        /* max-height: 83vh; */
+        max-height: calc(100vh - 80px - 50px);
+        /* max-width: ${({ isCS }) => (isCS ? 'calc(66.5vw - 61px)' : 'calc(75vw - 80px + 12px)')}; */
+        max-width: calc(63vw - 120px - 50px);
         // width: 80vw;
         z-index: -1;
+        font-family: 'SS3';
+        font-size: 11px;
+        font-style: italic;
+        color: ${props => props.theme.secondary};
     }
 
     @media screen and (max-width: 767px) {
@@ -302,15 +354,16 @@ export const Subsection = styled.div`
     /* width: calc(62.1% - 4rem); */
     width: 76%;
     // top: 0;
-    padding-top: 34px;
-    padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '20px'};
-    scroll-margin-top: 158px;
+    padding-top: 58px;
+    padding-bottom: 14px;
+    scroll-margin-top: 93.5px;
 
     /* border: 2px solid blue; */
 
     color: ${props => props.theme.primary};
     font-family: "SS3";
     font-size: 26px;
+    letter-spacing: 1px;
     text-align: left;
     /* align-items: right; */
 
@@ -332,17 +385,18 @@ export const Sub2 = styled.div`
     margin-left: 0;
     // max-width: 80ch;
     // top: 0;
-    padding-top: 4px;
+    padding-top: 6px;
     padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '16px'};
     // scroll-margin-top: calc(103px + 20px);
-    scroll-margin-top: 158px;
+    scroll-margin-top: 93.5px;
 
     /* border: 2px solid blue; */
 
-    color: ${props => props.theme.secondary};
+    color: ${props => props.theme.primary};
     font-family: "SS3";
-    font-weight: 500;
-    font-size: 19px;
+    /* font-weight: 500; */
+    text-transform: uppercase;
+    font-size: 14px;
     text-align: left;
     /* align-items: right; */
 
@@ -354,7 +408,7 @@ export const Sub2 = styled.div`
     }
 `
 
-export const InlineLink = styled.div`
+export const InlineLink = styled.a`
     position: relative;
     // margin-left: 12%;
     margin-left: 0;
@@ -364,20 +418,23 @@ export const InlineLink = styled.div`
     max-width: 80ch;
     top: 0;
     padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '16px'};
-    scroll-margin-top: 158px;
+    scroll-margin-top: 93.5px;
 
     /* border: 2px solid blue; */
 
-    opacity: 0.7;
+    /* opacity: 0.7; */
     color: ${props => props.theme.primary};;
-    text-decoration: underline;
+    text-decoration: none;
     font-family: "SS3";
-    font-size: 19px;
+    font-size: 18px;
+    line-height: 132%;
     text-align: left;
     /* align-items: right; */
 
     &:hover {
         opacity: 1;
+        text-decoration: underline;
+        curosr: pointer;
     }
 
     @media screen and (max-width: 767px) {
@@ -391,7 +448,7 @@ export const Desc = styled.p`
     position: relative;
     // margin-left: 12%;
     margin-left: 0;
-    margin-top: -6px;
+    margin-top: -9px;
     /* width: calc(62.1% - 4rem); */
     // width: 76%;
     max-width: 80ch;
@@ -400,11 +457,12 @@ export const Desc = styled.p`
     padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '24px'};
     /* border: 2px solid blue; */
 
-    color: ${props => props.theme.primary};
+    color: ${props => props.theme.secondary};
     font-family: "SS3";
-    font-size: 19px;
+    font-size: 18px;
     text-align: left;
-    line-height: 140%;
+    line-height: 146%;
+    /* opactiy: 0.7; */
     /* align-items: right; */
 
     @media screen and (max-width: 767px) {
@@ -419,14 +477,14 @@ export const Controls = styled.div`
     display: inline-grid;
     grid-template-rows: calc(48vh - 101px - 22px) 18px 60px 16px;
     position: fixed;
-    top: 79px;
-    left: 58px;
-    height: calc(100vh - 83px);
-    width: 11.5vw;
+    top: 80px;
+    left: 25px;
+    height: calc(100vh - 80px);
+    width: ${({ isCS }) => (isCS ? '12vw' : '36vw')};
 
     // padding-left: 20px;
-    /* padding-right: 24px; */
-    padding-top: 14px;
+    padding-right: 24px;
+    padding-top: 18px;
     /* align-items: right; */
     // text-align: right;
 
@@ -453,7 +511,7 @@ export const NavButtons = styled.div`
     z-index: 999;
     position: absolute;
     left: 0;
-    bottom: calc(18px);
+    bottom: calc(32px);
     width: calc(100% - 26px);
     // cursor: pointer;
     /* border: 1.5px solid black; */
@@ -463,6 +521,15 @@ export const NavButtons = styled.div`
     }
 `
 
+export const NavLabel = styled.div`
+    // padding-bottom: 2px;
+    font-family: "SS3";
+    font-size: 12px;
+    line-height: 145%;
+    letter-spacing: 0.15px;
+    color: ${props => props.theme.secondary};
+`
+
 export const WorkNav = styled(LinkRouter)`
     // width: 3vw;  
     // height: 3vw;
@@ -470,7 +537,7 @@ export const WorkNav = styled(LinkRouter)`
 
     font-size: 14px;
     font-family: "SS3";
-    padding-bottom: 6px;
+    padding-bottom: 8px;
 
     color: ${props => props.theme.primary};
     text-decoration: none;
@@ -550,22 +617,32 @@ export const TableOfContents = styled.div`
 
     z-index: 999;
     position fixed;
-    right: -18px;
-    top: 79px;
+    /* right: -18px; */
+    right: calc(63vw - 0.5px);
+    top: 80px;
     // width: calc(100vw -);
-    width: calc(17vw + 18px);
-    height: calc(100vh - 103px);
+    width: calc(25vw - 40px);
+    height: calc(100vh - 80px);
 
-    padding-top: 14px;
-    padding-left: 22px;
+    padding-top: 18px;
+    padding-left: 24px;
     // padding-bottom: 20px;
-    padding-right: 60px;
+    padding-right: 24px;
     
     overflow-x: hidden;
     overflow-y: scroll;
 
+    text-align: right;
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
     background: ${props => props.theme.bg};
-    /* border: 1px solid orange; */
+    border-left: 1px solid ${props => props.theme.border};
+    border-right: 1px solid ${props => props.theme.border};
 
     p {
         color: ${props => props.theme.primary};
@@ -599,7 +676,7 @@ export const MobileTOCContainer = styled.div`
         border-top: 1px solid ${props => props.theme.border};
 
         background: ${props => props.theme.bgNav};
-        backdrop-filter: blur(12px);
+        backdrop-filter: blur(22px);
         // overflow-x: hidden;
         // overflow-y: scroll;
         overflow-y: hidden;
@@ -611,16 +688,16 @@ export const MobileTOCContainer = styled.div`
 
 export const MobileTOC = styled.div`
     position: absolute;
-    top: -24px;
+    top: -40px;
     left: 0;
     overflow-y: auto;
     height: 100%;
     // width: calc(100vw) - 28px;
     width: 100%;
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-left: 24px;
+    padding-right: 24px;
     padding-bottom: 100px;
-    padding-top: 16px;
+    padding-top: 20px;
 `
 
 export const MobileTOCToggle = styled.div`
@@ -631,7 +708,7 @@ export const MobileTOCToggle = styled.div`
         z-index: 1000;
         position: fixed;
         left: 0;
-        bottom: 50px;
+        bottom: 52px;
         height: 40px;
         width: 100vw;
         background: ${props => props.theme.bgNav};
@@ -644,11 +721,12 @@ export const MobileTOCToggle = styled.div`
 export const CloseTOC = styled.div`
     z-index: 999;
     position: absolute;
-    right: 14px;
-    top: 16px;
+    right: 24px;
+    top: 20px;
 
     font-family: 'SS3';
-    font-size: 14px;
+    font-size: 18px;
+    font-weight: bold;
     color: ${props => props.theme.primary};
 `
 
@@ -658,9 +736,9 @@ export const DividerTOC = styled.div`
     left: 0;
     top: 0;
     padding: 10px 14px 0px 14px;
-    height: 37px;
+    height: 40px;
     width: 100vw;
-    border-bottom: .5px solid ${props => props.theme.border};
+    /* border-bottom: .5px solid ${props => props.theme.border}; */
 `
 
 export const MobileTOCLabel = styled.div`
@@ -668,11 +746,15 @@ export const MobileTOCLabel = styled.div`
     color: ${props => props.theme.primary};
     font-family: "SS3";
     font-size: 14px;
+    padding-top: 1px;
+
+    text-align: center;
+    align-items: center;
 `
 
 export const TOCItem = styled.div`
-    padding-top: 30px;
-    padding-bottom: 4px;
+    margin-top: 40px;
+    padding-bottom: 1px;
     color: ${props => props.theme.primary};
     font-family: "SS3";
     font-weight: 500;
@@ -684,19 +766,20 @@ export const TOCItem = styled.div`
         /* color: white; */
         opacity: 0.8;
         text-decoration: underline;
+        cursor: pointer;
     }
 
     @media screen and (max-width: 767px) {
         opacity: 0.9;
         color: ${props => props.theme.primary};
-        padding-top: 22px;
-        padding-bottom: 2px;
-        font-size: 19px;
+        /* padding-top: 40px; */
+        padding-bottom: 1px;
+        font-size: 18px;
     }
 `
 
 export const TOCItem2 = styled.div`
-    padding-top: 8px;
+    padding-top: 7px;
     // margin-left: 14px;
     color: ${props => props.theme.secondary};
     font-family: "SS3";
@@ -709,13 +792,13 @@ export const TOCItem2 = styled.div`
         /* color: white; */
         opacity: 0.8;
         text-decoration: underline;
-
+        cursor: pointer;
     }
 
     @media screen and (max-width: 767px) {
         color: ${props => props.theme.primary};
         opacity: 0.75;
-        padding-top: 12px;
+        padding-top: 11px;
         font-size: 14px;
         // margin-left: 16px;
     }
@@ -757,10 +840,27 @@ export const FixedContent = styled.div`
     }
 `
 
-export const Title = styled.h1`
+export const MobileTitle = styled.h1`
+    display: none;
+
+    @media screen and (max-width: 767px) {
+        display: grid;
+        color: ${props => props.theme.primary};
+        font-family: "SS3";
+        font-size: 38px;
+        line-height: 126%;
+        margin-bottom: 40px;
+        max-width: 756px;
+        margin-top: 3px;
+        margin-bottom: 8px;
+    }
+`
+
+export const DesktopTitle = styled.div`
+    display: grid;
     color: ${props => props.theme.primary};
     font-family: "SS3";
-    font-size: 42px;
+    font-size: 20px;
     line-height: 126%;
     margin-bottom: 40px;
     max-width: 756px;
@@ -768,10 +868,10 @@ export const Title = styled.h1`
     @media screen and (max-width: 767px) {
         // margin-top: -14px;
         // margin-bottom: -6px;
-        margin-top: 2px;
-        margin-bottom: 10px;
+        display: none;
     }
 `
+
 
 export const TagsContainer = styled.div`
     /* display: inline-block; */
@@ -834,27 +934,29 @@ export const Tag = styled.p`
     }
 `
 
-export const Details = styled.div`
+export const DetailsContainer = styled.div`
     margin-top: -6px;
     width: calc(100% + 1rem);
 
+    max-height: 47.5vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    @media screen and (max-width: 767px) {
+        margin-top: -6px;
+    }
+`
+
+export const Details = styled.div`
     font-family: "GoudyBookletter";
     font-family: "Cardo";
     font-family: "FrenchCanon";
     font-family: "JejuMyeongjo";
     /* font-family: "Orpheus"; */
 
-    max-height: 47.5vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-
     font-size: 1rem;
     letter-spacing: -.01rem;
     line-height: 130%;
-
-    @media screen and (max-width: 767px) {
-        margin-top: -6px;
-    }
 `
 
 export const Label = styled.p`

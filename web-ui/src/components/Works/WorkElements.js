@@ -6,12 +6,12 @@ import { motion } from "framer-motion";
 export const Container = styled(motion.div)`
   position: fixed;
   /* left: 0; */
-  left: 46px;
+  left: 0;
   // top: 103px;
   top: 0;
   z-index: 998;
   /* width: 100vw; */
-  width: calc(100vw - 46px);
+  width: calc(100vw);
   height: calc(100vh);
 
   ::-webkit-scrollbar {
@@ -22,7 +22,7 @@ export const Container = styled(motion.div)`
   overflow-x: none;
   cursor: crosshair;
 
-  /* background: ${props => props.theme.bg}; */
+  background: ${props => props.theme.bg};
   /* background: green; */
 `
 
@@ -42,20 +42,21 @@ export const Divider = styled.div`
 `
 
 export const Marker = styled.div`
+  z-index: 999;
   position: fixed;
   /* left: 0; */
-  left: 46px;
-  top: calc(48vh);
-  width: calc(32vw + 46px);
+  left: 0;
+  top: calc(49.25vh);
+  width: calc(37vw);
   /* width: calc(100vw); */
-  border-bottom: 1.5px solid ${props => props.theme.primary};
-  opacity: 0.3;
+  border-bottom: 1.25px solid ${props => props.theme.primary};
+  opacity: 0.75;
 
   @media screen and (max-width: 767px) {
     border-bottom: 1px solid ${props => props.theme.secondary};
     width: 100vw;
-    top: calc(48vh + 0.5px);
-    display: none;
+    top: calc(49vh + 0.5px);
+    /* display: none; */
   }
 `;
 
@@ -102,20 +103,26 @@ export const MarkerR = styled.div`
 
 
 export const ClickableArea = styled.div`
-  z-index: 999;
+  z-index: -1;
   // display: inline-grid;
   // grid-template-columns: 1fr 1fr;
   position: fixed;
   // top: 103px;
-  left: 30vw;
-  bottom: 0;
+  /* left: 30vw; */
+  right: 120px;
+  top:0;
+
   // padding-top: 2.8vh;
   // padding-top: calc(49vh - 103px);
   // margin-left: 30vw;
-  height: 8vh;
+  padding-left: 15px;
+  padding-top: 14px;
+  padding-bottom: 16px;
+  padding-right: 16px;
+  height: 100vh;
   // height: calc(100vh - 103px);
-  width: 70vw;
-  border-top: 0.5px solid ${props => props.theme.border};
+  width: 160px;
+  border-left: 1px solid ${props => props.theme.border};
   background: ${props => props.theme.bgSide};
   // opacity: 0;
   backdrop-filter: blur(14px);
@@ -124,20 +131,20 @@ export const ClickableArea = styled.div`
   
   text-decoration: none;
   /* color: black; */
-  text-align: center;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
+  /* text-align: center; */
+  /* align-items: center; */
+  /* align-content: center; */
+  /* justify-content: center; */
 
   color: ${props => props.theme.secondary};
   font-size: 19px;
-  font-family: "OpenSans";
+  font-family: "SS3";
 
-  &:hover {
+  /* &:hover {
     background: ${props => props.theme.bgPreview};
     backdrop-filter: blur(6px);
     color: ${props => props.theme.primary};
-  }
+  } */
 
   @media screen and (max-width: 767px) {
     left: unset;
@@ -163,17 +170,22 @@ export const ClickableArea = styled.div`
 
 
 export const WorkListContainer = styled.div`
+  /* background: ${props => props.theme.background}; */
   position: fixed;
   top: 0;
-  left: 46px;
-  width: calc(100vw - 46px);
+  left: 0;
+  width: calc(100vw - 128px);
   height: calc(100vh - 103px + 103px);
   overflow-y: scroll;
-  padding-bottom: calc(51vh - 62px + 0.8rem);
+  /* padding-bottom: calc(51vh - 62px + 0.8rem); */
   // padding-top: calc(44vh - 94px);
-  padding-top: calc(48vh - 128px - 1.8rem + 103px);
-  padding-left: 14px;
-  padding-right: calc(67vw - 48px);
+  /* padding-top: calc(48vh - 128px - 1.8rem + 103px); */
+  padding-top: calc(50vh - 30px);
+  padding-left: calc(24px + 1vw);
+  /* padding-right: calc(50vw + 36px); */
+  /* padding-right: calc(50vw + 100px); */
+  padding-right: calc(63vw + 26px + 1vw - 128px);
+  padding-bottom: calc(50vh - 30px);
   z-index: 999;
 
   overflow-x: hidden; 
@@ -192,23 +204,21 @@ export const WorkListContainer = styled.div`
     z-index: 998;
     width: 100vw;
     left: 0;
-    padding-left: 9.5px;
-    padding-top: calc(48vh - 126px - 16px + 103px);
-    padding-bottom: calc(50vh - 64px + 42px);
+    padding-left: 8px;
+    /* padding-top: calc(48vh - 126px - 16px + 103px); */
+    padding-top: calc(50vh - 42px);
+    padding-bottom: calc(50vh - 20px);
   }
 `;
 
 export const WorkItem = styled.div`
   // display: grid;
   // grid-template-rows: 24px 1fr;
-
-  margin-bottom: 24px;
-
-  scroll-margin-top: calc(48vh - 128px - 1.8rem + 103px);
+  margin-bottom: 16px;
+  /* scroll-margin-top: calc(48vh - 128px - 1.8rem + 103px); */
+  scroll-margin-top: calc(50vh - 32px);
   /* calc(48vh - 128px - 2rem + 103px); */
-
   /* padding-top: calc(48vh - 128px - 1.7rem + 103px); */
-
 
   transition: 5s scale ease-in-out;
 
@@ -223,18 +233,14 @@ export const WorkItem = styled.div`
 
   @media screen and (max-width: 767px) {
     width: calc(100vw - 32px);
-    scroll-margin-top: calc(48vh - 2px - 36px);
-    margin-bottom: 16px;    
+    /* scroll-margin-top: calc(48vh - 2px - 36px); */
+    scroll-margin-top: calc(50vh - 41px);
+    margin-bottom: 6px;    
   }
 `;
 
 export const DeskWorkItem = styled.div`
   display: grid;
-  /* grid-template-rows: 1fr; */
-
-  // margin-bottom: 38px;
-  // scroll-margin-top: calc(48vh - 128px - 21px + 103px);
-
   transition: .225s all ease-in-out;
 
   color: ${props => props.theme.primary};
@@ -242,9 +248,9 @@ export const DeskWorkItem = styled.div`
 
   &:hover {
     /* border-radius: 12px; */
-    transform: translateX( 6px );
+    /* transform: translateX( 6px ); */
     /* background: green; */
-    /* opacity: 1; */
+    opacity: 1;
     cursor: pointer;
     /* padding-left: 20px; */
     /* color: ${props => props.theme.secondary}; */
@@ -252,7 +258,18 @@ export const DeskWorkItem = styled.div`
   }
 
   @media screen and (max-width: 767px) {
-    display: none;
+    /* display: none; */
+
+    /* transition: 5s scale ease-in-out; */
+
+    color: ${props => props.theme.primary};
+    padding: 0 4px;
+
+    display: grid;
+    /* grid-template-rows: 1fr 1fr; */
+
+    width: calc(100vw - 32px);
+    margin-bottom: 13px;  
   }
 `
 
@@ -269,26 +286,32 @@ export const MobileWorkItem = styled.div`
     /* grid-template-rows: 1fr 1fr; */
 
     width: calc(100vw - 32px);
-    margin-bottom: 18px;   
+    margin-bottom: 13px;   
   }
 `
 
 export const TopLine = styled.div`
-  display: inline-block;
+  /* display: inline-block;
   width: 100%;
-  margin-bottom: 1px;
+  margin-bottom: 1px; */
   // grid-template-columns: 20px 1fr 6fr;
   // grid-template-rows: 1fr;
   // height: 8px;
   align-items: start;
   text-align: left;
-
-  // border: 1px solid pink;
+  display: none;
+  /* border: 1px solid pink; */
   
   @media screen and (max-width: 767px) {
-    align-items: start;
+    display: inline-block;
+    /* margin-top: 1px; */
+    /* align-items: start; */
     text-align: left;
-    margin-bottom: 5px;
+    width: fit-content;
+    height: fit-content;
+    /* height: 12px; */
+    /* margin-top: -8px; */
+    margin-bottom: 3px;
   }
 `
 
@@ -378,19 +401,20 @@ export const BottomWork = styled.div`
 export const WorkTitle = styled.div`
   // width: 100%;
   float: left;
-  text-align: start;
+  text-align: center;
   align-items: start;
   // margin-top: 20px;
 
   font-family: "SS3";
-  font-size: 3.2rem;
-  line-height: 3.8rem;
+  font-size: 36px;
+  line-height: 120%;
   color: ${props => props.theme.primary};
 
   @media screen and (max-width: 767px) {
-    font-size: 28px;
-    line-height: 35px;
+    font-size: 22px;
+    /* line-height: 35px; */
     float: left;
+    line-height: 124%;
     text-align: left;
     align-items: start;
     width: 100%;
@@ -565,32 +589,36 @@ export const WorkPreview = styled.div`
 
   position: fixed;
   overflow: hidden;
-  height: 50px;
-  width: 130px;
+  height: 48px;
+  width: 120px;
   top: ${props => (props.heightVar)};
-  right: 16px;
+  right: 62vw;
   /* left: calc(31vw + 54px); */
   align-content: center;
   text-align: left;
 
-  padding: 5px 7px 4px 12px;
-  border-radius: 5px;
-  border: 1px solid ${props => props.theme.bg};
+  padding: 7.5px 4px 4px 8px;
+  /* border-radius: 5px; */
+  border-top: 1px solid ${props => props.theme.border};
+  border-left: 1px solid ${props => props.theme.secondary};
+  border-bottom: 1px solid ${props => props.theme.secondary};
 
   transition: 0.1s all ease-in-out;
   user-select: none;
   pointer-events: none;
 
   background: ${props => props.theme.bgPreview};
-  backdrop-filter: blur(14px);
+  /* backdrop-filter: blur(14px); */
 
   img {
     display: none;
   }
 
+  display: none;
+
   @media screen and (max-width: 767px) {
     top: ${props => (props.mobileHVar)};
-    grid-template-rows: 15vh 14px 10px;
+    grid-template-rows: 15vh 18px 10px;
     // grid-template-rows: 15vh 1.75vh 1.25vh;
     // z-index: 999;
     // height: 44px;
@@ -600,8 +628,11 @@ export const WorkPreview = styled.div`
     right: 14px;
     padding: 0;
     // border: 1px solid blue;
+    display: grid;
 
-    border: unset;
+    border-top: unset;
+    border-bottom: unset;
+    border-left: unset;
     background: unset;
     backdrop-filter: unset;
 
@@ -624,7 +655,7 @@ export const WorkPreview = styled.div`
       max-height: calc(18vh - 30px);
       // height: calc(22vw - 28px);
       // max-width: 21vw;
-      padding-bottom: 10px;
+      padding-bottom: 14px;
     }
   }
 `;
@@ -632,29 +663,30 @@ export const WorkPreview = styled.div`
 export const WorkName = styled.div`
   position: relative;
   bottom: 0;
-  padding-top: 6px;
+  margin-top: 2.5px;
   // width: 80%;
   align-content: end;
 
   color: ${props => props.theme.primary};
-  /* opacity: 0.9; */
+  opacity: 0.9;
   text-decoration: none;
   // text-transform: uppercase;
   font-size: 12px;
   font-family: "SS3";
 
   @media screen and (max-width: 767px) {
-    align-content: end;
+    /* align-content: end; */
     float: right;
     text-align: right;
     font-size: 11px;
-    padding-top: unset;
-    padding-bottom: 2px;
+    margin-top: 120px;
+    /* padding-bottom: 2px; */
   }
 `;
 
 export const WorkDesc = styled.p`
-  margin-top: 2px;
+  /* margin-top: 5px; */
+  margin-left: 0.5px;
   // width: 80%;
   align-content: start;
 
@@ -662,11 +694,13 @@ export const WorkDesc = styled.p`
   // opacity: 0.9;
   text-decoration: none;
   // text-transform: uppercase;
+  letter-spacing: 0.25px;
   font-size: 10px;
   font-family: "SS3";
 
   @media screen and (max-width: 767px) {
-    margin-top: unset;
+    margin-top: 2px;
+    margin-bottom: 3px;
     // padding-top: 6px;
     align-content: end;
     float: right;
@@ -675,13 +709,90 @@ export const WorkDesc = styled.p`
   }
 `
 
+export const Overview = styled.div`
+  color: ${props => props.theme.secondary};
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: "SS3";
+
+  /* margin-top: 30px; */
+`
+
+export const OverviewContainer = styled.div`
+  height: calc(49.5vh - 38px - 70px);
+  margin-right: 15px;
+  overflow: hidden;
+  position: absolute;
+  bottom: calc(50.5vh + 38px);
+
+  /* border: 1px solid pink; */
+`
+
+export const OverviewGradient = styled.div`
+  z-index: 999;
+  background: ${props => props.theme.gradient};
+  width: 100%;
+  height: 5vh;
+  /* float: end; */
+  position: absolute;
+  /* bottom: calc(51vh + 20px); */
+  bottom: 0;
+`
+
+export const WorkOverview = styled.div`
+  align-content: start;
+
+  color: ${props => props.theme.primary};
+  // opacity: 0.9;
+  text-decoration: none;
+  // text-transform: uppercase;
+  margin-top: 5px;
+  font-size: 14px;
+  font-family: "SS3";
+  line-height: 135%;
+  /* max-height: 20vh; */
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+  /* white-space: pre; */
+  /* width:150px; */
+
+  /* max-height: calc(35vh); */
+  /* border-bottom: 1px solid green; */
+
+  @media screen and (max-width: 767px) {
+    margin-top: 2px;
+    margin-bottom: 3px;
+    // padding-top: 6px;
+    align-content: end;
+    float: right;
+    text-align: right;
+    font-size: 9px;
+  }
+`
+
+export const PreviewTag = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* width: 8px; */
+  width: 120px;
+  height: 4px;
+  /* height: 48px; */
+  background: ${props => props.theme.primary};
+`
+
 export const TagsContainer = styled.div`
   // padding-left: 12%;
   // width: 88%;
   // color: #C0C0C0;
   // font-size: 13px;
   // font-family: "OpenSans"
-  display: inline-block;
+  display: grid;
+  position: absolute;
+  bottom: 20px;
+  max-height: 40vh;
+
   // position: relative;
   // bottom: 0;
   align-items: start;
@@ -699,7 +810,8 @@ export const ProjectTag = styled.a`
   // height: 26px;
   font-size: 12px;
   // writing-mode: vertical-rl;
-  padding-right: 12px;
+  /* padding-right: 12px; */
+  padding-top: 5px;
   // overflow: hidden; 
   // text-overflow: ellipsis;
 
@@ -712,31 +824,45 @@ export const ProjectTag = styled.a`
 
 export const Details = styled(LinkRouter)`
   z-index: 1000;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  opacity: 0.9;
-  width: 70vw;
-  height: 8vh;
-  padding-top: 2.7vh;
+  position: fixed;
+  left: calc(100vw - 280px + 15px);
+  bottom: 50.5vh;
+  /* width: 70vw; */
+  /* height: 8vh; */
+  /* padding-top: 2.7vh; */
   // padding-right: 48%;
   
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+  /* text-align: center; */
+  /* align-items: center; */
+  /* justify-content: center; */
 
   text-decoration: none;
-  color: ${props => props.theme.primary};
-  font-size: 19px;
-  font-family: "OpenSans";
+  color: ${props => props.theme.cs};
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  font-size: 18px;
+  font-family: "SS3";
+
+  &:hover {
+    text-decoration: underline;
+    /* text-transform: uppercase; */
+  }
 
   @media screen and (max-width: 767px) {
-    // background: blue;
-    // opacity: 1;
-    // font-size: 14px;
-    // float: right;
-    // text-align: right;
-    display: none;
+    background: ${props => props.theme.primary};
+    color: ${props => props.theme.bg};
+    left: unset;
+    bottom: 75px;
+    right: 14px;
+    height: 32px;
+    /* width: 80px; */
+    padding: 8px 12px 0px 12px;
+    opacity: 1;
+    font-size: 14px;
+    float: right;
+    text-align: right;
+    /* border: 1px solid ${props => props.theme.bg}; */
+    /* display: none; */
   }
 `
 
@@ -780,25 +906,16 @@ export const VisitLink = styled.a`
 export const ContentBg = styled.div`
   z-index: -1;
   position: fixed;
-  // top: 103px;
   top: 0;
-  /* left: calc(31vw + 40px); */
-  left: 0;
+  left: 36vw;
   height: calc(100vh);
-  /* width: calc(69vw - 40px); */
-  width: 100vw;
-  /* align-items: center; */
-  background: ${props => props.theme.bg};
-  /* background: blue; */
-
-  /* background-image: ${(bgFileName) => 'url(bgFileName)'}; */
-  /* background-image: url("bg2.png"); */
-  /* background-image: url("testProjCover3.png"); */
-  /* background-size: cover; */
-  /* backdrop-filter: blur(30px); */
-  /* filter: blur(25px); */
-  /* opacity: 0.65; */
+  /* width: 100vw; */
+  /* width: calc(60w - 120px - 160px); */
+  width: calc(50vw);
+  /* background: ${props => props.theme.bg}; */
   /* background: green; */
+  /* top: 80px; */
+  align-items: center;
   /* border: 8px solid orange; */
 
   img {
@@ -822,14 +939,14 @@ export const BgBlur = styled.div`
   /* z-index: 900; */
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100vw;
+  left: 35vw;
+  width: 60vw;
   /* left: calc(31vw + 46px); */
   height: 100vh;
   /* width: calc(69vw - 46px); */
   /* overflow: hidden; */
   background: ${props => props.theme.bgPreview}; // Make sure this color has an opacity of less than 1
-  backdrop-filter: blur(22px); // This be the blur
+  backdrop-filter: blur(23px); // This be the blur
 
   @media screen and (max-width: 767px) {
     left: 0;
@@ -839,14 +956,27 @@ export const BgBlur = styled.div`
   }
 `
 
+export const BlurCutoff = styled.div`
+  z-index: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 37vw;
+  background: ${props => props.theme.bg}; // Make sure this color has an opacity of less than 1
+`
+
 export const WorkImageContainer = styled.div`
   position: fixed;
-  height: calc(100vh - 80px);
-  width: calc(69vw - 92px);
-  top: 80px;
-  margin-left: calc(46px + 33vw);
+  /* height: calc(100vh - 80px); */
+  height: calc(100vh);
+  width: calc(63vw - 120px - 160.5px);
+  /* top: 80px; */
+  top: 0;
+  left: calc(37vw - 0.5px);
   align-items: center;
-  
+
+  border-left: 1px solid ${props => props.theme.border}; // Make sure this color has an opacity of less than 1
   /* border: 1px solid green; */
 
   @media screen and (max-width: 767px) {
@@ -864,9 +994,11 @@ export const WorkImage = styled.div`
   /* padding: 22px; */
   margin-top: 2.25vh;
   /* margin-left: 28px; */
-  width: calc(69vw - 92px - 5vw);
+  /* width: calc(69vw - 92px - 5vw); */
+  width: calc(63vw - 120px - 160px);
+
   /* height: calc(100vh - 130px - 5rem); */
-  height: calc(100vh - 80px - 6.5vh);
+  height: calc(100vh - 5.2vh);
   text-align: center;
   align-items: center;
   /* justify-content: center; */
@@ -884,7 +1016,9 @@ export const WorkImage = styled.div`
         height: 100%;
         /* max-height: calc(100vh - 38px); */
         // max-width: 100%;
-        max-width: calc(69vw - 92px - 5vw);
+        /* max-width: calc(69vw - 92px - 5vw); */
+        max-width: calc(63vw - 120px - 160px - 44px);
+
         /* background-image: #201D17; */
         /* padding-left: 3.25rem; */
     }

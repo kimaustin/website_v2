@@ -5,19 +5,25 @@ export const Container = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    height: calc(100vh);
-    width: 46px;
+    padding-left: 24px;
+    padding-right: 24px;
+    height: 80px;
+    /* width: calc(50vw - 12px); */
+    width: calc(37vw + 0.5px);
     /* width: 100vw; */
     /* background: #1E1C1F; */
     // background: green;
-    /* background: ${props => props.theme.bgNav}; */
-    /* backdrop-filter: blur(12px); */
-    /* border-right: .5px solid ${props => props.theme.border}; */
+    background: ${props => props.theme.bgNav};
+    backdrop-filter: blur(12px);
+    border-right: 1px solid ${props => props.theme.border};
+    border-bottom: 1px solid ${props => props.theme.border};
     z-index: 999;
 
     @media screen and (max-width: 767px) {
         top: unset;
         /* left: 0; */
+        padding-left: 0;
+        padding-right: unset;
         bottom: 0px;
         width: 100vw;
         border-top: .5px solid ${props => props.theme.border};
@@ -165,15 +171,20 @@ export const NonMobile = styled.div`
 
 export const SimpleNav = styled.div`
     display: inline-grid;
-    /* grid-template-columns: 50px 1fr 78px; */
+    /* display; grid; */
+    grid-template-columns: auto 1fr auto auto;
     /* overflow: hidden; */
-    width: 46px;
-    height: calc(100vh - 80px);
-    padding: 18px 14px 20px 15px;
+    /* align-items: center; */
+    align-content: center;
+    width: 100%;
+    height: 90px;
+    /* height: calc(100vh - 88px); */
+    /* padding: 18px 14px 20px 20px; */
+    padding-bottom: 4px;
 
-    position: fixed;
-    left: 0;
-    top: 80px;
+    /* position: fixed; */
+    /* left: 6px; */
+    /* top: 80px; */
 
     /* background: ${props => props.theme.bgNav}; */
     /* border: 1px solid green; */
@@ -215,13 +226,13 @@ export const Logo = styled.a`
     }
 `
 
-export const NavHome = styled(LinkRouter)`
-    font-size: 14px;
-    position absolute;
+export const NavHome = styled.div`
+    font-size: 10px;
+    /* position absolute; */
     letter-spacing: 2px;
-    line-height: 120%;
-    left: 28.5px;
-    top: 14px;
+    line-height: 100%;
+    /* left: 28.5px; */
+    /* top: 14px; */
     // height: 18px;
     // color: #FFFFFF;
     // text-decoration: none;
@@ -229,18 +240,20 @@ export const NavHome = styled(LinkRouter)`
     /* writing-mode: vertical-rl;
     text-orientation: upright; */
 
-    transform-origin: 0 0;
-    transform: rotate(90deg);
+    /* transform-origin: 0 0; */
+    /* transform: rotate(90deg); */
 
     /* position: relative; */
     display: flex;
     /* width: 18px; */
-    height: 18px;
-    width: 90px;
-    // margin-bottom: 36px;
-    color: ${props => props.theme.primary};
+    /* height: 18px; */
+    /* width: 90px; */
+    margin-right: 20px;
+    margin-top: 1.5px;
+    color: ${props => props.theme.secondary};
     text-decoration: none;
     font-family: 'SS3';
+    opacity: 0.9;
     justify-content: start;
     align-items: start;
     text-align: left;
@@ -253,43 +266,47 @@ export const NavHome = styled(LinkRouter)`
         currpage === thispage && '#201D17;'
     }; */
     
-    &:hover {
+    /* &:hover {
         text-decoration: underline;
-    }
+    } */
 
     @media screen and (max-width: 767px) {
-        position: unset;
-        top: unset;
-        left: unset;
+        position: fixed;
+        top: 16px;
+        /* display: grid; */
+        left: 88px;
+        margin-top: unset;
+        margin-right: unset;
         transform-origin: unset;
         transform: unset;
         height: 14px;
         padding-top: 3px;
-        font-size: 14px;
+        font-size: 11px;
         float: left;
     }
 `;
 
 
 export const Switcher = styled.div`
-    position: absolute;
-    left: 34px;
-    bottom: 46px;
+    /* position: absolute; */
+    /* left: 34px; */
+    /* bottom: 46px; */
     display: inline-grid;
     grid-template-columns: 1fr 1fr 1fr;
     /* text-align: center; */
-    width: 46px;
-    height: 21px;
+
+    width: 60px;
+    height: 22px;
     
-    /* margin-top: -4.5px; */
+    margin-top: -5.5px;
     /* margin-left: 012.5%; */
-    border-radius: 30px;
+    /* border-radius: 0px; */
     overflow: hidden;
     border: 1px solid ${props => props.theme.secondary};
     /* height: 16px; */
 
-    transform-origin: 0 0;
-    transform: rotate(90deg);
+    /* transform-origin: 0 0; */
+    /* transform: rotate(90deg); */
 
     /* &:hover {
         background: ${isLight => (isLight ? 'rgba(30, 30, 31, 0.1)' : 'rgba(242, 249, 256, 1)')};
@@ -297,16 +314,13 @@ export const Switcher = styled.div`
     } */
 
     @media screen and (max-width: 767px) {
-        position: unset;
-        left: unset;
-        bottom: unset;
-        transform-origin: unset;
-        transform: unset;
+        position: fixed;
+        left: 14px;;
+        top: 16px;
 
-        margin-left: 10%;
-        margin-top: -3px;
+        margin-top: -4px;
         height: 24px;
-        width: 80%;
+        /* width: 80%; */
         /* width: 100%; */
         /* margin-left: 17%; */
     }
@@ -320,12 +334,12 @@ export const ThemeIndicator = styled.div`
     /* font-size: 20px; */
     width: 160%;
 
-    height: 20px;
+    height: 24px;
     font-family: 'SS3';
     /* margin-top: 0px; */
     background: ${props => props.theme.primary};
     /* background: green; */
-    border-radius: 30px;
+    /* border-radius: 30px; */
     /* height: 24px; */
 
     @media screen and (max-width: 767px) {
@@ -338,7 +352,7 @@ export const LightIcon = styled.div`
     font-size: 24px;
 
     padding-left: 40%;
-    margin-top: -.5px;
+    margin-top: 0px;
     /* margin-bottom: 2px; */
     padding-bottom: 3px;
     /* padding-top: -1px; */
@@ -355,9 +369,9 @@ export const LightIcon = styled.div`
     }
 
     @media screen and (max-width: 767px) {
-        font-size: 34px;
-        padding-left: 45%;
-        margin-top: -3px;
+        font-size: 30px;
+        padding-left: 35%;
+        margin-top: -2.5px;
     }
 `
 
@@ -367,15 +381,15 @@ export const DarkIcon = styled.div`
     font-weight: 600;
     text-align: center;
     /* padding-left: 0%; */
-    padding-top: 7px;
-    padding-left: 10px;
-    margin-top: -1px;
+    padding-top: 1.5px;
+    padding-left: 2px;
+    margin-top: 0px;
     width: 150%;
     margin-left: -50%;
     color: ${isLight => (isLight ? 'rgba(30, 30, 31, 1)' : 'rgba(242, 249, 256, 1)')};
 
     /* transform-origin: 0 0; */
-    transform: rotate(-90deg);
+    /* transform: rotate(-90deg); */
 
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
@@ -390,9 +404,9 @@ export const DarkIcon = styled.div`
         transform-origin: unset;
         transform: unset;
         padding-right: 0px;
-        margin-top: -8px;
-        padding-left: unset;
-        font-size: 18px;
+        margin-top: -2px;
+        padding-left: 1px;
+        font-size: 16px;
         font-weight: 600;
     }
 `
@@ -402,9 +416,10 @@ export const MobileMenuToggle = styled.div`
 
     @media screen and (max-width: 767px) {
         display: inline-grid;
-        // position: absolute;
-        padding-top: 2px;
-        right: 0;
+        position: fixed;
+        margin-top: -2px;
+        right: 14px;
+        top: 19px;
         /* align-items: end; */
         /* align-content: end; */
         float: right;
@@ -456,16 +471,23 @@ export const NonMobile1 = styled.div`
 
 export const NavDOMLink = styled(LinkRouter)`
     /* padding-bottom: 1.5rem; */
-    padding-left: 23px;
+    /* padding-left: 23px; */
     /* width: 100%; */
+    display: flex;
     color: ${props => props.theme.primary};
     font-family: 'SS3';
     font-size: 14px;
     /* display: flex; */
-    /* align-items: left; */
+    /* align-items: right; */
+    text-align: right;
+    margin-right: 1.8vw;
+    /* float: right; */
+    width: 100%;
     text-decoration: none;
     /* letter-spacing: -.1rem; */
-    /* border-bottom: 2px solid #201D17; */
+    line-height: 75%;
+
+    /* border: 1px solid green; */
 
     /* transition: all .2s ease-in-out; */
     
@@ -474,36 +496,37 @@ export const NavDOMLink = styled(LinkRouter)`
     }
 
     @media screen and (max-height: 767px) {
-        border-bottom: 0;
+        /* border-bottom: 0;
         padding: 0;
         width: calc(100vw / 3);
         justify-content: center;
         align-items: center;
         text-align: center;
         border-top: 0;
-        border-left: 2px solid #201D17;
+        border-left: 2px solid #201D17; */
+        display: none;
     }
 `;
 
 export const NavDOMLinkAbout = styled(LinkRouter)`
     float: right;
-    padding-right: 18px;
+    /* padding-right: 18px; */
     text-align: right;
     text-decoration: none;
     
     font-family: 'SS3';
     font-size: 14px;
+    line-height: 75%;
     color: ${props => props.theme.primary};
 
-    transition: all .2s ease-in-out;
-    
+    /* display: block; */
+    /* transition: all .2s ease-in-out; */
+    /* transform-origin: 0 0; */
+    /* transform: rotate(-90deg); */
 
-    transform-origin: 0 0;
-    transform: rotate(-90deg);
-
-    position: absolute;
-    bottom: 72px;
-    left: 15px;
+    /* position: absolute; */
+    /* bottom: 72px; */
+    /* left: 15px; */
 
     &:hover {
         text-decoration: underline;

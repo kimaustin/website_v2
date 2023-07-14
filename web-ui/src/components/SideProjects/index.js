@@ -92,10 +92,9 @@ const SideProjects = ({ projects }) => {
     setShowError(true);
   }
 
-  // let imgPreviews = myProjects.map((project, index) => {
   let imgPreviews = projects.map((project, index) => {
     return (
-      <ImageContainer to={'/' + index + '/works'}>
+      <ImageContainer to={'/' + index + '/index'}>
         <img src={'imgs/' + project.imgs[0]} alt="" onError={handleImgError}></img>
         {/* <img src={project.imgs[0]}></img> */}
       </ImageContainer>
@@ -161,8 +160,8 @@ const SideProjects = ({ projects }) => {
       delay: 0.3,
       }}
     >
-      <ErrorImg>{showError ? 'If image previws are not loading, please reload from the Works page.' : '' }</ErrorImg>
-      <Label>Work Photo Index</Label>
+      <ErrorImg>{showError ? 'If image previws are not loading, please reload from the /index page.' : '' }</ErrorImg>
+      <Label>Photo Index</Label>
       <Version>v2.13</Version>
       <ScrollContainer
         as={motion.div}

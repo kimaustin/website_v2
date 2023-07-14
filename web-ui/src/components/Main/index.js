@@ -15,7 +15,7 @@ const Main = ({ projects }) => {
     const onPageLoad = () => {
       // alert("hi");
       // toggleLight;
-      history.push('/works');
+      history.push('/index');
     };
 
     if (document.readyState === 'complete') {

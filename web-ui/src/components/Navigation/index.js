@@ -131,17 +131,20 @@ const Navigation = ({drawerStatus, toggleDrawer, toggle, aboutToggle, mobileTogg
                 </Switcher>
                 <MobileMenuToggle onClick={mobileToggle}>Menu/About</MobileMenuToggle>
             </NonMobile> */}
-            <MarkerL>&gt;</MarkerL>
+            {/* <MarkerL>&gt;</MarkerL> */}
             <SimpleNav>
                 {/* <MarkerL /> */}
-                <NavHome currpage={currPage} thispage={'works'} to="/works">
-                    <Logo /> 호연
-                </NavHome>
+                {/* <NavHome currpage={currPage} thispage={'works'} to="/works"> */}
+                
                 {/* <DrawerToggle onClick={toggleDrawer} isOpen={drawerStatus}>
                     <img src={"logo2.png"} />
                     <VersionLabel>V 2.5</VersionLabel>
                 </DrawerToggle> */}
-                <NavDOMLinkAbout currpage={aboutToggle} thispage={true} onClick={() => toggle('info')}>About/Contact</NavDOMLinkAbout>
+                
+                <NavHome>
+                    {/* <Logo />  */}
+                    V2_AustinKim_호연
+                </NavHome>
                 <Switcher>
                     <LightIcon onClick={toggleLight}>*</LightIcon>
                     <ThemeIndicator 
@@ -152,10 +155,13 @@ const Navigation = ({drawerStatus, toggleDrawer, toggle, aboutToggle, mobileTogg
                         transition={{
                         type: "tween",
                         ease: [0.28, 1.35, 1.5, .91],
-                        duration: 0.4 }}
+                        duration: 0.35 }}
                     />
                     <DarkIcon onClick={toggleDark}>)</DarkIcon>
                 </Switcher>
+                
+                <NavDOMLink currpage={currPage} thispage={'index'} to="/index">Index</NavDOMLink>
+                <NavDOMLinkAbout currpage={aboutToggle} thispage={true} onClick={() => toggle('info')}>About</NavDOMLinkAbout>
                 <MobileMenuToggle onClick={mobileToggle}>Menu/About</MobileMenuToggle>
             </SimpleNav>
             {/* <NonMobile2>

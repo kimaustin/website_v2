@@ -28,5 +28,5 @@ const Container = styled.div`
     top: 0;
     height: 100vh;
     width: 100vw;
-    background: ${props => props.theme.bg};
+    background: ${props => props.theme.bgNav};
 `

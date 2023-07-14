@@ -11,6 +11,10 @@ export const Container = styled.div`
     height: calc(100vh - 103px);
     padding-top: 103px;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     cursor: url("../imgs/cursor1.svg"), crosshair;
     overflow-y: hidden;
     overflow-x: hidden;

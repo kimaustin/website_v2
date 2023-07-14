@@ -53,7 +53,7 @@ export const Logo = styled.div`
 export const Name = styled.div`
     display: flex;
     line-height: 100%;
-    padding-top: 22px;
+    /* padding-top: 22px; */
     padding-bottom: 16px;
 
     color: ${props => props.theme.primary};;

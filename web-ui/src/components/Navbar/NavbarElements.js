@@ -54,7 +54,7 @@ export const Logo = styled.a`
 export const NavHome = styled(LinkRouter)`
     position: absolute;
     left: 14px;
-    top: 17px;
+    top: 20px;
     display: flex;
     height: 18px;
     // margin-bottom: 32px;
