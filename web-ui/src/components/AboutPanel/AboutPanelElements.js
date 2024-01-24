@@ -1,22 +1,19 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    z-index: 1000;
+    z-index: 5;
     display: block;
     position: fixed;
+    top: 0;
     width: 26vw;
     height: 100vh;
     overflow: hidden;
 
     /* opacity: 0.7;  */
-    /* background: #403939; */
     background: ${props => props.theme.bgSide};
     backdrop-filter: blur(12px);
 
     border-right: 1px solid ${props => props.theme.border};;
-    /* filter: blur(-2x); */
-    /* -webkit-filter: blur(-1.5px); */
-    /* cursor: url("/imgs/cursor1.svg"), auto; */
 
     @media screen and (max-width: 767px) {
         width: 100vw;

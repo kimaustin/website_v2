@@ -77,7 +77,7 @@ function root_reducer(state, action) {
 }
 
 get_all_projects();
-// fetch_projects();
+fetch_projects();
 
 let preloadedState;
 const persistedProjectsString = localStorage.getItem('projects');

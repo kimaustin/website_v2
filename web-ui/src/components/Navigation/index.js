@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { useLocation } from 'react-router-dom';
 import AboutPanel from '../AboutPanel';
-import { Container, NavContainer, MobileAbout, DrawerToggle, Switcher, ThemeIndicator, DarkWipe, DarkIcon, LightIcon, MobileMenuToggle, Indicator, NavDOMLink3, Logo, NavHome, NonMobile, NonMobile1, PhotoIndexContainer, NavDOMLink, NavDOMLink2, NavDOMLinkAbout, InfoLink, Mobile, AboutContainer, Kim, InfoWrapper, Rotating, NonMobile2, Filter, Divider, LightLabel, IconContainer, IndicatorContainer, SimpleNav, VersionLabel} from './NavigationElements';
+import { Container, NavContainer, MobileAbout, DrawerToggle, Switcher, ThemeIndicator, DarkWipe, DarkIcon, LightIcon, MobileMenuToggle, Indicator, NavDOMLink3, Logo, NavHome, NonMobile, NonMobile1, PhotoIndexContainer, NavDOMLink, NavDOMLink2, NavDOMLinkAbout, InfoLink, Mobile, AboutContainer, Kim, InfoWrapper, Rotating, NonMobile2, Filter, Divider, LightLabel, IconContainer, IndicatorContainer, SimpleNav, VersionLabel, Marker} from './NavigationElements';
 import { FaMoon } from "react-icons/fa";
 import { IoSunnySharp } from "react-icons/io5";
 import { MarkerL } from '../Works/WorkElements';
@@ -88,15 +88,16 @@ const Navigation = ({drawerStatus, toggleDrawer, toggle, aboutToggle, mobileTogg
         //     animate={aboutToggle ? {  x: '25vw', y: 0 } : { x: '0', y: '0' }}
         //     transition={pageTransition}>
         <Container
-            as={motion.div} 
-            initial={{ opacity: 1 }} 
+            // as={motion.div} 
+            // initial={{ opacity: 1 }} 
+            // // animate={((location.pathname.charAt(2) == "n") != '') ? {  x: 'calc(50vw - 36px)' } : { x: 'calc(18vw - 36px)' }}
             // animate={(currPage == '') ? {  opacity: 0 } : { opacity: 1 }}
-            transition={{
-            type: "tween",
-            ease: [0.28, 1.35, 1.5, .91],
-            duration: 0.6,
-            delay: 0.3,
-            }}
+            // transition={{
+            // type: "tween",
+            // ease: [0.28, 1.35, 1.1, .8],
+            // duration: 0.55,
+            // delay: 0.35,
+            // }}
         >
             {/* <Divider /> */}
             {/* <Indicator currpage={currPage}
@@ -132,19 +133,12 @@ const Navigation = ({drawerStatus, toggleDrawer, toggle, aboutToggle, mobileTogg
                 <MobileMenuToggle onClick={mobileToggle}>Menu/About</MobileMenuToggle>
             </NonMobile> */}
             {/* <MarkerL>&gt;</MarkerL> */}
+            {/* <Marker /> */}
             <SimpleNav>
-                {/* <MarkerL /> */}
-                {/* <NavHome currpage={currPage} thispage={'works'} to="/works"> */}
-                
                 {/* <DrawerToggle onClick={toggleDrawer} isOpen={drawerStatus}>
                     <img src={"logo2.png"} />
                     <VersionLabel>V 2.5</VersionLabel>
                 </DrawerToggle> */}
-                
-                <NavHome>
-                    {/* <Logo />  */}
-                    V2_AustinKim_호연
-                </NavHome>
                 <Switcher>
                     <LightIcon onClick={toggleLight}>*</LightIcon>
                     <ThemeIndicator 
@@ -159,32 +153,14 @@ const Navigation = ({drawerStatus, toggleDrawer, toggle, aboutToggle, mobileTogg
                     />
                     <DarkIcon onClick={toggleDark}>)</DarkIcon>
                 </Switcher>
-                
                 <NavDOMLink currpage={currPage} thispage={'index'} to="/index">Index</NavDOMLink>
-                <NavDOMLinkAbout currpage={aboutToggle} thispage={true} onClick={() => toggle('info')}>About</NavDOMLinkAbout>
-                <MobileMenuToggle onClick={mobileToggle}>Menu/About</MobileMenuToggle>
+                <NavDOMLinkAbout currpage={aboutToggle} thispage={true} onClick={() => toggle('info')}>Contact</NavDOMLinkAbout>
+                <MobileMenuToggle onClick={mobileToggle}>Menu • Contact</MobileMenuToggle>
+                <NavHome>
+                    <Logo /> 
+                    v2_austinkim_호연
+                </NavHome>
             </SimpleNav>
-            {/* <NonMobile2>
-                <NavDOMLink2 currpage={currPage} thispage={'works'} to="/works">
-                    Index
-                </NavDOMLink2>
-                <NavDOMLink2 currpage={currPage} thispage={'test'} to="/test">
-                    The Lab
-                </NavDOMLink2>
-                <NavDOMLink3>Lab</NavDOMLink3>
-                <NavDOMLink2 currpage={currPage} thispage={'blog'} to="/blog">
-                    Blog
-                </NavDOMLink2>
-                <NavDOMLink3>Blog</NavDOMLink3>
-                <NavDOMLink2 currpage={currPage} thispage={'photo'} to="/photo"
-                    style={{ textAlign: 'right', float: 'right' }}
-                >
-                    Photos
-                </NavDOMLink2>
-                <NavDOMLink3>(Photos coming soon)</NavDOMLink3>
-                <NavDOMLink3>Photography</NavDOMLink3>
-                <NavDOMLink3>Blog</NavDOMLink3>
-            </NonMobile2> */}
         </Container>
     );
 };

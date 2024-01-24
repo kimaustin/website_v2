@@ -1,7 +1,7 @@
 import store from './store';
 
 export async function api_get(path) {
-    let text = await fetch("http://www.austinkim.works/api" + path, {});
+    let text = await fetch("http://v2.austinkim.works/api" + path, {});
     let resp = await text.json();
     return resp.data
 }

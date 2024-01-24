@@ -19,7 +19,7 @@ export const Container = styled.div`
     /* align-items: center; */
 
     /* cursor: url("../imgs/c_main.svg"), crosshair; */
-    cursor: crosshair;
+    /* cursor: crosshair; */
 
     img {
         /* max-height: 35vh; */

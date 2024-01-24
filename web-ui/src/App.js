@@ -8,23 +8,22 @@ import { ThemeProvider } from 'styled-components';
 
 import Main from "./components/Main";
 import Navigation from "./components/Navigation";
-import Status from "./components/Status";
+// import Status from "./components/Status";
 import Works from "./components/Works";
 import WorkExpanded from "./components/Works/WorkExpanded";
 import Images from "./components/ImageZoom";
 import AboutPanel from "./components/AboutPanel";
 import NavBar from "./components/Navbar";
 import Lab from "./components/Lab";
-import { Provider } from "react-redux";
+// import { Provider } from "react-redux";
 import SideProjects from "./components/SideProjects";
-import Blog from "./components/Blog";
+// import Blog from "./components/Blog";
 import CloseOverlay from "./components/CloseOverlay";
 import Wipe from "./components/Wipe";
 import Background from "./components/Background";
 import Photography from "./components/Photography";
 import Versions from "./components/Versions";
 
-//Our App Components
 function App() {
   
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +44,7 @@ function App() {
   
   const toggleAbout = (currPage) => {
     if (currPage == 'info') {
-      // console.log("about toggled");
+      console.log("about toggled");
       setAboutToggle(!aboutToggle);
     } else {
       setAboutToggle(false);
@@ -65,11 +64,11 @@ function App() {
 
   const lightTheme = {
     bg: "rgba(245, 251, 255, 1)",
-    bgBlur: "rgba(230, 228, 234, 0.8)",
-    bgSide: "rgba(250, 246, 249, 1)",
-    bgSide2: "rgba(252, 248, 251, 1)",
-    bgNav: "rgba(250, 249, 251, 0.88)",
-    bgPreview: "rgba(255, 255, 255, 0.88)",
+    bgBlur: "rgba(230, 228, 234, 0.78)",
+    bgSide: "rgba(253, 252, 255, 0.9)",
+    bgSide2: "rgba(252, 248, 251, 0.9)",
+    bgNav: "rgba(250, 249, 251, 0.8)",
+    bgPreview: "rgba(255, 255, 255, 0.83)",
     primary: "#000000",
     secondary: "#7D7D7D",
     cs: "#0047FD",
@@ -79,11 +78,11 @@ function App() {
 
   const darkTheme = {
     bg: "rgba(15, 12, 14, 1)",
-    bgBlur: "rgba(35, 35, 35, .65)",
-    bgSide: "rgba(20, 15, 30, 1)",
-    bgSide2: "rgba(0, 0, 0, 1)",
-    bgNav: "rgba(30, 30, 31, 0.85)",
-    bgPreview: "rgba(8, 8, 8, 0.85)",
+    bgBlur: "rgba(35, 35, 35, .6)",
+    bgSide: "rgba(18, 12, 25, 0.9)",
+    bgSide2: "rgba(25, 25, 32, 0.7)",
+    bgNav: "rgba(30, 30, 31, 0.78)",
+    bgPreview: "rgba(8, 8, 8, 0.75)",
     primary: "rgba(245, 251, 255, 0.95)",
     secondary: "#BABABA",
     border: "#3E3E3E",
@@ -118,11 +117,11 @@ function App() {
     <Router>
       <ThemeProvider theme={colorTheme}>
         <GlobalFonts />
-        {/* <Versions drawerToggle={versionDrawer} toggle={toggleDrawer} /> */}
+        <Versions drawerToggle={versionDrawer} toggle={toggleDrawer} />
         <NavBar mobileToggle={toggle} isOpen={isOpen}/>
         <Navigation drawerStatus={versionDrawer} toggleDrawer={toggleDrawer} toggle={toggleAbout} aboutToggle={aboutToggle} mobileToggle={toggle} toggleLight={toggleLight} toggleDark={toggleDark} themeToggleStatus={isLightTheme}/>
-        <AboutPanel aboutToggle={aboutToggle} toggle={toggleAbout}></AboutPanel>
         <SideProjects sideProjectsToggle={sideProjectsToggle} />
+        <AboutPanel aboutToggle={aboutToggle} toggle={toggleAbout}></AboutPanel>
         <Wipe isLightTheme={isLightTheme}/>
         <CloseOverlay isOpen={isOpen} aboutToggle={aboutToggle} toggleAbout={toggleAbout} mobileToggle={toggle}/>
         {/* <ThemeToggle themeToggle={toggleTheme}/> */}
@@ -135,7 +134,7 @@ function App() {
                 {/* <Route exact path="/works" render={(props) => <Works theme={colorTheme} {...props} />}/> */}
                 <Route exact path="/test" component={Lab} />
                 {/* <Route exact path="/blog" component={Blog} />  */}
-                <Route exact path="/photo" component={Photography} />
+                {/* <Route exact path="/photo" component={Photography} /> */}
                 <Route path="/:workId?/index" component={WorkExpanded} exact />
                 <Route path="/:workId?/images" component={Images} />
               </Switch>

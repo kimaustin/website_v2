@@ -5,22 +5,21 @@ import { motion } from "framer-motion";
 import { keyframes } from "styled-components";
 
 export const Container = styled(motion.div)`
-  z-index: 1000;
+  z-index: 3;
   position: fixed;
   top: 0;
-  right: 0;
   /* left: 30vw; */
-  /* width: calc(50vw + 12px); */
-  width: 120px;
-  height: 100vh;
-  /* height: 80px; */
+  /* height: 103px; */
+  width: 100vw;
+  left: 0;
+  height: 80px;
   /* width: 70vw; */
 
   background: ${props => props.theme.bgSide2}; // Make sure this color has an opacity of less than 1
   /* background: green; */
-  /* backdrop-filter: blur(14px); // This be the blur */
-  /* border-bottom: 1px solid ${props => props.theme.border}; */
-  border-left: 1px solid ${props => props.theme.border};
+  backdrop-filter: blur(12px); // This be the blur
+  border-bottom: .5px solid ${props => props.theme.border};
+  /* border-left: .5px solid ${props => props.theme.border}; */
 
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
@@ -28,31 +27,29 @@ export const Container = styled(motion.div)`
   @media screen and (max-width: 767px) {
     height: 100px;
     left: 0;
-    right: unset;
     width: 100vw;
     border-left: unset;
     background: ${props => props.theme.bgSide}; // Make sure this color has an opacity of less than 1
-    backdrop-filter: blur(7px); // This be the blur
+    backdrop-filter: blur(8px); // This be the blur
     border-bottom: 1px solid ${props => props.theme.border};
   }
 `;
 
 export const ScrollContainer = styled.div`
   padding-left: 14px;
-  padding-top: 32px;
-  /* height: 96px; */
-  /* width: 100vw; */
-  /* width: 100%; */
+  padding-top: 11px;
+  height: 96px;
+  width: 100vw;
+
   z-index: 999;
-  /* display: grid; */
 
   align-items: start;
   justify-content: start;
   align-content: start;
 
   white-space: nowrap;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-y: hidden;
+  overflow-x: scroll;
 
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
@@ -61,10 +58,9 @@ export const ScrollContainer = styled.div`
   }
 
   @media screen and (max-width: 767px) {
-    padding-top: 7px;
-    height: 100px;
+    padding-top: 8px;
+    height: 116px;
     overflow-y: hidden;
-    overflow-x: scroll;
     width: 100vw;
     padding-left: 14px;
     /* padding-right: 20px; */
@@ -72,16 +68,14 @@ export const ScrollContainer = styled.div`
 `
 
 export const ImageContainer = styled(LinkRouter)`
-  /* display: grid; */
-  /* width: 7vw; */
-  width: 92px;
-  height: 124px;
+  // display: inline-grid;
+  width: 7vw;
+  height: 80px;
   align-items: start;
   justify-content: start;
-  /* padding-right: 8px; */
-  padding-top: 1px;
+  padding-right: 8px;
   // margin-top: 5.15px;
-  opacity: 0.6;
+  opacity: 0.55;
 
   font-family: 'SS3';
   font-size: 14px;
@@ -89,8 +83,8 @@ export const ImageContainer = styled(LinkRouter)`
   text-decoration: none;
 
   img {
-    max-width: calc(100%);
-    height: 124px;
+    max-width: 100%;
+    max-height: calc(87% - 16px);
     align-content: start;
     object-fit: scale-down;
   }
@@ -102,43 +96,31 @@ export const ImageContainer = styled(LinkRouter)`
   }
 
   @media screen and (max-width: 767px) {
-    /* display: inline-grid; */
     opacity: 1;
-    width: 7vw;
     height: 88px;
-    padding-top: unset;
-    padding-right: 9px;
+    padding-right: 10px;
 
     img {
-      max-height: calc(62px);
-      max-width: calc(87% - 16px);
+      max-height: calc(65px);
     }
   }
 `
 
 export const Label = styled.div`
-  position: fixed;
-  display: block;
-  z-index: 999;
-
-  /* left: -10px;
-  top: 30px;
-  transform: rotate(90deg); */
-  left: calc(100vw - 120px + 14px);
-  top: 14px;
-
-  font-family: "SS3";
-  font-size: 12px;
-  color: ${props => props.theme.secondary};
-  opacity: 0.7;
+  display: none;
 
   @media screen and (max-width: 767px) {
+    display: block;
+    z-index: 999;
     position: fixed;
     left: 14px;
-    top: 79px;
+    top: 80px;
     text-align: left;
+
+    font-family: "SS3";
     font-size: 12px;
-    transform: unset;
+    color: ${props => props.theme.secondary};
+    opacity: 0.7;
     // color: green;
   }
 `
@@ -151,7 +133,7 @@ export const Version = styled.div`
     z-index: 999;
     position: fixed;
     right: 14px;
-    top: 79px;
+    top: 80px;
     text-align: right;
 
     font-family: "SS3";
@@ -164,11 +146,10 @@ export const Version = styled.div`
 
 export const ErrorImg = styled.div`
   position: absolute;
-  left: 14px;
-  top: 38px;
+  left: 16px;
+  top: 15px;
   justify-content: start;
   opacity: 0.65;
-  padding-right: 18px;
 
   font-family: 'SS3';
   font-size: 14px;

@@ -28,6 +28,11 @@ const SideProjects = ({ projects }) => {
     
   let currPage = location.pathname.split("/").pop();
 
+  console.log("currpage: ", location.pathname);
+  console.log("location?: ", location);
+  console.log("onIndex char at: ", location.pathname.charAt(2));
+  console.log("onIndex?: ", (location.pathname.charAt(2) == "n"));
+
   // const ListContainerRef = useRef();
 
   // let observerOptions = {
@@ -96,10 +101,16 @@ const SideProjects = ({ projects }) => {
     return (
       <ImageContainer to={'/' + index + '/index'}>
         <img src={'imgs/' + project.imgs[0]} alt="" onError={handleImgError}></img>
-        {/* <img src={project.imgs[0]}></img> */}
+        {/* <img src={'testProjCover3.png'}></img> */}
       </ImageContainer>
     )
   })
+
+  // let on_index = true;
+
+  // if (currPage.contains("")) {
+  //   ""
+  // }
 
   //MAIN PROJECTS LIST
   // let projects_list = projects.map((project, index) => {
@@ -150,14 +161,16 @@ const SideProjects = ({ projects }) => {
 
   return (
     <Container
+      // inIndex={true}
       as={motion.div} 
-      initial={{ opacity: 1 }} 
-      animate={(currPage == '') ? {  opacity: 0 } : { opacity: 1 }}
+      initial={{ opacity: 0 }} 
+      // animate={((location.pathname.charAt(2) == "n") != '') ? { opacity: 1 } : { opacity: 1 }}
+      animate={{ opacity: '1' }}
       transition={{
       type: "tween",
-      ease: [0.28, 1.35, 1.5, .91],
-      duration: 0.6,
-      delay: 0.3,
+      ease: [0.28, 1.35, 1.1, .8],
+      duration: 0.5,
+      delay: 0.35,
       }}
     >
       <ErrorImg>{showError ? 'If image previws are not loading, please reload from the /index page.' : '' }</ErrorImg>

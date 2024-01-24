@@ -5,7 +5,7 @@ import { ListContainer } from './WorkElements';
 import { withRouter } from 'react-router';
 import { motion } from "framer-motion";
 import MobileTopButton from '../MobileTopButton';
-import { Container, Header, TableOfContents, Visit, CloseTOC, MobileTags, MobileTOCToggle, TopSticky, LeftTitle, CaseStudy, CaseStudy2, MobileTOCLabel, MobileTOCContainer, OverviewTag, MobileTOC, Subsection, InlineLink, Sub2, Fancy, NavButtons, WorkNav, NextWork, Back, Content, FixedContent, MobileTitle, TagsContainer, Tag, Details, Overview, PicContainer, Thumbnails, ThumbnailSelector, PicScroll, Controls, WorkContent, Label, Desc, DateClass, TOCItem, TOCItem2, Date, Class, InsideHeaderContainer, DividerTOC, DesktopTitle, NavLabel } from './WorkExpandedElements';
+import { Container, Header, ContentBg, BgBlur, TableOfContents, Visit, CloseTOC, MobileTags, MobileTOCToggle, TopSticky, LeftTitle, CaseStudy, CaseStudy2, MobileTOCLabel, MobileTOCContainer, OverviewTag, MobileTOC, Subsection, InlineLink, Sub2, Fancy, NavButtons, WorkNav, NextWork, Back, Content, FixedContent, MobileTitle, TagsContainer, Tag, Details, Overview, PicContainer, Thumbnails, ThumbnailSelector, PicScroll, Controls, WorkContent, Label, Desc, DateClass, TOCItem, TOCItem2, Date, Class, InsideHeaderContainer, DividerTOC, DesktopTitle, NavLabel, DesktopTableHeader, TopControls, ProjDetails, LinkIcon, ControlDetails1, ControlDetails2, NonCSPreview, WorkNavName } from './WorkExpandedElements';
 // import { Work } from './SingleWorkElements';
 // import { load_defaults } from '../../api';
 // import { restore_session } from '../../store';
@@ -195,8 +195,8 @@ const WorkExpanded = ({ projects }) => {
                     <MobileTitle>{work.name}</MobileTitle>
                     {/* <Tag style={{ color: 'white', fontWeight: '600', paddingBottom: '6px' }}>Tags</Tag> */}
                     <MobileTags>{project_tags}</MobileTags>
+                    {/* <OverviewTag>Intro</OverviewTag> */}
                     <Overview>
-                        <OverviewTag>Intro</OverviewTag>
                         {work.desc}
                         {/* A series of three self-promotional posters. Explored which traits are core to my identity, and what differentiates me from my peers. Intended to express my identity in a way that creates emotional resonance in a memorable, yet authentic manner.  */}
                     </Overview>
@@ -208,7 +208,7 @@ const WorkExpanded = ({ projects }) => {
 
                 return (
                     <InlineLink href={link_url} target="_blank">
-                        {link_url}
+                        {link_url} 
                     </InlineLink>
                 )
             } else if (picture.startsWith('SS2:')) {
@@ -325,18 +325,25 @@ const WorkExpanded = ({ projects }) => {
             <TopSticky
                 isCS={is_cs}
                 as={motion.div}
-                initial={{ y: '-100px' }}
-                animate={{ y: '0px' }}
-                exit={{ y: '-100px' }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0, 
+                    transition: {
+                    type: "tween",
+                    ease: [0.7, 0, 0.13, 1],
+                    duration: 0.4,
+                    delay: 0
+                } }}
                 transition={{
                     type: "tween",
                     ease: [0.7, 0, 0.13, 1],
-                    duration: 0.8,
+                    duration: 0.6,
+                    delay: 0.4
                 }}
             >
-                <DesktopTitle>{work.name}</DesktopTitle>
+                {/* <DesktopTitle>{work.name}</DesktopTitle> */}
                 <Date>{work.semester}</Date>
-                <TagsContainer>{project_tags}</TagsContainer>
+                {/* <TagsContainer>{project_tags}</TagsContainer> */}
                 <Class>{work.class}</Class>
             </TopSticky>
             
@@ -345,17 +352,19 @@ const WorkExpanded = ({ projects }) => {
                 as={motion.div}
                 initial={{ y: '100vh' }}
                 animate={{ y: 0 }}
-                exit={{ y: '100vh', transition: {
+                exit={{ y: '-100vh', transition: {
                     type: "tween",
                     ease: [0.7, 0, 0.13, 1],
-                    duration: .7}
+                    duration: .5}
                 }}
                 transition={{
                     type: "tween",
                     ease: [0.7, 0, 0.13, 1],
-                    duration: 1.2,
+                    duration: .9,
                 }}
             >
+                <DesktopTitle>{work.name}</DesktopTitle>
+                <TagsContainer>{project_tags}</TagsContainer>
                 {content_displayed}
             </WorkContent>
 
@@ -371,24 +380,50 @@ const WorkExpanded = ({ projects }) => {
                     duration: 0.7,
                 }}
             >
-                <Back to="/index">← Index</Back>
-                <CaseStudy2>Case Study</CaseStudy2>
-                <LeftTitle>{work.name}</LeftTitle>
-                {/* <Visit href={"https://www.junehomes.com"} target="_blank">Visit ↗</Visit> */}
-                <NavButtons>
-                    <NavLabel>Next</NavLabel>
-                    <WorkNav  style={{ paddingTop: '4px' }} to={"/" + next_id + "/index"} currId={work.id}>{next_proj.name}</WorkNav>
-                    <NavLabel style={{ paddingTop: '30px' }}>Previous</NavLabel>
-                    <WorkNav style={{ paddingTop: '4px' }} to={"/" + prev_id + "/index"} currId={work.id}>{prev_proj.name}</WorkNav>
-                </NavButtons>
+                <Back to="/index">← All Projects</Back>
+                <TopControls>
+                    <ControlDetails1>
+                        <Class>{work.class}</Class>
+                        <Date>{work.semester}</Date>
+                    </ControlDetails1>
+                    <LeftTitle>{work.name}</LeftTitle>
+                </TopControls>
+                <NonCSPreview>
+                    <img src={"/imgs/" + work.imgs[0]} id="project-img"></img>   
+                    {/* <img src={"imgs/testProjCover3.png"} id="project-img"></img>    */}
+                </NonCSPreview>
             </Controls>
 
-            <TableOfContents
+            <NavButtons
                 isCS={is_cs}
                 as={motion.div}
                 initial={{ x: '-100vw' }}
                 animate={{ x: 0 }}
-                exit={{ x: '-100vw' }}
+                exit={{ x: '-100vw',
+                    transition: {
+                        type: "tween",
+                        ease: [0.7, 0, 0.13, 1],
+                        duration: 0.4,
+                } }}
+                transition={{
+                    type: "tween",
+                    ease: [0.7, 0, 0.13, 1],
+                    duration: 0.4,
+                    delay: 0.3
+                }}
+            >
+                <NavLabel>Next</NavLabel>
+                <WorkNav to={"/" + next_id + "/index"} currId={work.id}><WorkNavName>{next_proj.name}</WorkNavName></WorkNav>
+                <NavLabel style={{ paddingTop: '22px' }}>Previous</NavLabel>
+                <WorkNav to={"/" + prev_id + "/index"} currId={work.id}><WorkNavName>{prev_proj.name}</WorkNavName></WorkNav>
+            </NavButtons>
+
+            <DesktopTableHeader
+                isCS={is_cs}
+                as={motion.div}
+                initial={{ x: '100vw' }}
+                animate={{ x: 0 }}
+                exit={{ x: '20vw' }}
                 transition={{
                     type: "tween",
                     ease: [0.7, 0, 0.13, 1],
@@ -396,26 +431,42 @@ const WorkExpanded = ({ projects }) => {
                     // delay: 0.4
                 }}
             >
-                <Date style={{ textTransform: 'uppercase', marginTop: '0px', opacity: '0.55' }}> {showTOC ? 'Table of Contents' : ''}</Date>
-                {/* <TOCItem onClick={()=> handleClick(-1)}>Intro</TOCItem> */}
+                Table of Contents
+            </DesktopTableHeader>
+
+            <TableOfContents
+                isCS={is_cs}
+                as={motion.div}
+                initial={{ x: '100vw' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100vw' }}
+                transition={{
+                    type: "tween",
+                    ease: [0.7, 0, 0.13, 1],
+                    duration: 0.6,
+                    // delay: 0.4
+                }}
+            >
+                {/* <Date style={{ textAlign: 'left', textTransform: 'uppercase', marginTop: '0px', marginBottom: '-14px', opacity: '0.55' }}> {showTOC ? 'Table of Contents' : ''}</Date> */}
                 {table_of_contents}
             </TableOfContents>
 
             <MobileTOCContainer
                 as={motion.div}
                 initial={{ x: 0, y: '100vh' }}
-                animate={mobileTOC ? {  x: 0, y: '30vh' } : { x: 0, y: '100vh' }}
+                animate={mobileTOC ? {  x: 0, y: '-70vh' } : { x: 0, y: '100vh' }}
                 transition={{
                 type: "tween",
                 ease: [0.28, 1.35, 1.5, .91],
                 duration: 0.35  
                 }}
             >
-                <CloseTOC onClick={toggleMobileTOC}>✕</CloseTOC>
+                {/* Table of Contents */}
                 <MobileTOC>
                     {/* <TOCItem onClick={()=> handleClick(0)}>Intro</TOCItem> */}
                     {table_of_contents}
                 </MobileTOC>
+                <CloseTOC onClick={toggleMobileTOC}>✕</CloseTOC>
             </MobileTOCContainer>
 
             <MobileTOCToggle 
@@ -440,6 +491,26 @@ const WorkExpanded = ({ projects }) => {
                     <MobileTOCLabel>Table of Contents ☰</MobileTOCLabel>
                 </DividerTOC>
             </MobileTOCToggle>
+
+            <ContentBg
+                as={motion.div}
+                initial={{ opacity: '0' }}
+                animate={{ opacity: '1' }}
+                exit={{ opacity: '0', transition: {
+                    type: "tween",
+                    ease: [0.7, 0, 0.13, 1],
+                    duration: 0.3
+                } }}
+                transition={{
+                type: "tween",
+                ease: [0.7, 0, 0.13, 1],
+                duration: .3,
+                }}
+            >
+                <img src={"imgs/testProjCover3.png"} id="project-img"></img>   
+                <BgBlur />
+            </ContentBg>
+            
         </Container>
     );
 };

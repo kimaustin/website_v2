@@ -3,26 +3,29 @@ import { Link as LinkScroll } from 'react-scroll';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    z-index: 1000;
-    height: 420px;
-    width: 100vw;
-    overflow: hidden;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    display: flex;
-
-    background: ${props => props.theme.bgNav};
-    backdrop-filter: blur(13px);
-
-    border-top: 1px solid ${props => props.theme.border};
+    
+    display: none;
     /* filter: blur(-2x); */
     /* -webkit-filter: blur(-1.5px); */
     /* cursor: url("/imgs/cursor1.svg"), auto; */
 
     @media screen and (max-width: 767px) {
         backdrop-filter: blur(10px);
+        z-index: 5;
+        height: 430px;
+        width: 100vw;
+        overflow: hidden;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        display: flex;
+
+        background: ${props => props.theme.bgNav};
+        backdrop-filter: blur(13px);
+
+        border-top: 1px solid ${props => props.theme.border};
     }
+    
 `
 
 export const Nav = styled.nav`
@@ -35,7 +38,7 @@ export const Nav = styled.nav`
     font-size: 1rem;
     position: sticky;
     top: 0;
-    z-index: 10;
+    /* z-index: 10; */
 
     @media screen and (max-width: 960px) {
         transition: 0.8s all ease;
@@ -52,30 +55,32 @@ export const Logo = styled.a`
 `
 
 export const NavHome = styled(LinkRouter)`
-    position: absolute;
-    left: 14px;
-    top: 20px;
-    display: flex;
-    height: 18px;
-    // margin-bottom: 32px;
-    font-size: 14px;
-    color: ${props => props.theme.secondary};
-    text-decoration: none;
-    font-family: 'OpenSans';
-    justify-content: start;
-    align-items: start;
-    text-align: left;
 
-    /* color: ${({currpage, thispage}) => 
-        currpage === thispage && '#FDFEF5'
-    };
+    display: none;
 
-    background: ${({currpage, thispage}) => 
-        currpage === thispage && '#201D17;'
-    }; */
-    
-    
-    
+    @media screen and (max-width: 767px) {
+        position: absolute;
+        left: 14px;
+        top: 20px;
+        display: flex;
+        height: 18px;
+        // margin-bottom: 32px;
+        font-size: 14px;
+        color: ${props => props.theme.secondary};
+        text-decoration: none;
+        font-family: 'OpenSans';
+        justify-content: start;
+        align-items: start;
+        text-align: left;
+
+        /* color: ${({currpage, thispage}) => 
+            currpage === thispage && '#FDFEF5'
+        };
+
+        background: ${({currpage, thispage}) => 
+            currpage === thispage && '#201D17;'
+        }; */
+    }
 `;
 
 export const NavbarContainer = styled.div`
@@ -129,9 +134,7 @@ export const About = styled.div`
     font-size: 14px;
     letter-spacing: 0.2px;
     // display: ${({mobileAbout}) => (mobileAbout ? 'block' : 'none')};
-
-    
-    
+    font-weight: bold;
 `
 
 export const Menu = styled.div`
@@ -143,13 +146,14 @@ export const Menu = styled.div`
     padding-bottom: 18px;
     color: ${props => props.theme.primary};
     font-family: 'SS3';
+    font-weight: bold;
     font-size: 14px;
     letter-spacing: 0.2px;
     // display: ${({mobileAbout}) => (mobileAbout ? 'none' : 'block')};
 `
 
 export const MobileAboutContainer = styled.div`
-    z-index: 998;
+    /* z-index: 998; */
     position: absolute;
     left: 0;
     // top: calc(100vh - 320px);

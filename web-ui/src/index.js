@@ -19,8 +19,8 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-load_defaults();  
-reportWebVitals();
+// load_defaults(); 
+// reportWebVitals();
 
 
 // reportWebVitals();

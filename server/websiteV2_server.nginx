@@ -13,7 +13,7 @@ server {
         proxy_pass http://localhost:6111;
     }
 
-   location /works {
+   location /index {
         proxy_pass http://localhost:7111;
     }
 

@@ -6,12 +6,12 @@ import { motion } from "framer-motion";
 export const Container = styled(motion.div)`
   position: fixed;
   /* left: 0; */
-  left: 0;
+  left: 45px;
   // top: 103px;
   top: 0;
-  z-index: 998;
+  z-index: 1;
   /* width: 100vw; */
-  width: calc(100vw);
+  width: calc(100vw - 45px);
   height: calc(100vh);
 
   ::-webkit-scrollbar {
@@ -20,10 +20,16 @@ export const Container = styled(motion.div)`
 
   overflow-y: hidden;
   overflow-x: none;
-  cursor: crosshair;
+  /* cursor: crosshair; */
 
   background: ${props => props.theme.bg};
   /* background: green; */
+
+  @media screen and (max-width: 767px) {
+    left: 0;
+    width: 100vw;
+    /* overflow: unset; */
+  }
 `
 
 export const Divider = styled.div`
@@ -45,17 +51,19 @@ export const Marker = styled.div`
   z-index: 999;
   position: fixed;
   /* left: 0; */
-  left: 0;
-  top: calc(49.25vh);
-  width: calc(37vw);
+  left: 45px;
+  top: calc(47.25vh);
+  width: calc(49vw - 45px);
   /* width: calc(100vw); */
-  border-bottom: 1.25px solid ${props => props.theme.primary};
-  opacity: 0.75;
+  border-bottom: 1px solid ${props => props.theme.secondary};
+  /* opacity: 0.2; */
 
   @media screen and (max-width: 767px) {
     border-bottom: 1px solid ${props => props.theme.secondary};
     width: 100vw;
-    top: calc(49vh + 0.5px);
+    left: 0;
+    opacity: 0.5;
+    top: calc(44.5vh);
     /* display: none; */
   }
 `;
@@ -79,7 +87,7 @@ export const MarkerL = styled.div`
     font-weight: 600;
     left: 4px;
     /* border-bottom: 4px solid ${props => props.theme.primary}; */
-    top: calc(48vh - 8px);
+    top: calc(46vh - 8px);
     width: 8px;
   } 
 `;
@@ -101,6 +109,22 @@ export const MarkerR = styled.div`
   }
 `;
 
+export const MarkerC = styled.div`
+  /* z-index: 1004; */
+  width: 38px;
+  height: 38px;
+  /* top: calc(50vh - 19px); */
+  /* left: calc(68vw); */
+  /* background: ${props => props.theme.primary}; */
+  background: green;
+  border: 2px solid ${props => props.theme.secondary};
+  opacity: 0.7;
+  border-radius: 38px;
+
+  &:hover {
+    opacity: 1;
+  }
+`
 
 export const ClickableArea = styled.div`
   z-index: -1;
@@ -109,21 +133,29 @@ export const ClickableArea = styled.div`
   position: fixed;
   // top: 103px;
   /* left: 30vw; */
-  right: 120px;
+
+  /* right: 120px;
   top:0;
+  height: 100vh;
+  width: 160px; */
+  left: 0;
+  left: 50vw;
+  bottom: 0;
+  /* width: calc(64vw - 130px); */
+  width: 50vw;
+  height: 78px;
 
   // padding-top: 2.8vh;
   // padding-top: calc(49vh - 103px);
   // margin-left: 30vw;
-  padding-left: 15px;
-  padding-top: 14px;
+  padding-left: 16px;
+  padding-top: 12px;
   padding-bottom: 16px;
   padding-right: 16px;
-  height: 100vh;
-  // height: calc(100vh - 103px);
-  width: 160px;
-  border-left: 1px solid ${props => props.theme.border};
-  background: ${props => props.theme.bgSide};
+  
+  /* border-left: 1px solid ${props => props.theme.border}; */
+  border-top: 1px solid ${props => props.theme.border};
+  /* background: ${props => props.theme.bgSide}; */
   // opacity: 0;
   backdrop-filter: blur(14px);
 
@@ -148,6 +180,7 @@ export const ClickableArea = styled.div`
 
   @media screen and (max-width: 767px) {
     opacity: 0;
+    display: none;
   }
 `;
 
@@ -156,20 +189,30 @@ export const WorkListContainer = styled.div`
   /* background: ${props => props.theme.background}; */
   position: fixed;
   top: 0;
-  left: 0;
-  width: calc(100vw - 128px);
-  height: calc(100vh - 103px + 103px);
+  left: 52px;
+  /* width: calc(100vw - 45px); */
+  width: calc(49vw - 52px);
+  height: calc(100vh);
   overflow-y: scroll;
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* align-content: center; */
+
   /* padding-bottom: calc(51vh - 62px + 0.8rem); */
   // padding-top: calc(44vh - 94px);
   /* padding-top: calc(48vh - 128px - 1.8rem + 103px); */
-  padding-top: calc(50vh - 30px);
-  padding-left: calc(24px + 1vw);
-  /* padding-right: calc(50vw + 36px); */
+  padding-top: calc(44vh);
+  padding-left: 2.5vw;
+  /* padding-left: calc(24.5vw - 26px - 16.75vw); */
+  /* padding-right: calc(24.5vw - 26px - 16.75vw); */
+  /* padding-left: 7.75vw; */
+  padding-right: 5.5vw;
   /* padding-right: calc(50vw + 100px); */
-  padding-right: calc(63vw + 26px + 1vw - 128px);
-  padding-bottom: calc(50vh - 30px);
+  /* padding-right: calc(64vw + 24px + 1vw - 128px); */
+  /* padding-right: calc(64vw + 26px + 1vw); */
+  padding-bottom: calc(48vh);
   z-index: 999;
+  /* border-right: 3px solid ${props => props.theme.border}; // Make sure this color has an opacity of less than 1 */
 
   overflow-x: hidden; 
   
@@ -188,18 +231,20 @@ export const WorkListContainer = styled.div`
     width: 100vw;
     left: 0;
     padding-left: 8px;
+    padding-right: 5vw;
     /* padding-top: calc(48vh - 126px - 16px + 103px); */
-    padding-top: calc(50vh - 42px);
-    padding-bottom: calc(50vh - 20px);
+    padding-top: calc(45vh - 38px);
+    padding-bottom: calc(53vh - 12px);
+    border-right: unset;
   }
 `;
 
 export const WorkItem = styled.div`
   // display: grid;
   // grid-template-rows: 24px 1fr;
-  margin-bottom: 16px;
+  margin-bottom: 1.2vw;
   /* scroll-margin-top: calc(48vh - 128px - 1.8rem + 103px); */
-  scroll-margin-top: calc(50vh - 32px);
+  scroll-margin-top: calc(44vh);
   /* calc(48vh - 128px - 2rem + 103px); */
   /* padding-top: calc(48vh - 128px - 1.7rem + 103px); */
 
@@ -210,14 +255,16 @@ export const WorkItem = styled.div`
 
   &:hover {
     /* opacity: 1; */
-    /* cursor: pointer;
-    color: ${props => props.theme.secondary}; */
+    /* color: ${props => props.theme.secondary}; */
+    /* scale: 0.85; */
   }
+
+  user-select: none;
 
   @media screen and (max-width: 767px) {
     width: calc(100vw - 32px);
     /* scroll-margin-top: calc(48vh - 2px - 36px); */
-    scroll-margin-top: calc(50vh - 41px);
+    scroll-margin-top: calc(45vh - 38px);
     margin-bottom: 6px;    
   }
 `;
@@ -241,14 +288,14 @@ export const DeskWorkItem = styled.div`
   }
 
   @media screen and (max-width: 767px) {
-    /* display: none; */
+    display: none;
 
     /* transition: 5s scale ease-in-out; */
 
     color: ${props => props.theme.primary};
     padding: 0 4px;
 
-    display: grid;
+    /* display: grid; */
     /* grid-template-rows: 1fr 1fr; */
 
     width: calc(100vw - 32px);
@@ -320,7 +367,7 @@ export const IndicatorLong = styled.div`
  
     box-shadow: inset 0 0 0 0 #FFFFFF;
 
-    border: 1px solid white;
+    /* border: 1px solid white; */
     // background: #FFFFFF;
     transition: box-shadow .7s ease-in-out;
 
@@ -336,22 +383,22 @@ export const CaseStudy = styled.a`
   // margin-left: 20px;
   // margin-bottom: -17px;
   // float: right;
-  padding: 2px 8px 1px 8px;
-  opacity: 0.9;
-  background: ${props => props.theme.cs};
+  /* padding: 2px 8px 1px 8px; */
+  /* opacity: 0.9; */
+  /* background: ${props => props.theme.cs}; */
   /* padding-left: 2px; */
   /* padding-top: 2px; */
-  /* padding-bottom: 1px; */
+  padding-bottom: 1px;
 
   color: ${props => props.theme.cs};
-  color: ${props => props.theme.bg};
+  /* color: ${props => props.theme.bg}; */
   font-family: "SS3";
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 1px;
   text-align: left;
   text-transform: uppercase;
-  margin-right: 10px;
+  margin-right: 14px;
   /* margin-top: 4px; */
   border-radius: 100px;
 
@@ -359,7 +406,7 @@ export const CaseStudy = styled.a`
   @media screen and (max-width: 767px) {
     /* padding-left: 1px; */
     /* padding-right: 10px; */
-    padding: 3px 8px 2px 8px;
+    /* padding: 3px 8px 2px 8px; */
     font-size: 11px;
     margin-right: 10px;
     text-align: left;
@@ -383,15 +430,30 @@ export const BottomWork = styled.div`
 
 export const WorkTitle = styled.div`
   // width: 100%;
-  float: left;
-  text-align: center;
-  align-items: start;
+  /* position: relative; */
+  /* left: 8%; */
+  /* float: center; */
+  /* text-align: center; */
+  /* align-items: center; */
   // margin-top: 20px;
 
   font-family: "SS3";
-  font-size: 36px;
-  line-height: 120%;
-  color: ${props => props.theme.primary};
+  /* font-size: 46px; */
+  font-size: 3.2vw;
+  line-height: 115%;
+  /* color: ${props => props.theme.primary}; */
+  /* max-width: 33vw; */
+  /* max-width: 24ch; */
+
+  /* border: 1px solid blue; */
+  transition: 0.07s all ease-in-out;
+
+  &:hover {
+    /* opacity: 0.5; */
+    /* scale: 0.99; */
+    /* color: ${props => props.theme.cs}; */
+    /* border-bottom: 3px solid ${props => props.theme.secondary}; */
+  }
 
   @media screen and (max-width: 767px) {
     font-size: 22px;
@@ -564,7 +626,7 @@ export const ImageHover = styled.div`
 
 `;
 
-export const WorkPreview = styled.div`
+export const WorkMobilePreview = styled.div`
   z-index: 1000;
   display: grid;
   // grid-template-columns: 1fr 1fr 2fr;
@@ -575,8 +637,9 @@ export const WorkPreview = styled.div`
   height: 48px;
   width: 120px;
   top: ${props => (props.heightVar)};
-  right: 62vw;
-  /* left: calc(31vw + 54px); */
+  right: 120px;
+  /* right: 62vw; */
+  /* left: 36vw; */
   align-content: center;
   text-align: left;
 
@@ -646,9 +709,9 @@ export const WorkPreview = styled.div`
 export const WorkName = styled.div`
   position: relative;
   bottom: 0;
-  margin-top: 2.5px;
+  /* margin-top: 2.5px; */
   // width: 80%;
-  align-content: end;
+  /* align-content: end; */
 
   color: ${props => props.theme.primary};
   opacity: 0.9;
@@ -667,19 +730,24 @@ export const WorkName = styled.div`
   }
 `;
 
-export const WorkDesc = styled.p`
+export const WorkSem = styled.p`
   /* margin-top: 5px; */
-  margin-left: 0.5px;
+  /* margin-left: 0.5px; */
   // width: 80%;
-  align-content: start;
-
+  /* align-content: end; */
+  /* text-align: right; */
+  text-align: center;
+  align-items: center;
+  align-content: center;
   color: ${props => props.theme.secondary};
   // opacity: 0.9;
+  padding-top: 4px;
   text-decoration: none;
   // text-transform: uppercase;
   letter-spacing: 0.25px;
-  font-size: 10px;
+  font-size: 16px;
   font-family: "SS3";
+  user-select: none;
 
   @media screen and (max-width: 767px) {
     margin-top: 2px;
@@ -703,11 +771,11 @@ export const Overview = styled.div`
 `
 
 export const OverviewContainer = styled.div`
-  height: calc(49.5vh - 38px - 70px);
-  margin-right: 15px;
+  /* height: calc(49.5vh - 38px - 70px); */
+  /* margin-right: 15px; */
   overflow: hidden;
-  position: absolute;
-  bottom: calc(50.5vh + 38px);
+  /* position: absolute; */
+  /* bottom: calc(50.5vh + 38px); */
 
   /* border: 1px solid pink; */
 `
@@ -724,16 +792,27 @@ export const OverviewGradient = styled.div`
 `
 
 export const WorkOverview = styled.div`
-  align-content: start;
+  /* align-content: start; */
 
   color: ${props => props.theme.primary};
   // opacity: 0.9;
   text-decoration: none;
   // text-transform: uppercase;
-  margin-top: 5px;
-  font-size: 14px;
+  /* margin-top: 5px; */
+  font-size: 16px;
   font-family: "SS3";
-  line-height: 135%;
+  line-height: 150%;
+  /* max-width: 80ch; */
+  padding-left: 25%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 25%;
+
+  user-select: none;
+
+  text-align: center;
+  align-items: center;
+  align-content: center;
   /* max-height: 20vh; */
   /* overflow: hidden; */
   /* text-overflow: ellipsis; */
@@ -771,15 +850,17 @@ export const TagsContainer = styled.div`
   // color: #C0C0C0;
   // font-size: 13px;
   // font-family: "OpenSans"
-  display: grid;
-  position: absolute;
-  bottom: 20px;
-  max-height: 40vh;
+  /* display: inline-block; */
+  /* display: inline-grid; */
+  /* position: absolute; */
+  /* bottom: 14px; */
+  /* left: 16px; */
+  /* max-height: 40vh; */
 
   // position: relative;
   // bottom: 0;
-  align-items: start;
-  text-align: left;
+  align-items: center;
+  text-align: center;
 
   @media screen and (max-width: 767px) {
     // margin-top: -20px;
@@ -791,10 +872,12 @@ export const ProjectTag = styled.a`
   color: ${props => props.theme.secondary};
   font-family: "OpenSans";
   // height: 26px;
-  font-size: 12px;
+  font-size: 16px;
   // writing-mode: vertical-rl;
-  /* padding-right: 12px; */
-  padding-top: 5px;
+  padding-right: 10px;
+  /* padding-right: 14px; */
+  /* padding-top: 5px; */
+  user-select: none;
   // overflow: hidden; 
   // text-overflow: ellipsis;
 
@@ -805,31 +888,133 @@ export const ProjectTag = styled.a`
   }
 `;
 
-export const Details = styled(LinkRouter)`
-  z-index: 1000;
+export const TopStickyIndex = styled.div`
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    padding-top: 14px;
+    left: calc(50vw);
+    padding-left: 16px;
+    padding-right: 16px;
+    /* width: calc(64vw - 130px); */
+    width: calc(50vw);
+    height: 60px;
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 26px 1fr;
+    overflow: hidden;
+
+    background: ${props => props.theme.bgNav};
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid ${props => props.theme.border};
+
+    @media screen and (max-width: 767px) {
+        opacity: 0;
+        display: none;
+    }
+`
+
+export const DetailsContainer = styled.div`
+    /* margin-top: -6px; */
+    position: fixed;
+    /* left: calc(49vw + 0.5px); */
+    left: 0;
+    top: 80px;
+    z-index: 1000;
+    /* width: calc(51vw + 1px); */
+    width: 50vw;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+    align-content: center;
+    text-align: center;
+
+    opacity: 0;
+
+    transition: 0.075s all ease-in-out;
+    background: ${props => props.theme.bg}; // Make sure this color has an opacity of less than 1
+    backdrop-filter: blur(22px); // This be the blur
+
+    /* background: green; */
+
+    &:hover {
+      opacity: 0.92;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 767px) {
+        z-index: -1;
+        opacity: 0;
+        display: none;
+    }
+`
+
+export const DetailsBG = styled(LinkRouter)`
+  z-index: 1;
   position: fixed;
-  left: calc(100vw - 280px + 15px);
-  bottom: 50.5vh;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+    text-align: center;
+    text-decoration: none;
+    display: grid;
+  /* background: ${props => props.theme.cs}; // Make sure this color has an opacity of less than 1 */
+`
+
+export const DetailsBlur = styled.div`
+  /* z-index: 900; */
+  z-index: -1;
+  position: fixed;
+  top: 8vh;
+  left: 49vw;
+  width: 51vw;
+  height: 92vh;
+  background: ${props => props.theme.bgPreview}; // Make sure this color has an opacity of less than 1
+  border-left: .5px solid ${props => props.theme.border}; // Make sure this color has an opacity of less than 1
+  backdrop-filter: blur(22px); // This be the blur
+
+  @media screen and (max-width: 767px) {
+    left: 0;
+    top: 84px;
+    width: 100vw;
+    height: 18vh;
+    display: none;
+  }
+`
+
+export const Details = styled.div`
+  z-index: 1000;
+  /* position: fixed; */
+  /* left: calc(100vw - 280px + 15px); */
+  /* bottom: 50.5vh; */
   /* width: 70vw; */
+  /* margin-top: calc(50vh - 14px); */
+  /* width: 50vw; */
+  text-align: center;
   /* height: 8vh; */
-  /* padding-top: 2.7vh; */
+  /* width: fit-content; */
+  margin-top: 10vh;
   // padding-right: 48%;
   
+  transition: 0.05s all ease-in-out;
   /* text-align: center; */
   /* align-items: center; */
   /* justify-content: center; */
 
+  opacity: 0.7;
   text-decoration: none;
   color: ${props => props.theme.cs};
   font-weight: bold;
   letter-spacing: 0.3px;
-  font-size: 18px;
+  font-size: 16px;
   font-family: "SS3";
 
+
   &:hover {
-    text-decoration: underline;
-    /* text-transform: uppercase; */
-  }
+      opacity: 1;
+      cursor: pointer;
+    }
 
   @media screen and (max-width: 767px) {
     background: ${props => props.theme.primary};
@@ -845,7 +1030,7 @@ export const Details = styled(LinkRouter)`
     float: right;
     text-align: right;
     /* border: 1px solid ${props => props.theme.bg}; */
-    /* display: none; */
+    display: none;
   }
 `
 
@@ -890,11 +1075,11 @@ export const ContentBg = styled.div`
   z-index: -1;
   position: fixed;
   top: 0;
-  left: 36vw;
+  /* left: 50vw; */
+  left: -5vw;
   height: calc(100vh);
-  /* width: 100vw; */
-  /* width: calc(60w - 120px - 160px); */
-  width: calc(50vw);
+  width: 110vw;
+  /* width: calc(50vw); */
   /* background: ${props => props.theme.bg}; */
   /* background: green; */
   /* top: 80px; */
@@ -909,12 +1094,12 @@ export const ContentBg = styled.div`
   }
 
   @media screen and (max-width: 767px) {
-    z-index: 999;
+    /* z-index: 999; */
     top: 0;
     left: 0;
     width: 100vw;
-    height: 18vh;
-    display: none;
+    /* height: 18vh; */
+    /* display: none; */
   }
 `
 
@@ -922,20 +1107,18 @@ export const BgBlur = styled.div`
   /* z-index: 900; */
   position: fixed;
   top: 0;
-  left: 35vw;
-  width: 60vw;
+  left: 49vw;
+  width: 51vw;
   /* left: calc(31vw + 46px); */
   height: 100vh;
   /* width: calc(69vw - 46px); */
   /* overflow: hidden; */
   background: ${props => props.theme.bgPreview}; // Make sure this color has an opacity of less than 1
-  backdrop-filter: blur(24px); // This be the blur
+  /* border-left: .5px solid ${props => props.theme.border}; // Make sure this color has an opacity of less than 1 */
+  backdrop-filter: blur(18px); // This be the blur
 
   @media screen and (max-width: 767px) {
-    left: 0;
-    top: 84px;
-    width: 100vw;
-    height: 18vh;
+    display: none;
   }
 `
 
@@ -945,22 +1128,28 @@ export const BlurCutoff = styled.div`
   left: 0;
   top: 0;
   height: 100vh;
-  width: 37vw;
-  background: ${props => props.theme.bg}; // Make sure this color has an opacity of less than 1
+  width: 49vw;
+  background: ${props => props.theme.bgSide}; // Make sure this color has an opacity of less than 1
+  backdrop-filter: blur(20px); // This be the blur
+
+  @media screen and (max-width: 767px) {
+    width: 100vw;
+  }
 `
 
 export const WorkImageContainer = styled.div`
   position: fixed;
   /* height: calc(100vh - 80px); */
   height: calc(100vh);
-  width: calc(63vw - 120px - 160.5px);
+  /* width: calc(63vw - 120px - 160.5px); */
+  width: 51vw;
   /* top: 80px; */
   top: 0;
-  left: calc(37vw - 0.5px);
+  left: 49vw;
   align-items: center;
-
   border-left: 1px solid ${props => props.theme.border}; // Make sure this color has an opacity of less than 1
   /* border: 1px solid green; */
+  /* background: green; */
 
   @media screen and (max-width: 767px) {
     // z-index: 999;
@@ -975,13 +1164,16 @@ export const WorkImageContainer = styled.div`
 export const WorkImage = styled.div`
   z-index: 999;
   /* padding: 22px; */
-  margin-top: 2.25vh;
-  /* margin-left: 28px; */
+  margin-top: calc(3vh + 80px);
+  margin-left: 2vw;
+  /* padding-bottom: 2vh; */
   /* width: calc(69vw - 92px - 5vw); */
-  width: calc(63vw - 120px - 160px);
+  /* width: calc(63vw - 120px - 160px); */
+  width: calc(51vw - 4vw);
 
-  /* height: calc(100vh - 130px - 5rem); */
-  height: calc(100vh - 5.2vh);
+  /* height: 88.5vh; */
+  height: calc(100vh - 6.2vh - 80px);
+
   text-align: center;
   align-items: center;
   /* justify-content: center; */
@@ -992,15 +1184,19 @@ export const WorkImage = styled.div`
   /* background: url("testProjCover.png"); */
   /* border: 4px solid pink; */
   /* background: red; */
+  /* border: 0.5px solid ${props => props.theme.border}; */
 
   img {
         /* display: block; */
         object-fit: scale-down;
         height: 100%;
-        /* max-height: calc(100vh - 38px); */
+        /* max-height: calc(100vh); */
         // max-width: 100%;
         /* max-width: calc(69vw - 92px - 5vw); */
-        max-width: calc(63vw - 120px - 160px - 50px);
+        /* max-width: calc(63vw - 120px - 160px - 50px); */
+        max-width: calc(50vw - 4vw);
+
+        /* border: 0.5px solid ${props => props.theme.border}; */
 
         /* background-image: #201D17; */
         /* padding-left: 3.25rem; */

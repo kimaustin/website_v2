@@ -4,13 +4,16 @@ import { Link as LinkScroll } from 'react-scroll';
 
 export const Container = styled.div`
     // display: flex;
-    position: fixed;
+    /* position: fixed; */
     /* margin: 1rem; */
-    left: 0;
-    top: 0;
+    /* left: 0; */
+    /* top: 0; */
     // top: 103px;
     width: calc(100vw);
     height: calc(100vh);
+    z-index: 1;
+
+    overflow: hidden;
 
     /* top: 6.6vh; */
     /* overflow-y: scroll;
@@ -21,10 +24,7 @@ export const Container = styled.div`
     // background: rgba(64, 63, 63, 0.3);
     background: ${props => props.theme.bg};
 
-    cursor: crosshair;
-
-    overflow-x: hidden;
-    overflow-y: hidden;
+    /* cursor: crosshair; */
 
     @media screen and (max-width: 767px) {
     /* margin-left: 16px; */
@@ -33,32 +33,34 @@ export const Container = styled.div`
 
 
 export const WorkContent = styled.div`
-    z-index: 990;
+    /* z-index: 990; */
     position: fixed;
-    /* left: ${({ isCS }) => (isCS ? '17vw' : '21vw')}; */
-    left: calc(37vw - 0.5px);
-    top: 0;
+    left: ${({ isCS }) => (isCS ? 'calc(18vw + 52px)' : '25vw')};
+    /* left: 33vw; */
+    /* left: calc(17vw + 52px); */
+    top: 80px;
     // top: 103px;
-    height: calc(100vh);
+    height: calc(100vh - 80px);
     // height: calc(100vh - 103px);
     // width: calc(72vw + 48px);
     /* width: ${({ isCS }) => (isCS ? 'calc(66.5vw - 40px)' : 'calc(81vw + 14px)')}; */
-    /* width: ${({ isCS }) => (isCS ? 'calc(66.5vw - 40px)' : 'calc(81vw + 14px)')}; */
-    width: calc(63vw - 120.5px);
+    width: ${({ isCS }) => (isCS ? 'calc(64vw)' : 'calc(70vw)')};
+    /* width: 63vw; */
 
     align-items: left;
-    padding-bottom: 34px;
+    padding-bottom: 100px;
     /* padding-top: calc(28px + 90px); */
-    padding-top: calc(80px + 20px);
-    padding-left: 24px;
+    /* padding-top: calc(78px + 23px); */
+    padding-top: 20px;
+    padding-left: 3vw;
     /* padding-right: ${({ isCS }) => (isCS ? '32px' : 'calc(14px + 11vw)')}; */
-    padding-right: 28px;
+    padding-right: 2.5vw;
 
     // background: rgba(64, 63, 63, 0.3);
     /* border: 1px solid blue; */
     /* background: ${props => props.theme.primary}; */
 
-    border-left: 1px solid ${props => props.theme.border};
+    /* border-left: 1px solid ${props => props.theme.border}; */
     /* border-top: 1px solid ${props => props.theme.border}; */
 
     overflow-y: scroll;
@@ -71,49 +73,53 @@ export const WorkContent = styled.div`
     }
 
     @media screen and (max-width: 767px) {
+        position: fixed;
         left: 0;
-        // top: 128px;
-        width: calc(100vw + 14px);
+        top: 100px;
+        z-index: 2;
+        width: 100vw;
         // height: calc(100vh - 124px - 90px);
-        height: 100vh;
+        height: calc(100vh - 100px - 52px);
         padding-left: 14px;
-        padding-right: 28px;
-        padding-bottom: 100px;
+        padding-right: 14px;
+        padding-bottom: 130px;
         // padding-bottom: 90px;
-        padding-top: 98px;
+        padding-top: 50px;
         border-left: unset;
     }
 `
 
 export const TopSticky = styled.div`
-    z-index: 999;
+    /* z-index: 1; */
     position: fixed;
     top: 0;
-    padding-top: 16px;
+    padding-top: 18px;
     /* left: ${({ isCS }) => (isCS ? 'calc(17vw + 20.5px)' : 'calc(21vw + 20px)')}; */
-    left: calc(37vw);
+    left: calc(36vw);
     padding-left: 24px;
     padding-right: 24px;
     /* width:  ${({ isCS }) => (isCS ? 'calc(66.5vw - 60.5px)' : 'calc(75vw - 80px + 11.5px)')}; */
-    width: calc(63vw - 120px);
-    height: 80px;
+    width: calc(64vw - 128px);
+    height: 78px;
     display: inline-grid;
     /* grid-template-columns: 74px 1fr 1fr; */
     grid-template-columns: auto auto;
-    grid-template-rows: 27px 1fr;
+    grid-template-rows: 26px 1fr;
     // 756px max
     overflow: hidden;
 
     background: ${props => props.theme.bgNav};
     backdrop-filter: blur(6px);
     /* border-left: 1px solid ${props => props.theme.border}; */
-    border-bottom: 1px solid ${props => props.theme.border};
+    /* border-bottom: 1px solid ${props => props.theme.border}; */
+
+    display: none;
 
     // background: green;
     /* border: 1px solid blue; */
 
     @media screen and (max-width: 767px) {
-        // display: none;
+        display: inline-grid;
         /* border-left: unset; */
         border-bottom: unset;
         grid-template-columns: 1fr 80px;
@@ -126,14 +132,15 @@ export const TopSticky = styled.div`
         top: 111.5px;
         left: unset;
         right: 14px;
-        width: 70vw;
+        width: fit-content;
         height: 18px;
+        /* background: green; */
     }
 `
 
 export const Header = styled.div`
     align-items: start;
-    padding-bottom: 40px;
+    padding-bottom: 60px;
     // margin-left: 12%;
     width: 100%;
 
@@ -174,17 +181,20 @@ export const Date = styled.div`
     // padding-bottom: 2px;
     font-family: "SS3";
     font-size: 12px;
-    line-height: 145%;
+    /* line-height: 145%; */
+    /* margin-bottom: 16px;  */
+    padding-top: 3px;
     letter-spacing: 0.15px;
     color: ${props => props.theme.secondary};
-    float: right;
-    text-align: right;
-    margin-top: 6px;
+    /* float: right; */
+    align-content: end;
+    align-items: end;
+    /* text-align: right; */
+    /* margin-top: 6px; */
 
-    // border: 1px solid blue;
+    /* border: 1px solid blue; */
     @media screen and (max-width: 767px) {
         margin-top: unset;
-            
         float: right;
         text-align: right;
     }
@@ -195,28 +205,39 @@ export const Class = styled.div`
     font-family: "SS3";
     font-size: 12px;
     font-weight: 600;
-    line-height: 145%;
+    /* line-height: 145%; */
     color: ${props => props.theme.secondary};
-    float: right;
-    text-align: right;
-    margin-top: -5px;
+    /* float: right; */
+    /* text-align: right; */
+    align-items: end;
+    align-content: end;
+    /* margin-top: -5px; */
     
     // border: 1px solid blue;
     @media screen and (max-width: 767px) {
-        margin-top: unset;
+        margin-top: 3px;
+        font-family: "SS3";
+        font-size: 12px;
+        font-weight: 600;
+        /* line-height: 145%; */
+        color: ${props => props.theme.secondary};
+        float: right;
+        text-align: right;
     }
 `
 
 export const CaseStudy = styled.a`
-    display: ${({ isCS }) => (isCS ? 'inline-grid' : 'none')};
+    display: grid;
+    oapcity: ${({ isCS }) => (isCS ? '1' : '0')};
     font-family: "SS3";
     font-size: 12px;
     color: ${props => props.theme.cs};
     text-transform: uppercase;
 `
 
-export const CaseStudy2 = styled.a`
-    display: inline-grid;;
+export const CaseStudy2 = styled.div`
+    display: grid;
+    oapcity: ${({ isCS }) => (isCS ? '1' : '0')};
     font-family: "SS3";
     font-size: 12px;
     color: ${props => props.theme.cs};
@@ -226,23 +247,6 @@ export const CaseStudy2 = styled.a`
         display: none;
     }
 `
-
-export const LeftTitle = styled.div`
-    text-align: left;
-    display: flex;
-    align-items: start;
-    font-size: 14px;
-    color: ${props => props.theme.primary};
-    line-height: 138%; 
-
-    display: inline-grid;
-
-    @media screen and (max-width: 767px) {
-        display: none;
-        /* opacity: 0; */
-    }
-`
-
 export const Fancy = styled.div`
     color: #4A4A4A;
     font-size: 50px;
@@ -262,12 +266,14 @@ export const Overview = styled.div`
     // padding-bottom: 38px;
     /* width: 80%; */
     max-width: 756px;
+    /* margin-left: 12px; */
     // border-bottom: 1px solid #757575;
 
     color: ${props => props.theme.secondary};
     font-family: "SS3";
-    font-size: 26px;
-    /* line-height: 128%; */
+    /* font-size: 25px; */
+    font-size: 32px;
+    line-height: 135%;
     /* font-weight: 500; */
 
     @media screen and (max-width: 767px) {
@@ -278,11 +284,11 @@ export const Overview = styled.div`
 `
 
 export const OverviewTag = styled.p`
-    color: ${props => props.theme.primary};
+    color: ${props => props.theme.secondary};
     font-family: "SS3";
     font-size: 12px;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 
     @media screen and (max-width: 767px) {
         margin-bottom: -4px;
@@ -323,7 +329,7 @@ export const PicContainer = styled.div`
         // max-height: 100%;
         // max-width: 100%;
         /* max-height: 83vh; */
-        max-height: calc(100vh - 80px - 50px);
+        max-height: calc(100vh - 80px - 8vh);
         /* max-width: ${({ isCS }) => (isCS ? 'calc(66.5vw - 61px)' : 'calc(75vw - 80px + 12px)')}; */
         max-width: calc(63vw - 120px - 50px);
         // width: 80vw;
@@ -354,9 +360,9 @@ export const Subsection = styled.div`
     /* width: calc(62.1% - 4rem); */
     width: 76%;
     // top: 0;
-    padding-top: 58px;
-    padding-bottom: 14px;
-    scroll-margin-top: 93.5px;
+    padding-top: 60px;
+    padding-bottom: 18px;
+    scroll-margin-top: -40px;
 
     /* border: 2px solid blue; */
 
@@ -368,7 +374,7 @@ export const Subsection = styled.div`
     /* align-items: right; */
 
     @media screen and (max-width: 767px) {
-        scroll-margin-top: 178px;
+        scroll-margin-top: 96px;
         width: 100%;
         margin-left: 0;
         // padding-top: 28px;
@@ -385,10 +391,10 @@ export const Sub2 = styled.div`
     margin-left: 0;
     // max-width: 80ch;
     // top: 0;
-    padding-top: 6px;
-    padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '16px'};
+    padding-top: 8px;
+    padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '18px'};
     // scroll-margin-top: calc(103px + 20px);
-    scroll-margin-top: 93.5px;
+    scroll-margin-top: 18px;
 
     /* border: 2px solid blue; */
 
@@ -403,38 +409,49 @@ export const Sub2 = styled.div`
     @media screen and (max-width: 767px) {
         padding-top: unset;
         width: 100%;
-        scroll-margin-top: 178px;
+        scroll-margin-top: 96px;
         margin-left: 0;
     }
 `
 
 export const InlineLink = styled.a`
     position: relative;
+    display: block;
     // margin-left: 12%;
     margin-left: 0;
     /* width: calc(62.1% - 4rem); */
     // width: 100%;
     // width: 76%;
-    max-width: 80ch;
+    max-width: 75ch;
     top: 0;
     padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '16px'};
     scroll-margin-top: 93.5px;
 
-    /* border: 2px solid blue; */
+    opacity: 0.65;
+
+    border: 1px solid ${props => props.theme.border};
+    background: ${props => props.theme.bgSide2};
+    padding: 8px 9px 8px 9px;
+    margin-bottom: 16px;
 
     /* opacity: 0.7; */
-    color: ${props => props.theme.primary};;
+    color: ${props => props.theme.cs};
     text-decoration: none;
     font-family: "SS3";
-    font-size: 18px;
-    line-height: 132%;
+    font-size: 12px;
+    /* line-height: 132%; */
     text-align: left;
     /* align-items: right; */
 
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
     &:hover {
-        opacity: 1;
-        text-decoration: underline;
-        curosr: pointer;
+        opacity: .8;
+        /* text-decoration: underline; */
+        border: 1px solid ${props => props.theme.secondary};
+        cursor: alias;
     }
 
     @media screen and (max-width: 767px) {
@@ -446,22 +463,22 @@ export const InlineLink = styled.a`
 
 export const Desc = styled.p`
     position: relative;
-    // margin-left: 12%;
-    margin-left: 0;
+    /* margin-left: 12px; */
+    /* margin-left: 0; */
     margin-top: -9px;
     /* width: calc(62.1% - 4rem); */
     // width: 76%;
     max-width: 80ch;
     // max-width: 600px;
     // top: 0;
-    padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '24px'};
+    padding-bottom: ${({ isLast }) => isLast ? '3.6vh' : '27px'};
     /* border: 2px solid blue; */
 
     color: ${props => props.theme.secondary};
     font-family: "SS3";
-    font-size: 18px;
+    font-size: 16px;
     text-align: left;
-    line-height: 146%;
+    line-height: 153%;
     /* opactiy: 0.7; */
     /* align-items: right; */
 
@@ -473,51 +490,190 @@ export const Desc = styled.p`
 `
 
 export const Controls = styled.div`
-    z-index: 999;
-    display: inline-grid;
-    grid-template-rows: calc(48vh - 101px - 22px) 18px 60px 16px;
+    /* z-index: 999; */
+    display: grid;
+    /* grid-template-rows: calc(40vh - 78px - 22px) 18px 60px 16px; */
+
+    // FULL HEIGHT IS 100vh - 80px - 21px(top)
+    /* grid-template-rows: 14vh auto auto 126px; */
+    /* grid-template-rows: 5% 35% 60%; */
+    grid-template-rows: auto auto 1fr;
     position: fixed;
     top: 80px;
-    left: 25px;
+    left: 52px;
+    /* height: ${({ isCS }) => (isCS ? 'calc(45vh - 60px)' : 'calc(100vh - 60px)')}; */
     height: calc(100vh - 80px);
-    width: ${({ isCS }) => (isCS ? '12vw' : '36vw')};
+    /* width: ${({ isCS }) => (isCS ? '12vw' : '36vw')}; */
+    /* width: calc(33vw - 96px - 22px); */
+    width: calc(16vw);
 
     // padding-left: 20px;
+    padding-left: 22px;
     padding-right: 24px;
-    padding-top: 18px;
+    padding-top: 21px;
+    padding-bottom: 150px;
     /* align-items: right; */
     // text-align: right;
+    border-right: 1px solid ${props => props.theme.border}; // Make sure this color has an opacity of less than 1
+    background: ${props => props.theme.bgNav}; // Make sure this color has an opacity of less than 1
 
+
+    /* border: 2px solid red; */
     // background: rgba(64, 63, 63, 0.3);
-
     /* background: green; */
 
     @media screen and (max-width: 767px) {
         left: 0;
-        display: inline-grid;
-        grid-template-rows: unset;
-        grid-template-columns: 1fr 1fr;
+        z-index: 3;
+        display: grid;
+        grid-template-rows: 1fr;
         top: 112px;
+        background: none;
         padding-left: 14px;
+        padding-bottom: 0;
+        border-right: unset;
         padding-top: 0;
-        height: 40px;
-        width: 100vw;
+        height: fit-content;
+        width: fit-content;
         overflow: hidden;
-        // border: 1px solid green;
+        /* border: 1px solid green; */
     }   
 `
 
+export const NonCSPreview = styled.div`
+    /* position: fixed; */
+    /* left: 0; */
+    /* top: calc(3.7vw + 60px + 8vh); */
+
+    display: grid;
+    /* padding-top: 18px; */
+    /* margin-bottom: 8vh; */
+    /* height: 100%; */
+    height: fit-content;
+    /* max-height: 45vh; */
+    /* display: ${({ isCS }) => (isCS ? 'none' : 'block')}; */
+    /* width: 100%; */
+    width: calc(16vw - 22px - 28px);
+
+    /* height: 52vh; */
+    /* border: 3px solid green; */
+
+    img {
+        object-fit: scale-down;
+        align-content: start;
+        align-items: start;
+        position: relative;
+        top: 0;
+        left: 0;
+        /* width: calc(100% - 23px); */
+        /* height: fit-content; */
+        /* height: 100%; */
+        max-width: calc(16vw - 22px - 28px);
+        /* max-height: 45vh; */
+
+        /* max-height: 50vh; */
+        /* max-height: 83vh; */
+        /* max-height: calc(100vh - 80px - 50px); */
+        /* max-width: ${({ isCS }) => (isCS ? 'calc(66.5vw - 61px)' : 'calc(75vw - 80px + 12px)')}; */
+        /* max-width: calc(63vw - 120px - 50px); */
+        // width: 80vw;
+        border: 0.5px solid ${props => props.theme.border};
+        z-index: -1;
+    }
+
+    @media screen and (max-width: 767px) {
+        z-index: -1;
+        display: none;
+        height: 0;
+        /* opacity: 0; */
+
+        img {
+            display: none;
+        }
+    }    
+`
+
+export const TopControls = styled.div`
+    display: grid;
+    /* grid-template-rows: 20px auto; */
+    /* padding-top: 2px; */
+    /* height: fit-content; */
+    /* align-items: end; */
+    /* align-content: end; */
+    /* justify-items: end; */
+
+
+    /* grid-template-rows: 12vh 16px 36px 12px; */
+    grid-template-rows: auto 1fr;
+    height: fit-content;
+    /* border: 1px solid pink; */
+
+    @media screen and (max-width: 767px) {
+        display: none;
+        z-index: -1;
+    }
+`
+
+export const LeftTitle = styled.div`
+    text-align: left;
+    /* display: flex; */
+    /* align-items: start; */
+    margin-bottom: 13px;
+    /* padding-top: 28px; */
+    height: fit-content;
+    font-size: 16px;
+    color: ${props => props.theme.primary};
+    line-height: 145%; 
+    /* margin-right: 1vw; */
+    /* border: 1px solid green; */
+
+    display: inline-grid;
+
+    @media screen and (max-width: 767px) {
+        display: none;
+        /* opacity: 0; */
+    }
+`
+
+export const ControlDetails1 = styled.div`
+    display: grid;
+    grid-template-rows: auto auto;
+
+    align-items: end;
+    align-content: end;
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 2vh;
+
+    /* border: 1px solid blue; */
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+`
+
 export const NavButtons = styled.div`
-    z-index: 999;
-    position: absolute;
-    left: 0;
-    bottom: calc(32px);
-    width: calc(100% - 26px);
+    /* z-index: 999; */
+    position: fixed;
+    /* bottom: ${({ isCS }) => (isCS ? '22px' : '40px')}; */
+    bottom: 28px;
+    left: 74px;
+    
+    width: calc(16vw - 22px - 24px);
+    /* align-items: end; */
+    /* align-content: end; */
+    /* justify-content: end; */
+    /* bottom: ${({ isCS }) => (isCS ? 'calc(58vh + 16px)' : 'calc(60px)')}; */
+    /* width: calc(100% - 26px); */
     // cursor: pointer;
     /* border: 1.5px solid black; */
 
     @media screen and (max-width: 767px) {
+        left: 100vw;
+        bottom: 100vh;
         display: none;
+        z-index: -1;
+        /* position: unset; */
     }
 `
 
@@ -525,23 +681,46 @@ export const NavLabel = styled.div`
     // padding-bottom: 2px;
     font-family: "SS3";
     font-size: 12px;
-    line-height: 145%;
+    line-height: 140%;
     letter-spacing: 0.15px;
-    color: ${props => props.theme.secondary};
+    color: ${props => props.theme.cs};
+    opacity: 0.8;
 `
 
 export const WorkNav = styled(LinkRouter)`
     // width: 3vw;  
     // height: 3vw;
     // padding-right: 1rem;
-
-    font-size: 14px;
+    /* font-size: 15px;
     font-family: "SS3";
     padding-bottom: 8px;
+    padding-top: 4px; */
+
+    /* width: 10vw; */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-decoration: none; */
+
+    /* color: ${props => props.theme.primary};
+    text-decoration: none; */
+    /* transition: all 0.2s ease-in-out; */    
+`
+
+export const WorkNavName = styled.p`
+    display: block;
+    max-width: calc(33vw - 100px - 40px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    padding-top: 3px;
+    /* border: 1px solid blue; */
+    font-size: 16px;
+    font-family: "SS3";
 
     color: ${props => props.theme.primary};
     text-decoration: none;
-    /* transition: all 0.2s ease-in-out; */
 
     &:hover {
         opacity: 0.6;
@@ -568,9 +747,14 @@ export const MobileWorkNav = styled(LinkRouter)`
 
 export const Back = styled(LinkRouter)`
     /* height: 2.8vw; */
+    height: fit-content;
+    width: fit-content;
     color: ${props => props.theme.primary};
     font-family: "SS3";
-    font-size: 14px;
+    /* font-size: 14px; */
+    font-size: 16px;
+    margin-bottom: 6vh;
+    /* margin-right: 1.5vw; */
 
     text-decoration: none;
     transition: all 0.1s ease-in-out;
@@ -578,12 +762,12 @@ export const Back = styled(LinkRouter)`
     &:hover {
         /* background: black; */
         /* color: white; */
-        opacity: 0.6;
+        opacity: 0.5;
     }
 
     @media screen and (max-width: 767px) {
         /* margin-left: -.255px; */
-        // padding-left: 14px;
+        margin-bottom: 0;
     }
 `
 
@@ -615,24 +799,27 @@ export const Visit = styled.div`
 export const TableOfContents = styled.div`
     display: ${({ isCS }) => (isCS ? 'block' : 'none')};
 
-    z-index: 999;
+    /* z-index: 999; */
     position fixed;
     /* right: -18px; */
-    right: calc(63vw - 0.5px);
-    top: 80px;
-    // width: calc(100vw -);
-    width: calc(25vw - 40px);
+    /* right: calc(63vw - 0.5px); */
+    right: 0;
+    /* top: 70px; */
+    top: calc(90px);
+    /* width: calc(33.5vw - 100px); */
+    width: calc(20vw - 45px);
+    /* height: calc(100vh - 80px); */
     height: calc(100vh - 80px);
 
-    padding-top: 18px;
-    padding-left: 24px;
-    // padding-bottom: 20px;
-    padding-right: 24px;
+    padding-top: 42px;
+    padding-left: 22px;
+    padding-bottom: 40px;
+    padding-right: 26px;
     
     overflow-x: hidden;
     overflow-y: scroll;
 
-    text-align: right;
+    /* text-align: right; */
 
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
@@ -640,9 +827,10 @@ export const TableOfContents = styled.div`
         display: none;
     }
 
-    background: ${props => props.theme.bg};
-    border-left: 1px solid ${props => props.theme.border};
-    border-right: 1px solid ${props => props.theme.border};
+    /* background: ${props => props.theme.bg}; */
+    /* border-top: 1px solid ${props => props.theme.border}; */
+    /* border-bottom: 1px solid ${props => props.theme.border}; */
+    /* border-right: 1px solid ${props => props.theme.border}; */
 
     p {
         color: ${props => props.theme.primary};
@@ -657,6 +845,44 @@ export const TableOfContents = styled.div`
     }
 `
 
+export const DesktopTableHeader = styled.div`
+    display: ${({ isCS }) => (isCS ? 'grid' : 'none')};
+    /* display: grid; */
+    /* Z-index: 999; */
+    position: fixed;
+    /* z-index: 1000; */
+    left: calc(80vw + 45px + 21px);
+    /* right: 2vw; */
+    top: calc(80px + 20px);
+    width: fit-content;
+    /* height: 10vh; */
+    /* width: 10vw; */
+    /* width: calc(33.5vw - 100px); */
+
+    /* padding-left: 22px; */
+
+    padding: 9px; 
+    /* top: 0; */
+    font-family: "SS3";
+    font-size: 12px;
+    /* line-height: 145%; */
+    letter-spacing: 1px;
+    color: ${props => props.theme.secondary};
+    opacity: 1;
+    text-transform: uppercase;
+    /* padding-bottom: 8.5px; */
+    /* padding-top: 9px; */
+
+    background: ${props => props.theme.bgSide2};
+    border: 1px solid ${props => props.theme.border};
+    /* border-right: 1px solid ${props => props.theme.border}; */
+
+    @media screen and (max-width: 767px) {
+        display: none;
+        z-index: -1;
+    }
+`
+
 export const MobileTOCContainer = styled.div`
     display: none;
 
@@ -666,14 +892,18 @@ export const MobileTOCContainer = styled.div`
         width: 100vw;
         height: 70vh;
         // height: 100vh;
+        align-items: start;
+        align-content: start;
         // height: calc(100vh + 180px);
-        // top: 0;
+        top: 100vh;
         left: 0;
         // top: 100vh;
         // bottom: 50px;
-        z-index: 999;
+        z-index: 2;
         // padding: 8px 14px 118px 14px;
         border-top: 1px solid ${props => props.theme.border};
+        /* padding-top: 18px; */
+        padding-left: 18px;
 
         background: ${props => props.theme.bgNav};
         backdrop-filter: blur(22px);
@@ -687,17 +917,24 @@ export const MobileTOCContainer = styled.div`
 `
 
 export const MobileTOC = styled.div`
-    position: absolute;
-    top: -40px;
-    left: 0;
+    /* position: absolute; */
+    /* top: 0; */
+    /* left: 0; */
     overflow-y: auto;
     height: 100%;
     // width: calc(100vw) - 28px;
     width: 100%;
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 100px;
-    padding-top: 20px;
+    /* padding-left: 16px; */
+    padding-right: 20px;
+    padding-bottom: 210px;
+    /* padding-top: 0px; */
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    /* -webkit-overflow-scrolling: touch; */
+    ::-webkit-scrollbar {
+        display: none;
+    }
 `
 
 export const MobileTOCToggle = styled.div`
@@ -705,7 +942,7 @@ export const MobileTOCToggle = styled.div`
 
     @media screen and (max-width: 767px) {
         display: ${({ isCS }) => (isCS ? 'block' : 'none')};
-        z-index: 1000;
+        z-index: 2;
         position: fixed;
         left: 0;
         bottom: 52px;
@@ -719,7 +956,7 @@ export const MobileTOCToggle = styled.div`
 `
 
 export const CloseTOC = styled.div`
-    z-index: 999;
+    z-index: 2;
     position: absolute;
     right: 24px;
     top: 20px;
@@ -753,13 +990,13 @@ export const MobileTOCLabel = styled.div`
 `
 
 export const TOCItem = styled.div`
-    margin-top: 40px;
-    padding-bottom: 1px;
+    margin-top: 35px;
+    padding-bottom: 5px;
     color: ${props => props.theme.primary};
     font-family: "SS3";
     font-weight: 500;
     letter-spacing: 0.2px;
-    font-size: 14px;
+    font-size: 15px;
 
     &:hover {
         /* background: black; */
@@ -771,6 +1008,7 @@ export const TOCItem = styled.div`
 
     @media screen and (max-width: 767px) {
         opacity: 0.9;
+        margin-top: 40px;
         color: ${props => props.theme.primary};
         /* padding-top: 40px; */
         padding-bottom: 1px;
@@ -779,11 +1017,11 @@ export const TOCItem = styled.div`
 `
 
 export const TOCItem2 = styled.div`
-    padding-top: 7px;
+    padding-top: 6px;
     // margin-left: 14px;
     color: ${props => props.theme.secondary};
     font-family: "SS3";
-    font-size: 14px;
+    font-size: 15px;
     line-height: 19px;
     // opacity: 0.7;
 
@@ -860,10 +1098,12 @@ export const DesktopTitle = styled.div`
     display: grid;
     color: ${props => props.theme.primary};
     font-family: "SS3";
-    font-size: 20px;
-    line-height: 126%;
-    margin-bottom: 40px;
-    max-width: 756px;
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 112%;
+    letter-spacing: -0.15px;
+    margin-bottom: 12px;
+    max-width: 20ch;
 
     @media screen and (max-width: 767px) {
         // margin-top: -14px;
@@ -886,7 +1126,7 @@ export const TagsContainer = styled.div`
 
     /* border: 1px solid blue; */
     // padding-top: 2px;
-    // padding-bottom: 32px;
+    margin-bottom: 90px;
 
     @media screen and (max-width: 767px) {
         // width: unset;
@@ -934,19 +1174,6 @@ export const Tag = styled.p`
     }
 `
 
-export const DetailsContainer = styled.div`
-    margin-top: -6px;
-    width: calc(100% + 1rem);
-
-    max-height: 47.5vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-
-    @media screen and (max-width: 767px) {
-        margin-top: -6px;
-    }
-`
-
 export const Details = styled.div`
     font-family: "GoudyBookletter";
     font-family: "Cardo";
@@ -973,7 +1200,6 @@ export const Label = styled.p`
 `
 
 export const ThumbnailSelector = styled.div`
-    z-index: 999;
     position: fixed;
     width: 6.5vw;
     height: 4vh;
@@ -994,7 +1220,7 @@ export const Thumbnails = styled.div`
     display: grid;
     width: 5vw;
     height: 36vh;
-    z-index: 999;
+    /* z-index: 999; */
     cursor: default;
   cursor: crosshair;
 
@@ -1024,7 +1250,7 @@ export const Top = styled(LinkScroll)`
     @media screen and (max-width: 768px) {
         position: fixed;
         display: flex;
-        z-index: 990;
+        /* z-index: 990; */
         /* cursor: pointer; */
         font-size: 1.5rem;
         background: white;
@@ -1054,7 +1280,58 @@ export const Top = styled(LinkScroll)`
     }
 `
 
+export const ContentBg = styled.div`
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  /* left: 50vw; */
+  left: 0;
+  height: calc(100vh);
+  width: 100vw;
+  /* width: calc(50vw); */
+  /* background: ${props => props.theme.bg}; */
+  /* background: green; */
+  /* top: 80px; */
+  align-items: center;
+  /* border: 8px solid orange; */
 
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  @media screen and (max-width: 767px) {
+    /* z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 18vh;
+    display: none; */
+  }
+`
+
+export const BgBlur = styled.div`
+  /* z-index: 900; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  /* left: calc(31vw + 46px); */
+  height: 100vh;
+  /* width: calc(69vw - 46px); */
+  /* overflow: hidden; */
+  background: ${props => props.theme.bgSide}; // Make sure this color has an opacity of less than 1
+  backdrop-filter: blur(22px); // This be the blur
+
+  @media screen and (max-width: 767px) {
+    /* left: 0;
+    top: 84px;
+    width: 100vw;
+    height: 18vh; */
+  }
+`
 
 
 
@@ -1108,3 +1385,5 @@ export const Images = styled.div`
         padding-bottom: 3rem;
     } */
 `
+
+

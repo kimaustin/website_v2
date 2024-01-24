@@ -23,7 +23,7 @@ config :portfolio, PortfolioWeb.Endpoint,
   watchers: []
 
 config :cors_plug,
-  origin: ["http://austinkim.works:7111"],
+  origin: ["http://v2.austinkim.works:7111"],
   max_age: 86400,
   methods: ["GET", "POST", "PATCH", "DELETE"]
 

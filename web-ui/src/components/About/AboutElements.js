@@ -11,7 +11,7 @@ import styled from 'styled-components';
 // `
 
 export const Container = styled.div`
-    z-index: 998;
+    z-index: 1000;
     /* background: #201D17; */
     /* background: #FDFEF5; */
     /* color: #FDFEF5; */

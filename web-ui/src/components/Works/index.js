@@ -19,10 +19,12 @@ import {
   WorkListContainer,
   DetailsExpanded,
   WorkName,
-  WorkDesc,
+  WorkSem,
   VisitLink,
   Fake,
   TextHover,
+  DetailsBlur,
+  DetailsBG,
   ImageHover,
   Indicator,
   TopLine,
@@ -35,7 +37,7 @@ import {
   TagsContainer,
   WorkContents,
   TagsDivider,
-  WorkPreview,
+  WorkMobilePreview,
   Details,
   WorkImageContainer,
   WorkImage,
@@ -48,9 +50,11 @@ import {
   Overview,
   OverviewContainer,
   BlurCutoff,
-  OverviewGradient
+  OverviewGradient,
+  MarkerC,
+  DetailsContainer,
+  TopStickyIndex
 } from "./WorkElements";
-import { DetailsContainer } from './WorkExpandedElements';
 
 // Scrollbar.init(document.querySelector('#my-scrollbar'), options);
 
@@ -307,7 +311,7 @@ const Works = ({ projects, toggleLight }) => {
 
   let observerOptions = {
     root: ListContainerRef.target,
-    rootMargin: '-49.5% 0px -49% 0px',
+    rootMargin: '-47.5% 0px -51.5% 0px',
     // threshold: 0.1
   }
 
@@ -321,7 +325,10 @@ const Works = ({ projects, toggleLight }) => {
   myRefs.push(useRef());
   myRefs.push(useRef());
   myRefs.push(useRef());
+  myRefs.push(useRef());
+  myRefs.push(useRef());
 
+  myRefs.push(useRef());
   myRefs.push(useRef());
   myRefs.push(useRef());
   myRefs.push(useRef());
@@ -348,7 +355,7 @@ const Works = ({ projects, toggleLight }) => {
               // projectsList[0].target.style.color = 'white';
             } else {
               // setAnimateProject(999);
-              // projectsList[0].target.style.color = '#B7B7B7';
+              // projectsList[0].target.style.color = 'green';
               projectsList[0].target.style.opacity = 0.4;
               // projectsList[0].target.style.width = "100%";
               // projectsList[0].target.style.marginLeft = 0;
@@ -410,76 +417,63 @@ const Works = ({ projects, toggleLight }) => {
       <ProjectTag>{tag}</ProjectTag>
     ));
     // let height_varPreview = "calc(120px + " + ((index) * (90 / (projects.length + 3))) + "vh)";
-    // if (project.class_short == "June") {
-    //   // console.log('comparison', projectValue, index);
-    //   return (
-    //     <WorkItem id={index} ref={myRefs[index]} currProj={projectValue} thisProj={index}
-    //       // as={motion.div}
-    //       // initial="initial"
-    //       // animate="in"
-    //       // exit={projectValue === index ? "outSelected" : "outOther"}
-    //       // variants={pageVariants3}
-    //       // transition={{
-    //       //   type: "tween",
-    //       //   ease: [0.7, 0, 0.13, 1],
-    //       //   duration: 0.8,
-    //       //   delay: index * 0.16,
-    //       // }}
-    //     >
-    //       <DeskWorkItem onClick={()=> handleMobileClick(index)}>
-    //         {/* <TopLine>
-    //             <CaseStudy>CASE STUDY</CaseStudy>
-    //             <TagsContainer>
-    //               {project_tags}
-    //             </TagsContainer>
-    //           </TopLine> */}
-    //           <WorkTitle>{project.name}</WorkTitle>
-    //       </DeskWorkItem>
-    //       {/* <MobileWorkItem onClick={()=> handleMobileClick(index)}> */}
-    //         {/* <TopLine>
-    //           <CaseStudy>CASE STUDY</CaseStudy>
-    //           <TagsContainer>
-    //             {project_tags}
-    //           </TagsContainer>
-    //         </TopLine> */}
-    //         {/* <WorkTitle>{project.name}</WorkTitle> */}
-    //       {/* </MobileWorkItem> */}
-    //     </WorkItem>
-    //   )
-    // } else {
-    //   // console.log('comparison', projectValue, index);
-    //   return (
-    //     <WorkItem id={index} ref={myRefs[index]} currProj={projectValue} thisProj={index}>
-    //       <DeskWorkItem onClick={()=> handleMobileClick(index)}>
-    //         {/* <TopLine>
-    //             <TagsContainer>
-    //               {project_tags}
-    //             </TagsContainer>
-    //           </TopLine> */}
-    //           <WorkTitle>{project.name}</WorkTitle>
-    //       </DeskWorkItem>
-    //       {/* <MobileWorkItem onClick={()=> handleMobileClick(index)}> */}
-    //         {/* <TopLine>
-    //           <TagsContainer>
-    //             {project_tags}
-    //           </TagsContainer>
-    //         </TopLine> */}
-    //         {/* <WorkTitle>{project.name}</WorkTitle> */}
-    //       {/* </MobileWorkItem> */}
-    //     </WorkItem>
-    //   )
-    // }
-
+    if (project.class_short == "June") {
+      // console.log('comparison', projectValue, index);
       return (
-        <WorkItem id={index} ref={myRefs[index]} currProj={projectValue} thisProj={index}>
-            <DeskWorkItem onClick={()=> handleClick(index)}>
-                <TopLine>
-                  {project_tags}
-                </TopLine>
-                <WorkTitle>{project.name}</WorkTitle>
-            </DeskWorkItem>
+        <WorkItem id={index} ref={myRefs[index]} currProj={projectValue} thisProj={index}
+          // as={motion.div}
+          // initial="initial"
+          // animate="in"
+          // exit={projectValue === index ? "outSelected" : "outOther"}
+          // variants={pageVariants3}
+          // transition={{
+          //   type: "tween",
+          //   ease: [0.7, 0, 0.13, 1],
+          //   duration: 0.8,
+          //   delay: index * 0.16,
+          // }}
+        >
+          <DeskWorkItem onClick={()=> handleClick(index)}>
+              <WorkTitle>{project.name}</WorkTitle>
+          </DeskWorkItem>
+          <MobileWorkItem onClick={()=> handleMobileClick(index)}>
+            <TopLine>
+              <CaseStudy>CASE STUDY</CaseStudy>
+              {project_tags}
+            </TopLine>
+            <WorkTitle>{project.name}</WorkTitle>
+          </MobileWorkItem>
         </WorkItem>
       )
+    } else {
+      // console.log('comparison', projectValue, index);
+      return (
+        <WorkItem id={index} ref={myRefs[index]} currProj={projectValue} thisProj={index}>
+          <DeskWorkItem onClick={()=> handleClick(index)}>
+              <WorkTitle>{project.name}</WorkTitle>
+          </DeskWorkItem>
+          <MobileWorkItem onClick={()=> handleMobileClick(index)}>
+            <TopLine>
+              <TagsContainer>
+                {project_tags}
+              </TagsContainer>
+            </TopLine>
+            <WorkTitle>{project.name}</WorkTitle>
+          </MobileWorkItem>
+        </WorkItem>
+      )
+    }
+
+      // return (
+      //   <WorkItem id={index} ref={myRefs[index]} currProj={projectValue} thisProj={index}>
+      //       <DeskWorkItem onClick={()=> handleClick(index)}>
+      //           <TopLine>
+      //             {project_tags}
+      //           </TopLine>
+      //           <WorkTitle>{project.name}</WorkTitle>
+      //       </DeskWorkItem>
+      //   </WorkItem>
+      // )
   });
 
   let tags_list = projects[projectValue].tags.map((tag, index) => {
@@ -636,6 +630,7 @@ const Works = ({ projects, toggleLight }) => {
           type: "tween",
           ease: [0.7, 0, 0.13, 1],
           duration: 0.2,
+          // delay: 0
         } }}
         transition={{
             type: "tween",
@@ -648,18 +643,18 @@ const Works = ({ projects, toggleLight }) => {
       <WorkListContainer id="topWorks"
         ref={ListContainerRef}
         as={motion.div}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0, transition: {
+        initial={{ x: '-100vw' }}
+        animate={{ x: '0vw' }}
+        exit={{ x: '-100vw', transition: {
           type: "tween",
           ease: [0.7, 0, 0.13, 1],
-          duration: 0.2,
+          duration: 0.6,
         } }}
         transition={{
             type: "tween",
             ease: [0.7, 0, 0.13, 1],
             duration: 0.5,
-            delay: 0.5
+            // delay: 0.5
         }}
       >
         {/* {project_names} */}
@@ -669,7 +664,7 @@ const Works = ({ projects, toggleLight }) => {
         {projects_list}
       </WorkListContainer>
 
-      <WorkPreview
+      <WorkMobilePreview
         heightVar={height_var}
         mobileHVar={mobile_height_var}
         as={motion.div}
@@ -688,10 +683,9 @@ const Works = ({ projects, toggleLight }) => {
         }}
         >
           <img src={rightImageSource}/>
-          <WorkDesc>{projects[projectValue].semester}</WorkDesc>
+          <WorkSem>{projects[projectValue].semester}</WorkSem>
           <WorkName>{projects[projectValue].class}</WorkName>
-          <PreviewTag></PreviewTag>
-      </WorkPreview>
+      </WorkMobilePreview>
 
       {/* <WorksContainer id="topWorks" zVal="999">
         {project_previews}
@@ -699,6 +693,7 @@ const Works = ({ projects, toggleLight }) => {
       {/* </WorksContainerMove> */}
 
       <BlurCutoff />
+
       <ContentBg
         as={motion.div}
         initial={{ opacity: '0' }}
@@ -715,20 +710,20 @@ const Works = ({ projects, toggleLight }) => {
         }}
       >
         <img src={rightImageSource}/>
-        {/* <img src={projects[projectValue].imgs[0]}/> */}
+        {/* <img src={"testProjCover" + projectValue + ".png"}/> */}
         <BgBlur />
       </ContentBg>
 
-      <ClickableArea
+      {/* <ClickableArea
         // to={"/" + projectValue + "/works"}
         // id={"proj" + projectValue}
         as={motion.div}
-        initial={{ x: '100vw' }}
-        animate={{ x: '0' }}
-        exit={{ x: '100vw', transition: {
+        initial={{ y: '80px' }}
+        animate={{ y: '0' }}
+        exit={{ y: '80px', transition: {
               type: "tween",
               ease: [0.7, 0, 0.13, 1],
-              duration: 0.9
+              duration: 0.2
           } }}
         transition={{
             type: "tween",
@@ -737,11 +732,6 @@ const Works = ({ projects, toggleLight }) => {
             delay: .2
         }}
       >
-        {/* {case_study} */} 
-        {/* {case_study_tag} */}
-        {/* <CaseStudy>{(projects[projectValue].class_short == "June") ? 'CASE STUDY' : ''}</CaseStudy> */}
-        <WorkDesc>{projects[projectValue].semester}</WorkDesc>
-        <WorkName>{projects[projectValue].class}</WorkName>
         <OverviewContainer>
           <Overview>OVERVIEW</Overview>
           <WorkOverview>{projects[projectValue].desc}</WorkOverview>
@@ -750,34 +740,63 @@ const Works = ({ projects, toggleLight }) => {
         <TagsContainer>
           {tags_list}
         </TagsContainer>
-      </ClickableArea>
+      </ClickableArea> */}
 
       <DetailsContainer
-          as={motion.div}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: {
-                type: "tween",
-                ease: [0.7, 0, 0.13, 1],
-                duration: 0.3
-            } }}
-          transition={{
-              type: "tween",
-              ease: [0.7, 0, 0.13, 1],
-              duration: 0.3,
-              delay: 1.1
-          }}
-        >
-          <Details
-            to={"/" + projectValue + "/index"}
-            id={"proj" + projectValue}
-          >
-          View Details
-          </Details>
+      // thispage={'index'} to="/index"
+        as={motion.div}
+        initial={{ display: 'none', x: 'calc(49vw + 0.5px)' }}
+        animate={{ display: 'grid' }}
+        exit={{ opacity: '0', transition: {
+          type: "tween",
+          ease: [0.7, 0, 0.13, 1],
+          duration: .3
+      } }}
+        transition={{
+            type: "tween",
+            ease: [0.7, 0, 0.13, 1],
+            duration: 0.3,
+            delay: 1.2
+        }}
+      >
+        
+        <DetailsBG to={"/" + projectValue + "/index"}>
+          <WorkSem>{projects[projectValue].class}</WorkSem>
+          <WorkSem>{projects[projectValue].semester}</WorkSem>
+          <WorkOverview>{projects[projectValue].desc}</WorkOverview>
+          <TagsContainer>{tags_list}</TagsContainer>
+          <Details>View Details</Details>
+        </DetailsBG>
       </DetailsContainer>
+
+        {/* <MarkerC /> */}
+
       {/* <ClickableArea>
         {projects[projectValue].name}
       </ClickableArea> */}
+      
+      {/* <TopStickyIndex
+        as={motion.div}
+        initial={{ y: '-80px' }}
+        animate={{ y: '0' }}
+        exit={{ y: '-80px', transition: {
+              type: "tween",
+              ease: [0.7, 0, 0.13, 1],
+              duration: 0.3
+          } }}
+        transition={{
+            type: "tween",
+            ease: [0.7, 0, 0.13, 1],
+            duration: 0.8,
+            delay: .2
+        }}
+      >
+        <WorkName>{projects[projectValue].class}</WorkName>
+        <WorkSem>{projects[projectValue].semester}</WorkSem>
+        <TagsContainer>
+          {tags_list}
+        </TagsContainer>
+      </TopStickyIndex> */}
 
       <WorkImageContainer
         as={motion.div}
@@ -805,8 +824,8 @@ const Works = ({ projects, toggleLight }) => {
           transition={{
               type: "tween",
               ease: [0.7, 0, 0.13, 1],
-              duration: 0.7,
-              delay: 0.5,
+              duration: 0.4,
+              delay: 0.4,
           }}
         >
           <img src={rightImageSource}/>

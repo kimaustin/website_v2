@@ -3,32 +3,41 @@ import { Link as LinkRouter } from 'react-router-dom';
 
 export const Container = styled.div`
     position: fixed;
-    top: 0;
+    /* top: 8vh; */
+    /* left: 0; */
+    padding-left: 12px;
+    padding-right: 8px;
+    height: calc(100vh - 80px);
+    top: 80px;
     left: 0;
-    padding-left: 24px;
-    padding-right: 24px;
-    height: 80px;
     /* width: calc(50vw - 12px); */
-    width: calc(37vw + 0.5px);
-    /* width: 100vw; */
+    /* width: calc(36vw + 0.5px); */
+    /* width: calc(36vw + 0.5px); */
+    width: 52px;
     /* background: #1E1C1F; */
     // background: green;
     background: ${props => props.theme.bgNav};
-    backdrop-filter: blur(12px);
-    border-right: 1px solid ${props => props.theme.border};
-    border-bottom: 1px solid ${props => props.theme.border};
-    z-index: 999;
+    backdrop-filter: blur(18px);
+    /* border-right: 1px solid ${props => props.theme.border}; */
+    /* border-left: 0.5px solid ${props => props.theme.border}; */
+    border-right: .5px solid ${props => props.theme.border};
+    z-index: 2;
+    overflow: none;
+
 
     @media screen and (max-width: 767px) {
-        top: unset;
+        position: fixed;
+        top: calc(100vh - 52px);
         /* left: 0; */
+        /* bottom: 0; */
         padding-left: 0;
         padding-right: unset;
-        bottom: 0px;
         width: 100vw;
         border-top: .5px solid ${props => props.theme.border};
-        border-bottom: unset;
+        border-right: unset;
         height: 52px;
+        overflow: none;
+        z-index: 3;
     }
 `
 
@@ -43,9 +52,22 @@ export const Divider = styled.div`
     top: 42.25px;
     width: 30vw;
 
-    border-bottom: .5px solid #565656;
+    /* border-bottom: .5px solid #565656; */
   }
 `
+
+export const Marker = styled.div`
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  top: 78px;
+  width: calc(100vw - 130px);
+  border-bottom: 1px solid ${props => props.theme.border};
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+`;
 
 export const Indicator = styled.div`
     position: fixed;
@@ -170,6 +192,7 @@ export const NonMobile = styled.div`
 `;
 
 export const SimpleNav = styled.div`
+    /* z-index: 1000; */
     display: inline-grid;
     /* display; grid; */
     grid-template-columns: auto 1fr auto auto;
@@ -177,62 +200,70 @@ export const SimpleNav = styled.div`
     /* align-items: center; */
     align-content: center;
     width: 100%;
-    height: 90px;
+    height: 60px;
     /* height: calc(100vh - 88px); */
     /* padding: 18px 14px 20px 20px; */
-    padding-bottom: 4px;
+    /* padding-top: 7px; */
+    /* position: absolute; */
+    /* bottom: 20px; */
+    overflow: none;
 
     /* position: fixed; */
     /* left: 6px; */
     /* top: 80px; */
 
     /* background: ${props => props.theme.bgNav}; */
-    /* border: 1px solid green; */
 
     @media screen and (max-width: 767px) {
-        /* width: calc(100vw - 28px); */
         border-top: 1px solid ${props => props.theme.border};
-
         background: ${props => props.theme.bgNav};
         backdrop-filter: blur(12px);
-        display: inline-grid;
+        display: block;
+        z-index: 3;
         width: 100vw;
-        /* width: 50%; */
-        grid-template-columns: 1fr 1fr 1fr;
         height: 52px;
+        /* width: 50%; */
+        grid-template-columns: unset;
+        align-content: unset;
+        /* grid-template-columns: 1fr 1fr 1fr; */
         /* height: 24px; */
         overflow: unset;
         padding-top: 15px;
-        /* position: unset; */
-        top: unset;
+        position: fixed;
         bottom: 0;
-        paddig-left: 14px;
+        left: 0;
+        padding-left: 14px;
+        /* border: 1px solid green; */
+
     }
 `;
  
 export const Logo = styled.a`
     width: 15px;
     height: 15px;
-    /* margin-left: -1px; */
-    margin-right: 6px;
-    margin-top: -1px;
+    margin-right: 12px;
+    /* margin-right: 12px; */
+    margin-top: -3px;
     background-image: url("logo.png");
     background-size: cover;
-    border: 1px solid ${props => props.theme.border};
+    /* border: 1px solid ${props => props.theme.border}; */
 
     @media screen and (max-width: 767px) {
         // height: 14px;
         // width: 14px;
+        margin-right: 6px;
     }
 `
 
 export const NavHome = styled.div`
-    font-size: 10px;
-    /* position absolute; */
-    letter-spacing: 2px;
+    font-size: 9px;
+    position absolute;
+    letter-spacing: 1.5px;
     line-height: 100%;
-    /* left: 28.5px; */
-    /* top: 14px; */
+
+
+    left: 24px;
+    bottom: 12px;
     // height: 18px;
     // color: #FFFFFF;
     // text-decoration: none;
@@ -240,16 +271,17 @@ export const NavHome = styled.div`
     /* writing-mode: vertical-rl;
     text-orientation: upright; */
 
-    /* transform-origin: 0 0; */
-    /* transform: rotate(90deg); */
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
 
     /* position: relative; */
     display: flex;
     /* width: 18px; */
     /* height: 18px; */
     /* width: 90px; */
-    margin-right: 20px;
-    margin-top: 1.5px;
+    width: 122px;
+    /* margin-left: 12px; */
+    /* margin-top: 2px; */
     color: ${props => props.theme.secondary};
     text-decoration: none;
     font-family: 'SS3';
@@ -257,6 +289,9 @@ export const NavHome = styled.div`
     justify-content: start;
     align-items: start;
     text-align: left;
+    user-select: none;
+
+    /* border: 1px solid black; */
 
     /* color: ${({currpage, thispage}) => 
         currpage === thispage && '#FDFEF5'
@@ -270,12 +305,18 @@ export const NavHome = styled.div`
         text-decoration: underline;
     } */
 
+    /* @media screen and (max-width: 1170px) {
+        display: none;
+    } */
+
+
     @media screen and (max-width: 767px) {
+        width: fit-content;
         position: fixed;
-        top: 16px;
-        /* display: grid; */
-        left: 88px;
-        margin-top: unset;
+        bottom: 20px;
+        display: flex;
+        left: 90px;
+        margin-top: 1px;
         margin-right: unset;
         transform-origin: unset;
         transform: unset;
@@ -288,37 +329,45 @@ export const NavHome = styled.div`
 
 
 export const Switcher = styled.div`
-    /* position: absolute; */
-    /* left: 34px; */
-    /* bottom: 46px; */
+    position: absolute;
+    left: 16px;
+    bottom: 140px;
     display: inline-grid;
     grid-template-columns: 1fr 1fr 1fr;
     /* text-align: center; */
-
+    z-index: 1001;
     width: 60px;
-    height: 22px;
+    height: 23px;
     
-    margin-top: -5.5px;
+    /* margin-top: -6.5px; */
     /* margin-left: 012.5%; */
-    /* border-radius: 0px; */
+    /* border-radius: 5px; */
     overflow: hidden;
     border: 1px solid ${props => props.theme.secondary};
     /* height: 16px; */
 
-    /* transform-origin: 0 0; */
-    /* transform: rotate(90deg); */
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
 
     /* &:hover {
         background: ${isLight => (isLight ? 'rgba(30, 30, 31, 0.1)' : 'rgba(242, 249, 256, 1)')};
         cursor: pointer;
     } */
 
+    /* @media screen and (max-width: 1170px) {
+        grid-template-columns: 1fr 1fr;
+    } */
+
     @media screen and (max-width: 767px) {
         position: fixed;
-        left: 14px;;
-        top: 16px;
+        left: 14px;
+        bottom: 15px;
 
-        margin-top: -4px;
+        transform-origin: unset;
+        transform: unset;
+        z-index: 1001;
+
+        margin-top: -3px;
         height: 24px;
         /* width: 80%; */
         /* width: 100%; */
@@ -348,11 +397,11 @@ export const ThemeIndicator = styled.div`
 `
 
 export const LightIcon = styled.div`
-    z-index: 999;
+    /* z-index: 999; */
     font-size: 24px;
 
-    padding-left: 40%;
-    margin-top: 0px;
+    padding-left: 41%;
+    margin-top: .5px;
     /* margin-bottom: 2px; */
     padding-bottom: 3px;
     /* padding-top: -1px; */
@@ -376,14 +425,14 @@ export const LightIcon = styled.div`
 `
 
 export const DarkIcon = styled.div`
-    z-index: 999;
+    /* z-index: 999; */
     font-size: 14px;
     font-weight: 600;
     text-align: center;
     /* padding-left: 0%; */
     padding-top: 1.5px;
-    padding-left: 2px;
-    margin-top: 0px;
+    padding-left: 1.25px;
+    margin-top: .5px;
     width: 150%;
     margin-left: -50%;
     color: ${isLight => (isLight ? 'rgba(30, 30, 31, 1)' : 'rgba(242, 249, 256, 1)')};
@@ -414,12 +463,14 @@ export const DarkIcon = styled.div`
 export const MobileMenuToggle = styled.div`
     display: none;
 
-    @media screen and (max-width: 767px) {
-        display: inline-grid;
+    @media screen and (max-width: 767px) {]
+        z-index: 1000;
+        display: block;
         position: fixed;
         margin-top: -2px;
         right: 14px;
-        top: 19px;
+        bottom: 18px;
+        width: fit-content;
         /* align-items: end; */
         /* align-content: end; */
         float: right;
@@ -470,30 +521,34 @@ export const NonMobile1 = styled.div`
 `;
 
 export const NavDOMLink = styled(LinkRouter)`
-    /* padding-bottom: 1.5rem; */
-    /* padding-left: 23px; */
-    /* width: 100%; */
-    display: flex;
-    color: ${props => props.theme.primary};
-    font-family: 'SS3';
-    font-size: 14px;
-    /* display: flex; */
-    /* align-items: right; */
+    float: right;
+    /* padding-right: 18px; */
     text-align: right;
-    margin-right: 1.8vw;
-    /* float: right; */
-    width: 100%;
     text-decoration: none;
-    /* letter-spacing: -.1rem; */
+    /* margin-top: 1.5px; */
+    width: fit-content;
+    
+    font-family: 'SS3';
+    font-size: 16px;
     line-height: 75%;
+    color: ${props => props.theme.primary};
 
-    /* border: 1px solid green; */
-
+    /* display: block; */
     /* transition: all .2s ease-in-out; */
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+
+    position: absolute;
+    top: 60px;
+    left: 21px;
     
     &:hover {
         text-decoration: underline;
     }
+
+    /* @media screen and (max-width: 1170px) {
+        margin-right: 0;
+    } */
 
     @media screen and (max-height: 767px) {
         /* border-bottom: 0;
@@ -504,6 +559,8 @@ export const NavDOMLink = styled(LinkRouter)`
         text-align: center;
         border-top: 0;
         border-left: 2px solid #201D17; */
+        transform-origin: unset;
+        transform: unset;
         display: none;
     }
 `;
@@ -513,20 +570,22 @@ export const NavDOMLinkAbout = styled(LinkRouter)`
     /* padding-right: 18px; */
     text-align: right;
     text-decoration: none;
+    /* margin-top: 1.5px; */
+    width: fit-content;
     
     font-family: 'SS3';
-    font-size: 14px;
+    font-size: 16px;
     line-height: 75%;
     color: ${props => props.theme.primary};
 
     /* display: block; */
     /* transition: all .2s ease-in-out; */
-    /* transform-origin: 0 0; */
-    /* transform: rotate(-90deg); */
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
 
-    /* position: absolute; */
-    /* bottom: 72px; */
-    /* left: 15px; */
+    position: absolute;
+    top: 134px;
+    left: 21px;
 
     &:hover {
         text-decoration: underline;
@@ -537,7 +596,10 @@ export const NavDOMLinkAbout = styled(LinkRouter)`
     /* text-orientation: upright; */
 
     @media screen and (max-width: 767px) {
+        transform-origin: unset;
+        transform: unset;
         display: none;
+
     }
 `;
 
